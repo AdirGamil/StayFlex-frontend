@@ -22,7 +22,6 @@ export async function loadStay(stayId) {
     }
 }
 
-
 export async function removeStay(stayId) {
     try {
         await stayService.remove(stayId)
