@@ -7,10 +7,12 @@ export function StayFilter({ filterBy, setFilterBy }) {
     // const [startDate, setStartDate] = useState(null)
     // const [endDate, setEndDate] = useState(null)
     const [guests, setGuests] = useState(1)
+    const guestOptions = Array.from({ length: 10 }, (_, index) => index + 1)
 
     // useEffect(() => {
     //     setFilterBy(filterToEdit)
     // }, [filterToEdit])
+
     useEffect(() => {
         setFilterBy(filterToEdit)
     }, [filterToEdit, setFilterBy])
@@ -19,7 +21,6 @@ export function StayFilter({ filterBy, setFilterBy }) {
     //     const type = ev.target.type
     //     const field = ev.target.name
     //     let value
-
     //     switch (type) {
     //         case 'text':
     //             value = ev.target.value
@@ -31,22 +32,23 @@ export function StayFilter({ filterBy, setFilterBy }) {
     // }
 
     function handleChange(ev) {
-        const { name, value, type } = ev.target;
+        const { name, value, type } = ev.target
         
         switch (type) {
             case 'text':
             case 'number':
-                setFilterToEdit({ ...filterToEdit, [name]: value });
-                break;
+                setFilterToEdit({ ...filterToEdit, [name]: value })
+                break
             default:
-                break;
+                break
         }
     }
-    
+
     // function handleDatesChange({ startDate, endDate }) {
     //     setStartDate(startDate)
     //     setEndDate(endDate)
     // }
+
     function handleGuestsChange(value) {
         setGuests(value)
     }
@@ -73,16 +75,17 @@ export function StayFilter({ filterBy, setFilterBy }) {
                 isOutsideRange={() => false}
                 displayFormat="DD/MM/YYYY"
             /> */}
-            <div className="guests-selector">
+             <div className="guests-selector">
                 <label>Guests:</label>
-                <input
-                    type="number"
+                <select
                     name="guests"
                     value={guests}
                     onChange={ev => handleGuestsChange(Number(ev.target.value))}
-                    min={1}
-                    max={10}
-                />
+                >
+                    {guestOptions.map(option => (
+                        <option key={option} value={option}>{option}</option>
+                    ))}
+                </select> 
             </div>
         </section>
     )

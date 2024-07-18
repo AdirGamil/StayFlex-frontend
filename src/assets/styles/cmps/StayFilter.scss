@@ -2,46 +2,63 @@
     background-color: $clr5;
     border: 1px solid $clr6;
     border-radius: 8px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    width: 300px;
-    margin: 20px auto;
+    padding: 16px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 16px;
 
     h3 {
         font-size: 18px;
-        margin-bottom: 15px;
+        margin-bottom: 12px;
     }
 
-    input[type="text"],
-    input[type="number"] {
-        width: 100%;
-        padding: 10px;
-        margin-bottom: 15px;
-        border: 1px solid $clr6;
-        border-radius: 4px;
-        font-size: 14px;
-        outline: none;
+    .filter-input {
+        margin-bottom: 16px;
 
-        &::placeholder {
-            color: $clr7;
+        input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid $clr6;
+            border-radius: 4px;
+            font-size: 14px;
+            outline: none;
+
+            &:focus {
+                border-color: #007bff;
+            }
         }
     }
 
     .guests-selector {
         display: flex;
         align-items: center;
+        margin-top: 16px;
 
         label {
-            margin-right: 10px;
+            margin-right: 12px;
             font-size: 14px;
         }
 
-        input[type="number"] {
-            width: 60px;
-        }
-    }
+        select {
+            padding: 12px;
+            border: 1px solid #e0e0e0;
+            border-radius: 4px;
+            font-size: 14px;
+            outline: none;
+            cursor: pointer;
 
-    .DateRangePicker {
-        width: 100%;
+            &:focus {
+                border-color: #007bff;
+            }
+
+            // Styling the dropdown arrow (customizable)
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512'%3E%3Cpath fill='rgba(0, 0, 0, 0.54)' d='M354.5 185.3L240 299.8 125.5 185.3c-9.4-9.4-24.6-9.4-33.9 0l-22.6 22.6c-9.4 9.4-9.4 24.6 0 33.9l141.4 141.4c9.4 9.4 24.6 9.4 33.9 0l141.4-141.4c9.4-9.4 9.4-24.6 0-33.9l-22.6-22.6c-9.4-9.5-24.6-9.5-34 .1z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 8px top 50%;
+            background-size: 16px;
+            padding-right: 32px; // Adjust to accommodate the arrow icon
+        }
     }
 }
