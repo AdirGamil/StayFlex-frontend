@@ -5,27 +5,29 @@ export function StayPreview({ stay }) {
   return (
     <article className="stay-preview">
       <img className="stay-preview-img" src={stay.imgUrls[0]} alt={stay.name} />
-      <div className="stay-preview-info">
-        <p className="stay-name">{stay.name}</p>
-        <p className="stay-preview-location">
-          {stay.loc.city}, {stay.loc.country}
-        </p>
-        <p className="stay-preview-rating">
-          <img
-            className="stay-preview-star-icon"
-            src={starIcon}
-            alt="star icon"
-          />
-          {stay.reviews[0].rate}
-        </p>
-        <p className="stay-preview-distance">
+      <ul className="stay-preview-info">
+        {/* <li className="stay-name">{stay.name}</li> */}
+        <li className="stay-preview-header">
+          <p className="stay-preview-location">
+            {stay.loc.city}, {stay.loc.country}
+          </p>
+          <p className="stay-preview-rating">
+            <img
+              className="stay-preview-star-icon"
+              src={starIcon}
+              alt="star icon"
+            />
+            {stay.reviews[0].rate}
+          </p>
+        </li>
+        <li className="stay-preview-distance">
           {stay.kilometersAway} kilometers away
-        </p>
-        <p className="stay-preview-date-range">{stay.dateRange}</p>
-        <p className="stay-preview-price">
+        </li>
+        <li className="stay-preview-date-range">{stay.dateRange}</li>
+        <li className="stay-preview-price">
           <span>${stay.price}</span> night
-        </p>
-      </div>
+        </li>
+      </ul>
     </article>
   )
 }
