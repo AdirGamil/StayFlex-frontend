@@ -81,7 +81,6 @@ function _createStays() {
   gStays = loadFromStorage(STORAGE_KEY)
   if (gStays && gStays.length) return
 
-  // If no stays in storage - generate demo data
   gStays = []
   gStays.push(
     _createStay(
@@ -159,15 +158,6 @@ function _createStay(name, type, price, imageUrl, loc) {
     )
     return `${monthFormatted} ${startDayFormatted} - ${endDayFormatted}`
   }
-
-  // const getDateRange = () => {
-  //   const startDate = new Date(2023, 7, 4); // August 4, 2023
-  //   const endDate = new Date(2023, 7, 9); // August 9, 2023
-  //   const options = { month: 'short', day: 'numeric' };
-  //   const startFormatted = new Intl.DateTimeFormat('en-US', options).format(startDate);
-  //   const endFormatted = new Intl.DateTimeFormat('en-US', options).format(endDate);
-  //   return `${startFormatted} - ${endFormatted}`;
-  // };
 
   return {
     _id: makeId(),
