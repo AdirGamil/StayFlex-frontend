@@ -77,7 +77,6 @@ async function save(stay) {
   }
   return savedStay
 }
-
 function _createStays() {
   gStays = loadFromStorage(STORAGE_KEY)
   if (gStays && gStays.length) return
@@ -89,7 +88,15 @@ function _createStays() {
       'Cozy Cottage',
       'Cottage',
       300,
-      'https://a0.muscache.com/im/pictures/miso/Hosting-47086741/original/89035847-1f96-4269-af1e-120a19e1cfd7.jpeg?im_w=720'
+      'https://a0.muscache.com/im/pictures/miso/Hosting-47086741/original/89035847-1f96-4269-af1e-120a19e1cfd7.jpeg?im_w=720',
+      {
+        country: 'Portugal',
+        countryCode: 'PT',
+        city: 'Lisbon',
+        address: '17 Kombo st',
+        lat: -8.61308,
+        lng: 41.1413,
+      }
     )
   )
   gStays.push(
@@ -97,7 +104,15 @@ function _createStays() {
       'Luxury Villa',
       'Villa',
       1200,
-      'https://a0.muscache.com/im/pictures/d81d8086-bf71-4de9-969c-6d88f7e3cb99.jpg?im_w=720'
+      'https://a0.muscache.com/im/pictures/d81d8086-bf71-4de9-969c-6d88f7e3cb99.jpg?im_w=720',
+      {
+        country: 'Spain',
+        countryCode: 'ES',
+        city: 'Barcelona',
+        address: '22 Rambla st',
+        lat: 41.3851,
+        lng: 2.1734,
+      }
     )
   )
   gStays.push(
@@ -105,7 +120,15 @@ function _createStays() {
       'Modern Apartment',
       'Apartment',
       800,
-      'https://a0.muscache.com/im/pictures/miso/Hosting-578700489517829279/original/8c728f45-a845-4158-907e-697b8997b290.jpeg?im_w=720'
+      'https://a0.muscache.com/im/pictures/miso/Hosting-578700489517829279/original/8c728f45-a845-4158-907e-697b8997b290.jpeg?im_w=720',
+      {
+        country: 'France',
+        countryCode: 'FR',
+        city: 'Paris',
+        address: '10 Rue de Rivoli',
+        lat: 48.8566,
+        lng: 2.3522,
+      }
     )
   )
   _saveStaysToStorage()
@@ -115,8 +138,36 @@ function _saveStaysToStorage() {
   saveToStorage(STORAGE_KEY, gStays)
 }
 
-function _createStay(name, type, price, imageUrl) {
-  console.log('Creating stay with price:', price) // הוספת לוג כדי לבדוק את הערך של price
+function _createStay(name, type, price, imageUrl, loc) {
+  const getRandomKilometersAway = () => Math.floor(Math.random() * 100) + 1
+
+  const getDateRange = () => {
+    const startDate = new Date(2023, 7, 4) // August 4, 2023
+    const endDate = new Date(2023, 7, 7) // August 7, 2023
+    const monthOptions = { month: 'short' }
+    const dayOptions = { day: 'numeric' }
+    const monthFormatted = new Intl.DateTimeFormat(
+      'en-US',
+      monthOptions
+    ).format(startDate)
+    const startDayFormatted = new Intl.DateTimeFormat(
+      'en-US',
+      dayOptions
+    ).format(startDate)
+    const endDayFormatted = new Intl.DateTimeFormat('en-US', dayOptions).format(
+      endDate
+    )
+    return `${monthFormatted} ${startDayFormatted} - ${endDayFormatted}`
+  }
+
+  // const getDateRange = () => {
+  //   const startDate = new Date(2023, 7, 4); // August 4, 2023
+  //   const endDate = new Date(2023, 7, 9); // August 9, 2023
+  //   const options = { month: 'short', day: 'numeric' };
+  //   const startFormatted = new Intl.DateTimeFormat('en-US', options).format(startDate);
+  //   const endFormatted = new Intl.DateTimeFormat('en-US', options).format(endDate);
+  //   return `${startFormatted} - ${endFormatted}`;
+  // };
 
   return {
     _id: makeId(),
@@ -124,31 +175,7 @@ function _createStay(name, type, price, imageUrl) {
     type,
     imgUrls: [imageUrl],
     price,
-    summary: 'Fantastic duplex apartment...',
-    capacity: 8,
-    amenities: [
-      'TV',
-      'Wifi',
-      'Kitchen',
-      'Smoking allowed',
-      'Pets allowed',
-      'Cooking basics',
-    ],
-    labels: ['Top of the world', 'Trending', 'Play', 'Tropical'],
-    host: {
-      _id: makeId(),
-      fullname: 'Davit Pok',
-      imgUrl:
-        'https://a0.muscache.com/im/pictures/fab79f25-2e10-4f0f-9711-663cb69dc7d8.jpg?aki_policy=profile_small',
-    },
-    loc: {
-      country: 'Portugal',
-      countryCode: 'PT',
-      city: 'Lisbon',
-      address: '17 Kombo st',
-      lat: -8.61308,
-      lng: 41.1413,
-    },
+    loc,
     reviews: [
       {
         id: makeId(),
@@ -161,6 +188,7 @@ function _createStay(name, type, price, imageUrl) {
         },
       },
     ],
-    likedByUsers: ['mini-user'],
+    kilometersAway: getRandomKilometersAway(),
+    dateRange: getDateRange(),
   }
 }

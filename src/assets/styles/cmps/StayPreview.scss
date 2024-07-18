@@ -1,0 +1,26 @@
+.stay-preview {
+  max-width: 280px;
+  max-height: 366px;
+  font-size: rem(14px);
+
+  .stay-preview-img {
+    width: 100%;
+    aspect-ratio: 1 / 0.95;
+    border-radius: 11.2px;
+  }
+
+  .stay-preview-star-icon {
+    max-width: 14px;
+  }
+  .stay-preview-info {
+    display: grid;
+    gri .stay-preview-location,
+    .stay-preview-price span {
+      font-weight: bold;
+    }
+
+    .stay-preview-rating {
+      grid-column: 2;
+    }
+  }
+}

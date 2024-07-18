@@ -1,0 +1,8 @@
+.stay-list {
+  margin: 0.85rem 0.2rem 1rem;
+
+  display: grid; /* Missing display property */
+  grid-template-columns: repeat(var(--grid-columns), minmax(0, 1fr));
+  grid-auto-rows: minmax(min-content, max-content);
+  grid-gap: 2.5rem 1.75rem;
+}

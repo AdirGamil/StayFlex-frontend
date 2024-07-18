@@ -1,38 +1,38 @@
 // Setup
-@import "setup/variables";
-@import "setup/functions";
-@import "setup/mixins";
-@import "setup/typography";
-@import "setup/layouts";
+@import 'setup/variables';
+@import 'setup/functions';
+@import 'setup/mixins';
+@import 'setup/typography';
+@import 'setup/layouts';
 
 // Basics
-@import "basics/helpers";
-@import "basics/layout";
-@import "basics/base";
-@import "basics/links";
-@import "basics/forms";
+@import 'basics/helpers';
+@import 'basics/layout';
+@import 'basics/base';
+@import 'basics/links';
+@import 'basics/forms';
 
 // pages
-@import "RootCmp";
+@import 'RootCmp';
 
 // @import "pages/AboutUs";
-@import "pages/Account";
-@import "pages/Messages";
-@import "pages/Notifications";
-@import "pages/StayDetails";
-@import "pages/StayIndex";
-@import "pages/Trips";
-@import "pages/UserDetails";
-@import "pages/Wishlist";
+@import 'pages/Account';
+@import 'pages/Messages';
+@import 'pages/Notifications';
+@import 'pages/StayDetails';
+@import 'pages/StayIndex';
+@import 'pages/Trips';
+@import 'pages/UserDetails';
+@import 'pages/Wishlist';
 
 // Components
-@import "cmps/AppHeader";
-@import "cmps/AppFooter";
-@import "cmps/ImgUploader";
-@import "cmps/ReviewEdit";
-@import "cmps/ReviewList";
-@import "cmps/ReviewPreview";
-@import "cmps/StayFilter";
-@import "cmps/StayList";
-// @import "cmps/StayPreview";
-@import "cmps/UserMsg";
+@import 'cmps/AppHeader';
+@import 'cmps/AppFooter';
+@import 'cmps/ImgUploader';
+@import 'cmps/ReviewEdit';
+@import 'cmps/ReviewList';
+@import 'cmps/ReviewPreview';
+@import 'cmps/StayFilter';
+@import 'cmps/StayList';
+@import 'cmps/StayPreview';
+@import 'cmps/UserMsg';
