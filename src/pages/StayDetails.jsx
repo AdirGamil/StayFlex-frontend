@@ -1,3 +1,5 @@
+{/* <Link to="/">Back to list</Link> */ }
+
 import { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { useSelector } from 'react-redux'
@@ -18,24 +20,44 @@ export function StayDetails() {
   if (!stay) return <div>Loading...</div>
 
   return (
-    <section className="stay-details">
-      <h1>Stay Details</h1>
+    <section className="stay-details main-layout">
+
       <section className="stay-header">
-        <div className="stay-title">
-          {stay.name}
-        </div>
+
+        <h1 className="stay-title">
+          {stay.summary}
+        </h1>
+
         <div className="share-save">
-          Share
-          Save
+          <a href="">Share</a>
+          <a href="">Save</a>
         </div>
+
       </section>
+
       <div className="stay-imgs">
         <img src={stay.imgUrls[0]} alt="" />
       </div>
-      {/* <Link to="/">Back to list</Link> */}
+
+      <section className="info-payment">
+
+        <div className="stay-info">
+          <h2>{stay.name}</h2>
+
+          <ul className="info-list">
+            <li>{stay.capacity} guests</li>
+            <li>4 bedrooms</li>
+            <li>4 beds</li>
+            <li>2 baths</li>
+          </ul>
+
+        </div>
 
 
-
+        <div className="payment">
+          hello
+        </div>
+      </section>
     </section>
   )
 }

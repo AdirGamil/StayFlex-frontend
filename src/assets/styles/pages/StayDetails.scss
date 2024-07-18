@@ -1,8 +1,46 @@
 .stay-header {
     display: flex;
+    align-items: baseline;
     justify-content: space-between;
+
+    .stay-title {
+        align-items: baseline;
+    }
 
     .share-save {
         display: flex;
+
+
+        a {
+            margin: 0 -8px;
+            padding: 8px;
+        }
+    }
+
+}
+
+.info-payment {
+    display: flex;
+    flex-direction: row;
+
+    justify-content: space-between;
+    align-items: center;
+
+    .stay-info {
+        padding: 32px 0;
+    }
+
+    .info-list {
+        display: flex;
+        gap: 6px;
+        /* Adjust spacing between items as needed */
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    li {
+        margin: 0;
+        padding: 0;
     }
 }
