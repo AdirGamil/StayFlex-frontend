@@ -21,7 +21,7 @@ export function StayPreview({ stay }) {
           </p>
         </li>
         <li className="stay-preview-distance">
-          {stay.kilometersAway} kilometers away
+          {stay.kilometersAway} Kilometers away
         </li>
         <li className="stay-preview-date-range">{stay.dateRange}</li>
         <li className="stay-preview-price">

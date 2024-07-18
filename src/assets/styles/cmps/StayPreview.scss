@@ -18,16 +18,27 @@
     list-style-type: none;
     padding: 0;
     margin: 0;
-    gap: 5px;
+
+    li {
+      margin: 0;
+      padding: 0;
+    }
 
     .stay-preview-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
+      margin: 0;
+      padding: 0;
     }
 
-    .stay-preview-location {
-      font-weight: bold;
+    .stay-preview-location,
+    .stay-preview-rating,
+    .stay-preview-distance,
+    .stay-preview-date-range,
+    .stay-preview-price {
+      margin: 0;
+      padding: 0;
     }
 
     .stay-preview-rating {
@@ -42,7 +53,8 @@
     }
   }
 
-  span {
+  span,
+  .stay-preview-location {
     font-weight: bold;
   }
 }
