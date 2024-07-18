@@ -24,7 +24,6 @@ async function query(filterBy = { txt: '' }) {
       (stay) => regex.test(stay.name) || regex.test(stay.description)
     )
   }
-  stays = stays.map(({ _id, name }) => ({ _id, name }))
   return stays
 }
 
@@ -42,11 +41,34 @@ async function save(stay) {
   if (stay._id) {
     const stayToSave = {
       _id: stay._id,
+      name: stay.name,
+      type: stay.type,
+      imgUrls: stay.imgUrls,
+      price: stay.price,
+      summary: stay.summary,
+      capacity: stay.capacity,
+      amenities: stay.amenities,
+      labels: stay.labels,
+      host: stay.host,
+      loc: stay.loc,
+      reviews: stay.reviews,
+      likedByUsers: stay.likedByUsers,
     }
     savedStay = await storageService.put(STORAGE_KEY, stayToSave)
   } else {
     const stayToSave = {
       name: stay.name,
+      type: stay.type,
+      imgUrls: stay.imgUrls,
+      price: stay.price,
+      summary: stay.summary,
+      capacity: stay.capacity,
+      amenities: stay.amenities,
+      labels: stay.labels,
+      host: stay.host,
+      loc: stay.loc,
+      reviews: stay.reviews,
+      likedByUsers: stay.likedByUsers,
       // Later, owner is set by the backend
       // owner: userService.getLoggedinUser(),
       // msgs: []
@@ -73,6 +95,8 @@ function _saveStaysToStorage() {
 }
 
 function _createStay(name, type, price) {
+  console.log('Creating stay with price:', price) // הוספת לוג כדי לבדוק את הערך של price
+
   return {
     _id: makeId(),
     name,
