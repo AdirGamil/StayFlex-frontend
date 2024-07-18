@@ -1,0 +1,10 @@
+// Variables
+$side-padding: 20px;
+
+// Mixin to calculate the padding
+@mixin adjust-padding-for-scrollbar() {
+  @media (min-width: 0px) {
+    padding-left: $side-padding;
+    padding-right: $side-padding;
+  }
+}

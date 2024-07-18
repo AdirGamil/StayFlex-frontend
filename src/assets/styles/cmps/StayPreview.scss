@@ -12,15 +12,49 @@
   .stay-preview-star-icon {
     max-width: 14px;
   }
+
   .stay-preview-info {
     display: grid;
-    gri .stay-preview-location,
-    .stay-preview-price span {
-      font-weight: bold;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+
+    li {
+      margin: 0;
+      padding: 0;
+    }
+
+    .stay-preview-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 0;
+      padding: 0;
+    }
+
+    .stay-preview-location,
+    .stay-preview-rating,
+    .stay-preview-distance,
+    .stay-preview-date-range,
+    .stay-preview-price {
+      margin: 0;
+      padding: 0;
     }
 
     .stay-preview-rating {
-      grid-column: 2;
+      display: flex;
+      align-items: center;
+      gap: 5px;
     }
+
+    .stay-preview-distance,
+    .stay-preview-date-range {
+      color: $clr4;
+    }
+  }
+
+  span,
+  .stay-preview-location {
+    font-weight: bold;
   }
 }
