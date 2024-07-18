@@ -2,6 +2,8 @@
 
 import React from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { Provider } from 'react-redux'
+import { store } from '../src/store/store.js'
 
 // import { Account } from './pages/Account.jsx'
 // import { Messages } from './pages/Messages.jsx'
@@ -20,20 +22,22 @@ import { UserMsg } from './cmps/UserMsg.jsx'
 export function RootCmp() {
   // return <h2>hello from root</h2>
   return (
-    <Router>
-      <div className="main-container">
-        <AppHeader />
-        <UserMsg />
+    <Provider store={store}>
+      <Router>
+        <div className="main-container">
+          <AppHeader />
+          <UserMsg />
 
-        <main>
-          <Routes>
-            <Route path="stay" element={<StayIndex />} />
-            <Route path="stay/:stayId" element={<StayDetails />} />
-            <Route path="user/:id" element={<UserDetails />} />
-          </Routes>
-        </main>
-        <AppFooter />
-      </div>
-    </Router>
+          <main>
+            <Routes>
+              <Route path="" element={<StayIndex />} />
+              <Route path="stay/:stayId" element={<StayDetails />} />
+              <Route path="user/:id" element={<UserDetails />} />
+            </Routes>
+          </main>
+          <AppFooter />
+        </div>
+      </Router>
+    </Provider>
   )
 }
