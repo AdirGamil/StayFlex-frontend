@@ -6,6 +6,7 @@ export function StayPreview({ stay }) {
     <article className="stay-preview">
       <img className="stay-preview-img" src={stay.imgUrls[0]} alt={stay.name} />
       <div className="stay-preview-info">
+        <p className="stay-name">{stay.name}</p>
         <p className="stay-preview-location">
           {stay.loc.city}, {stay.loc.country}
         </p>
