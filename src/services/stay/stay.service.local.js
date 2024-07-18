@@ -21,7 +21,7 @@ async function query(filterBy = { txt: '' }) {
   if (txt) {
     const regex = new RegExp(filterBy.txt, 'i')
     stays = stays.filter(
-      (stay) => regex.test(stay.name) || regex.test(stay.description)
+        (stay) => regex.test(stay.loc.city) || regex.test(stay.loc.country)
     )
   }
   return stays
