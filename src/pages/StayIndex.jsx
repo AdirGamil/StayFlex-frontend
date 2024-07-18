@@ -6,7 +6,9 @@ export function StayIndex() {
 
     const stays = useSelector(storeState => storeState.stayModule.stays)
 
-
+    useEffect(() => {
+        loadStays()
+    }, [])
 
     return <h1>Hello from StayIndex</h1>
 }
