@@ -1,3 +1,28 @@
+import { Link, NavLink } from 'react-router-dom'
+import logo from '../assets/img/airbnb-icon.svg'
+
 export function AppHeader() {
-    return <h1>Hello from AppHeader</h1>
-  }
+  return (
+    <header className="app-header">
+      <nav className="nav-container">
+        <NavLink to="/" className="logo">
+          {/* <img
+            className="logo-header"
+            src="https://res.cloudinary.com/dhweqnxgd/image/upload/v1721279278/StayFlex%20App/wzb3ksekaeh5zogdfmqr.png"
+            alt="logo"
+          /> */}
+          <img className="app-logo" src={logo} alt="logo" />
+          <h1>StayFlex</h1>
+        </NavLink>
+        <div className="links-header">
+          <NavLink to="stay">Stays</NavLink>
+          <NavLink to="experiences">Experiences</NavLink>
+        </div>
+
+        <NavLink to="login" className="login-link">
+          Login
+        </NavLink>
+      </nav>
+    </header>
+  )
+}

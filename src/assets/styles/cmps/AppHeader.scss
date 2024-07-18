@@ -1,0 +1,56 @@
+.app-header {
+  background-color: $clr5; // לבן
+  padding: 1rem 2rem;
+  border-bottom: 1px solid $clr4; // אפור כהה
+
+  .nav-container {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 2rem;
+
+    .logo {
+      display: flex;
+      align-items: center;
+
+      .app-logo {
+        height: 32px;
+        margin-right: 0.5rem;
+      }
+
+      h1 {
+        font-size: 1.5rem;
+        color: $clr1; // אדום
+        margin: 0;
+      }
+    }
+
+    .links-header {
+      display: flex;
+      justify-content: center;
+      padding: 10px;
+      gap: 1.5rem;
+
+      a {
+        font-size: 1rem;
+        color: $clr4; // אפור כהה
+        text-decoration: none;
+
+        &:hover {
+          background: $clr6;
+          border-radius: 10px;
+        }
+      }
+    }
+
+    .login-link {
+      font-size: 1rem;
+      color: $clr4; // אפור כהה
+      text-decoration: none;
+
+      &:hover {
+        color: $clr1; // אדום
+      }
+    }
+  }
+}
