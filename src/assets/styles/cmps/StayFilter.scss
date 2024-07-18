@@ -61,4 +61,15 @@
             padding-right: 32px; // Adjust to accommodate the arrow icon
         }
     }
+
+    .categories {
+        gap: 8px;
+        display: flex;
+
+        .symbol {
+            width: 60px;
+            font-size: 12px;
+        }
+
+    }
 }
