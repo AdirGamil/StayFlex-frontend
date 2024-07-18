@@ -84,9 +84,30 @@ function _createStays() {
 
   // If no stays in storage - generate demo data
   gStays = []
-  gStays.push(_createStay('House 1', 'Apartment', 500))
-  gStays.push(_createStay('House 2', 'Villa', 1000))
-  gStays.push(_createStay('House 3', 'Penthouse', 1200))
+  gStays.push(
+    _createStay(
+      'Cozy Cottage',
+      'Cottage',
+      300,
+      'https://a0.muscache.com/im/pictures/miso/Hosting-47086741/original/89035847-1f96-4269-af1e-120a19e1cfd7.jpeg?im_w=720'
+    )
+  )
+  gStays.push(
+    _createStay(
+      'Luxury Villa',
+      'Villa',
+      1200,
+      'https://a0.muscache.com/im/pictures/d81d8086-bf71-4de9-969c-6d88f7e3cb99.jpg?im_w=720'
+    )
+  )
+  gStays.push(
+    _createStay(
+      'Modern Apartment',
+      'Apartment',
+      800,
+      'https://a0.muscache.com/im/pictures/miso/Hosting-578700489517829279/original/8c728f45-a845-4158-907e-697b8997b290.jpeg?im_w=720'
+    )
+  )
   _saveStaysToStorage()
 }
 
@@ -94,16 +115,14 @@ function _saveStaysToStorage() {
   saveToStorage(STORAGE_KEY, gStays)
 }
 
-function _createStay(name, type, price) {
+function _createStay(name, type, price, imageUrl) {
   console.log('Creating stay with price:', price) // הוספת לוג כדי לבדוק את הערך של price
 
   return {
     _id: makeId(),
     name,
     type,
-    imgUrls: [
-      'https://a0.muscache.com/im/pictures/miso/Hosting-578700489517829279/original/8c728f45-a845-4158-907e-697b8997b290.jpeg?im_w=720',
-    ],
+    imgUrls: [imageUrl],
     price,
     summary: 'Fantastic duplex apartment...',
     capacity: 8,
