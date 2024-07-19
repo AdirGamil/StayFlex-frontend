@@ -1,12 +1,16 @@
 .stay-preview {
-  max-width: 280px;
-  max-height: 366px;
   font-size: rem(14px);
+  position: relative;
+
+  .imgs {
+    width: 100%;
+  }
 
   .stay-preview-img {
     width: 100%;
     aspect-ratio: 1 / 0.95;
     border-radius: 11.2px;
+    object-fit: cover;
   }
 
   .stay-preview-star-icon {
@@ -57,4 +61,80 @@
   .stay-preview-location {
     font-weight: bold;
   }
+
+  .slick-slider {
+    .slick-prev {
+      left: 5px;
+      z-index: 100;
+      
+      
+      &.slick-disabled:before {
+        opacity: 0;
+      }
+      
+      &:before {
+        font-size: 25px;
+      }
+    }
+
+    .slick-next {
+      right: 10px;
+      z-index: 100;
+
+      &.slick-disabled:before {
+        opacity: 0;
+      }
+
+      &:before {
+        font-size: 25px;
+      }
+    }
+
+    .slick-dots {
+      position: absolute;
+      bottom: 15px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 100;
+
+      li {
+        margin: 0 -5px;
+
+        button {
+          &::before {
+            color: $clr5;
+            opacity: 0.75;
+          }
+        }
+
+        &.slick-active button::before {
+          color: $clr5;
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+  .wish-list-icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 110;
+    stroke: rgb(255, 255, 255);
+    border-radius: 50%;
+    padding: 5px;
+    cursor: pointer;
+    transition: transform 300ms ease;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+
+    svg {
+      width: 24px;
+      height: 24px;
+      fill: #ff385c;
+    }
+  }
+
 }
