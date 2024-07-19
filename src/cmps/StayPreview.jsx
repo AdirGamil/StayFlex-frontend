@@ -1,6 +1,7 @@
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 import Slider from 'react-slick'
+import HeartWishlistSvg from "../assets/img/HeartWishlistSvg";
 import { useState } from 'react'
 
 const starIcon =
@@ -36,6 +37,9 @@ export function StayPreview({ stay }) {
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
+         <div className='wish-list-icon'>
+          <HeartWishlistSvg />
+        </div>
       <Slider {...settings}>
         {stay.imgUrls.map((imgUrl, index) => (
           <div className="imgs" key={index}>
@@ -69,7 +73,6 @@ export function StayPreview({ stay }) {
         <span>${stay.price.toLocaleString()}</span> night
         </li>
       </ul>
-      <div className="wish-list-icon"></div>
     </article>
   )
 }
