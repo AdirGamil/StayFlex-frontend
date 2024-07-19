@@ -26,7 +26,7 @@ export function RootCmp() {
       <Router>
         <div className="main-container">
           <AppHeader />
-          <UserMsg />
+          {/* <UserMsg /> */}
 
           <main>
             <Routes>
@@ -35,7 +35,7 @@ export function RootCmp() {
               <Route path="user/:id" element={<UserDetails />} />
             </Routes>
           </main>
-          <AppFooter />
+          {/* <AppFooter /> */}
         </div>
       </Router>
     </Provider>
