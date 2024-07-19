@@ -1,4 +1,6 @@
 {/* <Link to="/">Back to list</Link> */ }
+const starIcon =
+  'https://res.cloudinary.com/dhweqnxgd/image/upload/v1721294785/star_us9ozb.png'
 
 import { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
@@ -25,7 +27,7 @@ export function StayDetails() {
       <section className="stay-header">
 
         <h1 className="stay-title">
-          {stay.summary}
+          {stay.name} 4 bedroom {stay.type}
         </h1>
 
         <div className="share-save">
@@ -35,14 +37,14 @@ export function StayDetails() {
 
       </section>
 
-      <div className="stay-imgs">
+      <div className="stay-gallery">
         <img src={stay.imgUrls[0]} alt="" />
       </div>
 
       <section className="info-payment">
 
         <div className="stay-info">
-          <h2>{stay.name}</h2>
+          <h2>{stay.type} in {stay.loc.city}, {stay.loc.country}</h2>
 
           <ul className="info-list">
             <li>{stay.capacity} guests</li>
@@ -51,11 +53,24 @@ export function StayDetails() {
             <li>2 baths</li>
           </ul>
 
+          <div className="rating-reviews">
+
+            <div className="stay-rating">
+            <img
+              className="stay-rating-star-icon"
+              src={starIcon}
+              alt="star icon"
+            />
+            {stay.reviews[0].rate}.0
+            </div>
+            <a href='' className="stay-reviews">5 reviews</a>
+          </div>
+
         </div>
 
 
         <div className="payment">
-          hello
+          payment
         </div>
       </section>
     </section>
