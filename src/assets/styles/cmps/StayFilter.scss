@@ -1,67 +1,8 @@
-// .stay-filter {
-//     // Basic container styles
-//     width: 100%;
-//     max-width: 400px;
-//     border-radius: 32px;
-//     border: 1px solid #ccc;
-//     display: flex;
-//     position:relative;
-//     box-shadow: 0 3px 12px 0 rgba(0, 0, 0, 0.1),
-//         0 1px 2px 0 rgba(0, 0, 0, 0.08);
-//     /* Adjust width as needed */
-
-//     h3 {
-//         font-size: 1.5rem;
-//         margin-bottom: 1rem;
-//     }
-
-//     .date-picker-container {
-//         display: flex;
-//     }
-
-//     input[type='text'] {
-//         width: 100%;
-//         padding: 14px 32px;
-//         font-size: 12px;
-//         border: 0.1px solid #fff;
-//         border-radius: 32px;
-//         outline: none;
-
-//         &:hover {
-//             background-color: $clr6;
-//         }
-
-//         &::placeholder {
-//             color: $clr3;
-//         }
-//     }
-
-//     .react-datepicker-wrapper {
-//         font-size: 12px;
-//         border-radius: 32px;
-//         padding: 14px 24px;
-//     }
-
-//     .guests-selector {
-//         label {
-//             font-size: 1rem;
-//             margin-right: 0.5rem;
-//         }
-
-//         select {
-//             padding: 0.5rem;
-//             font-size: 1rem;
-//             border: 1px solid #ccc;
-//             border-radius: 4px;
-//             outline: none;
-//         }
-//     }
-// }
 .stay-filter {
     display: flex;
     align-items: center;
-    background-color: $clr5; // white
-    border: 1px solid $clr6; // light gray
+    background-color: $clr5; 
+    border: 1px solid $clr6; 
     border-radius: 40px;
     box-shadow: 0 1px 2px rgba($clr3, 0.08), 0 4px 12px rgba($clr3, 0.05);
     padding: 0 8px;
@@ -78,30 +19,81 @@
         transition: background-color 0.2s ease;
 
         &:hover {
-            background-color: $clr6; // light gray
+            background-color: $clr6;
             border-radius: 32px;
         }
     }
 
-    input[type="text"] {
-        border: none;
-        padding: 0 16px;
-        font-size: 14px;
-        color: $clr3; // dark black
+    .region-search {
+        position: relative;
         flex-grow: 1;
         height: 100%;
-        outline: none;
-        border-radius: 32px;
 
-        &::placeholder {
-            color: $clr4; // dark gray
+        input[type="text"] {
+            border: none;
+            padding: 0 16px;
+            font-size: 14px;
+            color: $clr3; 
+            width: 100%;
+            height: 100%;
+            outline: none;
+            border-radius: 32px;
+
+            &::placeholder {
+                color: $clr4;
+            }
+        }
+
+        .region-dropdown {
+            position: absolute;
+            top: calc(100% + 12px);
+            left: 0;
+            width: 100%;
+            background: $clr5;
+            border-radius: 32px;
+            box-shadow: 0 2px 16px rgba($clr3, 0.12);
+            padding: 16px;
+            z-index: 1000;
+
+            h3 {
+                font-size: 14px;
+                font-weight: 600;
+                margin-bottom: 16px;
+                color: $clr3; 
+            }
+
+            .region-grid {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 16px;
+            }
+
+            .region-item {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                cursor: pointer;
+
+                img {
+                    width: 100%;
+                    height: auto;
+                    border-radius: 8px;
+                    margin-bottom: 8px;
+                }
+
+                span {
+                    font-size: 14px;
+                    color: $clr3; 
+                }
+            }
         }
     }
 
     .date-picker-container {
         display: flex;
-        border-left: 1px solid $clr6; // light gray
-        border-right: 1px solid $clr6; // light gray
+        border-left: 1px solid $clr6;
+        border-right: 1px solid $clr6; 
         height: 100%;
         max-width: 350px;
 
@@ -115,7 +107,7 @@
             label {
                 font-size: 12px;
                 font-weight: 600;
-                color: $clr3; // dark black
+                color: $clr3;
                 margin-bottom: 2px;
             }
 
@@ -123,14 +115,14 @@
                 input {
                     border: none;
                     font-size: 14px;
-                    color: $clr3; // dark black
+                    color: $clr3; 
                     outline: none;
                     width: 100%;
                     cursor: pointer;
                     background: transparent;
 
                     &::placeholder {
-                        color: $clr4; // dark gray
+                        color: $clr4; 
                     }
                 }
             }
@@ -140,13 +132,14 @@
     .guests-selector {
         position: relative;
         height: 100%;
+        z-index: 1000;
 
         .guests-button {
             background: none;
             border: none;
             padding: 7px 16px;
             font-size: 14px;
-            color: $clr3; // dark black
+            color: $clr3; 
             cursor: pointer;
             display: flex;
             flex-direction: column;
@@ -157,7 +150,7 @@
             border-radius: 32px;
 
             &:hover {
-                background-color: $clr6; // light gray
+                background-color: $clr6; 
             }
 
             span:first-child {
@@ -168,7 +161,7 @@
             }
 
             span:last-child {
-                color: $clr4; // dark gray
+                color: $clr4; 
             }
         }
 
@@ -176,7 +169,7 @@
             position: absolute;
             top: calc(100% + 12px);
             right: 0;
-            background-color: $clr5; // white
+            background-color: $clr5; 
             border-radius: 32px;
             box-shadow: 0 2px 16px rgba($clr3, 0.12);
             padding: 16px 32px;
@@ -192,7 +185,7 @@
                 justify-content: space-between;
                 align-items: center;
                 padding: 24px 0;
-                border-bottom: 1px solid $clr6; // light gray
+                border-bottom: 1px solid $clr6;
 
                 &:last-child {
                     border-bottom: none;
@@ -202,14 +195,14 @@
                     label {
                         font-size: 16px;
                         font-weight: 600;
-                        color: $clr3; // dark black
+                        color: $clr3;
                         margin-bottom: 4px;
                         display: block;
                     }
 
                     span {
                         font-size: 14px;
-                        color: $clr4; // dark gray
+                        color: $clr4; 
                     }
                 }
 
@@ -221,10 +214,10 @@
                         width: 32px;
                         height: 32px;
                         border-radius: 50%;
-                        border: 1px solid $clr7; // medium gray
+                        border: 1px solid $clr7; 
                         background: none;
                         font-size: 16px;
-                        color: $clr3; // dark black
+                        color: $clr3; 
                         cursor: pointer;
                         display: flex;
                         align-items: center;
@@ -232,7 +225,7 @@
                         transition: border-color 0.2s ease, color 0.2s ease;
 
                         &:hover:not(:disabled) {
-                            border-color: $clr3; // dark black
+                            border-color: $clr3; 
                         }
 
                         &:disabled {
@@ -244,7 +237,7 @@
                     span {
                         margin: 0 16px;
                         font-size: 16px;
-                        color: $clr3; // dark black
+                        color: $clr3; 
                         min-width: 20px;
                         text-align: center;
                     }
@@ -254,7 +247,7 @@
     }
 
     .search-button {
-        background-color: $clr1; // red
+        background-color: $clr1; 
         border: none;
         border-radius: 50%;
         width: 48px;
@@ -263,17 +256,16 @@
         align-items: center;
         justify-content: center;
         cursor: pointer;
-        transition: transform 0.2s ease;
-        margin-left: 8px;
+        transition: background-color 0.2s ease;
 
         &:hover {
-            transform: scale(1.04);
+            background-color: darken($clr1, 10%);
         }
 
         svg {
-            width: 16px;
-            height: 16px;
-            fill: $clr5; // white
+            width: 24px;
+            height: 24px;
+            fill: $clr5; 
         }
     }
 }
