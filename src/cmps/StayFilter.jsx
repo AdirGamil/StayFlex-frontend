@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react'
-// import 'react-dates/lib/css/_datepicker.css'
-// import { DateRangePicker } from 'react-dates'
+import DatePicker from "react-datepicker"
+import "react-datepicker/dist/react-datepicker.css"
 
 export function StayFilter({ filterBy, setFilterBy }) {
     const [filterToEdit, setFilterToEdit] = useState(structuredClone(filterBy))
-    // const [startDate, setStartDate] = useState(null)
-    // const [endDate, setEndDate] = useState(null)
+    const [startDate, setStartDate] = useState(new Date())
+    const [endDate, setEndDate] = useState(null)
     const [guests, setGuests] = useState(1)
     const guestOptions = Array.from({ length: 10 }, (_, index) => index + 1)
 
@@ -44,10 +44,11 @@ export function StayFilter({ filterBy, setFilterBy }) {
         }
     }
 
-    // function handleDatesChange({ startDate, endDate }) {
-    //     setStartDate(startDate)
-    //     setEndDate(endDate)
-    // }
+    function handleDatesChange({ startDate, endDate }) {
+        setStartDate(startDate)
+        setEndDate(endDate)
+        setFilterToEdit({ ...filterToEdit, startDate, endDate })
+    }
 
     function handleGuestsChange(value) {
         setGuests(value)
@@ -64,9 +65,10 @@ export function StayFilter({ filterBy, setFilterBy }) {
                 onChange={handleChange}
                 required
             />
-            {/* <DateRangePicker
+             <DatePicker
+                selected={startDate}
+                onChange={handleDatesChange}
                 startDate={startDate}
-                startDateId="your_unique_start_date_id"
                 endDate={endDate}
                 endDateId="your_unique_end_date_id"
                 onDatesChange={handleDatesChange}
@@ -75,7 +77,7 @@ export function StayFilter({ filterBy, setFilterBy }) {
                 isOutsideRange={() => false}
                 displayFormat="DD/MM/YYYY"
             /> */}
-            <div className="guests-selector">
+             <div className="guests-selector">
                 <label>Guests:</label>
                 <select
                     name="guests"

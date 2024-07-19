@@ -1,76 +1,128 @@
 .stay-filter {
-    background-color: $clr5;
-    border: 1px solid $clr6;
-    border-radius: 8px;
-    padding: 16px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    margin-bottom: 16px;
+    // Basic container styles
+    width: 100%;
+    max-width: 400px;
+    /* Adjust width as needed */
 
     h3 {
-        font-size: 18px;
-        margin-bottom: 12px;
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
     }
 
-    .filter-input {
-        margin-bottom: 16px;
+    input[type='text'] {
+        width: 100%;
+        padding: 0.5rem;
+        font-size: 1rem;
+        border: 1px solid #ccc;
+        border-radius: 32px;
+        margin-bottom: 1rem;
+        box-sizing: border-box;
+        outline: none;
 
-        input {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid $clr6;
-            border-radius: 4px;
-            font-size: 14px;
-            outline: none;
+        &:hover {
+            background-color: $clr6;
 
-            &:focus {
-                border-color: #007bff;
-            }
+        }
+
+        &::placeholder {
+            color: #999;
         }
     }
 
     .guests-selector {
-        display: flex;
-        align-items: center;
-        margin-top: 16px;
-
         label {
-            margin-right: 12px;
-            font-size: 14px;
+            font-size: 1rem;
+            margin-right: 0.5rem;
         }
 
         select {
-            padding: 12px;
-            border: 1px solid #e0e0e0;
+            padding: 0.5rem;
+            font-size: 1rem;
+            border: 1px solid #ccc;
             border-radius: 4px;
-            font-size: 14px;
             outline: none;
-            cursor: pointer;
-
-            &:focus {
-                border-color: #007bff;
-            }
-
-            // // Styling the dropdown arrow (customizable)
-            // appearance: none;
-            // -webkit-appearance: none;
-            // -moz-appearance: none;
-            // background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512'%3E%3Cpath fill='rgba(0, 0, 0, 0.54)' d='M354.5 185.3L240 299.8 125.5 185.3c-9.4-9.4-24.6-9.4-33.9 0l-22.6 22.6c-9.4 9.4-9.4 24.6 0 33.9l141.4 141.4c9.4 9.4 24.6 9.4 33.9 0l141.4-141.4c9.4-9.4 9.4-24.6 0-33.9l-22.6-22.6c-9.4-9.5-24.6-9.5-34 .1z'/%3E%3C/svg%3E");
-            // background-repeat: no-repeat;
-            // background-position: right 8px top 50%;
-            // background-size: 16px;
-            // padding-right: 32px; // Adjust to accommodate the arrow icon
         }
     }
 
-    .categories {
-        gap: 8px;
-        display: flex;
+    .react-datepicker-wrapper {
+        width: 100%;
 
-        .symbol {
-            width: 60px;
-            font-size: 12px;
-        }
+        // .react-datepicker__input-container {
+        //     width: 100%;
 
+        //     input {
+        //         width: 100%;
+        //         padding: 0.5rem;
+        //         font-size: 1rem;
+        //         border: 1px solid #ccc;
+        //         border-radius: 4px;
+        //         box-sizing: border-box;
+        //         outline: none;
+
+        //         &::placeholder {
+        //             color: #999;
+        //         }
+        //     }
+        // }
+
+        // .react-datepicker {
+        //     font-family: inherit;
+        //     border: 1px solid #ccc;
+        //     border-radius: 32px;
+        //     box-shadow: 0 3px 12px 0 rgb(0 0 0/0.15);
+        //     z-index: 9999; // Ensure it overlays other elements
+
+        //     &__header {
+        //         background-color: #f0f0f0;
+        //         border-bottom: none;
+        //         padding: 0.5rem;
+        //     }
+
+        //     &__month-container {
+        //         padding: 0.5rem;
+        //     }
+
+        //     &__day {
+        //         font-size: 0.875rem;
+        //     }
+
+        //     &__day-names {
+        //         font-size: 0.875rem;
+        //     }
+
+        //     &__current-month {
+        //         font-weight: bold;
+        //     }
+
+        //     &__navigation {
+        //         &--previous {
+        //             border-right-color: #ccc;
+        //         }
+
+        //         &--next {
+        //             border-left-color: #ccc;
+        //         }
+        //     }
+
+        //     &__time-container {
+        //         .react-datepicker__time {
+        //             input[type='time'] {
+        //                 width: 100%;
+        //                 padding: 0.5rem;
+        //                 font-size: 1rem;
+        //                 border: 1px solid #ccc;
+        //                 border-radius: 4px;
+        //                 box-sizing: border-box;
+        //                 outline: none;
+        //             }
+        //         }
+        //     }
+
+        //     &-portal {
+        //         // Additional styles if using the portal (e.g., inline mode)
+        //     }
+        // }
+
+        // Adjust additional styles as needed
     }
-
 }
