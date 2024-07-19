@@ -58,7 +58,7 @@ export function StayPreview({ stay }) {
               src={starIcon}
               alt="star icon"
             />
-            {stay.reviews[0].rate}
+             {stay.reviews[0].rate.toFixed(1)}
           </p>
         </li>
         <li className="stay-preview-distance">
@@ -66,7 +66,7 @@ export function StayPreview({ stay }) {
         </li>
         <li className="stay-preview-date-range">{stay.dateRange}</li>
         <li className="stay-preview-price">
-          <span>${stay.price}</span> night
+        <span>${stay.price.toLocaleString()}</span> night
         </li>
       </ul>
       <div className="wish-list-icon"></div>

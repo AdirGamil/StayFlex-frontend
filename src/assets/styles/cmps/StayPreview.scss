@@ -1,6 +1,4 @@
 .stay-preview {
-  max-width: 280px;
-  max-height: 366px;
   font-size: rem(14px);
 
   .imgs {
@@ -68,18 +66,18 @@
       left: 5px;
       z-index: 100;
       
-
+      
       &.slick-disabled:before {
         opacity: 0;
       }
-
+      
       &:before {
         font-size: 25px;
       }
     }
 
     .slick-next {
-      right: 5px;
+      right: 10px;
       z-index: 100;
 
       &.slick-disabled:before {
