@@ -84,7 +84,7 @@
 
                 span {
                     font-size: 14px;
-                    color: $clr3; 
+                    color: $clr3;
                 }
             }
         }
@@ -96,6 +96,7 @@
         border-right: 1px solid $clr6; 
         height: 100%;
         max-width: 350px;
+        z-index: 1000;
 
         .date-picker-wrapper {
             padding: 0 16px;
