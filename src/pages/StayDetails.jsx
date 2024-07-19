@@ -3,9 +3,9 @@ const starIcon =
   'https://res.cloudinary.com/dhweqnxgd/image/upload/v1721294785/star_us9ozb.png'
 
 import { useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
-import { Link } from 'react-router-dom'
+
 
 import { loadStay } from '../store/actions/stay.actions'
 
@@ -65,20 +65,27 @@ export function StayDetails() {
             </div>
             <a href='' className="stay-reviews">5 reviews</a>
           </div>
-        <div className="stay-host-details">
+          <div className="stay-host-details">
 
-          <div className="host">
-            {/* <img src={stay.host.imgUrl} alt="" /> */}
-            <div>Hosted by {stay.host}</div>
+            <div className="host">
+              {/* <img src={stay.host.imgUrl} alt="" /> */}
+              <div>Hosted by {stay.host}</div>
+            </div>
           </div>
-        </div>
 
+          <div className="stay-description">
+            <p>
+              
+              {stay.summary}
+              
+            </p>
+          </div>
         </div>
 
 
         <div className="payment">
           payment
-          <button class="reserve">Reserve</button>
+          <button className="reserve">Reserve</button>
         </div>
       </section>
     </section>

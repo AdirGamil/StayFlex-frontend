@@ -38,8 +38,9 @@
 
 .info-payment {
     display: flex;
-    
-    .stay-info, .payment {
+
+    .stay-info,
+    .payment {
         flex: 1; // Each column takes up equal space
     }
 
@@ -80,4 +81,8 @@
     margin: rem(8px) 0 0;
 
     font-weight: bold;
+}
+
+.stay-host-details {
+    display: flex;
 }
