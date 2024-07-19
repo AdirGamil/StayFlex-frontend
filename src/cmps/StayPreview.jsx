@@ -1,16 +1,53 @@
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
-import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css'
+import 'slick-carousel/slick/slick-theme.css'
+import Slider from 'react-slick'
+import { useState } from 'react'
 
 const starIcon =
   'https://res.cloudinary.com/dhweqnxgd/image/upload/v1721294785/star_us9ozb.png'
 
+const wishListIcon = ''
+
 export function StayPreview({ stay }) {
+  const [isHovered, setIsHovered] = useState(false)
+
+  const handleMouseEnter = () => {
+    setIsHovered(true)
+  }
+
+  const handleMouseLeave = () => {
+    setIsHovered(false)
+  }
+
+  const settings = {
+    dots: true,
+    lazyLoad: true,
+    infinite: false,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    initialSlide: 0,
+    arrows: isHovered,
+  }
+
   return (
-    <article className="stay-preview">
-      <img className="stay-preview-img" src={stay.imgUrls[0]} alt={stay.name} />
+    <article
+      className="stay-preview"
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
+      <Slider {...settings}>
+        {stay.imgUrls.map((imgUrl, index) => (
+          <div className="imgs" key={index}>
+            <img
+              className="stay-preview-img"
+              src={imgUrl}
+              alt={`Stay Image ${index + 1}`}
+            />
+          </div>
+        ))}
+      </Slider>
       <ul className="stay-preview-info">
-        {/* <li className="stay-name">{stay.name}</li> */}
         <li className="stay-preview-header">
           <p className="stay-preview-location">
             {stay.loc.city}, {stay.loc.country}
@@ -25,25 +62,14 @@ export function StayPreview({ stay }) {
           </p>
         </li>
         <li className="stay-preview-distance">
-          {stay.kilometersAway} Kilometers away
+          {stay.kilometersAway} kilometers away
         </li>
         <li className="stay-preview-date-range">{stay.dateRange}</li>
         <li className="stay-preview-price">
           <span>${stay.price}</span> night
         </li>
       </ul>
-
-      <Slider>
-      <div>
-        <h3>1</h3>
-      </div>
-      <div>
-        <h3>2</h3>
-      </div>
-      <div>
-        <h3>3</h3>
-      </div>
-      </Slider>
+      <div className="wish-list-icon"></div>
     </article>
   )
 }
