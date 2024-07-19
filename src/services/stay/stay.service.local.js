@@ -14,9 +14,9 @@ export const stayService = {
 }
 window.cs = stayService
 
-async function query(filterBy = { txt: '', label: '' }) {
+async function query(filterBy = { txt: '', label: '', startDate: '', endDate: '' }) {
   var stays = await storageService.query(STORAGE_KEY)
-  const { txt, label } = filterBy
+  const { txt, label, startDate, endDate } = filterBy
 
   if (txt) {
     const regex = new RegExp(txt, 'i')
@@ -27,8 +27,26 @@ async function query(filterBy = { txt: '', label: '' }) {
     stays = stays.filter(stay => stay.labels.includes(label))
   }
 
+  if (startDate && endDate) {
+    const filterStartDate = new Date(startDate)
+    const filterEndDate = new Date(endDate)
+
+    stays = stays.filter(stay => {
+      const [startStr, endStr] = stay.dateRange.split(' - ')
+      const stayStartDate = new Date(`${startStr} ${new Date().getFullYear()}`)
+      const stayEndDate = new Date(`${endStr} ${new Date().getFullYear()}`)
+
+      return (
+        (stayStartDate >= filterStartDate && stayStartDate <= filterEndDate) ||
+        (stayEndDate >= filterStartDate && stayEndDate <= filterEndDate) ||
+        (stayStartDate <= filterStartDate && stayEndDate >= filterEndDate)
+      )
+    })
+  }
+
   return stays
 }
+
 
 
 function getById(stayId) {
@@ -131,13 +149,26 @@ function _createStay() {
   const getRandomKilometersAway = () => Math.floor(Math.random() * 100) + 1
 
   const getDateRange = () => {
-    const startDate = new Date(2023, 7, 4) // August 4, 2023
-    const endDate = new Date(2023, 7, 9) // August 9, 2023
-    const options = { month: 'short', day: 'numeric' }
-    const startFormatted = new Intl.DateTimeFormat('en-US', options).format(startDate)
-    const endFormatted = new Intl.DateTimeFormat('en-US', options).format(endDate)
-    return `${startFormatted} - ${endFormatted}`
+    const getRandomDate = (start, end) => {
+      const date = new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
+      return date;
+    }
+  
+    const start = new Date();
+    const end = new Date();
+    end.setFullYear(start.getFullYear() + 1);
+  
+    const startDate = getRandomDate(start, end);
+    const endDate = new Date(startDate);
+    endDate.setDate(startDate.getDate() + Math.floor(Math.random() * 5) + 1); // Random end date within 1-5 days from start date
+  
+    const options = { month: 'short', day: 'numeric' };
+    const startFormatted = new Intl.DateTimeFormat('en-US', options).format(startDate);
+    const endFormatted = new Intl.DateTimeFormat('en-US', options).format(endDate);
+  
+    return `${startFormatted} - ${endFormatted}`;
   }
+  
 
   return {
     _id: makeId(),

@@ -8,7 +8,7 @@
 
   .stay-preview-img {
     width: 100%;
-    aspect-ratio: 1 / 0.95;
+    aspect-ratio: 1 / 1;
     border-radius: 11.2px;
     object-fit: cover;
   }
@@ -63,50 +63,52 @@
   }
 
   .slick-slider {
+    .slick-prev,
+    .slick-next {
+      opacity: 0;
+      transition: opacity 0.3s ease-in-out;
+  
+      &.slick-disabled:before {
+        opacity: 0;
+      }
+  
+      &:before {
+        font-size: 28px;
+      }
+    }
+  
     .slick-prev {
       left: 5px;
       z-index: 100;
-      
-      
-      &.slick-disabled:before {
-        opacity: 0;
-      }
-      
-      &:before {
-        font-size: 25px;
-      }
     }
-
+  
     .slick-next {
       right: 10px;
       z-index: 100;
-
-      &.slick-disabled:before {
-        opacity: 0;
-      }
-
-      &:before {
-        font-size: 25px;
-      }
     }
-
+  
+    &:hover .slick-prev,
+    &:hover .slick-next {
+      opacity: 1;
+    }
+  
     .slick-dots {
       position: absolute;
       bottom: 15px;
       left: 50%;
       transform: translateX(-50%);
       z-index: 100;
-
+  
       li {
         margin: 0 -5px;
-
+  
         button {
           &::before {
             color: $clr5;
             opacity: 0.75;
           }
         }
-
+  
         &.slick-active button::before {
           color: $clr5;
           opacity: 1;
@@ -114,6 +116,7 @@
       }
     }
   }
+  
 
   .wish-list-icon {
     position: absolute;
