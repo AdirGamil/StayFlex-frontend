@@ -56,21 +56,29 @@ export function StayDetails() {
           <div className="rating-reviews">
 
             <div className="stay-rating">
-            <img
-              className="stay-rating-star-icon"
-              src={starIcon}
-              alt="star icon"
-            />
-            {stay.reviews[0].rate}.0
+              <img
+                className="stay-rating-star-icon"
+                src={starIcon}
+                alt="star icon"
+              />
+              {stay.reviews[0].rate}.0
             </div>
             <a href='' className="stay-reviews">5 reviews</a>
           </div>
+        <div className="stay-host-details">
+
+          <div className="host">
+            {/* <img src={stay.host.imgUrl} alt="" /> */}
+            <div>Hosted by {stay.host}</div>
+          </div>
+        </div>
 
         </div>
 
 
         <div className="payment">
           payment
+          <button class="reserve">Reserve</button>
         </div>
       </section>
     </section>
