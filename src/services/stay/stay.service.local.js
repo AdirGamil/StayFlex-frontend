@@ -14,9 +14,9 @@ export const stayService = {
 }
 window.cs = stayService
 
-async function query(filterBy = { txt: '', label: '' }) {
+async function query(filterBy = { txt: '', label: '', startDate: '', endDate: '' }) {
   var stays = await storageService.query(STORAGE_KEY)
-  const { txt, label } = filterBy
+  const { txt, label, startDate, endDate } = filterBy
 
   if (txt) {
     const regex = new RegExp(txt, 'i')
@@ -27,8 +27,26 @@ async function query(filterBy = { txt: '', label: '' }) {
     stays = stays.filter(stay => stay.labels.includes(label))
   }
 
+  if (startDate && endDate) {
+    const filterStartDate = new Date(startDate)
+    const filterEndDate = new Date(endDate)
+
+    stays = stays.filter(stay => {
+      const [startStr, endStr] = stay.dateRange.split(' - ')
+      const stayStartDate = new Date(`${startStr} ${new Date().getFullYear()}`)
+      const stayEndDate = new Date(`${endStr} ${new Date().getFullYear()}`)
+
+      return (
+        (stayStartDate >= filterStartDate && stayStartDate <= filterEndDate) ||
+        (stayEndDate >= filterStartDate && stayEndDate <= filterEndDate) ||
+        (stayStartDate <= filterStartDate && stayEndDate >= filterEndDate)
+      )
+    })
+  }
+
   return stays
 }
+
 
 
 function getById(stayId) {
