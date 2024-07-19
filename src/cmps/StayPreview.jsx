@@ -1,3 +1,7 @@
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+import Slider from 'react-slick';
+
 const starIcon =
   'https://res.cloudinary.com/dhweqnxgd/image/upload/v1721294785/star_us9ozb.png'
 
@@ -28,6 +32,18 @@ export function StayPreview({ stay }) {
           <span>${stay.price}</span> night
         </li>
       </ul>
+
+      <Slider>
+      <div>
+        <h3>1</h3>
+      </div>
+      <div>
+        <h3>2</h3>
+      </div>
+      <div>
+        <h3>3</h3>
+      </div>
+      </Slider>
     </article>
   )
 }
