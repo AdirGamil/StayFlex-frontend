@@ -1,128 +1,279 @@
-.stay-filter {
-    // Basic container styles
-    width: 100%;
-    max-width: 400px;
-    /* Adjust width as needed */
+// .stay-filter {
+//     // Basic container styles
+//     width: 100%;
+//     max-width: 400px;
+//     border-radius: 32px;
+//     border: 1px solid #ccc;
+//     display: flex;
+//     position:relative;
+//     box-shadow: 0 3px 12px 0 rgba(0, 0, 0, 0.1),
+//         0 1px 2px 0 rgba(0, 0, 0, 0.08);
+//     /* Adjust width as needed */
 
-    h3 {
-        font-size: 1.5rem;
-        margin-bottom: 1rem;
+//     h3 {
+//         font-size: 1.5rem;
+//         margin-bottom: 1rem;
+//     }
+
+//     .date-picker-container {
+//         display: flex;
+//     }
+
+//     input[type='text'] {
+//         width: 100%;
+//         padding: 14px 32px;
+//         font-size: 12px;
+//         border: 0.1px solid #fff;
+//         border-radius: 32px;
+//         outline: none;
+
+//         &:hover {
+//             background-color: $clr6;
+//         }
+
+//         &::placeholder {
+//             color: $clr3;
+//         }
+//     }
+
+//     .react-datepicker-wrapper {
+//         font-size: 12px;
+//         border-radius: 32px;
+//         padding: 14px 24px;
+//     }
+
+//     .guests-selector {
+//         label {
+//             font-size: 1rem;
+//             margin-right: 0.5rem;
+//         }
+
+//         select {
+//             padding: 0.5rem;
+//             font-size: 1rem;
+//             border: 1px solid #ccc;
+//             border-radius: 4px;
+//             outline: none;
+//         }
+//     }
+// }
+.stay-filter {
+    display: flex;
+    align-items: center;
+    background-color: $clr5; // white
+    border: 1px solid $clr6; // light gray
+    border-radius: 40px;
+    box-shadow: 0 1px 2px rgba($clr3, 0.08), 0 4px 12px rgba($clr3, 0.05);
+    padding: 0 8px;
+    height: 66px;
+    transition: box-shadow 0.2s ease;
+
+    &:hover {
+        box-shadow: 0 2px 4px rgba($clr3, 0.18);
     }
 
-    input[type='text'] {
-        width: 100%;
-        padding: 0.5rem;
-        font-size: 1rem;
-        border: 1px solid #ccc;
-        border-radius: 32px;
-        margin-bottom: 1rem;
-        box-sizing: border-box;
-        outline: none;
+    input[type="text"],
+    .date-picker-wrapper,
+    .guests-button {
+        transition: background-color 0.2s ease;
 
         &:hover {
-            background-color: $clr6;
-
+            background-color: $clr6; // light gray
+            border-radius: 32px;
         }
+    }
+
+    input[type="text"] {
+        border: none;
+        padding: 0 16px;
+        font-size: 14px;
+        color: $clr3; // dark black
+        flex-grow: 1;
+        height: 100%;
+        outline: none;
+        border-radius: 32px;
 
         &::placeholder {
-            color: #999;
+            color: $clr4; // dark gray
+        }
+    }
+
+    .date-picker-container {
+        display: flex;
+        border-left: 1px solid $clr6; // light gray
+        border-right: 1px solid $clr6; // light gray
+        height: 100%;
+        max-width: 350px;
+
+        .date-picker-wrapper {
+            padding: 0 16px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            cursor: pointer;
+
+            label {
+                font-size: 12px;
+                font-weight: 600;
+                color: $clr3; // dark black
+                margin-bottom: 2px;
+            }
+
+            .react-datepicker-wrapper {
+                input {
+                    border: none;
+                    font-size: 14px;
+                    color: $clr3; // dark black
+                    outline: none;
+                    width: 100%;
+                    cursor: pointer;
+                    background: transparent;
+
+                    &::placeholder {
+                        color: $clr4; // dark gray
+                    }
+                }
+            }
         }
     }
 
     .guests-selector {
-        label {
-            font-size: 1rem;
-            margin-right: 0.5rem;
+        position: relative;
+        height: 100%;
+
+        .guests-button {
+            background: none;
+            border: none;
+            padding: 7px 16px;
+            font-size: 14px;
+            color: $clr3; // dark black
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: center;
+            height: 100%;
+            min-width: 200px;
+            border-radius: 32px;
+
+            &:hover {
+                background-color: $clr6; // light gray
+            }
+
+            span:first-child {
+                font-size: 10px;
+                font-weight: 800;
+                text-transform: uppercase;
+                margin-bottom: 2px;
+            }
+
+            span:last-child {
+                color: $clr4; // dark gray
+            }
         }
 
-        select {
-            padding: 0.5rem;
-            font-size: 1rem;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            outline: none;
+        .guests-dropdown {
+            position: absolute;
+            top: calc(100% + 12px);
+            right: 0;
+            background-color: $clr5; // white
+            border-radius: 32px;
+            box-shadow: 0 2px 16px rgba($clr3, 0.12);
+            padding: 16px 32px;
+            min-width: 280px;
+            display: none;
+
+            &.active {
+                display: block;
+            }
+
+            >div {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 24px 0;
+                border-bottom: 1px solid $clr6; // light gray
+
+                &:last-child {
+                    border-bottom: none;
+                }
+
+                .guest-type {
+                    label {
+                        font-size: 16px;
+                        font-weight: 600;
+                        color: $clr3; // dark black
+                        margin-bottom: 4px;
+                        display: block;
+                    }
+
+                    span {
+                        font-size: 14px;
+                        color: $clr4; // dark gray
+                    }
+                }
+
+                .guest-counter {
+                    display: flex;
+                    align-items: center;
+
+                    button {
+                        width: 32px;
+                        height: 32px;
+                        border-radius: 50%;
+                        border: 1px solid $clr7; // medium gray
+                        background: none;
+                        font-size: 16px;
+                        color: $clr3; // dark black
+                        cursor: pointer;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        transition: border-color 0.2s ease, color 0.2s ease;
+
+                        &:hover:not(:disabled) {
+                            border-color: $clr3; // dark black
+                        }
+
+                        &:disabled {
+                            opacity: 0.3;
+                            cursor: not-allowed;
+                        }
+                    }
+
+                    span {
+                        margin: 0 16px;
+                        font-size: 16px;
+                        color: $clr3; // dark black
+                        min-width: 20px;
+                        text-align: center;
+                    }
+                }
+            }
         }
     }
 
-    .react-datepicker-wrapper {
-        width: 100%;
+    .search-button {
+        background-color: $clr1; // red
+        border: none;
+        border-radius: 50%;
+        width: 48px;
+        height: 48px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: transform 0.2s ease;
+        margin-left: 8px;
 
-        // .react-datepicker__input-container {
-        //     width: 100%;
+        &:hover {
+            transform: scale(1.04);
+        }
 
-        //     input {
-        //         width: 100%;
-        //         padding: 0.5rem;
-        //         font-size: 1rem;
-        //         border: 1px solid #ccc;
-        //         border-radius: 4px;
-        //         box-sizing: border-box;
-        //         outline: none;
-
-        //         &::placeholder {
-        //             color: #999;
-        //         }
-        //     }
-        // }
-
-        // .react-datepicker {
-        //     font-family: inherit;
-        //     border: 1px solid #ccc;
-        //     border-radius: 32px;
-        //     box-shadow: 0 3px 12px 0 rgb(0 0 0/0.15);
-        //     z-index: 9999; // Ensure it overlays other elements
-
-        //     &__header {
-        //         background-color: #f0f0f0;
-        //         border-bottom: none;
-        //         padding: 0.5rem;
-        //     }
-
-        //     &__month-container {
-        //         padding: 0.5rem;
-        //     }
-
-        //     &__day {
-        //         font-size: 0.875rem;
-        //     }
-
-        //     &__day-names {
-        //         font-size: 0.875rem;
-        //     }
-
-        //     &__current-month {
-        //         font-weight: bold;
-        //     }
-
-        //     &__navigation {
-        //         &--previous {
-        //             border-right-color: #ccc;
-        //         }
-
-        //         &--next {
-        //             border-left-color: #ccc;
-        //         }
-        //     }
-
-        //     &__time-container {
-        //         .react-datepicker__time {
-        //             input[type='time'] {
-        //                 width: 100%;
-        //                 padding: 0.5rem;
-        //                 font-size: 1rem;
-        //                 border: 1px solid #ccc;
-        //                 border-radius: 4px;
-        //                 box-sizing: border-box;
-        //                 outline: none;
-        //             }
-        //         }
-        //     }
-
-        //     &-portal {
-        //         // Additional styles if using the portal (e.g., inline mode)
-        //     }
-        // }
-
-        // Adjust additional styles as needed
+        svg {
+            width: 16px;
+            height: 16px;
+            fill: $clr5; // white
+        }
     }
 }
