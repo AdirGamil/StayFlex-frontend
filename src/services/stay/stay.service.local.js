@@ -14,18 +14,22 @@ export const stayService = {
 }
 window.cs = stayService
 
-async function query(filterBy = { txt: '' }) {
+async function query(filterBy = { txt: '', label: '' }) {
   var stays = await storageService.query(STORAGE_KEY)
-  const { txt } = filterBy
+  const { txt, label } = filterBy
 
   if (txt) {
-    const regex = new RegExp(filterBy.txt, 'i')
-    stays = stays.filter(
-      (stay) => regex.test(stay.loc.city) || regex.test(stay.loc.country)
-    )
+    const regex = new RegExp(txt, 'i')
+    stays = stays.filter(stay => regex.test(stay.loc.city) || regex.test(stay.loc.country))
   }
+
+  if (label) {
+    stays = stays.filter(stay => stay.labels.includes(label))
+  }
+
   return stays
 }
+
 
 function getById(stayId) {
   return storageService.get(STORAGE_KEY, stayId)
@@ -60,7 +64,6 @@ function _createStays(num = 20) {
 function _saveStaysToStorage() {
   saveToStorage(STORAGE_KEY, gStays)
 }
-
 function _createStay() {
   const names = ['Cozy Cottage', 'Luxury Villa', 'Modern Apartment', 'Beach House', 'Mountain Cabin', 'Urban Flat', 'Country House', 'City Loft', 'Historic Villa', 'Modern Studio', 'Seaside Bungalow', 'Rustic Barn', 'Downtown Condo', 'Eco-friendly House', 'Penthouse Suite', 'Suburban Home', 'Countryside Villa', 'Lake Cabin', 'Ski Lodge', 'City Center Apartment']
   const types = ['Cottage', 'Villa', 'Apartment', 'House', 'Cabin', 'Flat', 'Loft', 'Studio', 'Bungalow', 'Barn', 'Condo', 'Penthouse', 'Home', 'Lodge']
@@ -75,6 +78,39 @@ function _createStay() {
     'Netherlands': ['Amsterdam', 'Rotterdam'],
     'United Kingdom': ['London', 'Edinburgh'],
     'Greece': ['Athens']
+  }
+  
+  const labels = [
+    'Top of the world',
+    'Trending',
+    'Play',
+    'Tropical',
+    'Beach',
+    'Beachfront',
+    'Vineyards',
+    'Mansions',
+    'Lake',
+    'Treehouses',
+    'Farms',
+    'Skiing',
+    'Amazing pools',
+    'Earth homes',
+    'Amazing views',
+    'Desert',
+    'Lakefront',
+    'Islands',
+    'Camping',
+    'Surfing',
+    'Bed & breakfasts',
+    'Luxe',
+    'Ski-in/out'
+  ]
+  
+
+  const getRandomLabels = () => {
+    const numLabels = Math.floor(Math.random() * labels.length) + 1
+    const shuffled = labels.sort(() => 0.5 - Math.random())
+    return shuffled.slice(0, numLabels)
   }
 
   const name = names[Math.floor(Math.random() * names.length)]
@@ -112,7 +148,7 @@ function _createStay() {
     summary: 'Fantastic duplex apartment...',
     capacity: Math.floor(Math.random() * 10) + 1,
     amenities: ['TV', 'Wifi', 'Kitchen', 'Smoking allowed', 'Pets allowed', 'Cooking basics'],
-    labels: ['Top of the world', 'Trending', 'Play', 'Tropical'],
+    labels: getRandomLabels(),
     host: {
       _id: makeId(),
       fullname: 'Davit Pok',
@@ -143,3 +179,4 @@ function _createStay() {
     likedByUsers: ['mini-user'],
   }
 }
+

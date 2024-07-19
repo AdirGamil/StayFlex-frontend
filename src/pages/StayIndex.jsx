@@ -8,6 +8,7 @@ import { userService } from '../services/user'
 
 import { StayList } from '../cmps/StayList.jsx'
 import { StayFilter } from '../cmps/StayFilter.jsx'
+import { StayLabels } from '../cmps/StayLabels.jsx'
 
 export function StayIndex() {
   const [filterBy, setFilterBy] = useState(stayService.getDefaultFilter())
@@ -17,9 +18,14 @@ export function StayIndex() {
     loadStays(filterBy)
   }, [filterBy])
 
+  function onLabelClick (label) {
+    setFilterBy({ ...filterBy, label })
+  }
+
   return (
     <main className="stay-index">
       <StayFilter filterBy={filterBy} setFilterBy={setFilterBy} />
+      <StayLabels onLabelClick={onLabelClick}/>
       <StayList stays={stays} />
     </main>
   )
