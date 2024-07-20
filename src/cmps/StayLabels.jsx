@@ -70,11 +70,17 @@ export function StayLabels({ onLabelClick }) {
   const [showAll, setShowAll] = useState(false)
   const [isModalOpen, setIsModalOpen] = useState(false)
   const containerRef = useRef(null)
+  const [selectedLabel, setSelectedLabel] = useState(null)
 
   const scrollRight = () => {
     if (containerRef.current) {
       containerRef.current.scrollBy({ left: 200, behavior: 'smooth' })
     }
+  }
+
+  const handleLabelClick = (label) => {
+    setSelectedLabel(label === selectedLabel ? null : label);
+    onLabelClick(label);
   }
 
   return (
@@ -92,7 +98,7 @@ export function StayLabels({ onLabelClick }) {
         {Object.entries(labelImageMap).slice(0, showAll ? undefined : 15).map(([label, iconPath]) => (
           <div
             key={label}
-            onClick={() => onLabelClick(label)}
+            onClick={() => handleLabelClick(label)}
             style={{
               display: 'flex',
               flexDirection: 'column',
@@ -108,17 +114,17 @@ export function StayLabels({ onLabelClick }) {
                 width: '24px',
                 height: '24px',
                 marginBottom: '8px',
-                opacity: label === 'OMG!' ? 1 : 0.6,
+                opacity: label === selectedLabel ? 1 : 0.6,
               }}
             />
             <span style={{
               fontSize: '12px',
-              color: label === 'OMG!' ? '#000' : '#717171',
-              fontWeight: label === 'OMG!' ? 'bold' : 'normal',
+              color: label === selectedLabel ? '#000' : '#717171',
+              fontWeight: label === selectedLabel ? 'bold' : 'normal',
             }}>
               {label}
             </span>
-            {label === 'OMG!' && (
+            {label === selectedLabel && (
               <div style={{
                 height: '2px',
                 width: '100%',
@@ -128,6 +134,7 @@ export function StayLabels({ onLabelClick }) {
             )}
           </div>
         ))}
+       
         <button
           onClick={scrollRight}
           style={{
@@ -161,8 +168,23 @@ export function StayLabels({ onLabelClick }) {
           }}
         >
           <span style={{ marginRight: '8px' }}>Filters</span>
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M5 8H11M2.5 4H13.5M7.5 12H8.5" stroke="black" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+          <svg
+            viewBox="0 0 32 32"
+            xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true"
+            role="presentation"
+            focusable="false"
+            style={{
+              display: "block",
+              fill: "none",
+              height: "16px",
+              width: "16px",
+              stroke: "currentcolor",
+              strokeWidth: 3,
+              overflow: "visible"
+            }}
+          >
+            <path fill="none" d="M7 16H3m26 0H15M29 6h-4m-8 0H3m26 20h-4M7 16a4 4 0 1 0 8 0 4 4 0 0 0-8 0zM17 6a4 4 0 1 0 8 0 4 4 0 0 0-8 0zm0 20a4 4 0 1 0 8 0 4 4 0 0 0-8 0zm0 0H3" />
           </svg>
         </button>
       </div>
