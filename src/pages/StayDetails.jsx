@@ -146,14 +146,13 @@ export function StayDetails() {
 
       <section className="stay-info-container">
         <div className="stay-info">
-          <h2>Entire villa in {stay.loc.city}, {stay.loc.country}</h2>
+          <h2>{stay.type} in {stay.loc.city}, {stay.loc.country}</h2>
           <p className="stay-details-list">
             {stay.capacity} guests · {stay.bedrooms} bedrooms · {stay.beds} beds · {stay.bathrooms} baths
           </p>
           <div className="rating-reviews">
-            <span className="star-icon">★</span>
+            <span className="star-icon"><img src={starIcon} alt="" /></span>
             <span className="rating">{averageRating}</span>
-            {/* Conditionally rendering the reviews link based on the review count */}
             {reviewCount > 0 && (
               <>
                 <span className="separator">·</span>
@@ -161,21 +160,23 @@ export function StayDetails() {
               </>
             )}
           </div>
-        </div>
 
-        {/* <div className="stay-host-details">
-          <div className="host">
-            {stay.host && typeof stay.host === 'object' && stay.host.imgUrl && (
-              <img src={stay.host.imgUrl} alt="" />
-            )}
-            <div>Hosted by {typeof stay.host === 'object' ? stay.host.fullname : stay.host}</div>
+          <div className="stay-host-details">
+            <div className="host">
+              {stay.host && typeof stay.host === 'object' && stay.host.imgUrl && (
+                <img src={stay.host.imgUrl} alt="" className="host-img" />
+              )}
+              <div className="host-info">
+                <div>Hosted by {typeof stay.host === 'object' ? stay.host.fullname : stay.host}</div>
+                <div className="host-duration">7 years hosting</div>
+              </div>
+            </div>
+          </div>
+
+          <div className="stay-description">
+            <p>{stay.summary}</p>
           </div>
         </div>
-
-        <div className="stay-description">
-          <p>{stay.summary}</p>
-        </div> */}
-
 
         <StayReservation stay={stay} />
       </section>

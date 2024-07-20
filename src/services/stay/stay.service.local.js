@@ -183,7 +183,7 @@ function _createStay() {
     host: {
       _id: makeId(),
       fullname: 'Davit Pok',
-      imgUrl: 'https://a0.muscache.com/im/pictures/fab79f25-2e10-4f0f-9711-663cb69dc7d8.jpg?aki_policy=profile_small',
+      imgUrl: 'https://res.cloudinary.com/dyhmjlymk/image/upload/v1721388582/samples/people/kitchen-bar.jpg',
     },
     loc: {
       country,
