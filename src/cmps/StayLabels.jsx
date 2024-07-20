@@ -63,7 +63,6 @@ const labelImageMap = {
   'Riads': 'https://res.cloudinary.com/doahdwb2g/image/upload/v1721417827/7ff6e4a1-51b4-4671-bc9a-6f523f196c61_vzgf4w.png',
   'Lake': 'http://res.cloudinary.com/dqti9icif/image/upload/v1717063997/lake_adozli.png',
   'Beach': 'http://res.cloudinary.com/dqti9icif/image/upload/v1717063824/beach_ugn0q3.png',
-
 }
 
 export function StayLabels({ onLabelClick }) {
@@ -134,7 +133,7 @@ export function StayLabels({ onLabelClick }) {
             )}
           </div>
         ))}
-       
+
         <button
           onClick={scrollRight}
           style={{
@@ -167,7 +166,6 @@ export function StayLabels({ onLabelClick }) {
             cursor: 'pointer',
           }}
         >
-          <span style={{ marginRight: '8px' }}>Filters</span>
           <svg
             viewBox="0 0 32 32"
             xmlns="http://www.w3.org/2000/svg"
@@ -186,6 +184,7 @@ export function StayLabels({ onLabelClick }) {
           >
             <path fill="none" d="M7 16H3m26 0H15M29 6h-4m-8 0H3m26 20h-4M7 16a4 4 0 1 0 8 0 4 4 0 0 0-8 0zM17 6a4 4 0 1 0 8 0 4 4 0 0 0-8 0zm0 20a4 4 0 1 0 8 0 4 4 0 0 0-8 0zm0 0H3" />
           </svg>
+          <span style={{ marginLeft: '8px' }}>Filters</span>
         </button>
       </div>
       <FilterModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
