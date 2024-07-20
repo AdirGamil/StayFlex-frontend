@@ -5,6 +5,8 @@ import DatePicker from 'react-datepicker'
 import "react-datepicker/dist/react-datepicker.css"
 import { loadStay } from '../store/actions/stay.actions'
 
+import { StayGallery } from '../cmps/StayDetailsCmps/StayGallery'
+
 const starIcon = 'https://res.cloudinary.com/dhweqnxgd/image/upload/v1721294785/star_us9ozb.png'
 
 export function StayDetails() {
@@ -70,34 +72,39 @@ export function StayDetails() {
       </section>
 
       <div className="stay-gallery">
-        {stay.imgUrls && (
+        {/* {stay.imgUrls && (
           Array.isArray(stay.imgUrls)
             ? stay.imgUrls.map((url, index) => <img key={index} src={url} alt="" />)
             : <img src={stay.imgUrls} alt="" />
-        )}
+        )} */}
+        <StayGallery imgUrls={stay.imgUrls} />
       </div>
 
       <section className="info-reservation">
         <div className="stay-info">
-          <h2>{stay.type} in {stay.loc.city}, {stay.loc.country}</h2>
 
-          <ul className="info-list">
-            <li>{stay.capacity} guests</li>
-            <li>4 bedrooms</li>
-            <li>4 beds</li>
-            <li>2 baths</li>
-          </ul>
+          <div className="loc-and-amenities">
+            <h2>{stay.type} in {stay.loc.city}, {stay.loc.country}</h2>
 
-          <div className="rating-reviews">
-            <div className="stay-rating">
-              <img
-                className="stay-rating-star-icon"
-                src={starIcon}
-                alt="star icon"
-              />
-              {stay.reviews && stay.reviews.length > 0 ? stay.reviews[0].rate : 'N/A'}.0
+            <ul className="info-list">
+              <li>{stay.capacity} guests</li>
+              <li>4 bedrooms</li>
+              <li>4 beds</li>
+              <li>2 baths</li>
+            </ul>
+
+            <div className="rating-reviews">
+              <div className="stay-rating">
+                <img
+                  className="stay-rating-star-icon"
+                  src={starIcon}
+                  alt="star icon"
+                />
+                {stay.reviews && stay.reviews.length > 0 ? stay.reviews[0].rate : 'N/A'}.0
+              </div>
+              <a href='' className="stay-reviews">{stay.reviews ? stay.reviews.length : 0} reviews</a>
             </div>
-            <a href='' className="stay-reviews">{stay.reviews ? stay.reviews.length : 0} reviews</a>
+
           </div>
 
           <div className="stay-host-details">
@@ -113,6 +120,8 @@ export function StayDetails() {
             <p>{stay.summary}</p>
           </div>
         </div>
+
+        {/* //RESERVATION SECTION */}
 
         <div className="reservation">
           <div className="reservation-selectors">
