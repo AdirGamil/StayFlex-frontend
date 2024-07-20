@@ -1,0 +1,74 @@
+.menu-button-container {
+    position: relative;
+
+    .menu-button {
+        display: flex;
+        align-items: center;
+        padding: 5px 5px 5px 12px;
+        border: 1px solid #DDDDDD;
+        border-radius: 21px;
+        background-color: white;
+        cursor: pointer;
+
+        &:hover {
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .menu-icon {
+            display: block;
+            fill: none;
+            height: 16px;
+            width: 16px;
+            stroke: currentcolor;
+            stroke-width: 3;
+            overflow: visible;
+        }
+
+        .divider {
+            width: 1px;
+            height: 24px;
+            background-color: #DDDDDD;
+            margin: 0 12px;
+        }
+
+        .profile-icon-wrapper {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+
+        .profile-icon {
+            display: block;
+            height: 100%;
+            width: 100%;
+            fill: currentcolor;
+        }
+    }
+
+    .dropdown-menu {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        background-color: white;
+        border: 1px solid #DDDDDD;
+        border-radius: 12px;
+        box-shadow: 0 2px 16px rgba(0, 0, 0, 0.12);
+        padding: 8px 0;
+        margin-top: 8px;
+        min-width: 240px;
+        z-index: 150;
+
+        a {
+            display: block;
+            padding: 12px 16px;
+            color: #222222;
+            text-decoration: none;
+            font-size: 14px;
+
+            &:hover {
+                background-color: #F7F7F7;
+            }
+        }
+    }
+}

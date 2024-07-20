@@ -1,0 +1,25 @@
+/* stayLabels.scss */
+.stay-labels {
+
+    .filters-container {
+        position: relative;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        overflow-x: auto;
+        white-space: nowrap;
+        padding: 10px 0;
+        gap: 24px;
+        scrollbar-width: none;
+        /* Firefox */
+        -ms-overflow-style: none;
+        /* IE/Edge */
+
+        &::-webkit-scrollbar {
+            display: none;
+            /* Hide scrollbar for Chrome/Safari/Opera */
+        }
+    }
+
+
+}
