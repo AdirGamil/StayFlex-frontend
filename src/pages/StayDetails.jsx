@@ -25,9 +25,9 @@ export function StayDetails() {
   return (
     <section className="stay-details main-layout">
       <section className="stay-header">
-        <h1 className="stay-title">
+        <h2 className="stay-title">
           {stay.name} 4 bedroom {stay.type}
-        </h1>
+        </h2>
 
         <div className="share-save">
           <a href="">Share</a>
@@ -36,11 +36,6 @@ export function StayDetails() {
       </section>
 
       <div className="stay-gallery">
-        {/* {stay.imgUrls && (
-          Array.isArray(stay.imgUrls)
-            ? stay.imgUrls.map((url, index) => <img key={index} src={url} alt="" />)
-            : <img src={stay.imgUrls} alt="" />
-        )} */}
         <StayGallery imgUrls={stay.imgUrls} />
       </div>
 
