@@ -21,10 +21,13 @@
 
 .info-reservation {
     display: flex;
+    align-items: flex-start;
 
     .stay-info {
         flex: 6;
         min-width: 0;
+        display: flex;
+        flex-direction: column;
     }
 
     .reservation {
@@ -40,8 +43,8 @@
         max-width: rem(14px);
     }
 
-    .stay-info {
-        padding: rem(32px) 0;
+    .loc-and-amenities {
+        // padding: rem(32px) 0;
         height: rem(142px);
 
         .info-list {
@@ -91,12 +94,10 @@
         }
 
         .charged-p {
-
             text-align: center;
             margin-block: 1rem 1.5rem;
             font-size: .875rem;
         }
-
     }
 }
 
@@ -151,16 +152,12 @@
         justify-content: space-between;
         margin-bottom: rem(20px);
 
-
         .check-in,
         .check-out {
-
             input {
                 height: rem(56px);
-
                 cursor: pointer;
             }
-
 
             label {
                 display: block;
@@ -337,3 +334,4 @@
         font-size: rem(18px);
     }
 }
+
