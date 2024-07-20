@@ -27,12 +27,16 @@
 
 // Components
 @import 'cmps/AppHeader';
+@import 'cmps/MenuButton';
 @import 'cmps/AppFooter';
 @import 'cmps/ImgUploader';
 @import 'cmps/ReviewEdit';
 @import 'cmps/ReviewList';
 @import 'cmps/ReviewPreview';
+
 @import 'cmps/StayFilter';
+@import 'cmps/StayLabels';
+
 @import 'cmps/StayList';
 @import 'cmps/StayPreview';
 @import 'cmps/UserMsg';

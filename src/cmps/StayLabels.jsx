@@ -83,111 +83,84 @@ export function StayLabels({ onLabelClick }) {
   }
 
   return (
-    <div style={{ position: 'relative', width: '100%' }}>
-      <div className="filters-container" ref={containerRef} style={{
-        display: 'flex',
-        alignItems: 'center',
-        overflowX: 'auto',
-        whiteSpace: 'nowrap',
-        padding: '10px 0',
-        gap: '24px',
-        scrollbarWidth: 'none',
-        msOverflowStyle: 'none',
-      }}>
-        {Object.entries(labelImageMap).slice(0, showAll ? undefined : 15).map(([label, iconPath]) => (
-          <div
-            key={label}
-            onClick={() => handleLabelClick(label)}
+    <section className="stay-labels">
+      <div style={{ position: 'relative', width: '100%' }}>
+        <div className="filters-container" ref={containerRef}>
+          {Object.entries(labelImageMap).slice(0, showAll ? undefined : 15).map(([label, iconPath]) => (
+            <div
+              key={label}
+              onClick={() => handleLabelClick(label)}
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                cursor: 'pointer',
+                minWidth: 'fit-content',
+              }}
+            >
+              <img
+                src={iconPath}
+                alt={label}
+                style={{
+                  width: '24px',
+                  height: '24px',
+                  marginBottom: '8px',
+                  opacity: label === selectedLabel ? 1 : 0.6,
+                }}
+              />
+              <span style={{
+                fontSize: '12px',
+                color: label === selectedLabel ? '#000' : '#717171',
+                fontWeight: label === selectedLabel ? 'bold' : 'normal',
+              }}>
+                {label}
+              </span>
+              {label === selectedLabel && (
+                <div style={{
+                  height: '2px',
+                  width: '100%',
+                  backgroundColor: 'black',
+                  marginTop: '10px'
+                }} />
+              )}
+            </div>
+          ))}
+          <button
+            onClick={() => setIsModalOpen(true)}
             style={{
+              marginLeft: '16px',
+              padding: '8px 16px',
+              border: '1px solid #DDDDDD',
+              borderRadius: '12px',
+              background: 'white',
               display: 'flex',
-              flexDirection: 'column',
               alignItems: 'center',
               cursor: 'pointer',
-              minWidth: 'fit-content',
             }}
           >
-            <img
-              src={iconPath}
-              alt={label}
+            <svg
+              viewBox="0 0 32 32"
+              xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true"
+              role="presentation"
+              focusable="false"
               style={{
-                width: '24px',
-                height: '24px',
-                marginBottom: '8px',
-                opacity: label === selectedLabel ? 1 : 0.6,
+                display: "block",
+                fill: "none",
+                height: "16px",
+                width: "16px",
+                stroke: "currentcolor",
+                strokeWidth: 3,
+                overflow: "visible"
               }}
-            />
-            <span style={{
-              fontSize: '12px',
-              color: label === selectedLabel ? '#000' : '#717171',
-              fontWeight: label === selectedLabel ? 'bold' : 'normal',
-            }}>
-              {label}
-            </span>
-            {label === selectedLabel && (
-              <div style={{
-                height: '2px',
-                width: '100%',
-                backgroundColor: 'black',
-                marginTop: '10px'
-              }} />
-            )}
-          </div>
-        ))}
-
-        <button
-          onClick={scrollRight}
-          style={{
-            background: 'white',
-            border: '1px solid #DDDDDD',
-            borderRadius: '50%',
-            width: '28px',
-            height: '28px',
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            cursor: 'pointer',
-            flexShrink: 0,
-          }}
-        >
-          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M4.5 2.25L8.25 6L4.5 9.75" stroke="black" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
-        </button>
-        <button
-          onClick={() => setIsModalOpen(true)}
-          style={{
-            marginLeft: '16px',
-            padding: '8px 16px',
-            border: '1px solid #DDDDDD',
-            borderRadius: '12px',
-            background: 'white',
-            display: 'flex',
-            alignItems: 'center',
-            cursor: 'pointer',
-          }}
-        >
-          <svg
-            viewBox="0 0 32 32"
-            xmlns="http://www.w3.org/2000/svg"
-            aria-hidden="true"
-            role="presentation"
-            focusable="false"
-            style={{
-              display: "block",
-              fill: "none",
-              height: "16px",
-              width: "16px",
-              stroke: "currentcolor",
-              strokeWidth: 3,
-              overflow: "visible"
-            }}
-          >
-            <path fill="none" d="M7 16H3m26 0H15M29 6h-4m-8 0H3m26 20h-4M7 16a4 4 0 1 0 8 0 4 4 0 0 0-8 0zM17 6a4 4 0 1 0 8 0 4 4 0 0 0-8 0zm0 20a4 4 0 1 0 8 0 4 4 0 0 0-8 0zm0 0H3" />
-          </svg>
-          <span style={{ marginLeft: '8px' }}>Filters</span>
-        </button>
-      </div>
-      <FilterModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
-    </div>
+            >
+              <path fill="none" d="M7 16H3m26 0H15M29 6h-4m-8 0H3m26 20h-4M7 16a4 4 0 1 0 8 0 4 4 0 0 0-8 0zM17 6a4 4 0 1 0 8 0 4 4 0 0 0-8 0zm0 20a4 4 0 1 0 8 0 4 4 0 0 0-8 0zm0 0H3" />
+            </svg>
+            <span style={{ marginLeft: '8px' }}>Filters</span>
+          </button>
+        </div>
+        <FilterModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+      </div >
+    </section >
   )
 }

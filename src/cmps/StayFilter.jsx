@@ -7,7 +7,7 @@ export function StayFilter({ filterBy, setFilterBy }) {
     const [startDate, setStartDate] = useState(null)
     const [endDate, setEndDate] = useState(null)
     const [guests, setGuests] = useState({
-        adults: 1,
+        adults: 0,
         children: 0,
         infants: 0,
         pets: 0
@@ -145,7 +145,7 @@ export function StayFilter({ filterBy, setFilterBy }) {
                             <div className="guest-counter">
                                 <button
                                     onClick={() => handleGuestsChange(type, guests[type] - 1)}
-                                    disabled={guests[type] === 0 || (type === 'adults' && guests[type] === 1)}
+                                    disabled={guests[type] === 0 || (type === 'adults' && guests[type] === 0)}
                                 >
                                     -
                                 </button>
