@@ -48,30 +48,25 @@
         }
     }
 
-    // .show-all-btn {
-    //   position: absolute;
-    //   bottom: 10px;
-    //   right: 10px;
-    //   padding: 10px 20px;
-    //   background-color: rgba(0, 0, 0, 0.5);
-    //   color: #fff;
-    //   border: none;
-    //   border-radius: 5px;
-    //   cursor: pointer;
-    //   text-align: center;
-    // }
-    .show-all-btn {
-        gap: .5rem;
-        padding-block: .4375rem;
-        padding-inline: .9375rem;
-        border: 1px solid #222222;
-        width: max-content;
-        border-radius: 8px;
-        position: absolute;
-        background-color: #ffffffc6;
-        bottom: 1.5rem;
-        right: 1.5rem;
-        font-size: .875rem;
-        cursor: pointer;
+        .show-all-btn {
+            display: flex;
+            gap: .5rem;
+            padding-block: .4375rem;
+            padding-inline: .9375rem;
+            border: 1px solid #222222;
+            width: max-content;
+            border-radius: 8px;
+            position: absolute;
+            background-color: #ffffffc6;
+            bottom: 1.5rem;
+            right: 1.5rem;
+            // font-size: .875rem;
+            font-weight: 600;
+            cursor: pointer;
+
+            img {
+                width: 15px;
+            }
+        }
     }
-}
+

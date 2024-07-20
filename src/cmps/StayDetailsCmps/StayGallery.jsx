@@ -1,5 +1,6 @@
 import React from 'react';
-// import './Gallery.scss';
+
+const gridIcon = 'https://res.cloudinary.com/dyhmjlymk/image/upload/v1721471957/svg_xml_base64_PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNiAxNiIgYXJpYS1oaWRkZW49InRydWUiIHJvbGU9InByZXNlbnRhdGlvbiIgZm9jdXNhYmxlPSJmYWxzZSIgc3R5bGU9ImRpc3BsYXk6IGJsb2NrOyBoZWlnaHQ6IDE_hkxaep.svg'
 
 export function StayGallery({ imgUrls }) {
   return (
@@ -9,7 +10,12 @@ export function StayGallery({ imgUrls }) {
           <img src={url} alt={`Gallery image ${idx + 1}`} />
         </div>
       ))}
-      <button className="show-all-btn">Show all photos</button>
+      <div className="gallery-btn-container">
+        <button className="show-all-btn">
+          <img src={gridIcon} alt="" />
+          Show all photos
+        </button>
+      </div>
     </div>
   );
 }
