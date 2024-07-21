@@ -83,6 +83,7 @@ async function remove(stayId) {
   // throw new Error('Nope')
   await storageService.remove(STORAGE_KEY, stayId)
 }
+
 async function save(stay) {
   let savedStay
   if (stay._id) {
