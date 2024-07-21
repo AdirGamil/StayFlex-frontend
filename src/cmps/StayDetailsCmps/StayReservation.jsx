@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import DatePicker from 'react-datepicker'
 import "react-datepicker/dist/react-datepicker.css"
-import { orderService } from '../../services/order/order.storage.local.js'
+import { orderService } from '../../services/order/order.service.local.js'
 import { makeId } from '../../services/util.service'
 
 export function StayReservation({ stay }) {

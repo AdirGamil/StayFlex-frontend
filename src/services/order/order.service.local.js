@@ -1,11 +1,12 @@
-import { storageService } from '../async-storage.service'
+import { storageService } from '../async-storage.service.js'
 import { makeId } from '../util.service.js'
 
 const ORDER_DB = 'orderDB'
 
 export const orderService = {
     saveOrder,
-    getOrders
+    getOrders,
+    remove
 }
 
 async function saveOrder(order) {
@@ -16,6 +17,14 @@ async function saveOrder(order) {
         return order
     } catch (err) {
         console.error('Error saving order:', err)
+    }
+}
+
+async function remove(orderId) {
+    try {
+        await storageService.remove(ORDER_DB, orderId)
+    } catch (err) {
+        console.log(err)
     }
 }
 
