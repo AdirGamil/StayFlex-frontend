@@ -1,6 +1,7 @@
 import { storageService } from '../async-storage.service'
 import { userService } from '../user'
 
+
 import {
   makeId,
   getRandomLabels,
@@ -9,6 +10,7 @@ import {
   getDateRange,
   loadFromStorage,
   saveToStorage,
+  // generateRandomReviews
 } from '../util.service'
 import {
   names,
@@ -113,8 +115,7 @@ function _createStay() {
     ? cities[country][Math.floor(Math.random() * cities[country].length)]
     : 'Unknown city'
   const price = Math.floor(Math.random() * 1200) + 100
-  const address = `${Math.floor(Math.random() * 100)} ${
-    [
+  const address = `${Math.floor(Math.random() * 100)} ${[
       'Main',
       'Broad',
       'Market',
@@ -127,11 +128,11 @@ function _createStay() {
       'Spruce',
       'Willow',
     ][Math.floor(Math.random() * 11)]
-  } st`
+    } st`
   const lat = parseFloat((Math.random() * 180 - 90).toFixed(5))
   const lng = parseFloat((Math.random() * 360 - 180).toFixed(5))
 
-  const reviews = generateRandomReviews(5)
+  // const reviews = generateRandomReviews(5)
 
   return {
     _id: makeId(),
@@ -165,7 +166,19 @@ function _createStay() {
       lng,
       continent,
     },
-    reviews,
+    // reviews,
+    reviews: [
+      {
+        id: makeId(),
+        txt: 'Very helpful hosts. Cooked traditional...',
+        rate: 4,
+        by: {
+          _id: makeId(),
+          fullname: 'user2',
+          imgUrl: '/img/img2.jpg',
+        },
+      },
+    ],
     kilometersAway: getRandomKilometersAway(),
     dateRange: getDateRange(),
     likedByUsers: ['mini-user'],
