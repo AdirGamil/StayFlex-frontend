@@ -38,7 +38,7 @@ const MenuButton = () => {
                     <a href="#">Sign up</a>
                     <a href="#">Log in</a>
                     <a href="#">Gift cards</a>
-                    <a href="#">Airbnb your home</a>
+                    <a href="/addstay">Airbnb your home</a>
                     <a href="#">Help Center</a>
                 </div>
             )}
