@@ -65,6 +65,8 @@ const labelImageMap = {
   'Beach': 'http://res.cloudinary.com/dqti9icif/image/upload/v1717063824/beach_ugn0q3.png',
 }
 
+const ltr = 'https://res.cloudinary.com/doahdwb2g/image/upload/v1721496423/svg_xml_base64_PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNiAxNiIgYXJpYS1oaWRkZW49InRydWUiIHJvbGU9InByZXNlbnRhdGlvbiIgZm9jdXNhYmxlPSJmYWxzZSIgc3R5bGU9ImRpc3BsYXk6IGJsb2NrOyBoZWlnaHQ6IDEy_uge6u3.svg'
+
 export function StayLabels({ onLabelClick }) {
   const [showAll, setShowAll] = useState(false)
   const [isModalOpen, setIsModalOpen] = useState(false)
@@ -78,89 +80,57 @@ export function StayLabels({ onLabelClick }) {
   }
 
   const handleLabelClick = (label) => {
-    setSelectedLabel(label === selectedLabel ? null : label);
-    onLabelClick(label);
+    setSelectedLabel(label === selectedLabel ? null : label)
+    onLabelClick(label)
   }
 
   return (
     <section className="stay-labels">
-      <div style={{ position: 'relative', width: '100%' }}>
-        <div className="filters-container" ref={containerRef}>
-          {Object.entries(labelImageMap).slice(0, showAll ? undefined : 15).map(([label, iconPath]) => (
-            <div
-              key={label}
-              onClick={() => handleLabelClick(label)}
-              style={{
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                cursor: 'pointer',
-                minWidth: 'fit-content',
-              }}
-            >
-              <img
-                src={iconPath}
-                alt={label}
-                style={{
-                  width: '24px',
-                  height: '24px',
-                  marginBottom: '8px',
-                  opacity: label === selectedLabel ? 1 : 0.6,
-                }}
-              />
-              <span style={{
-                fontSize: '12px',
-                color: label === selectedLabel ? '#000' : '#717171',
-                fontWeight: label === selectedLabel ? 'bold' : 'normal',
-              }}>
-                {label}
-              </span>
-              {label === selectedLabel && (
-                <div style={{
-                  height: '2px',
-                  width: '100%',
-                  backgroundColor: 'black',
-                  marginTop: '10px'
-                }} />
-              )}
-            </div>
-          ))}
-          <button
-            onClick={() => setIsModalOpen(true)}
-            style={{
-              marginLeft: '16px',
-              padding: '8px 16px',
-              border: '1px solid #DDDDDD',
-              borderRadius: '12px',
-              background: 'white',
-              display: 'flex',
-              alignItems: 'center',
-              cursor: 'pointer',
-            }}
+      <div className="filters-container" ref={containerRef}>
+        {Object.entries(labelImageMap).slice(0, showAll ? undefined : 18).map(([label, iconPath]) => (
+          <div
+            key={label}
+            onClick={() => handleLabelClick(label)}
+            className={`label-item ${label === selectedLabel ? 'selected' : ''}`}
           >
-            <svg
-              viewBox="0 0 32 32"
-              xmlns="http://www.w3.org/2000/svg"
-              aria-hidden="true"
-              role="presentation"
-              focusable="false"
-              style={{
-                display: "block",
-                fill: "none",
-                height: "16px",
-                width: "16px",
-                stroke: "currentcolor",
-                strokeWidth: 3,
-                overflow: "visible"
-              }}
-            >
-              <path fill="none" d="M7 16H3m26 0H15M29 6h-4m-8 0H3m26 20h-4M7 16a4 4 0 1 0 8 0 4 4 0 0 0-8 0zM17 6a4 4 0 1 0 8 0 4 4 0 0 0-8 0zm0 20a4 4 0 1 0 8 0 4 4 0 0 0-8 0zm0 0H3" />
-            </svg>
-            <span style={{ marginLeft: '8px' }}>Filters</span>
-          </button>
-        </div>
-        <FilterModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
-      </div >
-    </section >
+            <img
+              src={iconPath}
+              alt={label}
+              style={{ opacity: label === selectedLabel ? 1 : 0.6 }}
+            />
+            <span style={{
+              color: label === selectedLabel ? '#000' : '#717171',
+              fontWeight: label === selectedLabel ? 'bold' : 'normal',
+            }}>
+              {label}
+            </span>
+            {label === selectedLabel && <div className="selected-indicator" />}
+          </div>
+        ))}
+
+        <button className='dir' onClick={scrollRight}>
+          <img className='dir-ltr'
+            src="https://res.cloudinary.com/doahdwb2g/image/upload/v1721496423/svg_xml_base64_PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNiAxNiIgYXJpYS1oaWRkZW49InRydWUiIHJvbGU9InByZXNlbnRhdGlvbiIgZm9jdXNhYmxlPSJmYWxzZSIgc3R5bGU9ImRpc3BsYXk6IGJsb2NrOyBoZWlnaHQ6IDEy_uge6u3.svg"
+            alt="Scroll right"
+          />
+        </button>
+        <button
+          onClick={() => setIsModalOpen(true)}
+          className="filter-button"
+        >
+          <svg
+            viewBox="0 0 32 32"
+            xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true"
+            role="presentation"
+            focusable="false"
+          >
+            <path fill="none" d="M7 16H3m26 0H15M29 6h-4m-8 0H3m26 20h-4M7 16a4 4 0 1 0 8 0 4 4 0 0 0-8 0zM17 6a4 4 0 1 0 8 0 4 4 0 0 0-8 0zm0 20a4 4 0 1 0 8 0 4 4 0 0 0-8 0zm0 0H3" />
+          </svg>
+          <span>Filters</span>
+        </button>
+      </div>
+      <FilterModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+    </section>
   )
 }
