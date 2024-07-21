@@ -299,9 +299,8 @@ function _createStay() {
     labels: getRandomLabels(),
     host: {
       _id: makeId(),
-      fullname: 'Davit Pok',
-      imgUrl:
-        'https://res.cloudinary.com/dyhmjlymk/image/upload/v1721388582/samples/people/kitchen-bar.jpg',
+      fullname: 'Denis Libin',
+      imgUrl: 'https://robohash.org/denis',
     },
     loc: {
       country,
