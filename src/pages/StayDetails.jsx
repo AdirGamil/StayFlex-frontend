@@ -83,7 +83,7 @@ export function StayDetails() {
             <p>{stay.summary}</p>
           </div>
 
-          <div className="stam-div">HELLO</div>
+          <div className="stam-div">TEST DIV FOR SCROLLING</div>
         </div>
 
         <StayReservation stay={stay} />
