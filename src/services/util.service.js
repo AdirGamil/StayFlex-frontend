@@ -1,3 +1,5 @@
+import { names, types, countries, cities, labels, imgUrls } from './dataService'
+
 export function makeId(length = 6) {
   var txt = ''
   var possible =
@@ -8,6 +10,48 @@ export function makeId(length = 6) {
   }
 
   return txt
+}
+
+export function getRandomElement(arr) {
+  return arr[Math.floor(Math.random() * arr.length)]
+}
+
+export function getRandomAddress() {
+  const streetNames = [
+    'Main',
+    'Broad',
+    'Market',
+    'Elm',
+    'Maple',
+    'Oak',
+    'Pine',
+    'Cedar',
+    'Birch',
+    'Spruce',
+    'Willow',
+  ]
+  return `${Math.floor(Math.random() * 100)} ${getRandomElement(
+    streetNames
+  )} st`
+}
+
+export function getRandomLocation() {
+  const countryObj = getRandomElement(countries)
+  const country = countryObj.name
+  const continent = countryObj.continent
+  const city = cities[country]
+    ? getRandomElement(cities[country])
+    : 'Unknown city'
+
+  return {
+    country,
+    countryCode: country.substring(0, 2).toUpperCase(),
+    city,
+    address: getRandomAddress(),
+    lat: parseFloat((Math.random() * 180 - 90).toFixed(5)),
+    lng: parseFloat((Math.random() * 360 - 180).toFixed(5)),
+    continent,
+  }
 }
 
 export function makeLorem(size = 100) {
@@ -135,18 +179,28 @@ export function generateRandomReviews(numReviews) {
     'Could be better, but overall not bad.',
     'I did not enjoy my stay here.',
     'The host was very helpful and friendly.',
-    'The place was clean and well-maintained.'
+    'The place was clean and well-maintained.',
   ]
 
-  const userNames = ['John Doe', 'Jane Smith', 'Alice Johnson', 'Bob Brown', 'Charlie Davis', 'Dana Evans'];
+  const userNames = [
+    'John Doe',
+    'Jane Smith',
+    'Alice Johnson',
+    'Bob Brown',
+    'Charlie Davis',
+    'Dana Evans',
+  ]
 
-  const reviews = [];
+  const reviews = []
 
   for (let i = 0; i < numReviews; i++) {
-    const randomText = reviewTexts[Math.floor(Math.random() * reviewTexts.length)];
-    const randomRate = Math.floor(Math.random() * 5) + 1; // Generates a random rate between 1 and 5
-    const randomUser = userNames[Math.floor(Math.random() * userNames.length)];
-    const randomImgUrl = `https://randomuser.me/api/portraits/med/${Math.random() < 0.5 ? 'men' : 'women'}/${Math.floor(Math.random() * 100)}.jpg`;
+    const randomText =
+      reviewTexts[Math.floor(Math.random() * reviewTexts.length)]
+    const randomRate = Math.floor(Math.random() * 5) + 1 // Generates a random rate between 1 and 5
+    const randomUser = userNames[Math.floor(Math.random() * userNames.length)]
+    const randomImgUrl = `https://randomuser.me/api/portraits/med/${
+      Math.random() < 0.5 ? 'men' : 'women'
+    }/${Math.floor(Math.random() * 100)}.jpg`
 
     reviews.push({
       by: {
@@ -157,10 +211,10 @@ export function generateRandomReviews(numReviews) {
       id: makeId(),
       rate: randomRate,
       txt: randomText,
-    });
+    })
   }
 
-  return reviews;
+  return reviews
 }
 
 console.log(generateRandomReviews(5))
