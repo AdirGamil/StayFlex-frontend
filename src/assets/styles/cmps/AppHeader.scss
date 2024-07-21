@@ -55,3 +55,93 @@
     }
   }
 }
+
+.stay-details-header {
+  border-bottom: 1px solid #e5e5e5;
+  padding: 0 200px;
+  height: 80px;
+
+  .nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+
+    .logo {
+      display: flex;
+      align-items: center;
+
+      .app-logo {
+        height: 32px;
+      }
+
+      h1 {
+        color: #ff385c;
+        font-size: 1.5rem;
+        // margin-left: 0.5rem;
+      }
+    }
+
+    .links-header {
+      display: flex;
+      align-items: center;
+      background-color: #fff;
+      border: 1px solid #e5e5e5;
+      border-radius: 40px;
+      padding: 8px 16px;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 0, 0, 0.05);
+
+      a {
+        color: #222;
+        font-size: 14px;
+        font-weight: 600;
+        padding: 0 16px;
+        border-right: 1px solid #e5e5e5;
+
+        &:last-child {
+          border-right: none;
+        }
+      }
+    }
+
+    .user-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+
+      a {
+        color: #222;
+        font-size: 14px;
+        font-weight: 600;
+        padding: 12px;
+        border-radius: 22px;
+
+        &:hover {
+          background-color: #f7f7f7;
+        }
+      }
+
+      .menu-button {
+        border: 1px solid #e5e5e5;
+        border-radius: 21px;
+        padding: 5px 5px 5px 12px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+
+        .menu-icon {
+          width: 16px;
+          height: 16px;
+        }
+
+        .user-icon {
+          width: 30px;
+          height: 30px;
+          background-color: #717171;
+          border-radius: 50%;
+        }
+      }
+    }
+  }
+
+}

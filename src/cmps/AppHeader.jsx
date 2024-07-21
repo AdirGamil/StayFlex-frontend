@@ -28,17 +28,20 @@
 //   )
 // }
 import React from 'react'
-import { Link, NavLink, useLocation } from 'react-router-dom'
+import { Link, NavLink, useLocation, useParams } from 'react-router-dom'
 import logo from '../assets/img/airbnb-icon.svg'
 import MenuButton from './MenuButton' // Import the MenuButton component
 
 export function AppHeader() {
-
-  const isStayDetailsRoute = location.pathname.includes('/stay/')
-
+  const location = useLocation();
+  const params = useParams();
+  
+  const isStayDetailsRoute = location.pathname.startsWith('/stay/')
+  
   return (
     // <header className="app-header">
     <header className={`app-header ${isStayDetailsRoute ? 'stay-details-header' : ''}`}>
+    
       <nav className="nav-container">
         <NavLink to="/" className="logo">
           <img className="app-logo" src={logo} alt="logo" />
