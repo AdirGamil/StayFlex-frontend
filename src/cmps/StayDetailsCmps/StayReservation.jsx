@@ -2,22 +2,14 @@ import { useEffect, useState } from 'react'
 import DatePicker from 'react-datepicker'
 import "react-datepicker/dist/react-datepicker.css"
 import { orderService } from '../../services/order/order.service.local.js'
-import { makeId } from '../../services/util.service'
+import { makeId, getRandomDateWithinRange } from '../../services/util.service'
 
 export function StayReservation({ stay }) {
-    // Function to generate a random date between start and end dates
-    const getRandomDate = (start, end) => {
-        const date = new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()))
-        return date
-    }
 
-    // Initial random start date within the next 30 days
-    const initialStartDate = getRandomDate(new Date(), new Date(Date.now() + 30 * 24 * 60 * 60 * 1000)) // Change 1
-    // Initial random end date 1-5 days after the start date
+    const initialStartDate = getRandomDateWithinRange(new Date(), new Date(Date.now() + 30 * 24 * 60 * 60 * 1000)) // Change 1
     const initialEndDate = new Date(initialStartDate) // Change 2
     initialEndDate.setDate(initialStartDate.getDate() + Math.floor(Math.random() * 5) + 1) // Change 3
 
-    // Set initial state with random dates
     const [startDate, setStartDate] = useState(initialStartDate) // Change 4
     const [endDate, setEndDate] = useState(initialEndDate) // Change 5
     const [guests, setGuests] = useState({
@@ -45,7 +37,7 @@ export function StayReservation({ stay }) {
         setGuests(newGuests)
     }
 
-    const calculateNumberOfNights = () => {
+    function calculateNumberOfNights() {
         if (!startDate || !endDate) return 0
         const timeDiff = endDate.getTime() - startDate.getTime()
         return Math.ceil(timeDiff / (1000 * 3600 * 24))
@@ -56,12 +48,12 @@ export function StayReservation({ stay }) {
     const taxes = subtotal * 0.17 // 17% of the subtotal
     const totalPrice = subtotal + taxes
 
-    const handleReserve = async () => {
+    function handleReserve() {
         const newOrder = {
             _id: makeId(),
             hostId: stay.host._id,
             guest: {
-                _id: 'guest1', // In a real application, this would be the logged-in user's ID
+                _id: 'guest1',
                 fullname: 'Guest User'
             },
             totalPrice,
@@ -79,9 +71,12 @@ export function StayReservation({ stay }) {
             msgs: [],
             status: 'pending'
         }
-    
-        await orderService.saveOrder(newOrder)
-        alert('Reservation placed successfully!')
+
+        orderService.saveOrder(newOrder).then(() => {
+            alert('Reservation placed successfully!')
+        }).catch(err => {
+            console.error('Error placing reservation:', err)
+        })
     }
 
     return (

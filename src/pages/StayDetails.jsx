@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { useSelector } from 'react-redux'
+
 import { loadStay } from '../store/actions/stay.actions'
 
 import { StayGallery } from '../cmps/StayDetailsCmps/StayGallery'
