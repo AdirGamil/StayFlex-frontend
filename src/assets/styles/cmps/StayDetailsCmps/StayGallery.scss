@@ -2,14 +2,14 @@
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(2, 200px);
-    gap: 10px;
+    gap: 8px;
     margin-bottom: 20px;
     position: relative;
 
     .gallery-item {
         position: relative;
         overflow: hidden;
-        border-radius: 8px;
+        
 
         img {
             width: 100%;
@@ -26,6 +26,8 @@
         &.gallery-item-0 {
             grid-column: span 2;
             grid-row: span 2;
+            border-top-left-radius: 15px;
+            border-bottom-left-radius: 15px;
         }
 
         &.gallery-item-1 {
@@ -36,6 +38,7 @@
         &.gallery-item-2 {
             grid-column: span 1;
             grid-row: span 1;
+            border-top-right-radius: 15px;
         }
 
         &.gallery-item-3 {
@@ -46,6 +49,7 @@
         &.gallery-item-4 {
             grid-column: span 1;
             grid-row: span 1;
+            border-bottom-right-radius: 15px;
         }
     }
 
