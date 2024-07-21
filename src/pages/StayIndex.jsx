@@ -22,8 +22,6 @@ export function StayIndex() {
     setFilterBy({ ...filterBy, label })
   }
 
-
-
   return (
     <main className="stay-index">
       

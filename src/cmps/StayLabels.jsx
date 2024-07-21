@@ -107,12 +107,10 @@ export function StayLabels({ onLabelClick }) {
             {label === selectedLabel && <div className="selected-indicator" />}
           </div>
         ))}
-
-        <button className='dir' onClick={scrollRight}>
-          <img className='dir-ltr'
-            src="https://res.cloudinary.com/doahdwb2g/image/upload/v1721496423/svg_xml_base64_PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNiAxNiIgYXJpYS1oaWRkZW49InRydWUiIHJvbGU9InByZXNlbnRhdGlvbiIgZm9jdXNhYmxlPSJmYWxzZSIgc3R5bGU9ImRpc3BsYXk6IGJsb2NrOyBoZWlnaHQ6IDEy_uge6u3.svg"
-            alt="Scroll right"
-          />
+        <button className="dir" onClick={scrollRight}>
+          <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false">
+            <path d="m4.29 1.71a1 1 0 1 1 1.42-1.41l8 8a1 1 0 0 1 0 1.41l-8 8a1 1 0 1 1 -1.42-1.41l7.29-7.29z"></path>
+          </svg>
         </button>
         <button
           onClick={() => setIsModalOpen(true)}

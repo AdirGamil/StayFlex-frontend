@@ -181,13 +181,14 @@
             span:first-child {
                 font-size: 12px;
                 font-weight: 600;
-                // text-transform: uppercase;
-                margin-bottom: 2px;
+                margin-bottom: 8px;
+                margin-left: 20px;
             }
 
             span:last-child {
                 color: $clr4;
                 font-size: 14px;
+                margin-left: 20px;
             }
         }
 
@@ -239,6 +240,7 @@
                     button {
                         width: 32px;
                         height: 32px;
+
                         border-radius: 50%;
                         border: 1px solid $clr7;
                         background: none;
@@ -248,7 +250,6 @@
                         display: flex;
                         align-items: center;
                         justify-content: center;
-                        // transition: border-color 0.2s ease, color 0.2s ease;
 
                         &:hover:not(:disabled) {
                             border-color: $clr3;
@@ -261,11 +262,12 @@
                     }
 
                     span {
-                        margin: 0 16px;
+                        margin:0 16px;
                         font-size: 16px;
                         color: $clr3;
                         min-width: 20px;
                         text-align: center;
+                        padding-left: 10px;
                     }
                 }
             }
