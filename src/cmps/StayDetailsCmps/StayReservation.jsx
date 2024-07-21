@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react'
 import DatePicker from 'react-datepicker'
 import "react-datepicker/dist/react-datepicker.css"
+import { orderService } from '../../services/order/order.storage.local.js'
+import { makeId } from '../../services/util.service'
 
 export function StayReservation({ stay }) {
     // Function to generate a random date between start and end dates
@@ -53,6 +55,34 @@ export function StayReservation({ stay }) {
     const subtotal = stay ? stay.price * numberOfNights : 0
     const taxes = subtotal * 0.17 // 17% of the subtotal
     const totalPrice = subtotal + taxes
+
+    const handleReserve = async () => {
+        const newOrder = {
+            _id: makeId(),
+            hostId: stay.host._id,
+            guest: {
+                _id: 'guest1', // In a real application, this would be the logged-in user's ID
+                fullname: 'Guest User'
+            },
+            totalPrice,
+            startDate: startDate.toISOString().split('T')[0],
+            endDate: endDate.toISOString().split('T')[0],
+            guests: {
+                adults: guests.adults,
+                kids: guests.children,
+            },
+            stay: {
+                _id: stay._id,
+                name: stay.name,
+                price: stay.price,
+            },
+            msgs: [],
+            status: 'pending'
+        }
+    
+        await orderService.saveOrder(newOrder)
+        alert('Reservation placed successfully!')
+    }
 
     return (
         <div className="reservation">
@@ -128,7 +158,7 @@ export function StayReservation({ stay }) {
                 </div>
             </div>
 
-            <button className="reserve-btn">Reserve</button>
+            <button className="reserve-btn" onClick={handleReserve}>Reserve</button>
             <p className="charged-p">You won't be charged yet</p>
 
             <div className="price-details">
