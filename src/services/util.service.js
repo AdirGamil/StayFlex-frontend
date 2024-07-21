@@ -126,3 +126,39 @@ export function getDateRange() {
 
   return `${startFormatted} - ${endFormatted}`
 }
+
+export function generateRandomReviews(numReviews) {
+  const reviewTexts = [
+    'Very helpful hosts. Cooked traditional...',
+    'Amazing stay! Highly recommend.',
+    'It was a pleasant experience.',
+    'Could be better, but overall not bad.',
+    'I did not enjoy my stay here.',
+    'The host was very helpful and friendly.',
+    'The place was clean and well-maintained.'
+  ];
+
+  const userNames = ['John Doe', 'Jane Smith', 'Alice Johnson', 'Bob Brown', 'Charlie Davis', 'Dana Evans'];
+
+  const reviews = [];
+
+  for (let i = 0; i < numReviews; i++) {
+    const randomText = reviewTexts[Math.floor(Math.random() * reviewTexts.length)];
+    const randomRate = Math.floor(Math.random() * 5) + 1; // Generates a random rate between 1 and 5
+    const randomUser = userNames[Math.floor(Math.random() * userNames.length)];
+    const randomImgUrl = `https://randomuser.me/api/portraits/med/${Math.random() < 0.5 ? 'men' : 'women'}/${Math.floor(Math.random() * 100)}.jpg`;
+
+    reviews.push({
+      id: makeId(),
+      txt: randomText,
+      rate: randomRate,
+      by: {
+        _id: makeId(),
+        fullname: randomUser,
+        imgUrl: randomImgUrl
+      }
+    });
+  }
+
+  return reviews;
+}
