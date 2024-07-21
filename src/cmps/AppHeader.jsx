@@ -32,6 +32,7 @@ import { Link, NavLink, useLocation, useParams } from 'react-router-dom'
 import logo from '../assets/img/airbnb-icon.svg'
 import MenuButton from './MenuButton' // Import the MenuButton component
 
+
 export function AppHeader() {
   const location = useLocation();
   const params = useParams();

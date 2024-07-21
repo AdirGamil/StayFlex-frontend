@@ -4,18 +4,22 @@
     background-color: $clr5;
     border: 1px solid $clr6;
     border-radius: 40px;
-    box-shadow: 0 1px 2px rgba($clr3, 0.08), 0 4px 12px rgba($clr3, 0.05);
+    box-shadow: 0 3px 12px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.08);
     height: 66px;
-    transition: box-shadow 0.2s ease;
+    // transition: box-shadow 0.2s ease;
+    margin-bottom: 20px;
+    margin-top: 30px;
+
 
     &:hover {
         box-shadow: 0 2px 4px rgba($clr3, 0.18);
     }
+    
 
-    input[type="text"],
+    .region-search,
     .date-picker-wrapper,
     .search-container {
-        transition: background-color 0.2s ease;
+        // transition: background-color 0.2s ease;
 
         &:hover {
             background-color: $clr6;
@@ -30,7 +34,6 @@
 
         input[type="text"] {
             border: none;
-            padding: 0 16px;
             font-size: 14px;
             color: $clr3;
             width: 100%;
@@ -39,7 +42,7 @@
             border-radius: 32px;
 
             &::placeholder {
-                color: $clr3;
+                color: $clr7;
             }
         }
 
@@ -89,40 +92,50 @@
             }
         }
 
-
     }
 
     .date-picker-container {
         display: flex;
-        border-left: 1px solid $clr6;
-        border-right: 1px solid $clr6;
         height: 100%;
         max-width: 350px;
+        // max-width: 800px;
         z-index: 10000;
 
+        .divider {
+            height: 32px;
+            width: 1px;
+            background-color: $clr6;
+            margin: 0 1px;
+            align-self: center;
+        }
+
         .date-picker-wrapper {
-            padding: 0 16px;
+            // padding: 0 16px;
+            padding: 10px 24px;
             display: flex;
             flex-direction: column;
             justify-content: center;
             cursor: pointer;
+            flex: 1;
 
             label {
                 font-size: 12px;
                 font-weight: 600;
                 color: $clr3;
-                margin-bottom: 2px;
+                margin-bottom: 4px;
             }
 
             .react-datepicker-wrapper {
                 input {
                     border: none;
-                    font-size: 14px;
+                    // font-size: 14px;
+                    font-size: 16px;
                     color: $clr3;
                     outline: none;
                     width: 100%;
                     cursor: pointer;
                     background: transparent;
+                    padding: 4px 0;
 
                     &::placeholder {
                         color: $clr4;
@@ -140,7 +153,6 @@
         height: 100%;
         padding: 8px;
     }
-
 
     .guests-selector {
         position: relative;
@@ -168,8 +180,8 @@
 
             span:first-child {
                 font-size: 12px;
-                font-weight: 800;
-                text-transform: uppercase;
+                font-weight: 600;
+                // text-transform: uppercase;
                 margin-bottom: 2px;
             }
 
@@ -236,7 +248,7 @@
                         display: flex;
                         align-items: center;
                         justify-content: center;
-                        transition: border-color 0.2s ease, color 0.2s ease;
+                        // transition: border-color 0.2s ease, color 0.2s ease;
 
                         &:hover:not(:disabled) {
                             border-color: $clr3;
@@ -281,6 +293,35 @@
             width: 14px;
             height: 14px;
             fill: $clr5;
+        }
+    }
+
+    .divider {
+        height: 32px;
+        width: 1px;
+        background-color: $clr6;
+        margin: 0 1px;
+    }
+
+    .search-item {
+        display: flex;
+        flex-direction: column;
+        padding: 7px 32px;
+        position: relative;
+
+        span {
+            font-size: 12px;
+            font-weight: 600;
+            color: $clr3;
+        }
+
+        input {
+            border: none;
+            outline: none;
+            font-size: 14px;
+            color: $clr4;
+            width: 100%;
+            background: transparent;
         }
     }
 }

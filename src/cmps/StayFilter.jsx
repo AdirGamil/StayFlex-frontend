@@ -68,12 +68,13 @@ export function StayFilter({ filterBy, setFilterBy }) {
 
     return (
         <section className='stay-filter'>
-            <div className="region-search">
+            <div className="search-item region-search">
+                <span>Where</span>
                 <input
                     type="text"
                     name="txt"
                     value={filterToEdit.txt}
-                    placeholder="Where"
+                    placeholder="Search destinations"
                     onChange={handleChange}
                     onClick={toggleRegionDropdown}
                     required
@@ -92,6 +93,8 @@ export function StayFilter({ filterBy, setFilterBy }) {
                     </div>
                 )}
             </div>
+            <div className="divider">
+            </div>
             <div className="date-picker-container">
                 <div className="date-picker-wrapper">
                     <label>Check in</label>
@@ -106,6 +109,10 @@ export function StayFilter({ filterBy, setFilterBy }) {
                         placeholderText="Add dates"
                     />
                 </div>
+            </div>
+            <div className="divider">
+                </div>
+            <div className="date-picker-container">
                 <div className="date-picker-wrapper">
                     <label>Check out</label>
                     <DatePicker
@@ -121,6 +128,8 @@ export function StayFilter({ filterBy, setFilterBy }) {
                     />
                 </div>
             </div>
+            <div className="divider">
+            </div>
             <div className="search-container">
                 <div className="guests-selector">
                     <button className="guests-button" onClick={toggleGuestsDropdown}>
@@ -131,33 +140,33 @@ export function StayFilter({ filterBy, setFilterBy }) {
                             {guests.pets > 0 && `, ${guests.pets} pet${guests.pets > 1 ? 's' : ''}`}
                         </span>
                     </button>
-        <div className={`guests-dropdown ${isGuestsDropdownOpen ? 'active' : ''}`}>
-            {[
-                { type: 'adults', label: 'Adults', subLabel: 'Ages 13 or above' },
-                { type: 'children', label: 'Children', subLabel: 'Ages 2-12' },
-                { type: 'infants', label: 'Infants', subLabel: 'Under 2' },
-                { type: 'pets', label: 'Pets', subLabel: 'Bringing a service animal?' },
-            ].map(({ type, label, subLabel }) => (
-                <div key={type}>
-                    <div className="guest-type">
-                        <label>{label}</label>
-                        <span>{subLabel}</span>
+                    <div className={`guests-dropdown ${isGuestsDropdownOpen ? 'active' : ''}`}>
+                        {[
+                            { type: 'adults', label: 'Adults', subLabel: 'Ages 13 or above' },
+                            { type: 'children', label: 'Children', subLabel: 'Ages 2-12' },
+                            { type: 'infants', label: 'Infants', subLabel: 'Under 2' },
+                            { type: 'pets', label: 'Pets', subLabel: 'Bringing a service animal?' },
+                        ].map(({ type, label, subLabel }) => (
+                            <div key={type}>
+                                <div className="guest-type">
+                                    <label>{label}</label>
+                                    <span>{subLabel}</span>
+                                </div>
+                                <div className="guest-counter">
+                                    <button
+                                        onClick={() => handleGuestsChange(type, guests[type] - 1)}
+                                        disabled={guests[type] === 0 || (type === 'adults' && guests[type] === 0)}
+                                    >
+                                        -
+                                    </button>
+                                    <span>{guests[type]}</span>
+                                    <button onClick={() => handleGuestsChange(type, guests[type] + 1)}>
+                                        +
+                                    </button>
+                                </div>
+                            </div>
+                        ))}
                     </div>
-                    <div className="guest-counter">
-                        <button
-                            onClick={() => handleGuestsChange(type, guests[type] - 1)}
-                            disabled={guests[type] === 0 || (type === 'adults' && guests[type] === 0)}
-                        >
-                            -
-                        </button>
-                        <span>{guests[type]}</span>
-                        <button onClick={() => handleGuestsChange(type, guests[type] + 1)}>
-                            +
-                        </button>
-                    </div>
-                </div>
-            ))}
-        </div>
                 </div>
                 <button className="search-button" onClick={handleSearch}>
                     <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false">
@@ -165,10 +174,6 @@ export function StayFilter({ filterBy, setFilterBy }) {
                     </svg>
                 </button>
             </div>
-
         </section >
-        
     )
 }
-
-
