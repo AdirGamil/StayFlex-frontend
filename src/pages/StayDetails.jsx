@@ -18,22 +18,18 @@ function pluralize(count, singular, plural = null) {
 export function StayDetails() {
   const { stayId } = useParams()
   const stay = useSelector((storeState) => storeState.stayModule.stay)
-  // const location = useLocation()
 
   useEffect(() => {
     loadStay(stayId)
   }, [stayId])
 
+  if (!stay) return <div>Loading...</div>
   
   const averageRating = stay.reviews && stay.reviews.length > 0
   ? (stay.reviews.reduce((sum, review) => sum + review.rate, 0) / stay.reviews.length).toFixed(1)
   : 'New'
   
   const reviewCount = stay.reviews ? stay.reviews.length : 0
-
-  // const isStayDetailsRoute = location.pathname.includes('/stay/')
-
-  if (!stay) return <div>Loading...</div>
 
   return (
     <section className="stay-details main-layout">
