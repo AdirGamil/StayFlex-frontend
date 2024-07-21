@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { useParams, useLocation } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { loadStay } from '../store/actions/stay.actions'
 
@@ -24,11 +24,11 @@ export function StayDetails() {
   }, [stayId])
 
   if (!stay) return <div>Loading...</div>
-  
+
   const averageRating = stay.reviews && stay.reviews.length > 0
-  ? (stay.reviews.reduce((sum, review) => sum + review.rate, 0) / stay.reviews.length).toFixed(1)
-  : 'New'
-  
+    ? (stay.reviews.reduce((sum, review) => sum + review.rate, 0) / stay.reviews.length).toFixed(1)
+    : 'New'
+
   const reviewCount = stay.reviews ? stay.reviews.length : 0
 
   return (
@@ -83,6 +83,8 @@ export function StayDetails() {
           <div className="stay-description">
             <p>{stay.summary}</p>
           </div>
+          
+          <div className="stam-div">HELLO</div>
         </div>
 
         <StayReservation stay={stay} />

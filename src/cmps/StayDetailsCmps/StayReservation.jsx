@@ -1,13 +1,23 @@
 import { useEffect, useState } from 'react'
-
 import DatePicker from 'react-datepicker'
 import "react-datepicker/dist/react-datepicker.css"
 
-
-
 export function StayReservation({ stay }) {
-    const [startDate, setStartDate] = useState(null)
-    const [endDate, setEndDate] = useState(null)
+    // Function to generate a random date between start and end dates
+    const getRandomDate = (start, end) => {
+        const date = new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()))
+        return date
+    }
+
+    // Initial random start date within the next 30 days
+    const initialStartDate = getRandomDate(new Date(), new Date(Date.now() + 30 * 24 * 60 * 60 * 1000)) // Change 1
+    // Initial random end date 1-5 days after the start date
+    const initialEndDate = new Date(initialStartDate) // Change 2
+    initialEndDate.setDate(initialStartDate.getDate() + Math.floor(Math.random() * 5) + 1) // Change 3
+
+    // Set initial state with random dates
+    const [startDate, setStartDate] = useState(initialStartDate) // Change 4
+    const [endDate, setEndDate] = useState(initialEndDate) // Change 5
     const [guests, setGuests] = useState({
         adults: 1,
         children: 0,
@@ -15,7 +25,6 @@ export function StayReservation({ stay }) {
         pets: 0
     })
     const [isGuestsDropdownOpen, setIsGuestsDropdownOpen] = useState(false)
-    const [isRegionDropdownOpen, setIsRegionDropdownOpen] = useState(false)
 
     function handleStartDateChange(date) {
         setStartDate(date)
@@ -26,26 +35,24 @@ export function StayReservation({ stay }) {
     }
 
     function toggleGuestsDropdown() {
-        setIsGuestsDropdownOpen(!isGuestsDropdownOpen);
+        setIsGuestsDropdownOpen(!isGuestsDropdownOpen)
     }
 
     function handleGuestsChange(type, value) {
-        const newGuests = { ...guests, [type]: Math.max(0, value) };
-        setGuests(newGuests);
-        setFilterToEdit({ ...filterToEdit, guests: newGuests });
+        const newGuests = { ...guests, [type]: Math.max(0, value) }
+        setGuests(newGuests)
     }
 
     const calculateNumberOfNights = () => {
-        if (!startDate || !endDate) return 0;
-        const timeDiff = endDate.getTime() - startDate.getTime();
-        return Math.ceil(timeDiff / (1000 * 3600 * 24));
-    };
+        if (!startDate || !endDate) return 0
+        const timeDiff = endDate.getTime() - startDate.getTime()
+        return Math.ceil(timeDiff / (1000 * 3600 * 24))
+    }
 
-    const numberOfNights = calculateNumberOfNights();
-    const subtotal = stay ? stay.price.toLocaleString() * numberOfNights : 0;
-    const taxes = subtotal * 0.17; // 17% of the subtotal
-    const totalPrice = subtotal + taxes;
-
+    const numberOfNights = calculateNumberOfNights()
+    const subtotal = stay ? stay.price * numberOfNights : 0
+    const taxes = subtotal * 0.17 // 17% of the subtotal
+    const totalPrice = subtotal + taxes
 
     return (
         <div className="reservation">
@@ -58,7 +65,6 @@ export function StayReservation({ stay }) {
 
             <div className="date-picker-container">
                 <div className="check-in">
-                    {/* <label>Check in</label> */}
                     <DatePicker
                         selected={startDate}
                         onChange={handleStartDateChange}
@@ -71,7 +77,6 @@ export function StayReservation({ stay }) {
                     />
                 </div>
                 <div className="check-out">
-                    {/* <label>Check out</label> */}
                     <DatePicker
                         selected={endDate}
                         onChange={handleEndDateChange}
@@ -88,7 +93,6 @@ export function StayReservation({ stay }) {
 
             <div className="guests-selector">
                 <button className="guests-button" onClick={toggleGuestsDropdown}>
-                    {/* <span>Who</span> */}
                     <span>
                         {guests.adults + guests.children} guests
                         {guests.infants > 0 && `, ${guests.infants} infant${guests.infants > 1 ? 's' : ''}`}
@@ -130,7 +134,7 @@ export function StayReservation({ stay }) {
             <div className="price-details">
                 <div className="price-item">
                     <span className="calc-span">${stay.price.toLocaleString()} x {numberOfNights} nights</span>
-                    <span>${stay.price.toLocaleString() * numberOfNights}</span>
+                    <span>${(stay.price * numberOfNights).toLocaleString()}</span>
                 </div>
                 <div className="price-item">
                     <span className="taxes-span">Taxes</span>
@@ -141,5 +145,6 @@ export function StayReservation({ stay }) {
                     <span>${totalPrice.toFixed(2)}</span>
                 </div>
             </div>
-        </div>)
+        </div>
+    );
 }
