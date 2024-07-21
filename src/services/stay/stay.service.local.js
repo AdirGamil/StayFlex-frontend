@@ -24,7 +24,7 @@ import {
 
 const STORAGE_KEY = 'stayDB'
 var gStays
-_createStays(4)
+_createStays(30)
 
 export const stayService = {
   query,
