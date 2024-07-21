@@ -10,6 +10,8 @@ import {
   loadFromStorage,
   saveToStorage,
   generateRandomReviews,
+  getRandomElement,
+  getRandomLocation,
 } from '../util.service'
 import {
   names,
@@ -80,69 +82,27 @@ async function remove(stayId) {
 async function save(stay) {
   let savedStay
   if (stay._id) {
-    // Check if the stay exists before trying to update
     const existingStay = await storageService.get(STORAGE_KEY, stay._id)
     if (existingStay) {
-      const stayToSave = {
-        _id: stay._id,
-        price: stay.price,
-        summary: stay.summary,
-        capacity: stay.capacity,
-        beds: stay.beds,
-        amenities: stay.amenities,
-        labels: stay.labels,
-        loc: stay.loc,
-        reviews: stay.reviews,
-        kilometersAway: stay.kilometersAway,
-        dateRange: stay.dateRange,
-        likedByUsers: stay.likedByUsers,
-      }
-      savedStay = await storageService.put(STORAGE_KEY, stayToSave)
+      savedStay = await storageService.put(STORAGE_KEY, {
+        ...existingStay,
+        ...stay,
+      })
     } else {
       throw new Error(
         `Update failed, cannot find entity with id: ${stay._id} in: ${STORAGE_KEY}`
       )
     }
   } else {
-    const name = stay.name || names[Math.floor(Math.random() * names.length)]
-    const type = stay.type || types[Math.floor(Math.random() * types.length)]
-    const countryObj = countries[Math.floor(Math.random() * countries.length)]
-    const country = stay.loc?.country || countryObj.name
-    const continent = stay.loc?.continent || countryObj.continent
-    const city =
-      stay.loc?.city ||
-      (cities[country]
-        ? cities[country][Math.floor(Math.random() * cities[country].length)]
-        : 'Unknown city')
-    const price = stay.price || Math.floor(Math.random() * 1200) + 100
-    const address =
-      stay.loc?.address ||
-      `${Math.floor(Math.random() * 100)} ${
-        [
-          'Main',
-          'Broad',
-          'Market',
-          'Elm',
-          'Maple',
-          'Oak',
-          'Pine',
-          'Cedar',
-          'Birch',
-          'Spruce',
-          'Willow',
-        ][Math.floor(Math.random() * 11)]
-      } st`
-    const lat =
-      stay.loc?.lat || parseFloat((Math.random() * 180 - 90).toFixed(5))
-    const lng =
-      stay.loc?.lng || parseFloat((Math.random() * 360 - 180).toFixed(5))
-
+    const name = stay.name || getRandomElement(names)
+    const type = stay.type || getRandomElement(types)
+    const loc = stay.loc || getRandomLocation()
     const stayToSave = {
       _id: makeId(),
       name,
       type,
       imgUrls: stay.imgUrls || getRandomImgUrls(imgUrls),
-      price,
+      price: stay.price || Math.floor(Math.random() * 1200) + 100,
       summary: stay.summary || 'Fantastic duplex apartment...',
       capacity: stay.capacity || Math.floor(Math.random() * 10) + 1,
       beds: stay.beds || Math.floor(Math.random() * 6) + 1,
@@ -155,15 +115,7 @@ async function save(stay) {
         'Cooking basics',
       ],
       labels: stay.labels || getRandomLabels(labels),
-      loc: {
-        country,
-        countryCode: country.substring(0, 2).toUpperCase(),
-        city,
-        address,
-        lat,
-        lng,
-        continent,
-      },
+      loc,
       reviews: stay.reviews || generateRandomReviews(5),
       kilometersAway: stay.kilometersAway || getRandomKilometersAway(),
       dateRange: stay.dateRange || getDateRange(),
