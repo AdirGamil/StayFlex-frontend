@@ -8,6 +8,8 @@ import {
   getDateRange,
   generateRandomReviews,
   getRandomIntInclusive,
+  getRandomElement,
+  getRandomLocation,
 } from '../util.service'
 import {
   names,
@@ -22,31 +24,9 @@ import { stayService as local } from './stay.service.local'
 import { stayService as remote } from './stay.service.remote'
 
 function getEmptyStay({ price = getRandomIntInclusive(20, 300) } = {}) {
-  const name = names[Math.floor(Math.random() * names.length)]
-  const type = types[Math.floor(Math.random() * types.length)]
-  const countryObj = countries[Math.floor(Math.random() * countries.length)]
-  const country = countryObj.name
-  const continent = countryObj.continent
-  const city = cities[country]
-    ? cities[country][Math.floor(Math.random() * cities[country].length)]
-    : 'Unknown city'
-  const address = `${Math.floor(Math.random() * 100)} ${
-    [
-      'Main',
-      'Broad',
-      'Market',
-      'Elm',
-      'Maple',
-      'Oak',
-      'Pine',
-      'Cedar',
-      'Birch',
-      'Spruce',
-      'Willow',
-    ][Math.floor(Math.random() * 11)]
-  } st`
-  const lat = parseFloat((Math.random() * 180 - 90).toFixed(5))
-  const lng = parseFloat((Math.random() * 360 - 180).toFixed(5))
+  const name = getRandomElement(names)
+  const type = getRandomElement(types)
+  const loc = getRandomLocation()
   const reviews = generateRandomReviews(5)
 
   return {
@@ -66,15 +46,7 @@ function getEmptyStay({ price = getRandomIntInclusive(20, 300) } = {}) {
       'Cooking basics',
     ],
     labels: getRandomLabels(labels),
-    loc: {
-      country,
-      countryCode: country.substring(0, 2).toUpperCase(),
-      city,
-      address,
-      lat,
-      lng,
-      continent,
-    },
+    loc,
     reviews,
     kilometersAway: getRandomKilometersAway(),
     dateRange: getDateRange(),
