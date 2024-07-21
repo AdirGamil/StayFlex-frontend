@@ -7,8 +7,8 @@
             align-items: baseline;
             margin-bottom: rem(20px);
 
-            h2 {
-                font-size: rem(22px);
+            h3 {
+                // font-size: rem(22px);
                 margin-right: rem(5px);
             }
 
@@ -191,26 +191,31 @@
 
     .charged-p {
         text-align: center;
-        margin-top: rem(10px);
+        // margin-top: rem(10px);
         font-size: rem(14px);
         color: #717171;
     }
 }
 
 .price-details {
-    margin-top: rem(20px);
-    padding-top: rem(20px);
-    border-top: 1px solid #e0e0e0;
+
+    .calc-span, .taxes-span {
+        text-decoration: underline;
+    }
+    
 
     .price-item, .price-total {
         display: flex;
         justify-content: space-between;
         margin-bottom: rem(10px);
+        
     }
 
     .price-total {
         font-weight: bold;
         font-size: rem(18px);
+        border-top: 1px solid #e0e0e0;
+        padding-top: rem(24px);
     }
 }
 
@@ -248,7 +253,6 @@
 
     .charged-p {
         text-align: center;
-        margin-block: 1rem 1.5rem;
         font-size: .875rem;
     }
 }

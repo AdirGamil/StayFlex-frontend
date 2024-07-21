@@ -42,7 +42,7 @@ export function StayReservation({ stay }) {
     };
 
     const numberOfNights = calculateNumberOfNights();
-    const subtotal = stay ? stay.price * numberOfNights : 0;
+    const subtotal = stay ? stay.price.toLocaleString() * numberOfNights : 0;
     const taxes = subtotal * 0.17; // 17% of the subtotal
     const totalPrice = subtotal + taxes;
 
@@ -51,7 +51,7 @@ export function StayReservation({ stay }) {
         <div className="reservation">
             <div className="reservation-selectors">
                 <div className="reservation-price">
-                    <h2>${stay.price}&nbsp;</h2>
+                    <h3>${stay.price.toLocaleString()}&nbsp;</h3>
                     <span>night</span>
                 </div>
             </div>
@@ -129,11 +129,11 @@ export function StayReservation({ stay }) {
 
             <div className="price-details">
                 <div className="price-item">
-                    <span>${stay.price} x {numberOfNights} nights</span>
-                    <span>${stay.price * numberOfNights}</span>
+                    <span className="calc-span">${stay.price.toLocaleString()} x {numberOfNights} nights</span>
+                    <span>${stay.price.toLocaleString() * numberOfNights}</span>
                 </div>
                 <div className="price-item">
-                    <span>Taxes</span>
+                    <span className="taxes-span">Taxes</span>
                     <span>${taxes.toFixed(2)}</span>
                 </div>
                 <div className="price-total">

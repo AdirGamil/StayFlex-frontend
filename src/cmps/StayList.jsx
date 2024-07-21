@@ -1,4 +1,4 @@
-import { userService } from '../services/user'
+import { Link } from 'react-router-dom'
 import { StayPreview } from './StayPreview'
 
 export function StayList({ stays }) {
@@ -7,7 +7,9 @@ export function StayList({ stays }) {
       <ul className="stay-list">
         {stays.map((stay) => (
           <li key={stay._id}>
-            <StayPreview stay={stay} />
+            <Link to={`/stay/${stay._id}`}>
+              <StayPreview stay={stay} />
+            </Link>
           </li>
         ))}
       </ul>
