@@ -31,7 +31,7 @@ import React from 'react'
 import { Link, NavLink, useLocation, useParams } from 'react-router-dom'
 import logo from '../assets/img/airbnb-icon.svg'
 import MenuButton from './MenuButton' // Import the MenuButton component
-
+import { AddStay } from './AddStay'
 
 export function AppHeader() {
   const location = useLocation();
@@ -55,7 +55,9 @@ export function AppHeader() {
         <div className="user-actions">
           {/* <NavLink to="login" className="login-link">
             Login
-          </NavLink> */}
+            </NavLink> */}
+          
+            <NavLink to="/addstay" className="add-stay">Airbnb your home</NavLink>
           <MenuButton />
         </div>
       </nav>

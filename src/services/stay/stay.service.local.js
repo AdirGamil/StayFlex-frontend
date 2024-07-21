@@ -24,7 +24,7 @@ import {
 
 const STORAGE_KEY = 'stayDB'
 var gStays
-_createStays(30)
+_createStays(4)
 
 export const stayService = {
   query,
@@ -141,7 +141,6 @@ function _createStays(num = 20) {
 function _saveStaysToStorage() {
   saveToStorage(STORAGE_KEY, gStays)
 }
-// main.js
 
 function _createStay() {
   const name = names[Math.floor(Math.random() * names.length)]

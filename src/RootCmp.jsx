@@ -17,6 +17,7 @@ import { UserDetails } from './pages/UserDetails.jsx'
 import { AppHeader } from './cmps/AppHeader.jsx'
 import { AppFooter } from './cmps/AppFooter.jsx'
 import { UserMsg } from './cmps/UserMsg.jsx'
+import { AddStay } from './cmps/AddStay.jsx'
 
 
 export function RootCmp() {
@@ -32,6 +33,7 @@ export function RootCmp() {
             <Routes>
               <Route path="" element={<StayIndex />} />
               <Route path="stay/:stayId" element={<StayDetails />} />
+              <Route path="/addstay" element={<AddStay />} />
               <Route path="user/:id" element={<UserDetails />} />
             </Routes>
           </main>
