@@ -121,49 +121,54 @@ export function StayFilter({ filterBy, setFilterBy }) {
                     />
                 </div>
             </div>
-            <div className="guests-selector">
-                <button className="guests-button" onClick={toggleGuestsDropdown}>
-                    <span>Who</span>
-                    <span>
-                        {guests.adults + guests.children} guests
-                        {guests.infants > 0 && `, ${guests.infants} infant${guests.infants > 1 ? 's' : ''}`}
-                        {guests.pets > 0 && `, ${guests.pets} pet${guests.pets > 1 ? 's' : ''}`}
-                    </span>
-                </button>
-                <div className={`guests-dropdown ${isGuestsDropdownOpen ? 'active' : ''}`}>
-                    {[
-                        { type: 'adults', label: 'Adults', subLabel: 'Ages 13 or above' },
-                        { type: 'children', label: 'Children', subLabel: 'Ages 2-12' },
-                        { type: 'infants', label: 'Infants', subLabel: 'Under 2' },
-                        { type: 'pets', label: 'Pets', subLabel: 'Bringing a service animal?' },
-                    ].map(({ type, label, subLabel }) => (
-                        <div key={type}>
-                            <div className="guest-type">
-                                <label>{label}</label>
-                                <span>{subLabel}</span>
-                            </div>
-                            <div className="guest-counter">
-                                <button
-                                    onClick={() => handleGuestsChange(type, guests[type] - 1)}
-                                    disabled={guests[type] === 0 || (type === 'adults' && guests[type] === 0)}
-                                >
-                                    -
-                                </button>
-                                <span>{guests[type]}</span>
-                                <button onClick={() => handleGuestsChange(type, guests[type] + 1)}>
-                                    +
-                                </button>
-                            </div>
-                        </div>
-                    ))}
+            <div className="search-container">
+                <div className="guests-selector">
+                    <button className="guests-button" onClick={toggleGuestsDropdown}>
+                        <span>Who</span>
+                        <span>
+                            {guests.adults + guests.children} guests
+                            {guests.infants > 0 && `, ${guests.infants} infant${guests.infants > 1 ? 's' : ''}`}
+                            {guests.pets > 0 && `, ${guests.pets} pet${guests.pets > 1 ? 's' : ''}`}
+                        </span>
+                    </button>
+        <div className={`guests-dropdown ${isGuestsDropdownOpen ? 'active' : ''}`}>
+            {[
+                { type: 'adults', label: 'Adults', subLabel: 'Ages 13 or above' },
+                { type: 'children', label: 'Children', subLabel: 'Ages 2-12' },
+                { type: 'infants', label: 'Infants', subLabel: 'Under 2' },
+                { type: 'pets', label: 'Pets', subLabel: 'Bringing a service animal?' },
+            ].map(({ type, label, subLabel }) => (
+                <div key={type}>
+                    <div className="guest-type">
+                        <label>{label}</label>
+                        <span>{subLabel}</span>
+                    </div>
+                    <div className="guest-counter">
+                        <button
+                            onClick={() => handleGuestsChange(type, guests[type] - 1)}
+                            disabled={guests[type] === 0 || (type === 'adults' && guests[type] === 0)}
+                        >
+                            -
+                        </button>
+                        <span>{guests[type]}</span>
+                        <button onClick={() => handleGuestsChange(type, guests[type] + 1)}>
+                            +
+                        </button>
+                    </div>
                 </div>
+            ))}
+        </div>
+                </div>
+                <button className="search-button" onClick={handleSearch}>
+                    <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false">
+                        <path d="M13 0c7.18 0 13 5.82 13 13 0 2.868-.929 5.519-2.502 7.669l7.916 7.917-2.828 2.828-7.917-7.916A12.942 12.942 0 0 1 13 26C5.82 26 0 20.18 0 13S5.82 0 13 0zm0 4a9 9 0 1 0 0 18 9 9 0 0 0 0-18z"></path>
+                    </svg>
+                </button>
             </div>
-            <button className="search-button" onClick={handleSearch}>
-                <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false">
-                    <path d="M13 0c7.18 0 13 5.82 13 13 0 2.868-.929 5.519-2.502 7.669l7.916 7.917-2.828 2.828-7.917-7.916A12.942 12.942 0 0 1 13 26C5.82 26 0 20.18 0 13S5.82 0 13 0zm0 4a9 9 0 1 0 0 18 9 9 0 0 0 0-18z"></path>
-                </svg>
-            </button>
 
         </section >
+        
     )
 }
+
+

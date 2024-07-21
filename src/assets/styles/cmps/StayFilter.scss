@@ -1,11 +1,10 @@
 .stay-filter {
     display: flex;
     align-items: center;
-    background-color: $clr5; 
-    border: 1px solid $clr6; 
+    background-color: $clr5;
+    border: 1px solid $clr6;
     border-radius: 40px;
     box-shadow: 0 1px 2px rgba($clr3, 0.08), 0 4px 12px rgba($clr3, 0.05);
-    padding: 0 8px;
     height: 66px;
     transition: box-shadow 0.2s ease;
 
@@ -15,7 +14,7 @@
 
     input[type="text"],
     .date-picker-wrapper,
-    .guests-button {
+    .search-container {
         transition: background-color 0.2s ease;
 
         &:hover {
@@ -33,7 +32,7 @@
             border: none;
             padding: 0 16px;
             font-size: 14px;
-            color: $clr3; 
+            color: $clr3;
             width: 100%;
             height: 100%;
             outline: none;
@@ -60,7 +59,7 @@
                 font-size: 14px;
                 font-weight: 600;
                 margin-bottom: 16px;
-                color: $clr3; 
+                color: $clr3;
             }
 
             .region-grid {
@@ -89,14 +88,14 @@
                 }
             }
         }
-    
-        
+
+
     }
 
     .date-picker-container {
         display: flex;
         border-left: 1px solid $clr6;
-        border-right: 1px solid $clr6; 
+        border-right: 1px solid $clr6;
         height: 100%;
         max-width: 350px;
         z-index: 10000;
@@ -119,19 +118,29 @@
                 input {
                     border: none;
                     font-size: 14px;
-                    color: $clr3; 
+                    color: $clr3;
                     outline: none;
                     width: 100%;
                     cursor: pointer;
                     background: transparent;
 
                     &::placeholder {
-                        color: $clr4; 
+                        color: $clr4;
                     }
                 }
             }
         }
     }
+
+    .search-container {
+        display: flex;
+        align-items: center;
+        background-color: #fff;
+        border-radius: 32px;
+        height: 100%;
+        padding: 8px;
+    }
+
 
     .guests-selector {
         position: relative;
@@ -141,9 +150,9 @@
         .guests-button {
             background: none;
             border: none;
-            padding: 7px 16px;
+            padding: 7px 1px;
             font-size: 14px;
-            color: $clr3; 
+            color: $clr3;
             cursor: pointer;
             display: flex;
             flex-direction: column;
@@ -154,18 +163,19 @@
             border-radius: 32px;
 
             &:hover {
-                background-color: $clr6; 
+                background-color: $clr6;
             }
 
             span:first-child {
-                font-size: 10px;
+                font-size: 12px;
                 font-weight: 800;
                 text-transform: uppercase;
                 margin-bottom: 2px;
             }
 
             span:last-child {
-                color: $clr4; 
+                color: $clr4;
+                font-size: 14px;
             }
         }
 
@@ -173,7 +183,7 @@
             position: absolute;
             top: calc(100% + 12px);
             right: 0;
-            background-color: $clr5; 
+            background-color: $clr5;
             border-radius: 32px;
             box-shadow: 0 2px 16px rgba($clr3, 0.12);
             padding: 16px 32px;
@@ -206,7 +216,7 @@
 
                     span {
                         font-size: 14px;
-                        color: $clr4; 
+                        color: $clr4;
                     }
                 }
 
@@ -218,10 +228,10 @@
                         width: 32px;
                         height: 32px;
                         border-radius: 50%;
-                        border: 1px solid $clr7; 
+                        border: 1px solid $clr7;
                         background: none;
                         font-size: 16px;
-                        color: $clr3; 
+                        color: $clr3;
                         cursor: pointer;
                         display: flex;
                         align-items: center;
@@ -229,7 +239,7 @@
                         transition: border-color 0.2s ease, color 0.2s ease;
 
                         &:hover:not(:disabled) {
-                            border-color: $clr3; 
+                            border-color: $clr3;
                         }
 
                         &:disabled {
@@ -241,7 +251,7 @@
                     span {
                         margin: 0 16px;
                         font-size: 16px;
-                        color: $clr3; 
+                        color: $clr3;
                         min-width: 20px;
                         text-align: center;
                     }
@@ -251,7 +261,7 @@
     }
 
     .search-button {
-        background-color: $clr1; 
+        background-color: $clr1;
         border: none;
         border-radius: 50%;
         width: 48px;
@@ -267,9 +277,10 @@
         }
 
         svg {
-            width: 24px;
-            height: 24px;
-            fill: $clr5; 
+
+            width: 14px;
+            height: 14px;
+            fill: $clr5;
         }
     }
 }
