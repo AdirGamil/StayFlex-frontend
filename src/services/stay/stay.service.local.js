@@ -34,8 +34,8 @@ export const stayService = {
 }
 window.cs = stayService
 
-async function query(
-  filterBy = { txt: '', label: '', startDate: '', endDate: '' }
+async function query(filterBy = {
+  txt: '', label: '', startDate: '', endDate: '', minPrice: 10, maxPrice: 570}
 ) {
   var stays = await storageService.query(STORAGE_KEY)
   const { txt, label, startDate, endDate } = filterBy
@@ -66,6 +66,10 @@ async function query(
         (stayStartDate <= filterStartDate && stayEndDate >= filterEndDate)
       )
     })
+
+    if (minPrice !== undefined && maxPrice !== undefined) {
+      stays = stays.filter((stay) => stay.price >= minPrice && stay.price <= maxPrice)
+    }
   }
 
   return stays
@@ -153,21 +157,20 @@ function _createStay() {
     ? cities[country][Math.floor(Math.random() * cities[country].length)]
     : 'Unknown city'
   const price = Math.floor(Math.random() * 1200) + 100
-  const address = `${Math.floor(Math.random() * 100)} ${
-    [
-      'Main',
-      'Broad',
-      'Market',
-      'Elm',
-      'Maple',
-      'Oak',
-      'Pine',
-      'Cedar',
-      'Birch',
-      'Spruce',
-      'Willow',
-    ][Math.floor(Math.random() * 11)]
-  } st`
+  const address = `${Math.floor(Math.random() * 100)} ${[
+    'Main',
+    'Broad',
+    'Market',
+    'Elm',
+    'Maple',
+    'Oak',
+    'Pine',
+    'Cedar',
+    'Birch',
+    'Spruce',
+    'Willow',
+  ][Math.floor(Math.random() * 11)]
+    } st`
   const lat = parseFloat((Math.random() * 180 - 90).toFixed(5))
   const lng = parseFloat((Math.random() * 360 - 180).toFixed(5))
 
