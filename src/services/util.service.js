@@ -136,7 +136,7 @@ export function generateRandomReviews(numReviews) {
     'I did not enjoy my stay here.',
     'The host was very helpful and friendly.',
     'The place was clean and well-maintained.'
-  ];
+  ]
 
   const userNames = ['John Doe', 'Jane Smith', 'Alice Johnson', 'Bob Brown', 'Charlie Davis', 'Dana Evans'];
 
@@ -149,16 +149,18 @@ export function generateRandomReviews(numReviews) {
     const randomImgUrl = `https://randomuser.me/api/portraits/med/${Math.random() < 0.5 ? 'men' : 'women'}/${Math.floor(Math.random() * 100)}.jpg`;
 
     reviews.push({
-      id: makeId(),
-      txt: randomText,
-      rate: randomRate,
       by: {
-        _id: makeId(),
         fullname: randomUser,
-        imgUrl: randomImgUrl
-      }
+        imgUrl: randomImgUrl,
+        _id: makeId(),
+      },
+      id: makeId(),
+      rate: randomRate,
+      txt: randomText,
     });
   }
 
   return reviews;
 }
+
+console.log(generateRandomReviews(5))

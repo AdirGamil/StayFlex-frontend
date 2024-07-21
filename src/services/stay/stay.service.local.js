@@ -10,7 +10,7 @@ import {
   getDateRange,
   loadFromStorage,
   saveToStorage,
-  // generateRandomReviews
+  generateRandomReviews
 } from '../util.service'
 import {
   names,
@@ -132,7 +132,7 @@ function _createStay() {
   const lat = parseFloat((Math.random() * 180 - 90).toFixed(5))
   const lng = parseFloat((Math.random() * 360 - 180).toFixed(5))
 
-  // const reviews = generateRandomReviews(5)
+  const reviews = generateRandomReviews(5)
 
   return {
     _id: makeId(),
@@ -166,19 +166,19 @@ function _createStay() {
       lng,
       continent,
     },
-    // reviews,
-    reviews: [
-      {
-        id: makeId(),
-        txt: 'Very helpful hosts. Cooked traditional...',
-        rate: 4,
-        by: {
-          _id: makeId(),
-          fullname: 'user2',
-          imgUrl: '/img/img2.jpg',
-        },
-      },
-    ],
+    reviews,
+    // reviews: [
+    //   {
+    //     id: makeId(),
+    //     txt: 'Very helpful hosts. Cooked traditional...',
+    //     rate: 4,
+    //     by: {
+    //       _id: makeId(),
+    //       fullname: 'user2',
+    //       imgUrl: '/img/img2.jpg',
+    //     },
+    //   },
+    // ],
     kilometersAway: getRandomKilometersAway(),
     dateRange: getDateRange(),
     likedByUsers: ['mini-user'],
