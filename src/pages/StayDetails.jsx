@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { useParams, useLocation } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { loadStay } from '../store/actions/stay.actions'
 
