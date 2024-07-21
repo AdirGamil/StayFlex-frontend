@@ -3,6 +3,7 @@ import { userService } from '../user'
 
 import {
   makeId,
+  makeLorem,
   getRandomLabels,
   getRandomImgUrls,
   getRandomKilometersAway,
@@ -182,7 +183,7 @@ function _createStay() {
     type,
     imgUrls: getRandomImgUrls(imgUrls),
     price,
-    summary: 'Fantastic duplex apartment...',
+    summary: makeLorem(40),
     capacity: Math.floor(Math.random() * 10) + 1,
     beds: Math.floor(Math.random() * 6) + 1,
     amenities: [
