@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
-import { loadStays } from '../store/actions/stay.actions.js'
+import { addStay, loadStays } from '../store/actions/stay.actions.js'
 
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service'
 import { stayService } from '../services/stay/'
@@ -18,14 +18,27 @@ export function StayIndex() {
     loadStays(filterBy)
   }, [filterBy])
 
-  function onLabelClick (label) {
+  function onLabelClick(label) {
     setFilterBy({ ...filterBy, label })
+  }
+
+  async function onAddStay() {
+    const price = +prompt('price?')
+    const stay = stayService.getEmptyStay({ price })
+    try {
+      const savedStay = await addStay(stay)
+      showSuccessMsg(`Stay added (id: ${savedStay._id})`)
+    } catch (err) {
+      showErrorMsg('Cannot add stay')
+      console.error('Cannot add stay', err)
+    }
   }
 
   return (
     <main className="stay-index">
+      <button onClick={onAddStay}>Add Stay</button>
       <StayFilter filterBy={filterBy} setFilterBy={setFilterBy} />
-      <StayLabels onLabelClick={onLabelClick}/>
+      <StayLabels onLabelClick={onLabelClick} />
       <StayList stays={stays} />
     </main>
   )

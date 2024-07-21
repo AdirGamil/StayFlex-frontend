@@ -1,7 +1,6 @@
 import { storageService } from '../async-storage.service'
 import { userService } from '../user'
 
-
 import {
   makeId,
   getRandomLabels,
@@ -10,7 +9,7 @@ import {
   getDateRange,
   loadFromStorage,
   saveToStorage,
-  generateRandomReviews
+  generateRandomReviews,
 } from '../util.service'
 import {
   names,
@@ -23,7 +22,7 @@ import {
 
 const STORAGE_KEY = 'stayDB'
 var gStays
-_createStays(24)
+_createStays(4)
 
 export const stayService = {
   query,
@@ -78,13 +77,100 @@ async function remove(stayId) {
   // throw new Error('Nope')
   await storageService.remove(STORAGE_KEY, stayId)
 }
-
 async function save(stay) {
-  var savedStay
+  let savedStay
   if (stay._id) {
-    savedStay = await storageService.put(STORAGE_KEY, stay)
+    // Check if the stay exists before trying to update
+    const existingStay = await storageService.get(STORAGE_KEY, stay._id)
+    if (existingStay) {
+      const stayToSave = {
+        _id: stay._id,
+        price: stay.price,
+        summary: stay.summary,
+        capacity: stay.capacity,
+        beds: stay.beds,
+        amenities: stay.amenities,
+        labels: stay.labels,
+        loc: stay.loc,
+        reviews: stay.reviews,
+        kilometersAway: stay.kilometersAway,
+        dateRange: stay.dateRange,
+        likedByUsers: stay.likedByUsers,
+      }
+      savedStay = await storageService.put(STORAGE_KEY, stayToSave)
+    } else {
+      throw new Error(
+        `Update failed, cannot find entity with id: ${stay._id} in: ${STORAGE_KEY}`
+      )
+    }
   } else {
-    savedStay = await storageService.post(STORAGE_KEY, stay)
+    const name = stay.name || names[Math.floor(Math.random() * names.length)]
+    const type = stay.type || types[Math.floor(Math.random() * types.length)]
+    const countryObj = countries[Math.floor(Math.random() * countries.length)]
+    const country = stay.loc?.country || countryObj.name
+    const continent = stay.loc?.continent || countryObj.continent
+    const city =
+      stay.loc?.city ||
+      (cities[country]
+        ? cities[country][Math.floor(Math.random() * cities[country].length)]
+        : 'Unknown city')
+    const price = stay.price || Math.floor(Math.random() * 1200) + 100
+    const address =
+      stay.loc?.address ||
+      `${Math.floor(Math.random() * 100)} ${
+        [
+          'Main',
+          'Broad',
+          'Market',
+          'Elm',
+          'Maple',
+          'Oak',
+          'Pine',
+          'Cedar',
+          'Birch',
+          'Spruce',
+          'Willow',
+        ][Math.floor(Math.random() * 11)]
+      } st`
+    const lat =
+      stay.loc?.lat || parseFloat((Math.random() * 180 - 90).toFixed(5))
+    const lng =
+      stay.loc?.lng || parseFloat((Math.random() * 360 - 180).toFixed(5))
+
+    const stayToSave = {
+      _id: makeId(),
+      name,
+      type,
+      imgUrls: stay.imgUrls || getRandomImgUrls(imgUrls),
+      price,
+      summary: stay.summary || 'Fantastic duplex apartment...',
+      capacity: stay.capacity || Math.floor(Math.random() * 10) + 1,
+      beds: stay.beds || Math.floor(Math.random() * 6) + 1,
+      amenities: stay.amenities || [
+        'TV',
+        'Wifi',
+        'Kitchen',
+        'Smoking allowed',
+        'Pets allowed',
+        'Cooking basics',
+      ],
+      labels: stay.labels || getRandomLabels(labels),
+      loc: {
+        country,
+        countryCode: country.substring(0, 2).toUpperCase(),
+        city,
+        address,
+        lat,
+        lng,
+        continent,
+      },
+      reviews: stay.reviews || generateRandomReviews(5),
+      kilometersAway: stay.kilometersAway || getRandomKilometersAway(),
+      dateRange: stay.dateRange || getDateRange(),
+      likedByUsers: stay.likedByUsers || ['mini-user'],
+      owner: userService.getLoggedinUser(),
+    }
+    savedStay = await storageService.post(STORAGE_KEY, stayToSave)
   }
   return savedStay
 }
@@ -115,7 +201,8 @@ function _createStay() {
     ? cities[country][Math.floor(Math.random() * cities[country].length)]
     : 'Unknown city'
   const price = Math.floor(Math.random() * 1200) + 100
-  const address = `${Math.floor(Math.random() * 100)} ${[
+  const address = `${Math.floor(Math.random() * 100)} ${
+    [
       'Main',
       'Broad',
       'Market',
@@ -128,7 +215,7 @@ function _createStay() {
       'Spruce',
       'Willow',
     ][Math.floor(Math.random() * 11)]
-    } st`
+  } st`
   const lat = parseFloat((Math.random() * 180 - 90).toFixed(5))
   const lng = parseFloat((Math.random() * 360 - 180).toFixed(5))
 
@@ -167,18 +254,6 @@ function _createStay() {
       continent,
     },
     reviews,
-    // reviews: [
-    //   {
-    //     id: makeId(),
-    //     txt: 'Very helpful hosts. Cooked traditional...',
-    //     rate: 4,
-    //     by: {
-    //       _id: makeId(),
-    //       fullname: 'user2',
-    //       imgUrl: '/img/img2.jpg',
-    //     },
-    //   },
-    // ],
     kilometersAway: getRandomKilometersAway(),
     dateRange: getDateRange(),
     likedByUsers: ['mini-user'],
