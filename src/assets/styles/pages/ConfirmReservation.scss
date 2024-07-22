@@ -1,0 +1,5 @@
+.confirm-reservation {
+    display: grid;
+    grid-template-columns: minmax(1px, 6fr) minmax(1px, 5.05fr);
+    gap: rem(75px);
+}
