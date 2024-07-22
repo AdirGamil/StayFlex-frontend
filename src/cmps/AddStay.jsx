@@ -21,7 +21,7 @@ import {
   Select,
   TextField,
 } from '@mui/material'
-import { makeId } from '../services/util.service.js'
+import { getRandomHostImg, getRandomMaleName, makeId } from '../services/util.service.js'
 
 export function AddStay() {
   const [name, setName] = useState('')
@@ -88,8 +88,8 @@ export function AddStay() {
       labels: selectedLabels,
       host: {
         _id: makeId(),
-        fullname: 'Denis Libin',
-        imgUrl: 'https://robohash.org/denis',
+        fullname: getRandomMaleName(),
+        imgUrl: getRandomHostImg(),
       },
       loc: {
         country,
@@ -119,7 +119,7 @@ export function AddStay() {
             label="Name"
             value={name}
             onChange={(e) => setName(e.target.value)}
-            required
+            
             fullWidth
             margin="normal"
           />
@@ -128,7 +128,7 @@ export function AddStay() {
             <Select
               value={type}
               onChange={(e) => setType(e.target.value)}
-              required
+              
             >
               {types.map((type) => (
                 <MenuItem key={type} value={type}>
@@ -142,7 +142,7 @@ export function AddStay() {
             type="number"
             value={price}
             onChange={(e) => setPrice(e.target.value)}
-            required
+            
             fullWidth
             margin="normal"
           />
@@ -151,7 +151,7 @@ export function AddStay() {
             type="number"
             value={capacity}
             onChange={(e) => setCapacity(e.target.value)}
-            required
+            
             fullWidth
             margin="normal"
           />
@@ -174,7 +174,7 @@ export function AddStay() {
             type="number"
             value={beds}
             onChange={(e) => setBeds(e.target.value)}
-            required
+            
             fullWidth
             margin="normal"
           />
@@ -183,7 +183,7 @@ export function AddStay() {
             <Select
               value={country}
               onChange={(e) => setCountry(e.target.value)}
-              required
+              
             >
               {countries.map((country) => (
                 <MenuItem key={country.name} value={country.name}>
@@ -197,7 +197,7 @@ export function AddStay() {
             <Select
               value={city}
               onChange={(e) => setCity(e.target.value)}
-              required
+              
             >
               {cities[country]?.map((city) => (
                 <MenuItem key={city} value={city}>
@@ -210,7 +210,7 @@ export function AddStay() {
             label="Address"
             value={address}
             onChange={(e) => setAddress(e.target.value)}
-            required
+            
             fullWidth
             margin="normal"
           />
@@ -219,7 +219,7 @@ export function AddStay() {
             type="number"
             value={lat}
             onChange={(e) => setLat(e.target.value)}
-            required
+            
             fullWidth
             margin="normal"
             InputProps={{
@@ -231,7 +231,7 @@ export function AddStay() {
             type="number"
             value={lng}
             onChange={(e) => setLng(e.target.value)}
-            required
+            
             fullWidth
             margin="normal"
             InputProps={{
