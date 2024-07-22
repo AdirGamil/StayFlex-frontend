@@ -100,12 +100,11 @@ export function StayReservation({ stay }) {
 
     return (
         <div className="reservation">
-            <div className="reservation-selectors">
                 <div className="reservation-price">
                     <h3>${stay.price.toLocaleString()}&nbsp;</h3>
                     <span>night</span>
                 </div>
-            </div>
+            <div className="reservation-selectors">
 
             <div className="date-picker-container">
                 <div className="check-in">
@@ -170,6 +169,7 @@ export function StayReservation({ stay }) {
                         </div>
                     ))}
                 </div>
+            </div>
             </div>
 
             <button className="reserve-btn" onClick={handleReserve}>Reserve</button>
