@@ -1,25 +1,25 @@
 .app-header {
   background-color: $clr5; // לבן
-  padding-inline: rem(80px);
-  padding-top: rem(20px);
+  padding-inline: 80px;
+  padding-top: 20px;
 
   .nav-container {
     display: grid;
     grid-template-columns: auto 1fr auto;
     align-items: center;
-    gap: rem(32px);
+    gap: 2rem;
 
     .logo {
       display: flex;
       align-items: center;
 
       .app-logo {
-        height: rem(32px);
-        margin-right: rem(8px);
+        height: 32px;
+        margin-right: 0.5rem;
       }
 
       h1 {
-        font-size: rem(24px);
+        font-size: 1.5rem;
         color: $clr1; // אדום
         margin: 0;
       }
@@ -28,42 +28,43 @@
     .links-header {
       display: flex;
       justify-content: center;
-      padding: rem(10px);
-      gap: rem(24px);
+      padding: 10px;
+      gap: 1.5rem;
 
-      a {
-        font-size: rem(16px);
+      .stay-header {
+        font-size: 1rem;
+        color: $clr3; // שחור כהה
+        font-weight: bold;
+        text-decoration: none;
+
+        &:hover {
+          background: none;
+        }
+      }
+
+      .exp-header {
+        font-size: 1rem;
         color: $clr4; // אפור כהה
         text-decoration: none;
 
         &:hover {
           background: $clr6; // אפור בהיר
-          border-radius: rem(10px);
+          border-radius: 10px;
         }
-      }
-    }
-
-    .login-link {
-      font-size: rem(16px);
-      color: $clr4; // אפור כהה
-      text-decoration: none;
-
-      &:hover {
-        color: $clr1; // אדום
       }
     }
 
     .user-actions {
       display: flex;
       align-items: center;
-      gap: rem(8px);
+      gap: 8px;
 
       .add-stay {
         color: $clr3; // שחור כהה
-        font-size: rem(14px);
+        font-size: 14px;
         font-weight: 600;
-        padding: rem(12px);
-        border-radius: rem(22px);
+        padding: 12px;
+        border-radius: 22px;
 
         &:hover {
           background-color: $clr6; // אפור בהיר
@@ -72,109 +73,19 @@
 
       .menu-button {
         border: 1px solid $clr6; // אפור בהיר
-        border-radius: rem(21px);
-        padding: rem(5px) rem(12px) rem(5px) rem(12px);
+        border-radius: 21px;
+        padding: 5px 5px 5px 12px;
         display: flex;
         align-items: center;
-        gap: rem(12px);
 
         .menu-icon {
-          width: rem(16px);
-          height: rem(16px);
+          width: 16px;
+          height: 16px;
         }
 
         .user-icon {
-          width: rem(30px);
-          height: rem(30px);
-          background-color: $clr4; // אפור כהה
-          border-radius: 50%;
-        }
-      }
-    }
-  }
-}
-
-.stay-details-header {
-  border-bottom: 1px solid $clr6; // אפור בהיר
-  padding: 0 rem(200px);
-  height: rem(80px);
-
-  .nav-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 100%;
-
-    .logo {
-      display: flex;
-      align-items: center;
-
-      .app-logo {
-        height: rem(32px);
-      }
-
-      h1 {
-        color: $clr1; // אדום
-        font-size: rem(24px);
-      }
-    }
-
-    .links-header {
-      display: flex;
-      align-items: center;
-      background-color: $clr5; // לבן
-      border: 1px solid $clr6; // אפור בהיר
-      border-radius: rem(40px);
-      padding: rem(8px) rem(16px);
-      box-shadow: 0 rem(1px) rem(2px) rgba(0, 0, 0, 0.08),
-        0 rem(4px) rem(12px) rgba(0, 0, 0, 0.05);
-
-      a {
-        color: $clr3; // שחור כהה
-        font-size: rem(14px);
-        font-weight: 600;
-        padding: 0 rem(16px);
-        border-right: 1px solid $clr6; // אפור בהיר
-
-        &:last-child {
-          border-right: none;
-        }
-      }
-    }
-
-    .user-actions {
-      display: flex;
-      align-items: center;
-      gap: rem(8px);
-
-      .add-stay {
-        color: $clr3; // שחור כהה
-        font-size: rem(14px);
-        font-weight: 600;
-        padding: rem(12px);
-        border-radius: rem(22px);
-
-        &:hover {
-          background-color: $clr6; // אפור בהיר
-        }
-      }
-
-      .menu-button {
-        border: 1px solid $clr6; // אפור בהיר
-        border-radius: rem(21px);
-        padding: rem(5px) rem(12px) rem(5px) rem(12px);
-        display: flex;
-        align-items: center;
-        gap: rem(12px);
-
-        .menu-icon {
-          width: rem(16px);
-          height: rem(16px);
-        }
-
-        .user-icon {
-          width: rem(30px);
-          height: rem(30px);
+          width: 30px;
+          height: 30px;
           background-color: $clr4; // אפור כהה
           border-radius: 50%;
         }
