@@ -24,6 +24,9 @@ export function getRandomElement(arr) {
 }
 
 export function createStayObject(stay) {
+  const reviews = stay.reviews || generateRandomReviews(5);
+  const averageRating = calculateAverageRating(reviews);
+
   return {
     _id: makeId(),
     name: stay.name || getRandomElement(names),
@@ -43,7 +46,7 @@ export function createStayObject(stay) {
     ],
     labels: stay.labels || getRandomLabels(labels),
     loc: stay.loc || getRandomLocation(),
-    reviews: stay.reviews || generateRandomReviews(5),
+    reviews: reviews,
     kilometersAway: stay.kilometersAway || getRandomKilometersAway(),
     dateRange: stay.dateRange || getDateRange(),
     likedByUsers: stay.likedByUsers || ['mini-user'],
@@ -52,7 +55,8 @@ export function createStayObject(stay) {
       _id: makeId(),
       fullname: 'Default Host',
       imgUrl: 'https://robohash.org/default-host',
-    }
+    },
+    averageRating: averageRating,
   };
 }
 

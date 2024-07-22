@@ -14,6 +14,7 @@ import {
   getRandomElement,
   getRandomLocation,
   createStayObject,
+  calculateAverageRating,
 } from '../util.service'
 import {
   names,
@@ -95,24 +96,25 @@ async function remove(stayId) {
   await storageService.remove(STORAGE_KEY, stayId)
 }
 
-
 async function save(stay) {
-  let savedStay;
+  let savedStay
   if (stay._id) {
-    const existingStay = await storageService.get(STORAGE_KEY, stay._id);
+    const existingStay = await storageService.get(STORAGE_KEY, stay._id)
     if (existingStay) {
       savedStay = await storageService.put(STORAGE_KEY, {
         ...existingStay,
         ...stay,
-      });
+      })
     } else {
-      throw new Error(`Update failed, cannot find entity with id: ${stay._id} in: ${STORAGE_KEY}`);
+      throw new Error(
+        `Update failed, cannot find entity with id: ${stay._id} in: ${STORAGE_KEY}`
+      )
     }
   } else {
-    const stayToSave = createStayObject(stay);
-    savedStay = await storageService.post(STORAGE_KEY, stayToSave);
+    const stayToSave = createStayObject(stay)
+    savedStay = await storageService.post(STORAGE_KEY, stayToSave)
   }
-  return savedStay;
+  return savedStay
 }
 
 function _createStays(num = 20) {
@@ -131,7 +133,6 @@ function _saveStaysToStorage() {
 }
 
 function _createStay() {
-  // הכנת נתונים ליצירת stay חדש
   const newStayData = {
     name: getRandomElement(names),
     type: getRandomElement(types),
@@ -158,9 +159,9 @@ function _createStay() {
       _id: makeId(),
       fullname: 'Denis Libin',
       imgUrl: 'https://robohash.org/denis',
-    }
-  };
+    },
+    averageRating: calculateAverageRating(generateRandomReviews(5)),
+  }
 
-  // שימוש בפונקציה createStayObject ליצירת אובייקט stay מלא
-  return createStayObject(newStayData);
+  return createStayObject(newStayData)
 }

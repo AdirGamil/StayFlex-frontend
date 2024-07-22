@@ -62,7 +62,7 @@ export function StayPreview({ stay }) {
               src={starIcon}
               alt="star icon"
             />
-            {stay.reviews[0].rate.toFixed(1)}
+             {stay.averageRating}
           </p>
         </li>
         <li className="stay-preview-distance">
