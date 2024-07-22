@@ -249,7 +249,7 @@ export function generateRandomReviews(numReviews) {
   for (let i = 0; i < numReviews; i++) {
     const randomText =
       reviewTexts[Math.floor(Math.random() * reviewTexts.length)]
-    const randomRate = Math.floor(Math.random() * 5) + 1 // Generates a random rate between 1 and 5
+    const randomRate = getRandomIntInclusive(4,5) // Generates a random rate between 1 and 5
     const randomUser = userNames[Math.floor(Math.random() * userNames.length)]
     const randomImgUrl = `https://randomuser.me/api/portraits/med/${
       Math.random() < 0.5 ? 'men' : 'women'
