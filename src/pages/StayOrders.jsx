@@ -1,4 +1,31 @@
+import React, { useEffect, useState } from 'react'
+import { orderService } from '../services/order'
+
 export function StayOrders() {
+  const [orders, setOrders] = useState([])
+
+  useEffect(() => {
+    loadOrders()
+  }, [])
+
+  async function loadOrders() {
+    const orders = await orderService.query()
+    setOrders(orders)
+  }
+
+  async function handleStatusChange(orderId, status) {
+    const updatedOrder = await orderService.getById(orderId)
+    if (updatedOrder) {
+      updatedOrder.status = status
+      await orderService.save(updatedOrder)
+      setOrders((prevOrders) =>
+        prevOrders.map((order) =>
+          order._id === orderId ? { ...order, status } : order
+        )
+      )
+    }
+  }
+
   return (
     <div className="stay-orders-container">
       <h1>Orders</h1>
@@ -15,82 +42,32 @@ export function StayOrders() {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>12345</td>
-            <td>John Doe</td>
-            <td>2023-07-01</td>
-            <td>2023-07-10</td>
-            <td>$1500</td>
-            <td>pending</td>
-            <td>
-              <button className="btn btn-accept">Accept</button>
-              <button className="btn btn-reject">Reject</button>
-            </td>
-          </tr>
-          <tr>
-            <td>12346</td>
-            <td>Jane Smith</td>
-            <td>2023-08-15</td>
-            <td>2023-08-20</td>
-            <td>$2000</td>
-            <td>confirmed</td>
-            <td>
-              <button className="btn btn-accept">Accept</button>
-              <button className="btn btn-reject">Reject</button>
-            </td>
-          </tr>
-        </tbody>
-        <tbody>
-          <tr>
-            <td>12347</td>
-            <td>Alice Johnson</td>
-            <td>2023-09-01</td>
-            <td>2023-09-10</td>
-            <td>$1800</td>
-            <td>pending</td>
-            <td>
-              <button className="btn btn-accept">Accept</button>
-              <button className="btn btn-reject">Reject</button>
-            </td>
-          </tr>
-          <tr>
-            <td>12348</td>
-            <td>Bob Brown</td>
-            <td>2023-10-15</td>
-            <td>2023-10-20</td>
-            <td>$2200</td>
-            <td>confirmed</td>
-            <td>
-              <button className="btn btn-accept">Accept</button>
-              <button className="btn btn-reject">Reject</button>
-            </td>
-          </tr>
-        </tbody>
-        <tbody>
-          <tr>
-            <td>12349</td>
-            <td>Chris Green</td>
-            <td>2023-11-01</td>
-            <td>2023-11-10</td>
-            <td>$2500</td>
-            <td>pending</td>
-            <td>
-              <button className="btn btn-accept">Accept</button>
-              <button className="btn btn-reject">Reject</button>
-            </td>
-          </tr>
-          <tr>
-            <td>12350</td>
-            <td>Diana White</td>
-            <td>2023-12-15</td>
-            <td>2023-12-20</td>
-            <td>$3000</td>
-            <td>confirmed</td>
-            <td>
-              <button className="btn btn-accept">Accept</button>
-              <button className="btn btn-reject">Reject</button>
-            </td>
-          </tr>
+          {orders.map((order) => (
+            <tr key={order._id}>
+              <td>{order._id}</td>
+              <td>{order.guest.fullname}</td>
+              <td>{order.startDate}</td>
+              <td>{order.endDate}</td>
+              <td>${order.totalPrice}</td>
+              <td>{order.status}</td>
+              <td>
+                <button
+                  className="btn btn-accept"
+                  onClick={() => handleStatusChange(order._id, 'approved')}
+                  disabled={order.status === 'approved'}
+                >
+                  Accept
+                </button>
+                <button
+                  className="btn btn-reject"
+                  onClick={() => handleStatusChange(order._id, 'canceled')}
+                  disabled={order.status === 'canceled'}
+                >
+                  Reject
+                </button>
+              </td>
+            </tr>
+          ))}
         </tbody>
       </table>
     </div>
