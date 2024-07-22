@@ -3,7 +3,7 @@ footer {
   padding: rem(40px);
   color: $clr4;
   font-family: 'AirbnbCereal_W_Bk', sans-serif;
-
+  
   .footer-content {
     display: flex;
     justify-content: space-between;
@@ -16,7 +16,7 @@ footer {
       margin-bottom: rem(20px);
 
       h2 {
-        font-size: rem(16px);
+        font-size: rem(14px);
         margin-bottom: rem(20px);
         color: $clr3;
       }

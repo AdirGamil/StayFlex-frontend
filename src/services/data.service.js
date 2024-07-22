@@ -40,6 +40,16 @@ export const types = [
   'Lodge',
 ]
 
+export const maleFirstNames = [
+  "James", "John", "Robert", "Michael", "William", "David", "Richard", "Joseph", "Thomas", "Charles",
+  "Christopher", "Daniel", "Matthew", "Anthony", "Mark", "Donald", "Steven", "Paul", "Andrew", "Joshua"
+];
+
+export const lastNames = [
+  "Smith", "Johnson", "Williams", "Brown", "Jones", "Garcia", "Miller", "Davis", "Rodriguez", "Martinez",
+  "Hernandez", "Lopez", "Gonzalez", "Wilson", "Anderson", "Thomas", "Taylor", "Moore", "Jackson", "Martin"
+];
+
 export const coordinates = {
   // Portugal
   Lisbon: { lat: 38.7223, lng: -9.1393 },
