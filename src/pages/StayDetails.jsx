@@ -54,7 +54,7 @@ export function StayDetails() {
           <div className="stay-summary">
             <h2>{stay.type} in {stay.loc.city}, {stay.loc.country}</h2>
             <p className="stay-details-list">
-              {pluralize(stay.capacity, 'guest')} · {pluralize(stay.bedrooms, 'bedroom')} · {pluralize(stay.beds, 'bed')} · {pluralize(stay.bathrooms, 'bath')}
+              {pluralize(stay.capacity, 'guest')} · {pluralize(stay.bedrooms, 'bedroom')} · {pluralize(stay.beds, 'bed')} · {pluralize(stay.baths, 'bath')}
             </p>
             <div className="rating-reviews">
               <span className="star-icon"><img src={starIcon} alt="" /></span>

@@ -15,6 +15,7 @@ import {
   getRandomLocation,
   createStayObject,
   calculateAverageRating,
+  getRandomIntInclusive,
 } from '../util.service'
 import {
   names,
@@ -133,35 +134,6 @@ function _saveStaysToStorage() {
 }
 
 function _createStay() {
-  const newStayData = {
-    name: getRandomElement(names),
-    type: getRandomElement(types),
-    loc: getRandomLocation(),
-    imgUrls: getRandomImgUrls(imgUrls),
-    price: Math.floor(Math.random() * 1200) + 100,
-    summary: makeLorem(40),
-    capacity: Math.floor(Math.random() * 10) + 1,
-    beds: Math.floor(Math.random() * 6) + 1,
-    amenities: [
-      'TV',
-      'Wifi',
-      'Kitchen',
-      'Smoking allowed',
-      'Pets allowed',
-      'Cooking basics',
-    ],
-    labels: getRandomLabels(labels),
-    reviews: generateRandomReviews(5),
-    kilometersAway: getRandomKilometersAway(),
-    dateRange: getDateRange(),
-    likedByUsers: ['mini-user'],
-    host: {
-      _id: makeId(),
-      fullname: 'Denis Libin',
-      imgUrl: 'https://robohash.org/denis',
-    },
-    averageRating: calculateAverageRating(generateRandomReviews(5)),
-  }
-
-  return createStayObject(newStayData)
+  const newStayData = {};
+  return createStayObject(newStayData);
 }
