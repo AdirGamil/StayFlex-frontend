@@ -1,7 +1,7 @@
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 import Slider from 'react-slick'
-import HeartWishlistSvg from "../assets/img/HeartWishlistSvg";
+import HeartWishlistSvg from '../assets/img/HeartWishlistSvg'
 import { useState } from 'react'
 
 const starIcon =
@@ -12,11 +12,11 @@ const wishListIcon = ''
 export function StayPreview({ stay }) {
   const [isHovered, setIsHovered] = useState(false)
 
-  const handleMouseEnter = () => {
+  function handleMouseEnter() {
     setIsHovered(true)
   }
 
-  const handleMouseLeave = () => {
+  function handleMouseLeave() {
     setIsHovered(false)
   }
 
@@ -37,9 +37,9 @@ export function StayPreview({ stay }) {
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-         <div className='wish-list-icon'>
-          <HeartWishlistSvg />
-        </div>
+      <div className="wish-list-icon">
+        <HeartWishlistSvg />
+      </div>
       <Slider {...settings}>
         {stay.imgUrls.map((imgUrl, index) => (
           <div className="imgs" key={index}>
@@ -62,7 +62,7 @@ export function StayPreview({ stay }) {
               src={starIcon}
               alt="star icon"
             />
-             {stay.reviews[0].rate.toFixed(1)}
+            {stay.reviews[0].rate.toFixed(1)}
           </p>
         </li>
         <li className="stay-preview-distance">
@@ -70,7 +70,7 @@ export function StayPreview({ stay }) {
         </li>
         <li className="stay-preview-date-range">{stay.dateRange}</li>
         <li className="stay-preview-price">
-        <span>${stay.price.toLocaleString()}</span> night
+          <span>${stay.price.toLocaleString()}</span> night
         </li>
       </ul>
     </article>
