@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import DatePicker from 'react-datepicker'
 import "react-datepicker/dist/react-datepicker.css"
 import { orderService } from '../../services/order/order.service.local.js'
@@ -48,10 +48,14 @@ export function StayReservation({ stay }) {
     const taxes = subtotal * 0.17 // 17% of the subtotal
     const totalPrice = subtotal + taxes
 
-    function handleReserve() {
+    async function handleReserve() {
         const newOrder = {
             _id: makeId(),
-            hostId: stay.host._id,
+            hostId: { 
+                _id: stay.host._id,
+                fullname: stay.host.fullname,
+                imgUrl: stay.host.imgUrl
+            },
             guest: {
                 _id: 'guest1',
                 fullname: 'Guest User'
@@ -72,11 +76,26 @@ export function StayReservation({ stay }) {
             status: 'pending'
         }
 
-        orderService.saveOrder(newOrder).then(() => {
+        try {
+            const existingOrders = await orderService.query()
+            const isConflict = existingOrders.some(order => 
+                order.stay._id === stay._id &&
+                (
+                    (new Date(order.startDate) <= new Date(endDate) && new Date(order.startDate) >= new Date(startDate)) ||
+                    (new Date(order.endDate) >= new Date(startDate) && new Date(order.endDate) <= new Date(endDate))
+                )
+            )
+
+            if (isConflict) {
+                alert('This stay is already reserved for the selected dates.')
+                return
+            }
+
+            await orderService.save(newOrder)
             alert('Reservation placed successfully!')
-        }).catch(err => {
+        } catch (err) {
             console.error('Error placing reservation:', err)
-        })
+        }
     }
 
     return (

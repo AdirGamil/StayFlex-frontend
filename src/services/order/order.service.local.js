@@ -1,37 +1,68 @@
 import { storageService } from '../async-storage.service.js'
 import { makeId } from '../util.service.js'
 
-const ORDER_DB = 'orderDB'
+const STORAGE_KEY = 'orderDB'
 
 export const orderService = {
-    saveOrder,
-    getOrders,
-    remove
+    query,
+    getById,
+    save,
+    remove,
+    addOrderMsg
+}
+window.os = orderService
+
+async function query(filterBy = {}) {
+    var orders = await storageService.query(STORAGE_KEY)
+    // Apply filters if any are specified in filterBy
+    return orders
 }
 
-async function saveOrder(order) {
-    try {
-        let orders = await storageService.query(ORDER_DB)
-        orders.push(order)
-        await storageService.post(ORDER_DB, order)
-        return order
-    } catch (err) {
-        console.error('Error saving order:', err)
-    }
+function getById(orderId) {
+    return storageService.get(STORAGE_KEY, orderId)
 }
 
 async function remove(orderId) {
     try {
-        await storageService.remove(ORDER_DB, orderId)
+        await storageService.remove(STORAGE_KEY, orderId)
     } catch (err) {
         console.log(err)
     }
 }
 
-async function getOrders() {
-    try {
-        return await storageService.query(ORDER_DB)
-    } catch (err) {
-        console.error('Error getting orders:', err)
+async function save(order) {
+    var savedOrder
+    if (order._id) {
+        const existingOrder = await storageService.get(STORAGE_KEY, order._id).catch(() => null)
+        if (existingOrder) {
+            savedOrder = await storageService.put(STORAGE_KEY, order)
+        } else {
+            order._id = makeId()
+            savedOrder = await storageService.post(STORAGE_KEY, order)
+        }
+    } else {
+        order._id = makeId()
+        order.guest = {
+            _id: 'guest1', // Placeholder guest ID
+            fullname: 'Guest User' // Placeholder guest name
+        }
+        order.status = 'pending'
+        order.msgs = []
+        savedOrder = await storageService.post(STORAGE_KEY, order)
     }
+    return savedOrder
+}
+
+async function addOrderMsg(orderId, txt) {
+    const order = await getById(orderId)
+
+    const msg = {
+        id: makeId(),
+        by: { _id: 'guest1', fullname: 'Guest User' }, // Placeholder guest info
+        txt
+    }
+    order.msgs.push(msg)
+    await storageService.put(STORAGE_KEY, order)
+
+    return msg
 }
