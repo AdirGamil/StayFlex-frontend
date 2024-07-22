@@ -17,32 +17,32 @@ export function StayLabels({ onLabelClick }) {
       onLabelClick(label)
     }
   }
+  const scrollRight = () => {
+    if (containerRef.current) {
+      containerRef.current.scrollBy({ left: 200, behavior: 'smooth' })
+    }
+  }
 
   return (
     <section className="stay-labels">
       <div className="filters-container" ref={containerRef}>
-        {Object.entries(labelImageMap).slice(0, showAll ? undefined : 12).map(([label, iconPath]) => (
+        {Object.entries(labelImageMap).slice(0, showAll ? undefined : 18).map(([label, iconPath]) => (
           <div
             key={label}
             onClick={() => handleLabelClick(label)}
             className={`label-item ${label === selectedLabel ? 'selected' : ''}`}
           >
-            <img
-              src={iconPath}
-              alt={label}
-              style={{ opacity: label === selectedLabel ? 1 : 0.6 }}
-            />
-            <span style={{
-              color: label === selectedLabel ? '#000' : '#717171',
-              fontWeight: label === selectedLabel ? 'bold' : 'normal',
-            }}>
-              {label}
-            </span>
-            {label === selectedLabel && <div className="selected-indicator" />}
+            <img src={iconPath} alt={label} />
+            <span>{label}</span>
+            <div className="selected-indicator" />
           </div>
         ))}
         {/* <button className="dir" onClick={scrollRight}> */}
-        <button className="dir">
+        {/* <button
+        onClick={() => setIsModalOpen(true)}
+        className="filter-button"
+      > */}
+        <button className="dir" onClick={scrollRight}>
           <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false">
             <path d="m4.29 1.71a1 1 0 1 1 1.42-1.41l8 8a1 1 0 0 1 0 1.41l-8 8a1 1 0 1 1 -1.42-1.41l7.29-7.29z"></path>
           </svg>

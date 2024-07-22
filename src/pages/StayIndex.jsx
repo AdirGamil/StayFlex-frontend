@@ -9,11 +9,11 @@ import { userService } from '../services/user'
 import { StayList } from '../cmps/StayList.jsx'
 import { StayFilter } from '../cmps/StayFilter.jsx'
 import { StayLabels } from '../cmps/StayLabels.jsx'
-import { MiniSearch } from '../cmps/MiniSearch.jsx'
+import { MiniFilter } from '../cmps/MiniFilter.jsx'
 
 export function StayIndex() {
   const [filterBy, setFilterBy] = useState(stayService.getDefaultFilter())
-  const [showMiniSearch, setShowMiniSearch] = useState(false)
+  const [showMiniFilter, setShowMiniFilter] = useState(false)
   const stays = useSelector((storeState) => storeState.stayModule.stays)
 
   useEffect(() => {
@@ -24,9 +24,10 @@ export function StayIndex() {
     const handleScroll = () => {
       const scrollPosition = window.scrollY
       if (scrollPosition > 100) { // Adjust this value as needed
-        setShowMiniSearch(true)
+        setShowMiniFilter(true)
+
       } else {
-        setShowMiniSearch(false)
+        setShowMiniFilter(false)
       }
     }
 
@@ -41,10 +42,25 @@ export function StayIndex() {
     setFilterBy({ ...filterBy, label })
   }
 
+  // return (
+  //   <main className="stay-index">
+  //     {showMiniSearch && <MiniSearch />}
+  //     <StayFilter filterBy={filterBy} setFilterBy={setFilterBy} />
+  //     <StayLabels onLabelClick={onLabelClick} />
+  //     <StayList stays={stays} />
+  //   </main>
+  // )
   return (
     <main className="stay-index">
-      {showMiniSearch && <MiniSearch />}
-      <StayFilter filterBy={filterBy} setFilterBy={setFilterBy} />
+      <div className="filter-container">
+        {showMiniFilter ? (
+          <MiniFilter filterBy={filterBy} setFilterBy={setFilterBy} />
+        ) : (
+          <>
+            <StayFilter filterBy={filterBy} setFilterBy={setFilterBy} />
+          </>
+        )}
+      </div>
       <StayLabels onLabelClick={onLabelClick} />
       <StayList stays={stays} />
     </main>

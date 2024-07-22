@@ -10,7 +10,7 @@ function FilterModal({ isOpen, onClose, onFilterChange }) {
     const priceDistribution = [0.5, 2, 5, 4, 5, 12, 7, 8, 9, 10, 11, 10, 11, 20, 9, 8, 7, 16, 5, 18, 3, 2, 1]
 
     const handlePriceRangeChange = (newRange) => {
-        setPriceRange(newRange)
+        setPriceRange(newRange);
         if (typeof onFilterChange === 'function') {
           onFilterChange({ minPrice: newRange[0], maxPrice: newRange[1] })
         }
