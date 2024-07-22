@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import DatePicker from "react-datepicker"
 import "react-datepicker/dist/react-datepicker.css"
+import { regions } from '../services/util.service'
 
 export function StayFilter({ filterBy, setFilterBy }) {
     const [filterToEdit, setFilterToEdit] = useState(structuredClone(filterBy))
@@ -14,15 +15,6 @@ export function StayFilter({ filterBy, setFilterBy }) {
     })
     const [isGuestsDropdownOpen, setIsGuestsDropdownOpen] = useState(false)
     const [isRegionDropdownOpen, setIsRegionDropdownOpen] = useState(false)
-
-    const regions = [
-        { name: "I'm flexible", map: "https://res.cloudinary.com/doahdwb2g/image/upload/v1721464561/f9ec8a23-ed44-420b-83e5-10ff1f071a13_cecbse.jpg" },
-        { name: "Europe", map: "https://via.placeholder.com/100x100?text=Europe" },
-        { name: "Italy", map: "https://res.cloudinary.com/doahdwb2g/image/upload/v1721464643/ea5598d7-2b07-4ed7-84da-d1eabd9f2714_sxwylp.webp" },
-        { name: "United States", map: "https://res.cloudinary.com/doahdwb2g/image/upload/v1721464653/4e762891-75a3-4fe1-b73a-cd7e673ba915_h8770b.webp" },
-        { name: "Greece", map: "https://res.cloudinary.com/doahdwb2g/image/upload/v1721464646/09be1400-6a42-4a4f-90f6-897e50110031_o1bcd5.webp" },
-        { name: "South America", map: "https://res.cloudinary.com/doahdwb2g/image/upload/v1721464650/06a30699-aead-492e-ad08-33ec0b383399_gqqwty.webp" },
-    ]
 
     useEffect(() => {
         setFilterBy(filterToEdit)

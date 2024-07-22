@@ -6,8 +6,8 @@ import MenuButton from './MenuButton'
 import { AddStay } from './AddStay'
 
 export function AppHeader() {
-  const location = useLocation();
-  const params = useParams();
+  const location = useLocation()
+  const params = useParams()
   
   const isStayDetailsRoute = location.pathname.startsWith('/stay/')
   
