@@ -2,20 +2,10 @@ import { storageService } from '../async-storage.service'
 import { userService } from '../user'
 
 import {
-  makeId,
-  makeLorem,
-  getRandomLabels,
-  getRandomImgUrls,
-  getRandomKilometersAway,
-  getDateRange,
   loadFromStorage,
   saveToStorage,
-  generateRandomReviews,
-  getRandomElement,
-  getRandomLocation,
   createStayObject,
-  calculateAverageRating,
-  getRandomIntInclusive,
+
 } from '../util.service'
 import {
   names,
