@@ -7,7 +7,7 @@ import { loadStay } from '../store/actions/stay.actions'
 import { StayGallery } from '../cmps/StayDetailsCmps/StayGallery'
 import { StayReservation } from '../cmps/StayDetailsCmps/StayReservation'
 
-import { pluralize, calculateAverageRating } from '../services/util.service'
+import { pluralize, calculateAverageRating, getRandomIntInclusive } from '../services/util.service'
 
 const starIcon = 'https://res.cloudinary.com/dhweqnxgd/image/upload/v1721294785/star_us9ozb.png'
 const heartIcon = 'https://res.cloudinary.com/dyhmjlymk/image/upload/v1721471955/svg_xml_base64_PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiIgYXJpYS1oaWRkZW49InRydWUiIHJvbGU9InByZXNlbnRhdGlvbiIgZm9jdXNhYmxlPSJmYWxzZSIgc3R5bGU9ImRpc3BsYXk6IGJsb2NrOyBmaWxsOiBub25_rtstwz.svg'
@@ -75,7 +75,7 @@ export function StayDetails() {
               )}
               <div className="host-info">
                 <div>Hosted by {typeof stay.host === 'object' ? stay.host.fullname : stay.host}</div>
-                <div className="host-duration">7 years hosting</div>
+                <div className="host-duration">{getRandomIntInclusive(2, 6)} years hosting</div>
               </div>
             </div>
           </div>

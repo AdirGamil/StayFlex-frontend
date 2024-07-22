@@ -29,6 +29,8 @@ export function AddStay() {
   const [price, setPrice] = useState('')
   const [capacity, setCapacity] = useState('')
   const [beds, setBeds] = useState('')
+  const [bedrooms , setBedrooms] = useState('')
+  const [baths, setBaths] = useState('')
   const [country, setCountry] = useState(countries[0].name)
   const [city, setCity] = useState(cities[countries[0].name][0])
   const [address, setAddress] = useState('')
@@ -80,6 +82,8 @@ export function AddStay() {
       price: +price,
       capacity: +capacity,
       beds: +beds,
+      bedrooms: +bedrooms,
+      baths: +baths,
       amenities: selectedAmenities,
       labels: selectedLabels,
       host: {
@@ -148,6 +152,20 @@ export function AddStay() {
             value={capacity}
             onChange={(e) => setCapacity(e.target.value)}
             required
+            fullWidth
+            margin="normal"
+          />
+          <TextField
+            label="Bedrooms"
+            value={bedrooms}
+            onChange={(e) => setBedrooms(e.target.value)}
+            fullWidth
+            margin="normal"
+          />
+          <TextField
+            label="Baths"
+            value={baths}
+            onChange={(e) => setBaths(e.target.value)}
             fullWidth
             margin="normal"
           />

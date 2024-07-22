@@ -5,6 +5,8 @@ import {
   cities,
   labels,
   imgUrls,
+  maleFirstNames,
+  lastNames,
 } from './data.service'
 
 export function makeId(length = 6) {
@@ -21,6 +23,17 @@ export function makeId(length = 6) {
 
 export function getRandomElement(arr) {
   return arr[Math.floor(Math.random() * arr.length)]
+}
+
+export function getRandomHostImg() {
+  const randomId = Math.floor(Math.random() * 100);
+  return `https://randomuser.me/api/portraits/men/${randomId}.jpg`;
+}
+
+export function getRandomMaleName() {
+  const firstName = maleFirstNames[Math.floor(Math.random() * maleFirstNames.length)];
+  const lastName = lastNames[Math.floor(Math.random() * lastNames.length)];
+  return `${firstName} ${lastName}`;
 }
 
 export function createStayObject(stay) {
@@ -55,8 +68,8 @@ export function createStayObject(stay) {
     owner: userService.getLoggedinUser(),
     host: stay.host || {
       _id: makeId(),
-      fullname: 'Default Host',
-      imgUrl: 'https://robohash.org/default-host',
+      fullname: getRandomMaleName(),
+      imgUrl: getRandomHostImg(),
     },
     averageRating: averageRating,
   }
