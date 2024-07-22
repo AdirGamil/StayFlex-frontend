@@ -21,6 +21,7 @@ import {
   Select,
   TextField,
 } from '@mui/material'
+import { makeId } from '../services/util.service.js'
 
 export function AddStay() {
   const [name, setName] = useState('')
@@ -81,6 +82,11 @@ export function AddStay() {
       beds: +beds,
       amenities: selectedAmenities,
       labels: selectedLabels,
+      host: {
+        _id: makeId(),
+        fullname: 'Denis Libin',
+        imgUrl: 'https://robohash.org/denis',
+      },
       loc: {
         country,
         city,

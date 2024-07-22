@@ -23,6 +23,40 @@ export function getRandomElement(arr) {
   return arr[Math.floor(Math.random() * arr.length)]
 }
 
+export function createStayObject(stay) {
+  return {
+    _id: makeId(),
+    name: stay.name || getRandomElement(names),
+    type: stay.type || getRandomElement(types),
+    imgUrls: stay.imgUrls || getRandomImgUrls(imgUrls),
+    price: stay.price || Math.floor(Math.random() * 1200) + 100,
+    summary: stay.summary || 'Fantastic duplex apartment...',
+    capacity: stay.capacity || Math.floor(Math.random() * 10) + 1,
+    beds: stay.beds || Math.floor(Math.random() * 6) + 1,
+    amenities: stay.amenities || [
+      'TV',
+      'Wifi',
+      'Kitchen',
+      'Smoking allowed',
+      'Pets allowed',
+      'Cooking basics',
+    ],
+    labels: stay.labels || getRandomLabels(labels),
+    loc: stay.loc || getRandomLocation(),
+    reviews: stay.reviews || generateRandomReviews(5),
+    kilometersAway: stay.kilometersAway || getRandomKilometersAway(),
+    dateRange: stay.dateRange || getDateRange(),
+    likedByUsers: stay.likedByUsers || ['mini-user'],
+    owner: userService.getLoggedinUser(),
+    host: stay.host || {
+      _id: makeId(),
+      fullname: 'Default Host',
+      imgUrl: 'https://robohash.org/default-host',
+    }
+  };
+}
+
+
 export function getRandomAddress() {
   const streetNames = [
     'Main',
