@@ -18,7 +18,7 @@ import {
   cities,
   labels,
   imgUrls,
-} from '../dataService'
+} from '../data.service'
 
 import { stayService as local } from './stay.service.local'
 import { stayService as remote } from './stay.service.remote'

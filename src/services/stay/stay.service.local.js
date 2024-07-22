@@ -21,7 +21,7 @@ import {
   cities,
   labels,
   imgUrls,
-} from '../dataService'
+} from '../data.service'
 
 const STORAGE_KEY = 'stayDB'
 var gStays

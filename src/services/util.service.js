@@ -1,4 +1,11 @@
-import { names, types, countries, cities, labels, imgUrls } from './dataService'
+import {
+  names,
+  types,
+  countries,
+  cities,
+  labels,
+  imgUrls,
+} from './data.service'
 
 export function makeId(length = 6) {
   var txt = ''
@@ -225,6 +232,8 @@ export function pluralize(count, singular, plural = null) {
 }
 
 export function getRandomDateWithinRange(start, end) {
-  const date = new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()))
+  const date = new Date(
+    start.getTime() + Math.random() * (end.getTime() - start.getTime())
+  )
   return date
 }
