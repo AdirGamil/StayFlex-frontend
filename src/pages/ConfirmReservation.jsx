@@ -9,7 +9,7 @@ export function ConfirmReservation() {
     async function handleConfirm() {
         try {
             const existingOrders = await orderService.query()
-            const isConflict = existingOrders.some(order => 
+            const isConflict = existingOrders.some(order =>
                 order.stay._id === orderDetails.stay._id &&
                 (
                     (new Date(order.startDate) <= new Date(orderDetails.endDate) && new Date(order.startDate) >= new Date(orderDetails.startDate)) ||
@@ -33,13 +33,13 @@ export function ConfirmReservation() {
     if (!orderDetails) return <div>No reservation details found.</div>
 
     return (
-        <div>
+        <main className="confirm-reservation">
             <h2>Confirm Reservation</h2>
             <p>Stay: {orderDetails.stay.name}</p>
             <p>Total Price: ${orderDetails.totalPrice.toLocaleString()}</p>
             <p>Check-in: {orderDetails.startDate}</p>
             <p>Check-out: {orderDetails.endDate}</p>
             <button onClick={handleConfirm}>Confirm Reservation</button>
-        </div>
+        </main>
     )
 }
