@@ -1,0 +1,61 @@
+.stay-orders-container {
+  padding: 20px;
+
+  h1 {
+    font-size: 2rem;
+    color: $clr3; // שחור כהה
+    margin-bottom: 20px;
+  }
+
+  .stay-orders-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+
+    th,
+    td {
+      border: 1px solid $clr6; // אפור בהיר
+      padding: 10px;
+      text-align: left;
+    }
+
+    th {
+      background-color: $clr4; // אפור כהה
+      color: $clr5; // לבן
+    }
+
+    td {
+      background-color: $clr5; // לבן
+    }
+
+    tbody {
+      tr {
+        &:nth-child(even) {
+          background-color: $clr6; // אפור בהיר
+        }
+      }
+    }
+
+    .btn {
+      margin-right: 5px;
+      padding: 10px 15px;
+      border-radius: 5px;
+      background-color: transparent;
+      cursor: pointer;
+
+      &-accept {
+        border: 1px solid $clr8; // ירוק
+        color: $clr8;
+      }
+
+      &-reject {
+        border: 1px solid $clr1; // אדום
+        color: $clr1;
+      }
+
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+  }
+}
