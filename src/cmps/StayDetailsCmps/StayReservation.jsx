@@ -108,6 +108,7 @@ export function StayReservation({ stay }) {
 
             <div className="date-picker-container">
                 <div className="check-in">
+                {/* <label>Check-in</label> */}
                     <DatePicker
                         selected={startDate}
                         onChange={handleStartDateChange}
@@ -120,6 +121,7 @@ export function StayReservation({ stay }) {
                     />
                 </div>
                 <div className="check-out">
+                {/* <label>Checkout</label> */}
                     <DatePicker
                         selected={endDate}
                         onChange={handleEndDateChange}
@@ -136,6 +138,7 @@ export function StayReservation({ stay }) {
 
             <div className="guests-selector">
                 <button className="guests-button" onClick={toggleGuestsDropdown}>
+            {/* <label>Guests</label>  */}
                     <span>
                         {guests.adults + guests.children} guests
                         {guests.infants > 0 && `, ${guests.infants} infant${guests.infants > 1 ? 's' : ''}`}

@@ -7,7 +7,7 @@ import { loadStay } from '../store/actions/stay.actions'
 import { StayGallery } from '../cmps/StayDetailsCmps/StayGallery'
 import { StayReservation } from '../cmps/StayDetailsCmps/StayReservation'
 
-import { pluralize } from '../services/util.service'
+import { pluralize, calculateAverageRating } from '../services/util.service'
 
 const starIcon = 'https://res.cloudinary.com/dhweqnxgd/image/upload/v1721294785/star_us9ozb.png'
 const heartIcon = 'https://res.cloudinary.com/dyhmjlymk/image/upload/v1721471955/svg_xml_base64_PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiIgYXJpYS1oaWRkZW49InRydWUiIHJvbGU9InByZXNlbnRhdGlvbiIgZm9jdXNhYmxlPSJmYWxzZSIgc3R5bGU9ImRpc3BsYXk6IGJsb2NrOyBmaWxsOiBub25_rtstwz.svg'
@@ -23,9 +23,9 @@ export function StayDetails() {
 
   if (!stay) return <div>Loading...</div>
 
-  const averageRating = stay.reviews && stay.reviews.length > 0
-    ? (stay.reviews.reduce((sum, review) => sum + review.rate, 0) / stay.reviews.length).toFixed(1)
-    : 'New'
+  const averageRating = calculateAverageRating(stay.reviews)
+  //   ? (stay.reviews.reduce((sum, review) => sum + review.rate, 0) / stay.reviews.length).toFixed(1)
+  //   : 'New'
 
   const reviewCount = stay.reviews ? stay.reviews.length : 0
 
@@ -84,7 +84,15 @@ export function StayDetails() {
             <p>{stay.summary}</p>
           </div>
 
-          <div className="stam-div">TEST DIV FOR SCROLLING</div>
+          {/* <div className="stam-div">TEST DIV FOR SCROLLING</div> */}
+        <div className="stay-amenities">
+            <h3>What this place offers</h3>
+            <ul>
+              {stay.amenities.map((amenity, index) => (
+                <li key={index}>{amenity}</li>
+              ))}
+            </ul>
+          </div>
         </div>
 
         <StayReservation stay={stay} />

@@ -178,6 +178,14 @@ export function getDateRange() {
   return `${startFormatted} - ${endFormatted}`
 }
 
+export function calculateAverageRating(reviews) {
+  if (!reviews || reviews.length === 0) {
+    return 'New'
+  }
+  const sum = reviews.reduce((acc, review) => acc + review.rate, 0)
+  return (sum / reviews.length).toFixed(1)
+}
+
 export function generateRandomReviews(numReviews) {
   const reviewTexts = [
     'Very helpful hosts. Cooked traditional...',
