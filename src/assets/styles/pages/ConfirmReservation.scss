@@ -4,4 +4,23 @@
     column-gap: rem(75px);
     margin: rem(56px) 0 rem(32px);
     padding: 0 rem(200px);
+
+    header {
+        display: flex;
+        margin: 0 0 rem(12px);
+    }
+
+    .reservation-details {
+        padding: rem(32px) 0;
+    }
+
+    .dates {
+        display: flex;
+        justify-content: space-between;
+        
+        div {
+            display: flex;
+            flex-direction: column;
+        }
+    }
 }

@@ -1,5 +1,6 @@
 import { useLocation, useNavigate } from 'react-router-dom'
 import { orderService } from '../services/order/order.service.local.js'
+import { formatDateRange } from '../services/util.service.js'
 
 export function ConfirmReservation() {
     const location = useLocation()
@@ -32,14 +33,25 @@ export function ConfirmReservation() {
 
     if (!orderDetails) return <div>No reservation details found.</div>
 
+    const formattedDateRange = formatDateRange(orderDetails.startDate, orderDetails.endDate)
+
     return (
         <main className="confirm-reservation">
-            <h2>Confirm Reservation</h2>
-            <p>Stay: {orderDetails.stay.name}</p>
-            <p>Total Price: ${orderDetails.totalPrice.toLocaleString()}</p>
-            <p>Check-in: {orderDetails.startDate}</p>
-            <p>Check-out: {orderDetails.endDate}</p>
-            <button onClick={handleConfirm}>Confirm Reservation</button>
+            <header>
+                <h1>Request to book</h1>
+            </header>
+            <article className="reservation-details">
+                <h2>Your trip</h2>
+                <div className="dates">
+                    <div>
+                        <h4>Dates</h4>
+                        <p>{formattedDateRange}</p> {/* Use the formatted date range here */}
+                    </div>
+                </div>
+                <p>Stay: {orderDetails.stay.name}</p>
+                <p>Total Price: ${orderDetails.totalPrice.toLocaleString()}</p>
+                <button onClick={handleConfirm}>Confirm Reservation</button>
+            </article>
         </main>
     )
 }

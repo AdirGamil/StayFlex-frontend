@@ -9,7 +9,8 @@ export function AppHeader() {
   const params = useParams()
 
   const isStayDetailsRoute = location.pathname.startsWith('/stay/')
-
+  // const isConfirmReservationRoute = location.pathname.startsWith('/confirm-reservation/')
+  
   return (
     <header
       className={`app-header ${

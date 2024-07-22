@@ -271,7 +271,12 @@ export function generateRandomReviews(numReviews) {
   return reviews
 }
 
-console.log(generateRandomReviews(5))
+export function formatDateRange(startDate, endDate) {
+  const options = { day: '2-digit', month: 'short' }
+  const start = new Intl.DateTimeFormat('en-US', options).format(new Date(startDate))
+  const end = new Intl.DateTimeFormat('en-US', options).format(new Date(endDate))
+  return `${start} - ${end}`
+}
 
 export function pluralize(count, singular, plural = null) {
   if (count === 1) return `${count} ${singular}`
