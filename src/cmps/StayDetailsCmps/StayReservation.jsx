@@ -6,12 +6,12 @@ import { makeId, getRandomDateWithinRange } from '../../services/util.service'
 
 export function StayReservation({ stay }) {
 
-    const initialStartDate = getRandomDateWithinRange(new Date(), new Date(Date.now() + 30 * 24 * 60 * 60 * 1000)) // Change 1
-    const initialEndDate = new Date(initialStartDate) // Change 2
-    initialEndDate.setDate(initialStartDate.getDate() + Math.floor(Math.random() * 5) + 1) // Change 3
+    const initialStartDate = getRandomDateWithinRange(new Date(), new Date(Date.now() + 30 * 24 * 60 * 60 * 1000))
+    const initialEndDate = new Date(initialStartDate) 
+    initialEndDate.setDate(initialStartDate.getDate() + Math.floor(Math.random() * 5) + 1) 
 
-    const [startDate, setStartDate] = useState(initialStartDate) // Change 4
-    const [endDate, setEndDate] = useState(initialEndDate) // Change 5
+    const [startDate, setStartDate] = useState(initialStartDate) 
+    const [endDate, setEndDate] = useState(initialEndDate) 
     const [guests, setGuests] = useState({
         adults: 1,
         children: 0,
@@ -171,5 +171,5 @@ export function StayReservation({ stay }) {
                 </div>
             </div>
         </div>
-    );
+    )
 }
