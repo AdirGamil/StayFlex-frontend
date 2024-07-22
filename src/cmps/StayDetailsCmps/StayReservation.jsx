@@ -1,17 +1,18 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import DatePicker from 'react-datepicker'
 import "react-datepicker/dist/react-datepicker.css"
-import { orderService } from '../../services/order/order.service.local.js'
 import { makeId, getRandomDateWithinRange } from '../../services/util.service'
 
 export function StayReservation({ stay }) {
+    const navigate = useNavigate()
 
     const initialStartDate = getRandomDateWithinRange(new Date(), new Date(Date.now() + 30 * 24 * 60 * 60 * 1000))
-    const initialEndDate = new Date(initialStartDate) 
-    initialEndDate.setDate(initialStartDate.getDate() + Math.floor(Math.random() * 5) + 1) 
+    const initialEndDate = new Date(initialStartDate)
+    initialEndDate.setDate(initialStartDate.getDate() + Math.floor(Math.random() * 5) + 1)
 
-    const [startDate, setStartDate] = useState(initialStartDate) 
-    const [endDate, setEndDate] = useState(initialEndDate) 
+    const [startDate, setStartDate] = useState(initialStartDate)
+    const [endDate, setEndDate] = useState(initialEndDate)
     const [guests, setGuests] = useState({
         adults: 1,
         children: 0,
@@ -48,8 +49,8 @@ export function StayReservation({ stay }) {
     const taxes = subtotal * 0.17 // 17% of the subtotal
     const totalPrice = subtotal + taxes
 
-    async function handleReserve() {
-        const newOrder = {
+    function handleReserve() {
+        const orderDetails = {
             _id: makeId(),
             hostId: { 
                 _id: stay.host._id,
@@ -76,103 +77,83 @@ export function StayReservation({ stay }) {
             status: 'pending'
         }
 
-        try {
-            const existingOrders = await orderService.query()
-            const isConflict = existingOrders.some(order => 
-                order.stay._id === stay._id &&
-                (
-                    (new Date(order.startDate) <= new Date(endDate) && new Date(order.startDate) >= new Date(startDate)) ||
-                    (new Date(order.endDate) >= new Date(startDate) && new Date(order.endDate) <= new Date(endDate))
-                )
-            )
-
-            if (isConflict) {
-                alert('This stay is already reserved for the selected dates.')
-                return
-            }
-
-            await orderService.save(newOrder)
-            alert('Reservation placed successfully!')
-        } catch (err) {
-            console.error('Error placing reservation:', err)
-        }
+        navigate('/confirm-reservation', { state: { orderDetails } })
     }
 
     return (
         <div className="reservation">
-                <div className="reservation-price">
-                    <h3>${stay.price.toLocaleString()}&nbsp;</h3>
-                    <span>night</span>
-                </div>
+            <div className="reservation-price">
+                <h3>${stay.price.toLocaleString()}&nbsp;</h3>
+                <span>night</span>
+            </div>
             <div className="reservation-selectors">
+                <div className="date-picker-container">
+                    <div className="check-in">
+                        {/* <label>Check-in</label> */}
+                        <DatePicker
+                            selected={startDate}
+                            onChange={handleStartDateChange}
+                            selectsStart
+                            startDate={startDate}
+                            endDate={endDate}
+                            monthsShown={2}
+                            dateFormat="dd/MM/yyyy"
+                            placeholderText="CHECK-IN"
+                        />
+                    </div>
+                    <div className="check-out">
+                        {/* <label>Checkout</label> */}
+                        <DatePicker
+                            selected={endDate}
+                            onChange={handleEndDateChange}
+                            selectsEnd
+                            startDate={startDate}
+                            endDate={endDate}
+                            minDate={startDate}
+                            monthsShown={2}
+                            dateFormat="dd/MM/yyyy"
+                            placeholderText="CHECKOUT"
+                        />
+                    </div>
+                </div>
 
-            <div className="date-picker-container">
-                <div className="check-in">
-                {/* <label>Check-in</label> */}
-                    <DatePicker
-                        selected={startDate}
-                        onChange={handleStartDateChange}
-                        selectsStart
-                        startDate={startDate}
-                        endDate={endDate}
-                        monthsShown={2}
-                        dateFormat="dd/MM/yyyy"
-                        placeholderText="CHECK-IN"
-                    />
-                </div>
-                <div className="check-out">
-                {/* <label>Checkout</label> */}
-                    <DatePicker
-                        selected={endDate}
-                        onChange={handleEndDateChange}
-                        selectsEnd
-                        startDate={startDate}
-                        endDate={endDate}
-                        minDate={startDate}
-                        monthsShown={2}
-                        dateFormat="dd/MM/yyyy"
-                        placeholderText="CHECKOUT"
-                    />
-                </div>
-            </div>
-
-            <div className="guests-selector">
-                <button className="guests-button" onClick={toggleGuestsDropdown}>
-            {/* <label>Guests</label>  */}
-                    <span>
-                        {guests.adults + guests.children} guests
-                        {guests.infants > 0 && `, ${guests.infants} infant${guests.infants > 1 ? 's' : ''}`}
-                        {guests.pets > 0 && `, ${guests.pets} pet${guests.pets > 1 ? 's' : ''}`}
-                    </span>
-                </button>
-                <div className={`guests-dropdown ${isGuestsDropdownOpen ? 'active' : ''}`}>
-                    {[
-                        { type: 'adults', label: 'Adults', subLabel: 'Ages 13 or above' },
-                        { type: 'children', label: 'Children', subLabel: 'Ages 2-12' },
-                        { type: 'infants', label: 'Infants', subLabel: 'Under 2' },
-                        { type: 'pets', label: 'Pets', subLabel: 'Bringing a service animal?' },
-                    ].map(({ type, label, subLabel }) => (
-                        <div key={type}>
-                            <div className="guest-type">
-                                <label>{label}</label>
-                                <span>{subLabel}</span>
+                <div className="guests-selector">
+                    <button className="guests-button" onClick={toggleGuestsDropdown}>
+                        {/* <label>Guests</label> */}
+                        <span>
+                            {guests.adults + guests.children} guests
+                            {guests.infants > 0 && `, ${guests.infants} infant${guests.infants > 1 ? 's' : ''}`}
+                            {guests.pets > 0 && `, ${guests.pets} pet${guests.pets > 1 ? 's' : ''}`}
+                        </span>
+                    </button>
+                    <div className={`guests-dropdown ${isGuestsDropdownOpen ? 'active' : ''}`}>
+                        {[
+                            { type: 'adults', label: 'Adults', subLabel: 'Ages 13 or above' },
+                            { type: 'children', label: 'Children', subLabel: 'Ages 2-12' },
+                            { type: 'infants', label: 'Infants', subLabel: 'Under 2' },
+                            { type: 'pets', label: 'Pets', subLabel: 'Bringing a service animal?' },
+                        ].map(({ type, label, subLabel }) => (
+                            <div key={type}>
+                                <div className="guest-type">
+                                    <label>{label}</label>
+                                    <span>{subLabel}</span>
+                                </div>
+                                <div className="guest-counter">
+                                    <button
+                                        onClick={() => handleGuestsChange(type, guests[type] - 1)}
+                                        disabled={guests[type] === 0 || (type === 'adults' && guests[type] === 1)}
+                                    >
+                                        -
+                                    </button>
+                                    <span>{guests[type]}</span>
+                                    <button onClick={() => handleGuestsChange(type, guests[type] + 1)}>
+                                        +
+                                    </button>
+                                </div>
                             </div>
-                            <div className="guest-counter">
-                                <button
-                                    onClick={() => handleGuestsChange(type, guests[type] - 1)}
-                                    disabled={guests[type] === 0 || (type === 'adults' && guests[type] === 1)}
-                                >
-                                    -
-                                </button>
-                                <span>{guests[type]}</span>
-                                <button onClick={() => handleGuestsChange(type, guests[type] + 1)}>
-                                    +
-                                </button>
-                            </div>
-                        </div>
-                    ))}
+                        ))}
+                    </div>
                 </div>
-            </div>
             </div>
 
             <button className="reserve-btn" onClick={handleReserve}>Reserve</button>
