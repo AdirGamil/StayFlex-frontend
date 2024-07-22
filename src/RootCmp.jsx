@@ -9,6 +9,7 @@ import { store } from '../src/store/store.js'
 // import { Messages } from './pages/Messages.jsx'
 // import { Notifications } from './pages/Notifications.jsx'
 import { StayDetails } from './pages/StayDetails.jsx'
+import { ConfirmReservation } from './pages/ConfirmReservation.jsx' 
 import { StayIndex } from './pages/StayIndex.jsx'
 
 import { UserDetails } from './pages/UserDetails.jsx'
@@ -33,6 +34,7 @@ export function RootCmp() {
             <Routes>
               <Route path="" element={<StayIndex />} />
               <Route path="stay/:stayId" element={<StayDetails />} />
+              <Route path="/confirm-reservation" element={<ConfirmReservation />} />
               <Route path="/addstay" element={<AddStay />} />
               <Route path="/orders" element={<StayOrders />} />
               <Route path="user/:id" element={<UserDetails />} />
