@@ -4,7 +4,13 @@ import { makeId } from '../util.service'
 import { orderService as local } from './order.service.local'
 import { orderService as remote } from './order.service.remote.js'
 
-function getEmptyOrder({ stay, guest = { _id: 'guest1', fullname: 'Guest User' }, totalPrice = 0, startDate = '', endDate = '' } = {}) {
+function getEmptyOrder({
+  stay,
+  guest = { _id: 'guest1', fullname: 'Guest User' },
+  totalPrice = 0,
+  startDate = '',
+  endDate = '',
+} = {}) {
   return {
     _id: makeId(),
     hostId: stay.host._id,
