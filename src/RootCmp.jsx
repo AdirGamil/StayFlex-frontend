@@ -16,7 +16,7 @@ import { UserDetails } from './pages/UserDetails.jsx'
 import { AppHeader } from './cmps/AppHeader.jsx'
 import { StickyHeader } from './cmps/StickyHeader.jsx'
 import { AppFooter } from './cmps/AppFooter.jsx'
-import { UserMsg } from './cmps/UserMsg.jsx'
+// import { UserMsg } from './cmps/UserMsg.jsx'
 import { AddStay } from './cmps/AddStay.jsx'
 import { StayOrders } from './pages/StayOrders.jsx'
 
@@ -31,9 +31,6 @@ export function RootCmp() {
     <Provider store={store}>
       <Router>
         <div className="main-container">
-          {/* החלף את זה */}
-          {/* <StickyHeader /> */}
-          {/* עם זה */}
           <HeaderWrapper />
           {/* <UserMsg /> */}
 
