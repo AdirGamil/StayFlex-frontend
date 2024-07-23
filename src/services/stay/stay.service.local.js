@@ -5,7 +5,6 @@ import {
   loadFromStorage,
   saveToStorage,
   createStayObject,
-
 } from '../util.service'
 import {
   names,
@@ -18,7 +17,7 @@ import {
 
 const STORAGE_KEY = 'stayDB'
 var gStays
-_createStays(18)
+_createStays(36)
 
 export const stayService = {
   query,
@@ -124,6 +123,6 @@ function _saveStaysToStorage() {
 }
 
 function _createStay() {
-  const newStayData = {};
-  return createStayObject(newStayData);
+  const newStayData = {}
+  return createStayObject(newStayData)
 }
