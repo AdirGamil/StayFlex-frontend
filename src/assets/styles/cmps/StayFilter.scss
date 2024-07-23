@@ -288,15 +288,15 @@
     }
 
     svg {
-      width: 14px;
-      height: 14px;
+      width: rem(14px);
+      height: rem(14px);
       fill: $clr5;
     }
   }
 
   .divider {
-    height: 32px;
-    width: 1px;
+    height: rem(32px);
+    width: rem(1px);
     background-color: $clr6;
     margin: 0 1px;
   }

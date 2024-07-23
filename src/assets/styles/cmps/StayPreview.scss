@@ -14,7 +14,7 @@
   }
 
   .stay-preview-star-icon {
-    max-width: 14px;
+    max-width: rem(14px);
   }
 
   .stay-preview-info {
@@ -48,7 +48,7 @@
     .stay-preview-rating {
       display: flex;
       align-items: center;
-      gap: 5px;
+      gap: rem(5px);
     }
 
     .stay-preview-distance,
@@ -133,8 +133,8 @@
     }
 
     svg {
-      width: 24px;
-      height: 24px;
+      width: rem(24px);
+      height: rem(24px);
       fill: #ff385c;
     }
   }

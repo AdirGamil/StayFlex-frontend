@@ -18,22 +18,22 @@
       display: block;
       fill: none;
       height: rem(16px);
-      width: 16px;
+      width: rem(16px);
       stroke: currentcolor;
       stroke-width: 3;
       overflow: visible;
     }
 
     .divider {
-      width: 1px;
-      height: 24px;
+      width: rem(1px);
+      height: rem(24px);
       //   background-color: #dddddd;
       margin: 0 6px;
     }
 
     .profile-icon-wrapper {
-      width: 30px;
-      height: 30px;
+      width: rem(30px);
+      height: rem(30px);
       border-radius: 50%;
       overflow: hidden;
     }

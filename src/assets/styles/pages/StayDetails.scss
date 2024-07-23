@@ -48,7 +48,7 @@
       .stay-summary {
         display: flex;
         flex-direction: column;
-        gap: 5px;
+        gap: rem(5px);
         margin-bottom: 30px;
 
         h2,
@@ -62,8 +62,8 @@
         gap: rem(4px);
 
         .star-icon {
-          width: 15px;
-          height: 15px;
+          width: rem(15px);
+          height: rem(15px);
         }
 
         .reviews-link {

@@ -82,13 +82,13 @@
         align-items: center;
 
         .menu-icon {
-          width: 16px;
+          width: rem(16px);
           height: rem(16px);
         }
 
         .user-icon {
-          width: 30px;
-          height: 30px;
+          width: rem(30px);
+          height: rem(30px);
           background-color: $clr4; // אפור כהה
           border-radius: 50%;
         }
@@ -143,7 +143,7 @@
           gap: rem(12px);
 
           .menu-icon {
-            width: 16px;
+            width: rem(16px);
             height: rem(16px);
           }
 
