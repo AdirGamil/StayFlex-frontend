@@ -175,7 +175,7 @@
       }
 
       span:first-child {
-        font-size: 12px;
+        font-size: rem(12px);
         font-weight: 600;
         margin-bottom: rem(8px);
         margin-left: rem(20px);
@@ -183,7 +183,7 @@
 
       span:last-child {
         color: $clr4;
-        font-size: 14px;
+        font-size: rem(14px);
         margin-left: rem(20px);
       }
     }
@@ -309,7 +309,7 @@
     width: rem(285px);
 
     span {
-      font-size: 12px;
+      font-size: rem(12px);
       font-weight: 600;
       color: $clr3;
     }

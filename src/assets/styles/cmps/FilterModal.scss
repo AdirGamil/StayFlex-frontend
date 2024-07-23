@@ -20,13 +20,13 @@
 
   h2 {
     margin-bottom: 24px;
-    font-size: 22px;
+    font-size: rem(22px);
   }
 }
 
 .price-range-filter {
   h3 {
-    font-size: 18px;
+    font-size: rem(18px);
     margin-bottom: 8px;
   }
 
@@ -80,7 +80,7 @@
 
     label {
       display: block;
-      font-size: 12px;
+      font-size: rem(12px);
       color: #717171;
       margin-bottom: 4px;
     }
@@ -103,7 +103,7 @@
   border: none;
   border-radius: 8px;
   cursor: pointer;
-  font-size: 16px;
+  font-size: rem(16px);
 
   &:hover {
     background-color: darken($clr3, 10%);
