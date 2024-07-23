@@ -14,7 +14,7 @@ export function StickyHeader() {
     }
 
     return (
-        <div className="sticky-header-wrapper">
+        <div className="sticky-header-wrapper ">
         <AppHeader />
         <div className="stay-filter-container">
             <StayFilter filterBy={filterBy} setFilterBy={setFilterBy} />

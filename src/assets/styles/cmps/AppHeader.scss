@@ -1,8 +1,7 @@
 .app-header {
   background-color: $clr5; // לבן
-  padding-inline: 80px;
+  padding-inline: 40px;
   padding-top: 20px;
-  // position: fixed;
 
   .nav-container {
     display: grid;
@@ -29,7 +28,7 @@
     .links-header {
       display: flex;
       justify-content: center;
-      padding: 10px;
+      // padding: 10px;
       gap: 1.5rem;
 
       a {

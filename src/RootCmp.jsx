@@ -1,7 +1,5 @@
-// import './assets/styles/main.scss'
-
 import React from 'react'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import { store } from '../src/store/store.js'
 
@@ -18,18 +16,22 @@ import { UserDetails } from './pages/UserDetails.jsx'
 import { AppHeader } from './cmps/AppHeader.jsx'
 import { StickyHeader } from './cmps/StickyHeader.jsx'
 import { AppFooter } from './cmps/AppFooter.jsx'
-import { UserMsg } from './cmps/UserMsg.jsx'
+// import { UserMsg } from './cmps/UserMsg.jsx'
 import { AddStay } from './cmps/AddStay.jsx'
 import { StayOrders } from './pages/StayOrders.jsx'
 
+function HeaderWrapper() {
+  const location = useLocation()
+
+  return location.pathname === '/' ? <StickyHeader /> : <AppHeader />
+}
+
 export function RootCmp() {
-  // return <h2>hello from root</h2>
   return (
     <Provider store={store}>
       <Router>
         <div className="main-container">
-          {/* <AppHeader /> */}
-          <StickyHeader />
+          <HeaderWrapper />
           {/* <UserMsg /> */}
 
           <main>
