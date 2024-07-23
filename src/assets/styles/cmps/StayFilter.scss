@@ -5,9 +5,9 @@
     border: 1px solid $clr6;
     border-radius: 40px;
     box-shadow: 0 3px 12px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.08);
-    height: em(66px);
-    margin-bottom: em(20px);
-    margin-top: em(30px);
+    height: rem(66px);
+    margin-bottom: rem(20px);
+    margin-top: rem(30px);
     max-width: rem(850px);
 
     &:hover {
@@ -21,7 +21,7 @@
 
         &:hover {
             background-color: $clr6;
-            border-radius: em(32px);
+            border-radius: rem(32px);
         }
     }
 
@@ -51,22 +51,22 @@
             width: 200%;
 
             background: $clr5;
-            border-radius: em(32px);
+            border-radius: rem(32px);
             box-shadow: 0 2px 16px rgba($clr3, 0.12);
-            padding: em(16px);
+            padding: rem(16px);
             z-index: 1000;
 
             h3 {
-                font-size: em(14px);
+                font-size: rem(14px);
                 font-weight: 600;
-                margin-bottom: em(16px);
+                margin-bottom: rem(16px);
                 color: $clr3;
             }
 
             .region-grid {
                 display: grid;
-                grid-template-columns: repeat(3, 1fr);
-                gap: em(16px);
+                grid-tremplate-columns: repeat(3, 1fr);
+                gap: rem(16px);
             }
 
             .region-item {
@@ -79,12 +79,12 @@
                 img {
                     width: 100%;
                     height: auto;
-                    border-radius: em(8px);
-                    margin-bottom: em(8px);
+                    border-radius: rem(8px);
+                    margin-bottom: rem(8px);
                 }
 
                 span {
-                    font-size: em(14px);
+                    font-size: rem(14px);
                     color: $clr3;
                 }
             }
@@ -95,44 +95,44 @@
     .date-picker-container {
         display: flex;
         height: 100%;
-        max-width: em(350px);
+        max-width: rem(350px);
         z-index: 10000;
 
         .divider {
-            height: em(32px);
-            width: em(1px);
+            height: rem(32px);
+            width: rem(1px);
             background-color: $clr6;
-            margin: 0 em(1px);
+            margin: 0 rem(1px);
             align-self: center;
         }
 
         .date-picker-wrapper {
             // padding: 0 16px;
-            padding: em(10px)em(24px);
+            padding: rem(10px)rem(24px);
             display: flex;
             flex-direction: column;
             justify-content: center;
             cursor: pointer;
             flex: 1;
-            width: rem(140px);
+            width: rrem(140px);
 
             label {
-                font-size: em(12px);
+                font-size: rem(12px);
                 font-weight: 600;
                 color: $clr3;
-                margin-bottom: em(4px);
+                margin-bottom: rem(4px);
             }
 
             .react-datepicker-wrapper {
                 input {
                     border: none;
-                    font-size: em(16px);
+                    font-size: rem(16px);
                     color: $clr3;
                     outline: none;
                     width: 100%;
                     cursor: pointer;
                     background: transparent;
-                    padding: em(4px)0;
+                    padding: rem(4px)0;
 
                     &::placeholder {
                         color: $clr4;
@@ -146,9 +146,9 @@
         display: flex;
         align-items: center;
         background-color: #fff;
-        border-radius: em(32px);
+        border-radius: rem(32px);
         height: 100%;
-        padding: em(8px);
+        padding: rem(8px);
         width: rem(280px);
         justify-content: space-between;
     }
@@ -161,8 +161,8 @@
         .guests-button {
             background: none;
             border: none;
-            padding: em(7px) em(1px);
-            font-size: em(14px);
+            padding: rem(7px) rem(1px);
+            font-size: rem(14px);
             color: $clr3;
             cursor: pointer;
             display: flex;
@@ -170,8 +170,8 @@
             align-items: flex-start;
             justify-content: center;
             height: 100%;
-            min-width: em(200px);
-            border-radius: em(32px);
+            min-width: rem(200px);
+            border-radius: rem(32px);
 
             &:hover {
                 background-color: $clr6;
@@ -180,14 +180,14 @@
             span:first-child {
                 font-size:12px;
                 font-weight: 600;
-                margin-bottom: em(8px);
-                margin-left: em(20px);
+                margin-bottom: rem(8px);
+                margin-left: rem(20px);
             }
 
             span:last-child {
                 color: $clr4;
                 font-size:14px;
-                margin-left: em(20px);
+                margin-left: rem(20px);
             }
         }
 
@@ -196,11 +196,11 @@
             top: calc(100% + 12px);
             right: 0;
             background-color: $clr5;
-            border-radius: em(32px);
+            border-radius: rem(32px);
 
             box-shadow: 0 2px 16px rgba($clr3, 0.12);
-            padding: em(16px) em(32px);
-            min-width: em(280px);
+            padding: rem(16px) rem(32px);
+            min-width: rem(280px);
             display: none;
 
             &.active {
@@ -211,7 +211,7 @@
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
-                padding: em(24px) 0;
+                padding: rem(24px) 0;
                 border-bottom: 1px solid $clr6;
 
                 &:last-child {
@@ -220,15 +220,15 @@
 
                 .guest-type {
                     label {
-                        font-size: em(16px);
+                        font-size: rem(16px);
                         font-weight: 600;
                         color: $clr3;
-                        margin-bottom: em(4px);
+                        margin-bottom: rem(4px);
                         display: block;
                     }
 
                     span {
-                        font-size: em(14px);
+                        font-size: rem(14px);
                         color: $clr4;
                     }
                 }
@@ -238,13 +238,13 @@
                     align-items: center;
 
                     button {
-                        width: em(32px);
-                        height: em(32px);
+                        width: rem(32px);
+                        height: rem(32px);
 
                         border-radius: 50%;
                         border: 1px solid $clr7;
                         background: none;
-                        font-size: em(16px);
+                        font-size: rem(16px);
                         color: $clr3;
                         cursor: pointer;
                         display: flex;
@@ -262,12 +262,12 @@
                     }
 
                     span {
-                        margin: 0 em(16px);
-                        font-size: em(16px);
+                        margin: 0 rem(16px);
+                        font-size: rem(16px);
                         color: $clr3;
-                        min-width: em(20px);
+                        min-width: rem(20px);
                         text-align: center;
-                        padding-left: em(10px);
+                        padding-left: rem(10px);
                     }
                 }
             }

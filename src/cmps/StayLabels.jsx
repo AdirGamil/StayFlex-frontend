@@ -26,7 +26,7 @@ export function StayLabels({ onLabelClick }) {
   return (
     <section className="stay-labels">
       <div className="filters-container" ref={containerRef}>
-        {Object.entries(labelImageMap).slice(0, showAll ? undefined : 18).map(([label, iconPath]) => (
+        {Object.entries(labelImageMap).slice(0, showAll ? undefined : 15).map(([label, iconPath]) => (
           <div
             key={label}
             onClick={() => handleLabelClick(label)}
