@@ -9,13 +9,14 @@ import { store } from '../src/store/store.js'
 // import { Messages } from './pages/Messages.jsx'
 // import { Notifications } from './pages/Notifications.jsx'
 import { StayDetails } from './pages/StayDetails.jsx'
-import { ConfirmReservation } from './pages/ConfirmReservation.jsx' 
+import { ConfirmReservation } from './pages/ConfirmReservation.jsx'
 import { StayIndex } from './pages/StayIndex.jsx'
 
 import { UserDetails } from './pages/UserDetails.jsx'
 // import { Wishlist } from './pages/Wishlist.jsx'
 
 import { AppHeader } from './cmps/AppHeader.jsx'
+import { StickyHeader } from './cmps/StickyHeader.jsx'
 import { AppFooter } from './cmps/AppFooter.jsx'
 import { UserMsg } from './cmps/UserMsg.jsx'
 import { AddStay } from './cmps/AddStay.jsx'
@@ -27,7 +28,8 @@ export function RootCmp() {
     <Provider store={store}>
       <Router>
         <div className="main-container">
-          <AppHeader />
+          {/* <AppHeader /> */}
+          <StickyHeader />
           {/* <UserMsg /> */}
 
           <main>

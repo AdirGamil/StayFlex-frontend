@@ -57,11 +57,11 @@ export function StayIndex() {
           <MiniFilter filterBy={filterBy} setFilterBy={setFilterBy} />
         ) : (
           <>
-            <StayFilter filterBy={filterBy} setFilterBy={setFilterBy} />
+            {/* <StayFilter filterBy={filterBy} setFilterBy={setFilterBy} /> */}
           </>
         )}
       </div>
-      <StayLabels onLabelClick={onLabelClick} />
+      {/* <StayLabels onLabelClick={onLabelClick} /> */}
       <StayList stays={stays} />
     </main>
   )
