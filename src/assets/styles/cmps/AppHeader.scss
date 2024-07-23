@@ -1,7 +1,7 @@
 .app-header {
   background-color: $clr5; // לבן
-  padding-inline: 40px;
-  padding-top: 20px;
+  padding-inline: rem(40px);
+  padding-top: rem(20px);
 
   .nav-container {
     display: grid;
@@ -14,7 +14,7 @@
       align-items: center;
 
       .app-logo {
-        height: 32px;
+        height: rem(32px);
         margin-right: 0.5rem;
       }
 
@@ -28,10 +28,11 @@
     .links-header {
       display: flex;
       justify-content: center;
-      // padding: 10px;
+      align-content: center;
       gap: 1.5rem;
 
       a {
+        padding: rem(10px);
         font-size: 1rem;
         text-decoration: none;
 
@@ -45,11 +46,12 @@
         }
 
         &.exp-header {
-          color: $clr4; // אפור כהה
+          color: $clr7; // שחור כהה
+          font-size: rem(16px);
+          border-radius: rem(22px);
 
           &:hover {
-            background: $clr6; // אפור בהיר
-            border-radius: 10px;
+            background-color: lighten($clr6, 8%);
           }
         }
       }
