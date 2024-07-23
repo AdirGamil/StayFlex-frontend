@@ -26,18 +26,19 @@ export function getRandomElement(arr) {
 }
 
 export function getRandomHostImg() {
-  const randomId = Math.floor(Math.random() * 100);
-  return `https://randomuser.me/api/portraits/men/${randomId}.jpg`;
+  const randomId = Math.floor(Math.random() * 100)
+  return `https://randomuser.me/api/portraits/men/${randomId}.jpg`
 }
 
 export function getRandomMaleName() {
-  const firstName = maleFirstNames[Math.floor(Math.random() * maleFirstNames.length)];
-  const lastName = lastNames[Math.floor(Math.random() * lastNames.length)];
-  return `${firstName} ${lastName}`;
+  const firstName =
+    maleFirstNames[Math.floor(Math.random() * maleFirstNames.length)]
+  const lastName = lastNames[Math.floor(Math.random() * lastNames.length)]
+  return `${firstName} ${lastName}`
 }
 
 export function createStayObject(stay) {
-  const reviews = stay.reviews || generateRandomReviews(5)
+  const reviews = stay.reviews || generateRandomReviews(7)
   const averageRating = calculateAverageRating(reviews)
 
   return {
@@ -48,7 +49,7 @@ export function createStayObject(stay) {
     price: stay.price || getRandomIntInclusive(150, 1350),
     summary: stay.summary || makeLorem(50),
     capacity: stay.capacity || getRandomIntInclusive(1, 6),
-    bedrooms : stay.bedrooms  || getRandomIntInclusive(1, 6),
+    bedrooms: stay.bedrooms || getRandomIntInclusive(1, 6),
     baths: stay.baths || getRandomIntInclusive(1, 6),
     beds: stay.beds || getRandomIntInclusive(1, 6),
     amenities: stay.amenities || [
@@ -237,7 +238,7 @@ export function calculateAverageRating(reviews) {
     return 'New'
   }
   const sum = reviews.reduce((acc, review) => acc + review.rate, 0)
-  return (sum / reviews.length).toFixed(1)
+  return (sum / reviews.length).toFixed(2)
 }
 
 export function generateRandomReviews(numReviews) {
@@ -288,8 +289,12 @@ export function generateRandomReviews(numReviews) {
 
 export function formatDateRange(startDate, endDate) {
   const options = { day: '2-digit', month: 'short' }
-  const start = new Intl.DateTimeFormat('en-US', options).format(new Date(startDate))
-  const end = new Intl.DateTimeFormat('en-US', options).format(new Date(endDate))
+  const start = new Intl.DateTimeFormat('en-US', options).format(
+    new Date(startDate)
+  )
+  const end = new Intl.DateTimeFormat('en-US', options).format(
+    new Date(endDate)
+  )
   return `${start} - ${end}`
 }
 
