@@ -27,7 +27,6 @@
 //             padding: rem(5px);
 //             position: relative;
 
-
 //             img {
 //                 width: rem(24px);
 //                 height: rem(24px);
@@ -155,127 +154,127 @@
 // }
 
 .stay-labels {
-    position: relative;
-    width: 100%;
-    border-top: 1px solid $clr6;
+  position: relative;
+  width: 100%;
+  border-top: 1px solid $clr6;
 
-    .filters-container {
-        display: flex;
-        align-items: center;
-        overflow-x: auto;
-        white-space: nowrap;
-        padding: rem(10px) rem(40px);
-        gap: rem(24px);
-        scrollbar-width: none;
-        -ms-overflow-style: none;
+  .filters-container {
+    display: flex;
+    align-items: center;
+    overflow-x: auto;
+    white-space: nowrap;
+    padding: rem(10px) rem(40px);
+    gap: rem(24px);
+    scrollbar-width: none;
+    -ms-overflow-style: none;
 
-        &::-webkit-scrollbar {
-            display: none;
-        }
-
-        .label-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            cursor: pointer;
-            min-width: rem(48px);
-            padding: rem(5px);
-            position: relative;
-
-            img {
-                width: rem(24px);
-                height: rem(24px);
-                margin-bottom: rem(8px);
-                transition: opacity 0.3s ease;
-            }
-
-            span {
-                font-size: rem(12px);
-                color: $clr7;
-                transition: color 0.3s ease, font-weight 0.3s ease;
-            }
-
-            .selected-indicator {
-                position: absolute;
-                bottom: 0;
-                left: 0;
-                width: 100%;
-                height: rem(2px);
-                background-color: black;
-                transform: scaleX(0);
-                transition: transform 0.3s ease;
-                display: none;
-            }
-
-            &.selected {
-                img {
-                    opacity: 1;
-                }
-
-                span {
-                    color: black;
-                }
-
-                .selected-indicator {
-                    transform: scaleX(1);
-                    display: block;
-                }
-            }
-        }
-
-        .dir {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            background-color: $clr5;
-            width: rem(32px);
-            height: rem(32px);
-            border: none;
-            overflow: visible;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.18);
-            cursor: pointer;
-            transition: box-shadow 0.2s ease, transform 0.1s ease;
-
-            &:active {
-                transform: scale(0.96);
-            }
-
-            svg {
-                width: 12px;
-                height: 12px;
-                fill: $clr3;
-            }
-        }
+    &::-webkit-scrollbar {
+      display: none;
     }
 
-    .filter-button {
-        padding: rem(8px) rem(16px) rem(8px) rem(20px);
-        margin-right: rem(80px);
-        height: rem(50px);
-        border: 1px solid #DDDDDD;
-        border-radius: rem(12px);
-        background: white;
-        display: flex;
-        align-items: center;
-        cursor: pointer;
+    .label-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      cursor: pointer;
+      min-width: rem(48px);
+      padding: rem(5px);
+      position: relative;
 
-        svg {
-            display: block;
-            fill: none;
-            height: rem(16px);
-            width: rem(16px);
-            stroke: currentcolor;
-            stroke-width: 3;
-            overflow: visible;
+      img {
+        width: rem(24px);
+        height: rem(24px);
+        margin-bottom: rem(8px);
+        transition: opacity 0.3s ease;
+      }
+
+      span {
+        font-size: rem(12px);
+        color: $clr7;
+        transition: color 0.3s ease, font-weight 0.3s ease;
+      }
+
+      .selected-indicator {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: rem(2px);
+        background-color: black;
+        transform: scaleX(0);
+        transition: transform 0.3s ease;
+        display: none;
+      }
+
+      &.selected {
+        img {
+          opacity: 1;
         }
 
         span {
-            margin-left: rem(8px);
+          color: black;
         }
 
-        &:hover {
-            border-color: $clr3;
+        .selected-indicator {
+          transform: scaleX(1);
+          display: block;
         }
+      }
     }
+
+    .dir {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background-color: $clr5;
+      width: rem(32px);
+      height: rem(32px);
+      border: none;
+      overflow: visible;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.18);
+      cursor: pointer;
+      transition: box-shadow 0.2s ease, transform 0.1s ease;
+
+      &:active {
+        transform: scale(0.96);
+      }
+
+      svg {
+        width: 12px;
+        height: 12px;
+        fill: $clr3;
+      }
+    }
+  }
+
+  .filter-button {
+    padding: rem(8px) rem(16px) rem(8px) rem(20px);
+    margin-right: rem(80px);
+    height: rem(50px);
+    border: 1px solid #dddddd;
+    border-radius: rem(12px);
+    background: white;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+
+    svg {
+      display: block;
+      fill: none;
+      height: rem(16px);
+      width: rem(16px);
+      stroke: currentcolor;
+      stroke-width: 3;
+      overflow: visible;
+    }
+
+    span {
+      margin-left: rem(8px);
+    }
+
+    &:hover {
+      border-color: $clr3;
+    }
+  }
 }

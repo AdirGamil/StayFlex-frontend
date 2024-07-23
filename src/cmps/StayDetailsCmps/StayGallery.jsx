@@ -1,6 +1,7 @@
-import React from 'react';
+import React from 'react'
 
-const gridIcon = 'https://res.cloudinary.com/dyhmjlymk/image/upload/v1721471957/svg_xml_base64_PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNiAxNiIgYXJpYS1oaWRkZW49InRydWUiIHJvbGU9InByZXNlbnRhdGlvbiIgZm9jdXNhYmxlPSJmYWxzZSIgc3R5bGU9ImRpc3BsYXk6IGJsb2NrOyBoZWlnaHQ6IDE_hkxaep.svg'
+const gridIcon =
+  'https://res.cloudinary.com/dyhmjlymk/image/upload/v1721471957/svg_xml_base64_PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNiAxNiIgYXJpYS1oaWRkZW49InRydWUiIHJvbGU9InByZXNlbnRhdGlvbiIgZm9jdXNhYmxlPSJmYWxzZSIgc3R5bGU9ImRpc3BsYXk6IGJsb2NrOyBoZWlnaHQ6IDE_hkxaep.svg'
 
 export function StayGallery({ imgUrls }) {
   return (
@@ -17,5 +18,5 @@ export function StayGallery({ imgUrls }) {
         </button>
       </div>
     </div>
-  );
+  )
 }

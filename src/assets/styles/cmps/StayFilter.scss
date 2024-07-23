@@ -1,330 +1,326 @@
 .stay-filter {
-    display: flex;
-    align-items: center;
-    background-color: $clr5;
-    border: 1px solid $clr6;
-    border-radius: 40px;
-    box-shadow: 0 3px 12px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.08);
-    height: rem(66px);
-    margin-bottom: rem(20px);
-    margin-top: rem(30px);
-    max-width: rem(850px);
+  display: flex;
+  align-items: center;
+  background-color: $clr5;
+  border: 1px solid $clr6;
+  border-radius: 40px;
+  box-shadow: 0 3px 12px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.08);
+  height: rem(66px);
+  margin-bottom: rem(20px);
+  margin-top: rem(30px);
+  max-width: rem(850px);
 
+  &:hover {
+    box-shadow: 0 2px 4px rgba($clr3, 0.18);
+  }
+
+  .region-search,
+  .date-picker-wrapper,
+  .search-container {
     &:hover {
-        box-shadow: 0 2px 4px rgba($clr3, 0.18);
+      background-color: $clr6;
+      border-radius: rem(32px);
+    }
+  }
+
+  .region-search {
+    position: relative;
+    flex-grow: 1;
+    height: 100%;
+
+    input[type='text'] {
+      border: none;
+      font-size: rem(14px);
+      color: $clr3;
+      width: 100%;
+      height: 100%;
+      outline: none;
+      border-radius: 32px;
+
+      &::placeholder {
+        color: $clr7;
+      }
     }
 
+    .region-dropdown {
+      position: absolute;
+      top: calc(100% + 12px);
+      left: 0;
+      width: 200%;
 
-    .region-search,
-    .date-picker-wrapper,
-    .search-container {
+      background: $clr5;
+      border-radius: rem(32px);
+      box-shadow: 0 2px 16px rgba($clr3, 0.12);
+      padding: rem(16px);
+      z-index: 1000;
 
-        &:hover {
-            background-color: $clr6;
-            border-radius: rem(32px);
-        }
-    }
+      h3 {
+        font-size: rem(14px);
+        font-weight: 600;
+        margin-bottom: rem(16px);
+        color: $clr3;
+      }
 
-    .region-search {
-        position: relative;
-        flex-grow: 1;
-        height: 100%;
+      .region-grid {
+        display: grid;
+        grid-tremplate-columns: repeat(3, 1fr);
+        gap: rem(16px);
+      }
 
-        input[type="text"] {
-            border: none;
-            font-size: 14px;
-            color: $clr3;
-            width: 100%;
-            height: 100%;
-            outline: none;
-            border-radius: 32px;
-
-            &::placeholder {
-                color: $clr7;
-            }
-        }
-
-        .region-dropdown {
-            position: absolute;
-            top: calc(100% + 12px);
-            left: 0;
-            width: 200%;
-
-            background: $clr5;
-            border-radius: rem(32px);
-            box-shadow: 0 2px 16px rgba($clr3, 0.12);
-            padding: rem(16px);
-            z-index: 1000;
-
-            h3 {
-                font-size: rem(14px);
-                font-weight: 600;
-                margin-bottom: rem(16px);
-                color: $clr3;
-            }
-
-            .region-grid {
-                display: grid;
-                grid-tremplate-columns: repeat(3, 1fr);
-                gap: rem(16px);
-            }
-
-            .region-item {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
-                cursor: pointer;
-
-                img {
-                    width: 100%;
-                    height: auto;
-                    border-radius: rem(8px);
-                    margin-bottom: rem(8px);
-                }
-
-                span {
-                    font-size: rem(14px);
-                    color: $clr3;
-                }
-            }
-        }
-
-    }
-
-    .date-picker-container {
-        display: flex;
-        height: 100%;
-        max-width: rem(350px);
-        z-index: 10000;
-
-        .divider {
-            height: rem(32px);
-            width: rem(1px);
-            background-color: $clr6;
-            margin: 0 rem(1px);
-            align-self: center;
-        }
-
-        .date-picker-wrapper {
-            // padding: 0 16px;
-            padding: rem(10px)rem(24px);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            cursor: pointer;
-            flex: 1;
-            width: rrem(140px);
-
-            label {
-                font-size: rem(12px);
-                font-weight: 600;
-                color: $clr3;
-                margin-bottom: rem(4px);
-            }
-
-            .react-datepicker-wrapper {
-                input {
-                    border: none;
-                    font-size: rem(16px);
-                    color: $clr3;
-                    outline: none;
-                    width: 100%;
-                    cursor: pointer;
-                    background: transparent;
-                    padding: rem(4px)0;
-
-                    &::placeholder {
-                        color: $clr4;
-                    }
-                }
-            }
-        }
-    }
-
-    .search-container {
-        display: flex;
-        align-items: center;
-        background-color: #fff;
-        border-radius: rem(32px);
-        height: 100%;
-        padding: rem(8px);
-        width: rem(280px);
-        justify-content: space-between;
-    }
-
-    .guests-selector {
-        position: relative;
-        height: 100%;
-        z-index: 1000;
-
-        .guests-button {
-            background: none;
-            border: none;
-            padding: rem(7px) rem(1px);
-            font-size: rem(14px);
-            color: $clr3;
-            cursor: pointer;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            justify-content: center;
-            height: 100%;
-            min-width: rem(200px);
-            border-radius: rem(32px);
-
-            &:hover {
-                background-color: $clr6;
-            }
-
-            span:first-child {
-                font-size:12px;
-                font-weight: 600;
-                margin-bottom: rem(8px);
-                margin-left: rem(20px);
-            }
-
-            span:last-child {
-                color: $clr4;
-                font-size:14px;
-                margin-left: rem(20px);
-            }
-        }
-
-        .guests-dropdown {
-            position: absolute;
-            top: calc(100% + 12px);
-            right: 0;
-            background-color: $clr5;
-            border-radius: rem(32px);
-
-            box-shadow: 0 2px 16px rgba($clr3, 0.12);
-            padding: rem(16px) rem(32px);
-            min-width: rem(280px);
-            display: none;
-
-            &.active {
-                display: block;
-            }
-
-            >div {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                padding: rem(24px) 0;
-                border-bottom: 1px solid $clr6;
-
-                &:last-child {
-                    border-bottom: none;
-                }
-
-                .guest-type {
-                    label {
-                        font-size: rem(16px);
-                        font-weight: 600;
-                        color: $clr3;
-                        margin-bottom: rem(4px);
-                        display: block;
-                    }
-
-                    span {
-                        font-size: rem(14px);
-                        color: $clr4;
-                    }
-                }
-
-                .guest-counter {
-                    display: flex;
-                    align-items: center;
-
-                    button {
-                        width: rem(32px);
-                        height: rem(32px);
-
-                        border-radius: 50%;
-                        border: 1px solid $clr7;
-                        background: none;
-                        font-size: rem(16px);
-                        color: $clr3;
-                        cursor: pointer;
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-
-                        &:hover:not(:disabled) {
-                            border-color: $clr3;
-                        }
-
-                        &:disabled {
-                            opacity: 0.3;
-                            cursor: not-allowed;
-                        }
-                    }
-
-                    span {
-                        margin: 0 rem(16px);
-                        font-size: rem(16px);
-                        color: $clr3;
-                        min-width: rem(20px);
-                        text-align: center;
-                        padding-left: rem(10px);
-                    }
-                }
-            }
-        }
-    }
-
-    .search-button {
-        background-color: $clr1;
-        border: none;
-        border-radius: 50%;
-        width: 48px;
-        height: 48px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        transition: background-color 0.2s ease;
-
-        &:hover {
-            background-color: darken($clr1, 10%);
-        }
-
-        svg {
-
-            width: 14px;
-            height: 14px;
-            fill: $clr5;
-        }
-    }
-
-    .divider {
-        height: 32px;
-        width: 1px;
-        background-color: $clr6;
-        margin: 0 1px;
-    }
-
-    .search-item {
+      .region-item {
         display: flex;
         flex-direction: column;
-        padding: 7px 32px;
-        position: relative;
-        width: rem(285px);
+        align-items: center;
+        text-align: center;
+        cursor: pointer;
+
+        img {
+          width: 100%;
+          height: auto;
+          border-radius: rem(8px);
+          margin-bottom: rem(8px);
+        }
 
         span {
-            font-size: 12px;
-            font-weight: 600;
-            color: $clr3;
+          font-size: rem(14px);
+          color: $clr3;
+        }
+      }
+    }
+  }
+
+  .date-picker-container {
+    display: flex;
+    height: 100%;
+    max-width: rem(350px);
+    z-index: 10000;
+
+    .divider {
+      height: rem(32px);
+      width: rem(1px);
+      background-color: $clr6;
+      margin: 0 rem(1px);
+      align-self: center;
+    }
+
+    .date-picker-wrapper {
+      // padding: 0 16px;
+      padding: rem(10px) rem(24px);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      cursor: pointer;
+      flex: 1;
+      width: rrem(140px);
+
+      label {
+        font-size: rem(12px);
+        font-weight: 600;
+        color: $clr3;
+        margin-bottom: rem(4px);
+      }
+
+      .react-datepicker-wrapper {
+        input {
+          border: none;
+          font-size: rem(16px);
+          color: $clr3;
+          outline: none;
+          width: 100%;
+          cursor: pointer;
+          background: transparent;
+          padding: rem(4px) 0;
+
+          &::placeholder {
+            color: $clr4;
+          }
+        }
+      }
+    }
+  }
+
+  .search-container {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    border-radius: rem(32px);
+    height: 100%;
+    padding: rem(8px);
+    width: rem(280px);
+    justify-content: space-between;
+  }
+
+  .guests-selector {
+    position: relative;
+    height: 100%;
+    z-index: 1000;
+
+    .guests-button {
+      background: none;
+      border: none;
+      padding: rem(7px) rem(1px);
+      font-size: rem(14px);
+      color: $clr3;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      height: 100%;
+      min-width: rem(200px);
+      border-radius: rem(32px);
+
+      &:hover {
+        background-color: $clr6;
+      }
+
+      span:first-child {
+        font-size: 12px;
+        font-weight: 600;
+        margin-bottom: rem(8px);
+        margin-left: rem(20px);
+      }
+
+      span:last-child {
+        color: $clr4;
+        font-size: 14px;
+        margin-left: rem(20px);
+      }
+    }
+
+    .guests-dropdown {
+      position: absolute;
+      top: calc(100% + 12px);
+      right: 0;
+      background-color: $clr5;
+      border-radius: rem(32px);
+
+      box-shadow: 0 2px 16px rgba($clr3, 0.12);
+      padding: rem(16px) rem(32px);
+      min-width: rem(280px);
+      display: none;
+
+      &.active {
+        display: block;
+      }
+
+      > div {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: rem(24px) 0;
+        border-bottom: 1px solid $clr6;
+
+        &:last-child {
+          border-bottom: none;
         }
 
-        input {
-            border: none;
-            outline: none;
-            font-size: 14px;
+        .guest-type {
+          label {
+            font-size: rem(16px);
+            font-weight: 600;
+            color: $clr3;
+            margin-bottom: rem(4px);
+            display: block;
+          }
+
+          span {
+            font-size: rem(14px);
             color: $clr4;
-            width: 100%;
-            background: transparent;
+          }
         }
+
+        .guest-counter {
+          display: flex;
+          align-items: center;
+
+          button {
+            width: rem(32px);
+            height: rem(32px);
+
+            border-radius: 50%;
+            border: 1px solid $clr7;
+            background: none;
+            font-size: rem(16px);
+            color: $clr3;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            &:hover:not(:disabled) {
+              border-color: $clr3;
+            }
+
+            &:disabled {
+              opacity: 0.3;
+              cursor: not-allowed;
+            }
+          }
+
+          span {
+            margin: 0 rem(16px);
+            font-size: rem(16px);
+            color: $clr3;
+            min-width: rem(20px);
+            text-align: center;
+            padding-left: rem(10px);
+          }
+        }
+      }
     }
+  }
+
+  .search-button {
+    background-color: $clr1;
+    border: none;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+
+    &:hover {
+      background-color: darken($clr1, 10%);
+    }
+
+    svg {
+      width: 14px;
+      height: 14px;
+      fill: $clr5;
+    }
+  }
+
+  .divider {
+    height: 32px;
+    width: 1px;
+    background-color: $clr6;
+    margin: 0 1px;
+  }
+
+  .search-item {
+    display: flex;
+    flex-direction: column;
+    padding: 7px 32px;
+    position: relative;
+    width: rem(285px);
+
+    span {
+      font-size: 12px;
+      font-weight: 600;
+      color: $clr3;
+    }
+
+    input {
+      border: none;
+      outline: none;
+      font-size: rem(14px);
+      color: $clr4;
+      width: 100%;
+      background: transparent;
+    }
+  }
 }

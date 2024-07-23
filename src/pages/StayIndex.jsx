@@ -23,9 +23,9 @@ export function StayIndex() {
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY
-      if (scrollPosition > 100) { // Adjust this value as needed
+      if (scrollPosition > 100) {
+        // Adjust this value as needed
         setShowMiniFilter(true)
-
       } else {
         setShowMiniFilter(false)
       }

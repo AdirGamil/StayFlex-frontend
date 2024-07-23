@@ -60,13 +60,13 @@
     .user-actions {
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: rem(8px);
 
       .add-stay {
         color: $clr3; // שחור כהה
-        font-size: 14px;
+        font-size: rem(14px);
         font-weight: 600;
-        padding: 12px;
+        padding: rem(12px);
         border-radius: 22px;
 
         &:hover {
@@ -76,14 +76,14 @@
 
       .menu-button {
         border: 1px solid $clr6; // אפור בהיר
-        border-radius: 21px;
+        border-radius: rem(21px);
         padding: 5px 5px 5px 12px;
         display: flex;
         align-items: center;
 
         .menu-icon {
           width: 16px;
-          height: 16px;
+          height: rem(16px);
         }
 
         .user-icon {
@@ -117,7 +117,7 @@
 
         a {
           color: $clr3; // שחור כהה
-          font-size: 14px;
+          font-size: rem(14px);
           font-weight: 600;
           padding: 0 16px;
           border-right: 1px solid $clr6; // אפור בהיר
@@ -129,27 +129,27 @@
       }
 
       .user-actions {
-        gap: 8px;
+        gap: rem(8px);
 
         .add-stay {
-          font-size: 14px;
-          padding: 12px;
+          font-size: rem(14px);
+          padding: rem(12px);
           border-radius: 22px;
         }
 
         .menu-button {
-          border-radius: 21px;
+          border-radius: rem(21px);
           padding: 5px 12px;
-          gap: 12px;
+          gap: rem(12px);
 
           .menu-icon {
             width: 16px;
-            height: 16px;
+            height: rem(16px);
           }
 
           .user-icon {
-            width: 30px;
-            height: 30px;
+            width: rem(30px);
+            height: rem(30px);
           }
         }
       }
