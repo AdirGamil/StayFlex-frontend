@@ -3,20 +3,13 @@ import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-route
 import { Provider } from 'react-redux'
 import { store } from '../src/store/store.js'
 
-// import { Account } from './pages/Account.jsx'
-// import { Messages } from './pages/Messages.jsx'
-// import { Notifications } from './pages/Notifications.jsx'
 import { StayDetails } from './pages/StayDetails.jsx'
 import { ConfirmReservation } from './pages/ConfirmReservation.jsx'
 import { StayIndex } from './pages/StayIndex.jsx'
-
 import { UserDetails } from './pages/UserDetails.jsx'
-// import { Wishlist } from './pages/Wishlist.jsx'
-
 import { AppHeader } from './cmps/AppHeader.jsx'
 import { StickyHeader } from './cmps/StickyHeader.jsx'
 import { AppFooter } from './cmps/AppFooter.jsx'
-// import { UserMsg } from './cmps/UserMsg.jsx'
 import { AddStay } from './cmps/AddStay.jsx'
 import { StayOrders } from './pages/StayOrders.jsx'
 
@@ -33,7 +26,6 @@ export function RootCmp() {
         <div className="main-container">
           <HeaderWrapper />
           {/* <UserMsg /> */}
-
           <main>
             <Routes>
               <Route path="" element={<StayIndex />} />

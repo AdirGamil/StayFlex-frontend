@@ -2,14 +2,14 @@ import { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { addStay, loadStays } from '../store/actions/stay.actions.js'
 
-import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service'
+// import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service'
 import { stayService } from '../services/stay/'
-import { userService } from '../services/user'
+// import { userService } from '../services/user'
 
 import { StayList } from '../cmps/StayList.jsx'
-import { StayFilter } from '../cmps/StayFilter.jsx'
-import { StayLabels } from '../cmps/StayLabels.jsx'
-import { MiniFilter } from '../cmps/MiniFilter.jsx'
+// import { StayFilter } from '../cmps/StayFilter.jsx'
+// import { StayLabels } from '../cmps/StayLabels.jsx'
+// import { MiniFilter } from '../cmps/MiniFilter.jsx'
 
 export function StayIndex() {
   const [filterBy, setFilterBy] = useState(stayService.getDefaultFilter())
@@ -38,31 +38,18 @@ export function StayIndex() {
     }
   }, [])
 
-  function onLabelClick(label) {
-    setFilterBy({ ...filterBy, label })
-  }
+  // function onLabelClick(label) {
+  //   setFilterBy({ ...filterBy, label })
+  // }
 
-  // return (
-  //   <main className="stay-index">
-  //     {showMiniSearch && <MiniSearch />}
-  //     <StayFilter filterBy={filterBy} setFilterBy={setFilterBy} />
-  //     <StayLabels onLabelClick={onLabelClick} />
-  //     <StayList stays={stays} />
-  //   </main>
-  // )
   return (
     <main className="stay-index">
       <div className="filter-container">
-        {showMiniFilter ? (
-          <MiniFilter filterBy={filterBy} setFilterBy={setFilterBy} />
-        ) : (
-          <>
-            {/* <StayFilter filterBy={filterBy} setFilterBy={setFilterBy} /> */}
-          </>
-        )}
       </div>
-      {/* <StayLabels onLabelClick={onLabelClick} /> */}
+      {/* <StayFilter filterBy={filterBy} setFilterBy={setFilterBy} />
+      <StayLabels onLabelClick={onLabelClick} /> */}
       <StayList stays={stays} />
     </main>
   )
 }
+
