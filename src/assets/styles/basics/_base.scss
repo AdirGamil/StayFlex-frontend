@@ -5,6 +5,7 @@
 html {
   font-family: AirbnbCereal_W_Bk, sans-serif;
   line-height: 1.6;
+  letter-spacing: rem(0.3px);
   color: $clr3;
   height: 100%;
 }
@@ -12,6 +13,7 @@ html {
 body {
   font-family: AirbnbCereal_W_Bk, sans-serif;
   font-size: rem(16px);
+  letter-spacing: rem(0.3px);
   margin: 0;
   margin: auto;
   height: 100%;

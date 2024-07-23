@@ -185,9 +185,9 @@ export const countries = [
   { name: 'Switzerland', continent: 'Europe' },
   { name: 'Germany', continent: 'Europe' },
   { name: 'Netherlands', continent: 'Europe' },
-  { name: 'United Kingdom', continent: 'Europe' },
+  { name: 'UK', continent: 'Europe' },
   { name: 'Greece', continent: 'Europe' },
-  { name: 'United States', continent: 'North America' },
+  { name: 'USA', continent: 'North America' },
   { name: 'Brazil', continent: 'South America' },
   { name: 'Argentina', continent: 'South America' },
   { name: 'Mexico', continent: 'North America' },
@@ -195,7 +195,7 @@ export const countries = [
   { name: 'Japan', continent: 'Asia' },
   { name: 'China', continent: 'Asia' },
   { name: 'Australia', continent: 'Oceania' },
-  { name: 'New Zealand', continent: 'Oceania' },
+  { name: 'NZ', continent: 'Oceania' },
   { name: 'South Africa', continent: 'Africa' },
   { name: 'Kenya', continent: 'Africa' },
 ]
@@ -208,39 +208,27 @@ export const cities = {
   Switzerland: ['Zurich', 'Geneva', 'Zermatt', 'Basel', 'Lausanne'],
   Germany: ['Berlin', 'Munich', 'Frankfurt', 'Hamburg', 'Cologne'],
   Netherlands: ['Amsterdam', 'Rotterdam', 'Utrecht', 'The Hague', 'Eindhoven'],
-  'United Kingdom': [
-    'London',
-    'Edinburgh',
-    'Manchester',
-    'Birmingham',
-    'Glasgow',
-  ],
+  UK: ['London', 'Edinburgh', 'Manchester', 'Birmingham', 'Glasgow'],
   Greece: ['Athens', 'Thessaloniki', 'Patras', 'Heraklion', 'Larissa'],
-  'United States': [
+  USA: [
     'New York',
     'Los Angeles',
     'Chicago',
     'San Francisco',
     'Miami',
     'Las Vegas',
-    'Washington D.C.',
+    'WDC',
     'Boston',
     'Houston',
   ],
-  Brazil: ['Rio de Janeiro', 'Sao Paulo', 'Brasilia', 'Salvador', 'Fortaleza'],
+  Brazil: ['Rio', 'Sao Paulo', 'Brasilia', 'Salvador', 'Fortaleza'],
   Argentina: ['Buenos Aires', 'Cordoba', 'Rosario', 'Mendoza', 'La Plata'],
   Mexico: ['Mexico City', 'Cancun', 'Guadalajara', 'Monterrey', 'Puebla'],
   Canada: ['Toronto', 'Vancouver', 'Montreal', 'Calgary', 'Ottawa'],
   Japan: ['Tokyo', 'Osaka', 'Kyoto', 'Nagoya', 'Hiroshima'],
   China: ['Beijing', 'Shanghai', 'Guangzhou', 'Shenzhen', 'Chengdu'],
   Australia: ['Sydney', 'Melbourne', 'Brisbane', 'Perth', 'Adelaide'],
-  'New Zealand': [
-    'Auckland',
-    'Wellington',
-    'Christchurch',
-    'Hamilton',
-    'Dunedin',
-  ],
+  NZ: ['Auckland', 'Wellington', 'Christchurch', 'Hamilton', 'Dunedin'],
   'South Africa': [
     'Cape Town',
     'Johannesburg',
@@ -250,6 +238,7 @@ export const cities = {
   ],
   Kenya: ['Nairobi', 'Mombasa', 'Kisumu', 'Nakuru', 'Eldoret'],
 }
+
 
 export const labels = [
   'Top of the world',
