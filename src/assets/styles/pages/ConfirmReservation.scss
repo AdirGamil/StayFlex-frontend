@@ -1,26 +1,249 @@
-.confirm-reservation {
-    display: grid;
-    grid-template-columns: minmax(1px, 6fr) minmax(1px, 5.05fr);
-    column-gap: rem(75px);
-    margin: rem(56px) 0 rem(32px);
-    padding: 0 rem(200px);
+// .confirm-reservation {
+//   display: grid;
+//   grid-template-columns: minmax(1px, 6frpx) minmax(1px, 5.05frpx);
+//   column-gap: rem(75pxpx);
+//   margin: rem(56pxpx) 0 rem(32pxpx);
+//   padding: 0 rem(200pxpx);
 
-    header {
-        display: flex;
-        margin: 0 0 rem(12px);
+// .reserve-btn {
+//   width: 100%;
+//   padding: rem(14pxpx);
+//   background-color: #ff385c;
+//   color: white;
+//   border: none;
+//   border-radius: rem(8pxpx);
+//   font-size: rem(16pxpx);
+//   font-weight: bold;
+//   cursor: pointer;
+//   transition: background-color 0.3s ease;
+
+//   &:hover {
+//     background-color: #e61e4d;
+//   }
+// }
+
+//   header {
+//     display: flex;
+//     margin: 0 0 rem(12pxpx);
+//   }
+
+//   .reservation-details {
+//     padding: rem(32pxpx) 0;
+//   }
+
+//   .dates {
+//     display: flex;
+//     justify-content: space-between;
+
+//     div {
+//       display: flex;
+//       flex-direction: column;
+//     }
+//   }
+// }
+
+// .main-reservation {
+//   .info-reservation {
+//     .dates-reservation {
+//     }
+
+//     .guests-reservation {
+//     }
+
+//     .pay-reservation {
+//       .pay-imgs {
+//       }
+//     }
+
+//     .cancel-reservation {
+//       span {
+//       }
+//     }
+
+//     .groud-rules-reservation {
+//       .rules {
+//       }
+//     }
+
+//     .agree-rules-res {
+//       p {
+//         span {
+//         }
+//       }
+//     }
+//   }
+// }
+
+.main-reservation {
+  padding: rem(24px);
+
+  .title-reservation {
+    h1 {
+      color: $clr3;
+      font-size: rem(24px);
+      margin-bottom: rem(16px);
+    }
+  }
+
+  .info-reservation {
+    margin-top: rem(24px);
+    max-width: 500px;
+
+    h2 {
+      color: $clr3;
+      font-size: rem(20px);
+      margin-bottom: rem(16px);
     }
 
-    .reservation-details {
-        padding: rem(32px) 0;
+    .dates-reservation,
+    .guests-reservation {
+      margin-bottom: rem(24px);
+
+      h4 {
+        color: $clr2;
+        font-size: rem(16px);
+        margin-bottom: rem(8px);
+      }
+
+      p {
+        color: $clr3;
+        font-size: rem(16px);
+      }
     }
 
-    .dates {
+    .pay-reservation {
+      margin-top: rem(32px);
+
+      h2 {
+        color: $clr3;
+        font-size: rem(20px);
+        margin-bottom: rem(16px);
+      }
+
+      .pay-imgs {
         display: flex;
-        justify-content: space-between;
-        
-        div {
-            display: flex;
-            flex-direction: column;
+        gap: rem(16px);
+
+        img {
+          max-width: rem(50px);
+          height: auto;
         }
+      }
+
+      .payment-form {
+        margin-top: rem(16px);
+
+        .form-group {
+          display: flex;
+          flex-direction: column;
+          margin-bottom: rem(16px);
+
+          label {
+            font-size: rem(16px);
+            color: $clr3;
+            margin-bottom: rem(8px);
+          }
+
+          input {
+            padding: rem(12px);
+            font-size: rem(16px);
+            border: rem(1px) solid $clr6;
+            border-radius: rem(4px);
+          }
+
+          &.small-group {
+            display: flex;
+            gap: rem(16px);
+
+            input {
+              flex: 1;
+            }
+          }
+        }
+      }
     }
+
+    .cancel-reservation {
+      margin-top: rem(32px);
+
+      h2 {
+        color: $clr3;
+        font-size: rem(20px);
+        margin-bottom: rem(16px);
+      }
+
+      p {
+        color: $clr3;
+        font-size: rem(16px);
+
+        span {
+          color: $clr3;
+          font-weight: bold;
+          cursor: pointer;
+          text-decoration: underline;
+        }
+      }
+    }
+
+    .groud-rules-reservation {
+      margin-top: rem(32px);
+
+      h2 {
+        color: $clr3;
+        font-size: rem(20px);
+        margin-bottom: rem(16px);
+      }
+
+      p {
+        color: $clr3;
+        font-size: rem(16px);
+        margin-bottom: rem(16px);
+      }
+
+      .rules {
+        list-style-type: disc;
+        padding-left: rem(20px);
+
+        li {
+          color: $clr3;
+          font-size: rem(16px);
+          margin-bottom: rem(8px);
+        }
+      }
+    }
+
+    .agree-rules-res {
+      margin-top: rem(32px);
+
+      p {
+        color: $clr3;
+        font-size: rem(12px);
+
+        span {
+          color: $clr3;
+          font-weight: bold;
+
+          cursor: pointer;
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+
+  .reserve-btn {
+    width: 100%;
+    padding: rem(14px);
+    background-color: #ff385c;
+    color: white;
+    border: none;
+    border-radius: rem(8px);
+    font-size: rem(16px);
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: #e61e4d;
+    }
+  }
 }
