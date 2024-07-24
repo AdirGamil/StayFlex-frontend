@@ -1,6 +1,6 @@
 import React from 'react'
 
-function FilterButton({ onClick }) {
+ export function FilterButton({ onClick }) {
   return (
     <button className="filter-button" onClick={onClick}>
       <span>Filters</span>
@@ -23,4 +23,4 @@ function FilterButton({ onClick }) {
   )
 }
 
-export default FilterButton
+// export default FilterButton
