@@ -26,14 +26,13 @@
   .region-search {
     position: relative;
     flex-grow: 1;
-    height: 100%;
+    height: 90%;
 
     input[type='text'] {
       border: none;
       font-size: rem(14px);
       color: $clr3;
-      width: 100%;
-      height: 100%;
+      height: 80%;
       outline: none;
       border-radius: 32px;
 
@@ -117,7 +116,6 @@
         font-size: rem(12px);
         font-weight: 600;
         color: $clr3;
-        margin-bottom: rem(4px);
       }
 
       .react-datepicker-wrapper {
@@ -177,7 +175,7 @@
       span:first-child {
         font-size: rem(12px);
         font-weight: 600;
-        margin-bottom: rem(8px);
+        margin-bottom: rem(6px);
         margin-left: rem(20px);
       }
 
@@ -304,7 +302,7 @@
   .search-item {
     display: flex;
     flex-direction: column;
-    padding: 7px 32px;
+    padding: 7px 30px;
     position: relative;
     width: rem(285px);
 
