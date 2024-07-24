@@ -1,6 +1,10 @@
 import { useLocation, useNavigate } from 'react-router-dom'
 import { orderService } from '../services/order/order.service.local.js'
-import { formatDateRange } from '../services/util.service.js'
+import { formatDateRange, pluralize } from '../services/util.service.js'
+
+
+const starIcon =
+  'https://res.cloudinary.com/dhweqnxgd/image/upload/v1721294785/star_us9ozb.png'
 
 export function ConfirmReservation() {
   const location = useLocation()
@@ -141,32 +145,25 @@ export function ConfirmReservation() {
 
       <div className="payment-modal">
         <div className="stay-details">
+          <img src={orderDetails.stay.imgUrls[0]} alt="img of stay" />
+
+          <div className="text-details">
+            <h4>{orderDetails.stay.name}</h4>
+            <p>{orderDetails.stay.type}</p>
+            <p className="rating">
+              {orderDetails.averageRating}
+            </p>
+          </div>
 
         </div>
-        <img src={stay.imgUrls[0]} alt="" />
-        hello
+        <div className="price-details">
+          <h2>Price details</h2>
+          <div className="per-night"></div>
+          <div className="taxes"></div>
+          <div className="total"></div>
+        </div>
+
       </div>
     </main>
   )
 }
-
-// <main className="confirm-reservation">
-//   <header>
-//     <h1>Request to book</h1>
-//   </header>
-//   <article className="reservation-details">
-//     <h2>Your trip</h2>
-//     <div className="dates">
-//       <div>
-//         <h4>Dates</h4>
-//         <p>{formattedDateRange}</p>{' '}
-//         {/* Use the formatted date range here */}
-//       </div>
-//     </div>
-//     <p>Stay: {orderDetails.stay.name}</p>
-//     <p>Total Price: ${orderDetails.totalPrice.toLocaleString()}</p>
-// <button onClick={handleConfirm} className="reserve-btn">
-//   Request to book
-// </button>
-//   </article>
-// </main>
