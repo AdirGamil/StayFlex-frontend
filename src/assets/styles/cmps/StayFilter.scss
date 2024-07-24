@@ -17,8 +17,6 @@
   .region-search,
   .date-picker-wrapper,
   .search-container {
-    position: relative;
-    z-index: 2000;
 
     &:hover {
       background-color: $clr6;
@@ -57,8 +55,8 @@
 
       h3 {
         font-size: rem(14px);
-        font-weight: 600;
-        margin-bottom: rem(16px);
+        font-weight: 550;
+        margin-bottom: rem(30px);
         color: $clr3;
       }
 
@@ -157,7 +155,7 @@
   .guests-selector {
     position: relative;
     height: 100%;
-    z-index: 1000;
+    // z-index: 1000;
 
     .guests-button {
       background: none;
@@ -331,20 +329,26 @@
       margin-top: rem(-4px);
     }
   }
+
   .divider1,
   .divider2,
   .divider3 {
     transition: opacity 0.3s ease;
   }
+
   .region-search:hover {
-    & ~ .divider1 {
+    &~.divider1 {
       opacity: 0;
     }
   }
-  
+
   .search-item.region-search:hover+.divider,
   .date-picker-container:hover+.divider {
     opacity: 0;
   }
 
+  // .divider ~ .date-picker-container:hover {
+  //   background-color: aqua;
+  //   // opacity: 0;
+  // }
 }

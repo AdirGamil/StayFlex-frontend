@@ -1,21 +1,22 @@
 .stay-orders-container {
-  padding: 20px;
+  padding: rem(20px);
 
   h1 {
-    font-size: 2rem;
+    font-size: rem(32px); // 2rem (16px * 2)
     color: $clr3; // שחור כהה
-    margin-bottom: 20px;
+    margin-bottom: rem(20px);
   }
 
   .stay-orders-table {
-    width: 100%;
+    margin: auto;
+    width: 60%;
     border-collapse: collapse;
-    margin-top: 20px;
+    margin-top: rem(20px);
 
     th,
     td {
-      border: 1px solid $clr6; // אפור בהיר
-      padding: 10px;
+      border: rem(1px) solid $clr6; // אפור בהיר
+      padding: rem(10px);
       text-align: left;
     }
 
@@ -37,24 +38,31 @@
     }
 
     .btn {
-      margin-right: 5px;
-      padding: 10px 15px;
-      border-radius: 5px;
+      margin-right: rem(5px);
+      padding: rem(10px) rem(15px);
+      border-radius: rem(5px);
       background-color: transparent;
       cursor: pointer;
 
       &-accept {
-        border: 1px solid $clr8; // ירוק
+        border: rem(1px) solid $clr8; // ירוק
         color: $clr8;
       }
 
       &-reject {
-        border: 1px solid $clr1; // אדום
+        border: rem(1px) solid $clr1; // אדום
         color: $clr1;
       }
 
       &:hover {
         opacity: 0.8;
+      }
+
+      &.btn-disabled {
+        cursor: not-allowed;
+        border: rem(1px) solid $clr4;
+        color: $clr4;
+        opacity: 0.5;
       }
     }
   }

@@ -129,13 +129,12 @@ export function StayFilter({ filterBy, setFilterBy }) {
             <span>Who</span>
             <span>
               {guests.adults + guests.children + guests.infants + guests.pets >
-              0 ? (
+                0 ? (
                 <>
                   {guests.adults + guests.children}
                   {guests.adults + guests.children === 1 ? ' guest' : ' guests'}
                   {guests.infants > 0 &&
-                    `, ${guests.infants} infant${
-                      guests.infants > 1 ? 's' : ''
+                    `, ${guests.infants} infant${guests.infants > 1 ? 's' : ''
                     }`}
                   {guests.pets > 0 &&
                     `, ${guests.pets} pet${guests.pets > 1 ? 's' : ''}`}
@@ -146,9 +145,8 @@ export function StayFilter({ filterBy, setFilterBy }) {
             </span>
           </button>
           <div
-            className={`guests-dropdown ${
-              isGuestsDropdownOpen ? 'active' : ''
-            }`}
+            className={`guests-dropdown ${isGuestsDropdownOpen ? 'active' : ''
+              }`}
           >
             {[
               { type: 'adults', label: 'Adults', subLabel: 'Ages 13 or above' },

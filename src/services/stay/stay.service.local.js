@@ -6,18 +6,10 @@ import {
   saveToStorage,
   createStayObject,
 } from '../util.service'
-import {
-  names,
-  types,
-  countries,
-  cities,
-  labels,
-  imgUrls,
-} from '../data.service'
 
 const STORAGE_KEY = 'stayDB'
 var gStays
-_createStays(26)
+_createStays(60)
 
 export const stayService = {
   query,
