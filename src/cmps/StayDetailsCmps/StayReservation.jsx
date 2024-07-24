@@ -274,7 +274,9 @@ export function StayReservation({ stay }) {
       endDate: endDate.toISOString().split('T')[0],
       guests: {
         adults: guests.adults,
-        kids: guests.children,
+        children: guests.children,
+        infants: guests.infants,  
+        pets: guests.pets
       },
       stay: {
         _id: stay._id,

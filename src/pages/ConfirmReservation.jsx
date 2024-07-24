@@ -36,7 +36,7 @@ export function ConfirmReservation() {
     }
   }
 
-  if (!orderDetails) return <div>No reservation details found.</div>
+  if (!orderDetails) return <div>Loading reservation details...</div>
 
   const formattedDateRange = formatDateRange(
     orderDetails.startDate,
@@ -58,9 +58,12 @@ export function ConfirmReservation() {
           </div>
           <div className="guests-reservation">
             <h4>Guests</h4>
-            <p>{orderDetails.totalPrice} guest</p>
+            <p>
+              {orderDetails.guests.adults + orderDetails.guests.children} guests
+              {orderDetails.guests.infants > 0 && `, ${orderDetails.guests.infants} infant${orderDetails.guests.infants > 1 ? 's' : ''}`}
+              {orderDetails.guests.pets > 0 && `, ${orderDetails.guests.pets} pet${orderDetails.guests.pets > 1 ? 's' : ''}`}
+            </p>
           </div>
-
           <div className="pay-reservation">
             <h2>Pay with</h2>
             <div className="pay-imgs">
@@ -154,13 +157,39 @@ export function ConfirmReservation() {
               {orderDetails.averageRating}
             </p>
           </div>
-
         </div>
+        {/* <div className="price-details">
+          <h2>Price details</h2>
+          <div className="nights"> nights </div>
+          <div className="taxes"> Taxes</div>
+          <div className="total">total</div>
+        </div> */}
         <div className="price-details">
           <h2>Price details</h2>
-          <div className="per-night"></div>
-          <div className="taxes"></div>
-          <div className="total"></div>
+          {orderDetails && orderDetails.stay && (
+            <div className="price-item">
+              <span className="calc-span">
+                ${orderDetails.stay.price ? orderDetails.stay.price.toLocaleString() : '0'} x {orderDetails.numberOfNights || 0} nights
+              </span>
+              <span>
+                ${orderDetails.stay.price && orderDetails.numberOfNights
+                  ? (orderDetails.stay.price * orderDetails.numberOfNights).toLocaleString()
+                  : '0'}
+              </span>
+            </div>
+          )}
+          {orderDetails && orderDetails.taxes !== undefined && (
+            <div className="price-item">
+              <span className="taxes-span">Taxes</span>
+              <span>${orderDetails?.taxes?.toFixed(2) || '0.00'}</span>
+            </div>
+          )}
+          {orderDetails && orderDetails.totalPrice !== undefined && (
+            <div className="price-total">
+              <span>Total</span>
+              <span>${typeof orderDetails.totalPrice === 'number' ? orderDetails.totalPrice.toFixed(2) : '0.00'}</span>
+            </div>
+          )}
         </div>
 
       </div>
