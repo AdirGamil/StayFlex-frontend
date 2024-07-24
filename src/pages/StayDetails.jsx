@@ -58,8 +58,6 @@ export function StayDetails() {
   if (!stay) return <div>Loading...</div>
 
   const averageRating = calculateAverageRating(stay.reviews)
-  //   ? (stay.reviews.reduce((sum, review) => sum + review.rate, 0) / stay.reviews.length).toFixed(1)
-  //   : 'New'
 
   const reviewCount = stay.reviews ? stay.reviews.length : 0
 
@@ -157,3 +155,6 @@ export function StayDetails() {
     </section>
   )
 }
+
+
+

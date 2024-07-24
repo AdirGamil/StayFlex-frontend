@@ -75,7 +75,13 @@
 // }
 
 .main-reservation {
-  padding: rem(24px);
+  // padding: rem(24px);
+  display: grid;
+  grid-template-columns: minmax(1px, 6fr) minmax(1px, 5.05fr);
+  column-gap: 3.5rem;
+
+  margin: rem(56px) rem(120px) rem(32px);
+
 
   .title-reservation {
     h1 {
@@ -246,4 +252,19 @@
       background-color: #e61e4d;
     }
   }
+}
+
+.payment-modal {
+  display: flex;
+  flex-direction: column;
+
+  position: sticky;
+  color: #222;
+  top: 6.25rem;
+  margin-block-end: 5rem;
+  max-width: 29.10375rem;
+  background-color: #fff;
+  padding: 24px;
+  border: 1px solid #DDDDDC;
+  border-radius: 12px;
 }
