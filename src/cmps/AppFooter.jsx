@@ -78,7 +78,7 @@ export function AppFooter() {
         </div>
       </div>
       <div className="footer-bottom">
-        <p>© 2024 Airbnb, Inc.</p>
+        <p>© 2024 StayFlex, Inc.</p>
         <div className="footer-right">
           <a href="#">Terms</a>
           <a href="#">Sitemap</a>
