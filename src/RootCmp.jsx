@@ -12,6 +12,7 @@ import { StickyHeader } from './cmps/StickyHeader.jsx'
 import { AppFooter } from './cmps/AppFooter.jsx'
 import { AddStay } from './cmps/AddStay.jsx'
 import { StayOrders } from './pages/StayOrders.jsx'
+import { MiniFilter } from './cmps/MiniFilter.jsx'
 
 function HeaderWrapper() {
   const location = useLocation()

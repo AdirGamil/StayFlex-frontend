@@ -22,5 +22,3 @@ import React from 'react'
     </button>
   )
 }
-
-// export default FilterButton

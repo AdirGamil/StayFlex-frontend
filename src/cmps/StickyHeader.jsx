@@ -7,10 +7,10 @@ import { AppHeader } from '../cmps/AppHeader'
 import { StayFilter } from '../cmps/StayFilter'
 import { StayLabels } from './StayLabels'
 import { stayService } from '../services/stay/'
+import { MiniFilter } from './MiniFilter.jsx'
 
 export function StickyHeader() {
   const [filterBy, setFilterBy] = useState(stayService.getDefaultFilter())
-
   const stays = useSelector((storeState) => storeState.stayModule.stays)
 
   useEffect(() => {
@@ -24,6 +24,8 @@ export function StickyHeader() {
   return (
     <div className="sticky-header-wrapper ">
       <AppHeader />
+      <MiniFilter/>
+
       <div className="stay-filter-container">
         <StayFilter filterBy={filterBy} setFilterBy={setFilterBy} />
       </div>
