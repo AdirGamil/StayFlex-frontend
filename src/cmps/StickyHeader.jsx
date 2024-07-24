@@ -29,5 +29,6 @@ export function StickyHeader() {
       </div>
       <StayLabels onLabelClick={onLabelClick} />
     </div>
+
   )
 }

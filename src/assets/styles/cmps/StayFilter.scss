@@ -17,6 +17,9 @@
   .region-search,
   .date-picker-wrapper,
   .search-container {
+    position: relative;
+    z-index: 2000;
+
     &:hover {
       background-color: $clr6;
       border-radius: rem(32px);
@@ -26,7 +29,7 @@
   .region-search {
     position: relative;
     flex-grow: 1;
-    height: 90%;
+    height: 100%;
 
     input[type='text'] {
       border: none;
@@ -50,7 +53,7 @@
       background: $clr5;
       border-radius: rem(32px);
       box-shadow: 0 2px 16px rgba($clr3, 0.12);
-      padding: rem(16px);
+      padding: rem(32px);
       z-index: 1000;
 
       h3 {
@@ -70,19 +73,22 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        text-align: center;
+        // text-align: start;
+        align-items: flex-start;
         cursor: pointer;
 
         img {
           width: 100%;
           height: auto;
           border-radius: rem(8px);
-          margin-bottom: rem(8px);
+          margin-bottom: rem(4px);
         }
 
         span {
           font-size: rem(14px);
           color: $clr3;
+          font-weight: 200;
+          align-self: flex-start;
         }
       }
     }
@@ -100,10 +106,11 @@
       background-color: $clr6;
       margin: 0 rem(1px);
       align-self: center;
+      transition: opacity 0.3s ease;
+
     }
 
     .date-picker-wrapper {
-      // padding: 0 16px;
       padding: rem(10px) rem(24px);
       display: flex;
       flex-direction: column;
@@ -202,7 +209,7 @@
         display: block;
       }
 
-      > div {
+      >div {
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -310,6 +317,7 @@
       font-size: rem(12px);
       font-weight: 600;
       color: $clr3;
+      margin-top: rem(4px);
     }
 
     input {
@@ -319,6 +327,23 @@
       color: $clr4;
       width: 100%;
       background: transparent;
+      margin-top: rem(-4px);
     }
   }
+  .divider1,
+  .divider2,
+  .divider3 {
+    transition: opacity 0.3s ease;
+  }
+  .region-search:hover {
+    & ~ .divider1 {
+      opacity: 0;
+    }
+  }
+  
+  .search-item.region-search:hover+.divider,
+  .date-picker-container:hover+.divider {
+    opacity: 0;
+  }
+
 }
