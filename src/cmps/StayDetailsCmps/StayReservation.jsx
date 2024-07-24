@@ -77,10 +77,10 @@ export function StayReservation({ stay }) {
         _id: stay._id,
         name: stay.name,
         price: stay.price,
-        imgUrls: stay.imgUrls
+        imgUrls: stay.imgUrls,
       },
       msgs: [],
-      status: 'pending',
+      status: 'Pending',
     }
 
     navigate('/confirm-reservation', { state: { orderDetails, stay } })

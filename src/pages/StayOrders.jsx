@@ -52,16 +52,28 @@ export function StayOrders() {
               <td>{order.status}</td>
               <td>
                 <button
-                  className="btn btn-accept"
-                  onClick={() => handleStatusChange(order._id, 'approved')}
-                  disabled={order.status === 'approved'}
+                  className={`btn btn-accept ${
+                    order.status === 'Approved' || order.status === 'Declined'
+                      ? 'btn-disabled'
+                      : ''
+                  }`}
+                  onClick={() => handleStatusChange(order._id, 'Approved')}
+                  disabled={
+                    order.status === 'Approved' || order.status === 'Declined'
+                  }
                 >
                   Accept
                 </button>
                 <button
-                  className="btn btn-reject"
-                  onClick={() => handleStatusChange(order._id, 'canceled')}
-                  disabled={order.status === 'canceled'}
+                  className={`btn btn-reject ${
+                    order.status === 'Declined' || order.status === 'Approved'
+                      ? 'btn-disabled'
+                      : ''
+                  }`}
+                  onClick={() => handleStatusChange(order._id, 'Declined')}
+                  disabled={
+                    order.status === 'Declined' || order.status === 'Approved'
+                  }
                 >
                   Reject
                 </button>

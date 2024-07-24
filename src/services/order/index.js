@@ -28,7 +28,7 @@ function getEmptyOrder({
       price: stay.price,
     },
     msgs: [],
-    status: 'pending',
+    status: 'Pending',
   }
 }
 
