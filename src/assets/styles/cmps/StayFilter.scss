@@ -49,10 +49,9 @@
       top: calc(100% + 12px);
       left: 0;
       width: 200%;
-
+      box-shadow: 0 3px 12px 0 rgb(0 0 0/0.15);
       background: $clr5;
       border-radius: rem(32px);
-      box-shadow: 0 2px 16px rgba($clr3, 0.12);
       padding: rem(32px);
       z-index: 1000;
 
