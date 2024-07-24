@@ -242,7 +242,7 @@ export function StayReservation({ stay }) {
     setGuests(newGuests)
   }
 
-    function calculateNumberOfNights() {
+  function calculateNumberOfNights() {
     if (!startDate || !endDate) return 0
     const timeDiff = endDate.getTime() - startDate.getTime()
     return Math.ceil(timeDiff / (1000 * 3600 * 24))
@@ -270,12 +270,13 @@ export function StayReservation({ stay }) {
         fullname: 'Guest User'
       },
       totalPrice,
+      taxes,
       startDate: startDate.toISOString().split('T')[0],
       endDate: endDate.toISOString().split('T')[0],
       guests: {
         adults: guests.adults,
         children: guests.children,
-        infants: guests.infants,  
+        infants: guests.infants,
         pets: guests.pets
       },
       stay: {
@@ -285,11 +286,12 @@ export function StayReservation({ stay }) {
         imgUrls: stay.imgUrls,
         loc: stay.loc
       },
+      numberOfNights,
       msgs: [],
       status: 'pending',
       averageRating,
       reviewCount,
-      numberOfNights,
+      // numberOfNights,
       pricePerNight: stay.price
     }
 

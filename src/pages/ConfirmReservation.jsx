@@ -158,12 +158,6 @@ export function ConfirmReservation() {
             </p>
           </div>
         </div>
-        {/* <div className="price-details">
-          <h2>Price details</h2>
-          <div className="nights"> nights </div>
-          <div className="taxes"> Taxes</div>
-          <div className="total">total</div>
-        </div> */}
         <div className="price-details">
           <h2>Price details</h2>
           {orderDetails && orderDetails.stay && (
