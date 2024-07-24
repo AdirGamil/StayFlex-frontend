@@ -89,7 +89,7 @@ export function StayFilter({ filterBy, setFilterBy }) {
           </div>
         )}
       </div>
-      <div className="divider"></div>
+      <div className="divider divider1"></div>
       <div className="date-picker-container">
         <div className="date-picker-wrapper">
           <label>Check in</label>
@@ -105,7 +105,7 @@ export function StayFilter({ filterBy, setFilterBy }) {
           />
         </div>
       </div>
-      <div className="divider"></div>
+      <div className="divider divider2"></div>
       <div className="date-picker-container">
         <div className="date-picker-wrapper">
           <label>Check out</label>
@@ -122,7 +122,7 @@ export function StayFilter({ filterBy, setFilterBy }) {
           />
         </div>
       </div>
-      <div className="divider"></div>
+      <div className="divider divider3"></div>
       <div className="search-container">
         <div className="guests-selector">
           <button className="guests-button" onClick={toggleGuestsDropdown}>
