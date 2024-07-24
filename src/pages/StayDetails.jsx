@@ -152,9 +152,32 @@ export function StayDetails() {
 
         <StayReservation stay={stay} />
       </section>
+      <section>
+        <div className="reviews-container">
+          {stay.reviews.map((review, index) => (
+            <article className="review" key={index}>
+              <div className="user">
+                <img src={review.by.imgUrl} alt="User Avatar" />
+                <div className="user-details-txt">
+                  <h3>{review.by.fullname}</h3>
+                  <p>{review.by._id}</p>
+                </div>
+              </div>
+              <div className="review-txt-date">
+                <div className="review-rating">
+                  <p>★★★★★<span></span></p>
+                  <h4>24.07.2024</h4>
+                </div>
+                <div className="review-content">
+                  <p>{review.txt}</p>
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
     </section>
   )
 }
-
 
 

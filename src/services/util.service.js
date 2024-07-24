@@ -38,7 +38,7 @@ export function getRandomMaleName() {
 }
 
 export function createStayObject(stay) {
-  const reviews = stay.reviews || generateRandomReviews(7)
+  const reviews = stay.reviews || generateRandomReviews(6)
   const averageRating = calculateAverageRating(reviews)
 
   return {

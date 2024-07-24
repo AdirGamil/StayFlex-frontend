@@ -148,12 +148,16 @@ export function ConfirmReservation() {
 
       <div className="payment-modal">
         <div className="stay-details">
-          <img src={orderDetails.stay.imgUrls[0]} alt="img of stay" />
+          <img className="stay-image" src={orderDetails.stay.imgUrls[0]} alt="img of stay" />
 
           <div className="text-details">
-            <h4>{orderDetails.stay.name}</h4>
-            <p>{orderDetails.stay.type}</p>
+            <h4 className="stay-name">{orderDetails.stay.name}</h4>
+            <p className="stay-type">{orderDetails.stay.type}</p>
             <p className="rating">
+              <img className="star-icon"
+                src={starIcon}
+                alt="star icon"
+              />
               {orderDetails.averageRating}
             </p>
           </div>
@@ -163,11 +167,11 @@ export function ConfirmReservation() {
           {orderDetails && orderDetails.stay && (
             <div className="price-item">
               <span className="calc-span">
-                ${orderDetails.stay.price ? orderDetails.stay.price.toLocaleString() : '0'} x {orderDetails.numberOfNights || 0} nights
+                ${orderDetails.stay.price ? orderDetails.stay.price.toLocaleString(): '0'} x {orderDetails.numberOfNights || 0} nights
               </span>
               <span>
                 ${orderDetails.stay.price && orderDetails.numberOfNights
-                  ? (orderDetails.stay.price * orderDetails.numberOfNights).toLocaleString()
+                  ? (orderDetails.stay.price * orderDetails.numberOfNights).toFixed(2) 
                   : '0'}
               </span>
             </div>

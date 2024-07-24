@@ -291,7 +291,6 @@ export function StayReservation({ stay }) {
       status: 'pending',
       averageRating,
       reviewCount,
-      // numberOfNights,
       pricePerNight: stay.price
     }
 
@@ -376,9 +375,14 @@ export function StayReservation({ stay }) {
 
       <div className="price-details">
         <div className="price-item">
-          <span className="calc-span">${stay.price.toLocaleString()} x {numberOfNights} nights</span>
-          <span>${(stay.price * numberOfNights).toLocaleString()}</span>
+          <span className="calc-span">
+            ${Number(stay.price).toFixed(2)} x {numberOfNights} nights
+          </span>
+          <span>
+            ${(stay.price * numberOfNights).toFixed(2)}
+          </span>
         </div>
+
         <div className="price-item">
           <span className="taxes-span">Taxes</span>
           <span>${taxes.toFixed(2)}</span>
