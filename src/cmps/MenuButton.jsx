@@ -56,6 +56,7 @@ const MenuButton = () => {
           <a href="#">Gift cards</a>
           <a href="/orders">Orders</a>
           <a href="/addstay">Airbnb your home</a>
+          <a href="/trips">Trips</a>
           <a href="#">Help Center</a>
         </div>
       )}

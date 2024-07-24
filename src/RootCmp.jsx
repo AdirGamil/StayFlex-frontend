@@ -1,5 +1,10 @@
 import React from 'react'
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom'
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useLocation,
+} from 'react-router-dom'
 import { Provider } from 'react-redux'
 import { store } from '../src/store/store.js'
 
@@ -12,6 +17,7 @@ import { StickyHeader } from './cmps/StickyHeader.jsx'
 import { AppFooter } from './cmps/AppFooter.jsx'
 import { AddStay } from './cmps/AddStay.jsx'
 import { StayOrders } from './pages/StayOrders.jsx'
+import { StayTrips } from './pages/StayTrips.jsx'
 import { MiniFilter } from './cmps/MiniFilter.jsx'
 
 function HeaderWrapper() {
@@ -31,9 +37,13 @@ export function RootCmp() {
             <Routes>
               <Route path="" element={<StayIndex />} />
               <Route path="stay/:stayId" element={<StayDetails />} />
-              <Route path="/confirm-reservation" element={<ConfirmReservation />} />
+              <Route
+                path="/confirm-reservation"
+                element={<ConfirmReservation />}
+              />
               <Route path="/addstay" element={<AddStay />} />
               <Route path="/orders" element={<StayOrders />} />
+              <Route path="/trips" element={<StayTrips />} />
               <Route path="user/:id" element={<UserDetails />} />
             </Routes>
           </main>
