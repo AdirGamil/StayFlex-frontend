@@ -4,65 +4,67 @@ import { makeId } from '../util.service.js'
 const STORAGE_KEY = 'orderDB'
 
 export const orderService = {
-    query,
-    getById,
-    save,
-    remove,
-    addOrderMsg
+  query,
+  getById,
+  save,
+  remove,
+  addOrderMsg,
 }
 window.os = orderService
 
 async function query(filterBy = {}) {
-    var orders = await storageService.query(STORAGE_KEY)
-    // Apply filters if any are specified in filterBy
-    return orders
+  var orders = await storageService.query(STORAGE_KEY)
+  // Apply filters if any are specified in filterBy
+  return orders
 }
 
 function getById(orderId) {
-    return storageService.get(STORAGE_KEY, orderId)
+  return storageService.get(STORAGE_KEY, orderId)
 }
 
 async function remove(orderId) {
-    try {
-        await storageService.remove(STORAGE_KEY, orderId)
-    } catch (err) {
-        console.log(err)
-    }
+  try {
+    await storageService.remove(STORAGE_KEY, orderId)
+  } catch (err) {
+    console.log(err)
+  }
 }
 
 async function save(order) {
-    var savedOrder
-    if (order._id) {
-        const existingOrder = await storageService.get(STORAGE_KEY, order._id).catch(() => null)
-        if (existingOrder) {
-            savedOrder = await storageService.put(STORAGE_KEY, order)
-        } else {
-            order._id = makeId()
-            savedOrder = await storageService.post(STORAGE_KEY, order)
-        }
+  var savedOrder
+  if (order._id) {
+    const existingOrder = await storageService
+      .get(STORAGE_KEY, order._id)
+      .catch(() => null)
+    if (existingOrder) {
+      savedOrder = await storageService.put(STORAGE_KEY, order)
     } else {
-        order._id = makeId()
-        order.guest = {
-            _id: 'guest1', // Placeholder guest ID
-            fullname: 'Guest User' // Placeholder guest name
-        }
-        order.status = 'pending'
-        order.msgs = []
-        savedOrder = await storageService.post(STORAGE_KEY, order)
+      order._id = makeId()
+      savedOrder = await storageService.post(STORAGE_KEY, order)
     }
-    return savedOrder
+  } else {
+    order._id = makeId()
+    order.guest = {
+      _id: 'guest1', // Placeholder guest ID
+      fullname: 'Guest User', // Placeholder guest name
+    }
+    order.status = 'Pending'
+    order.msgs = []
+    savedOrder = await storageService.post(STORAGE_KEY, order)
+  }
+  return savedOrder
 }
 
 async function addOrderMsg(orderId, txt) {
-    const order = await getById(orderId)
+  const order = await getById(orderId)
 
-    const msg = {
-        id: makeId(),
-        by: { _id: 'guest1', fullname: 'Guest User' }, // Placeholder guest info
-        txt
-    }
-    order.msgs.push(msg)
-    await storageService.put(STORAGE_KEY, order)
+  const msg = {
+    id: makeId(),
+    by: { _id: 'guest1', fullname: 'Guest User' }, // Placeholder guest info
+    txt,
+  }
+  order.msgs.push(msg)
+  await storageService.put(STORAGE_KEY, order)
 
-    return msg
+  return msg
 }
