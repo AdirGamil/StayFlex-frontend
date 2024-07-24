@@ -1,9 +1,26 @@
 .hidden {
-    display: none;
+  display: none;
+}
+
+.bold {
+  font-weight: 600;
+  color: $clr3;
+  font-size: rem(13px);
+}
+
+.airbnb-btn {
+  width: 100%;
+  padding: rem(14px);
+  background-color: #ff385c;
+  color: white;
+  border: none;
+  border-radius: rem(8px);
+  font-size: rem(16px);
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #e61e4d;
   }
-  
-  .bold {
-    font-weight: 600;
-    color: $clr3;
-    font-size: rem(13px);
-  }
+}

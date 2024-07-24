@@ -258,7 +258,12 @@ export function AddStay() {
               ))}
             </Select>
           </FormControl>
-          <Button type="submit" variant="contained" color="primary" fullWidth>
+          <Button
+            type="submit"
+            variant="contained"
+            className="airbnb-btn"
+            fullWidth
+          >
             Add Stay
           </Button>
         </form>
