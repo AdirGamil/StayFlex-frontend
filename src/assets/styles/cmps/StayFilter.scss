@@ -194,14 +194,14 @@
 
     .guests-dropdown {
       position: absolute;
-      top: calc(100% + 12px);
-      right: 0;
+      top: calc(100% + 20px);
+      right: -52px;
       background-color: $clr5;
       border-radius: rem(32px);
 
       box-shadow: 0 2px 16px rgba($clr3, 0.12);
       padding: rem(16px) rem(32px);
-      min-width: rem(280px);
+      min-width: rem(400px);
       display: none;
 
       &.active {
@@ -246,7 +246,8 @@
             border: 1px solid $clr7;
             background: none;
             font-size: rem(16px);
-            color: $clr3;
+            color: $clr7;
+            opacity: 0.7;
             cursor: pointer;
             display: flex;
             align-items: center;
@@ -254,6 +255,7 @@
 
             &:hover:not(:disabled) {
               border-color: $clr3;
+              color: $clr3;
             }
 
             &:disabled {
