@@ -61,6 +61,8 @@ export function createStayObject(stay) {
       'Wineglasses',
       'Carbon monoxide alarm',
       'Extra pillows and blankets',
+      'TV',
+      'Garden view'
     ],
     labels: stay.labels || getRandomLabels(labels),
     loc: stay.loc || getRandomLocation(),
