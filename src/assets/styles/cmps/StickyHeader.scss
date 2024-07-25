@@ -1,21 +1,123 @@
+// // .sticky-header-wrapper {
+//   // position: sticky;
+//   // top: 0;
+//   // z-index: 1000;
+//   // background-color: white;
+//   // transition: all 0.3s ease;
+
+//   .sticky-header-wrapper {
+//   position: sticky;
+//   top: 0;
+//   background: white;
+//   z-index: 1000;
+// }
+
+// // }
+// /////
+// .sticky-header-wrapper.scrolled {
+//   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+// }
+// ////
+
+// .app-header,
+// .search-filter,
+// .label-container {
+//   width: 100%;
+// }
+
+// .stay-filter-container {
+//   display: flex;
+//   justify-content: center;
+//   width: 100%;
+// }
+
+// .filter-container {
+//   transition: all 0.1s ease-in-out;
+//   // overflow: hidden;
+// }
+
+// // .filter-container.scrolled {
+// //   /* Adjust these values as needed */
+// //   height: 60px; /* Height of the MiniFilter */
+// // }
+
+// // .filter-container:not(.scrolled) {
+// //   /* Adjust these values as needed */
+// //   height: 120px; /* Height of the regular StayFilter */
+// // }
+
+// .sticky-header-wrapper {
+//   position: sticky;
+//   top: 0;
+//   z-index: 1000;
+//   background-color: white;
+//   transition: all 0.3s ease;
+//   width: 100%;
+
+//   &.scrolled {
+//     .app-header {
+//       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+//     }
+//   }
+// }
+
+// .stay-filter-container {
+//   display: flex;
+//   justify-content: center;
+//   width: 100%;
+// }
+
+// .sticky-header-wrapper.scrolled {
+//   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+//   .stay-filter-container {
+//     display: none;
+//   }
+
+//   .link-header {
+//     display: none;
+//   }
+// }
+
+// .app-header,
+// .search-filter,
+// .label-container {
+//   width: 100%;
+// }
+
+// .filter-container {
+//   transition: all 0.3s ease-in-out;
+//   width: 100%;
+// }
+
+// .mini-search-bar {
+//   margin-bottom: rem(12px);
+// }
+
 .sticky-header-wrapper {
   position: sticky;
   top: 0;
   z-index: 1000;
   background-color: white;
-  transition: all 0.3s ease;
-
-}
-/////
-.sticky-header-wrapper.scrolled {
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-////
-
-.app-header,
-.search-filter,
-.label-container {
+  transition: transform 0.3s ease;
   width: 100%;
+
+  .stay-filter-container,
+  .link-header {
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+
+  &.scrolled {
+    transform: translateY(-10px); // Adjust this value as needed
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+    .stay-filter-container,
+    .link-header {
+      opacity: 0;
+      transform: translateY(-20px);
+      pointer-events: none;
+    }
+  }
 }
 
 .stay-filter-container {
@@ -23,3 +125,18 @@
   justify-content: center;
   width: 100%;
 }
+
+.app-header, .search-filter, .label-container {
+  width: 100%;
+}
+
+.filter-container {
+  transition: all 0.8s ease-in-out;
+  width: 100%;
+}
+
+.mini-search-bar {
+  margin-bottom: rem(12px);
+}
+
+
