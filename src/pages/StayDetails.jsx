@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 // import { ScrollNav } from '../cmps/ScrollNav'
 import { loadStay } from '../store/actions/stay.actions'
+import { Map } from '../cmps/StayDetailsCmps/Map'
 
 import { StayGallery } from '../cmps/StayDetailsCmps/StayGallery'
 import { StayReservation } from '../cmps/StayDetailsCmps/StayReservation'
@@ -160,7 +161,7 @@ export function StayDetails() {
         <StayReservation stay={stay} />
       </section>
       <section className="header-reviews">
-        <div className="header">★ 5.0 . 6 reviews
+        <div className="header">★ 5.0 · 6 reviews
         </div>
         <div className="reviews-container">
 
@@ -176,8 +177,8 @@ export function StayDetails() {
               <div className="review-txt-date">
                 <div className="review-rating">
                   <p>★★★★★<span></span></p>
-                  <h6>.</h6>
-                  <h4>July 2024 . <span> Stayed a few nights</span></h4>
+                  <h6>·</h6>
+                  <h4>July 2024 <span> Stayed a few nights</span></h4>
                 </div>
                 <div className="review-content">
                   <p>{review.txt}</p>
@@ -191,7 +192,9 @@ export function StayDetails() {
         <div className="map-container">
           <article>
             <h1> Where you'll be</h1>
-            <div className="map"> map here </div>
+            <div className="map">
+              <Map stay= {stay}/>
+            </div>
             <div className="city-info">city info here</div>
           </article>
         </div>
