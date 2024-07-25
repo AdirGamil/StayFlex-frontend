@@ -78,8 +78,6 @@
       min-width: rem(300px);
     }
   }
-
-
 }
 
 .info-list {
@@ -89,7 +87,7 @@
   padding: 0;
   margin: 0;
   font-size: rem(16px);
-  color: #717171;
+  color: $clr4;
 
   li {
     margin: 0;
@@ -125,7 +123,7 @@
     .host-duration {
       font-size: rem(14px);
       font-weight: 100;
-      color: #717171;
+      color: $clr4;
       margin-top: rem(4px);
     }
   }
@@ -175,11 +173,10 @@
 }
 
 .reviews-container {
-
   display: grid;
   grid-template-columns: repeat(2, minmax(1px, 1fr));
   padding-block-start: rem(40px);
-  border-block-start: rem(0.667px) solid $clr6 ;
+  border-block-start: rem(0.667px) solid $clr6;
   padding-inline: rem(16px);
   grid-auto-columns: rem(554px);
   column-gap: 1rem;
@@ -234,12 +231,11 @@
           margin: 0;
         }
 
-        h4 span{
+        h4 span {
           // opacity: 0.6;
           color: $clr7;
           font-weight: 100;
         }
-
       }
 
       .review-content {
@@ -247,9 +243,7 @@
           margin-right: rem(16px);
           margin-top: 0;
         }
-
       }
     }
-
   }
 }
