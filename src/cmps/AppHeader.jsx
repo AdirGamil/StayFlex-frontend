@@ -37,7 +37,7 @@ export function AppHeader() {
             </NavLink> */}
 
           <NavLink to="/addstay" className="add-stay">
-            Airbnb your home
+            StayFlex your home
           </NavLink>
           {/* <NavLink to="/addstay" className="add-stay world-icon">
             <img className="world-icon" src={world_icon} alt="logo" />
