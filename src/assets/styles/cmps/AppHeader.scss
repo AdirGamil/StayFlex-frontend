@@ -176,14 +176,14 @@
 }
 
 .stay-filter-container {
-  display:block;
-  transition: opacity 0.3s ease, visibility 0.3s ease, display 0s linear 0.3s;
+  transition: opacity 0.8s ease, visibility 0.8s ease, display 0s linear 0.8s;
 
   &.hidden {
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
     display: none;
+    margin: -55px;
   }
 }
 

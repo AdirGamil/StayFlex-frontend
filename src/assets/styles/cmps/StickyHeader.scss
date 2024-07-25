@@ -104,7 +104,7 @@
 
   .stay-filter-container,
   .link-header {
-    transition: opacity 0.3s ease, transform 0.3s ease;
+    transition: opacity 0.8s ease, transform 0.8s ease;
   }
 
   &.scrolled {
@@ -131,7 +131,7 @@
 }
 
 .filter-container {
-  transition: all 0.3s ease-in-out;
+  transition: all 0.8s ease-in-out;
   width: 100%;
 }
 
