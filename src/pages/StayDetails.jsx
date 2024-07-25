@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { useSelector } from 'react-redux'
-
+// import { ScrollNav } from '../cmps/ScrollNav'
 import { loadStay } from '../store/actions/stay.actions'
 
 import { StayGallery } from '../cmps/StayDetailsCmps/StayGallery'
@@ -37,9 +37,9 @@ const carbonMonoxideAlarm =
 const extraPillowsAndBlankets =
   'https://res.cloudinary.com/dyhmjlymk/image/upload/v1721725228/svg_xml_base64_PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiIgYXJpYS1oaWRkZW49InRydWUiIHJvbGU9InByZXNlbnRhdGlvbiIgZm9jdXNhYmxlPSJmYWxzZSIgc3R5bGU9ImRpc3BsYXk6IGJsb2NrOyBoZWlnaHQ_8_lsbqpc.svg'
 const TV =
- 'https://res.cloudinary.com/doahdwb2g/image/upload/v1721908788/svg_xml_base64_PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiIgYXJpYS1oaWRkZW49InRydWUiIHJvbGU9InByZXNlbnRhdGlvbiIgZm9jdXNhYmxlPSJmYWxzZSIgc3R5bGU9ImRpc3BsYXk6IGJsb2NrOyBoZWlnaHQ6IDI0_g0kyfy.svg'
-const GardenView = 
-'https://res.cloudinary.com/doahdwb2g/image/upload/v1721908837/svg_xml_base64_PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiIgYXJpYS1oaWRkZW49InRydWUiIHJvbGU9InByZXNlbnRhdGlvbiIgZm9jdXNhYmxlPSJmYWxzZSIgc3R5bGU9ImRpc3BsYXk6IGJsb2NrOyBoZWlnaHQ6_1_kdwdla.svg'
+  'https://res.cloudinary.com/doahdwb2g/image/upload/v1721908788/svg_xml_base64_PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiIgYXJpYS1oaWRkZW49InRydWUiIHJvbGU9InByZXNlbnRhdGlvbiIgZm9jdXNhYmxlPSJmYWxzZSIgc3R5bGU9ImRpc3BsYXk6IGJsb2NrOyBoZWlnaHQ6IDI0_g0kyfy.svg'
+const GardenView =
+  'https://res.cloudinary.com/doahdwb2g/image/upload/v1721908837/svg_xml_base64_PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiIgYXJpYS1oaWRkZW49InRydWUiIHJvbGU9InByZXNlbnRhdGlvbiIgZm9jdXNhYmxlPSJmYWxzZSIgc3R5bGU9ImRpc3BsYXk6IGJsb2NrOyBoZWlnaHQ6_1_kdwdla.svg'
 
 export function StayDetails() {
   const { stayId } = useParams()
@@ -53,7 +53,7 @@ export function StayDetails() {
     'Ev charger': evCharger,
     'Carbon monoxide alarm': carbonMonoxideAlarm,
     'Extra pillows and blankets': extraPillowsAndBlankets,
-    'TV' :TV,
+    'TV': TV,
     'Garden view': GardenView,
   }
 
@@ -69,6 +69,7 @@ export function StayDetails() {
 
   return (
     <section className="stay-details main-layout">
+      {/* <ScrollNav /> */}
       <header className="stay-header">
         <h1 className="stay-title">{stay.name}</h1>
         <div className="share-save">

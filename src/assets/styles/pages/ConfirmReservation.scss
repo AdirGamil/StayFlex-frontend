@@ -41,13 +41,20 @@
         color: $clr3;
         font-size: rem(16px);
       }
+
+    }
+
+    .guests-reservation {
+      p {
+        margin-bottom: rem(48px);
+      }
     }
 
     .pay-reservation {
-      margin-top: rem(32px);
       border-block-start: rem(0.667px) solid $clr6 ;
 
       .pay-with {
+        margin-top: rem(32px);
         display: grid;
         grid-template-columns: 1fr 1fr;
 
@@ -138,10 +145,10 @@
 
     .cancel-reservation {
       border-block-start: rem(0.667px) solid $clr6 ;
-
-      margin-top: rem(32px);
+      margin-top: rem(48px);
 
       h2 {
+        margin-top: rem(48px);
         color: $clr3;
         font-size: rem(20px);
         margin-bottom: rem(16px);
@@ -162,12 +169,15 @@
 
     .groud-rules-reservation {
       border-block-start: rem(0.667px) solid $clr6 ;
-      margin-top: rem(32px);
+      margin-top: rem(48px);
 
       h2 {
         color: $clr3;
         font-size: rem(20px);
         margin-bottom: rem(16px);
+        margin-top: rem(48px);
+
+
       }
 
       p {
@@ -207,6 +217,7 @@
   }
 
   .reserve-btn {
+    margin: rem(32px) 0;
     width: 100%;
     padding: rem(14px);
     background-color: #ff385c;
