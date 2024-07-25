@@ -79,34 +79,6 @@
       .payment-form {
         margin-top: rem(16px);
 
-        // .form-group {
-        //   display: flex;
-        //   flex-direction: column;
-        //   margin-bottom: rem(16px);
-
-
-        //   label {
-        //     font-size: rem(16px);
-        //     color: $clr3;
-        //     margin-bottom: rem(8px);
-        //   }
-
-        //   input {
-        //     padding: rem(12px);
-        //     font-size: rem(16px);
-        //     border: rem(1px) solid $clr6;
-        //     border-radius: rem(4px);
-        //   }
-
-        //   &.small-group {
-        //     display: flex;
-        //     gap: rem(16px);
-
-        //     input {
-        //       flex: 1;
-        //     }
-        //   }
-        // }
         .payment-form {
           max-width: 400px;
           margin: 0 auto;
@@ -134,7 +106,7 @@
 
         .form-group.split {
           display: flex;
-          gap: 10px;
+          margin-top: -11px;
         }
 
         .form-group.split input {

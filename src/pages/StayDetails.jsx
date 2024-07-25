@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 // import { ScrollNav } from '../cmps/ScrollNav'
@@ -7,7 +7,7 @@ import { Map } from '../cmps/StayDetailsCmps/Map'
 
 import { StayGallery } from '../cmps/StayDetailsCmps/StayGallery'
 import { StayReservation } from '../cmps/StayDetailsCmps/StayReservation'
-
+import { ScrollHeader} from '../cmps/StayDetailsCmps/ScrollHeader'
 import {
   pluralize,
   calculateAverageRating,
@@ -57,10 +57,26 @@ export function StayDetails() {
     'TV': TV,
     'Garden view': GardenView,
   }
+  const [showScrollHeader, setShowScrollHeader] = useState(false);
+
+
 
   useEffect(() => {
     loadStay(stayId)
   }, [stayId])
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const photoSection = document.querySelector('.stay-gallery');
+      if (photoSection) {
+        const photoSectionBottom = photoSection.getBoundingClientRect().bottom;
+        setShowScrollHeader(photoSectionBottom <= 0);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   if (!stay) return <div>Loading...</div>
 
@@ -70,7 +86,7 @@ export function StayDetails() {
 
   return (
     <section className="stay-details main-layout">
-      {/* <ScrollNav /> */}
+      {showScrollHeader && <ScrollHeader />}
       <header className="stay-header">
         <h1 className="stay-title">{stay.name}</h1>
         <div className="share-save">
@@ -85,7 +101,7 @@ export function StayDetails() {
         </div>
       </header>
 
-      <div className="stay-gallery">
+      <div  id ="photos" className="active stay-gallery">
         <StayGallery imgUrls={stay.imgUrls} />
       </div>
 
@@ -142,7 +158,7 @@ export function StayDetails() {
           </div>
 
           {/* <div className="stam-div">TEST DIV FOR SCROLLING</div> */}
-          <div className="stay-amenities">
+          <div  id="amenities" className="stay-amenities">
             <h2>What this place offers</h2>
 
             <ul className="amenities-list">
@@ -160,7 +176,7 @@ export function StayDetails() {
 
         <StayReservation stay={stay} />
       </section>
-      <section className="header-reviews">
+      <section id="reviews" className="header-reviews">
         <div className="header">★ 5.0 · 6 reviews
         </div>
         <div className="reviews-container">
@@ -188,12 +204,12 @@ export function StayDetails() {
           ))}
         </div>
       </section>
-      <section>
+      <section  id="location">
         <div className="map-container">
           <article>
             <h1> Where you'll be</h1>
             <div className="map">
-              <Map stay= {stay}/>
+              <Map stay={stay} />
             </div>
             <div className="city-info">city info here</div>
           </article>

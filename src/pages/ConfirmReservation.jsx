@@ -92,31 +92,6 @@ export function ConfirmReservation() {
                 />
               </div>
             </div>
-            {/* <div className="payment-form">
-              <div className="form-group">
-                <label htmlFor="card">Credit or debit card</label>
-                
-                <input
-                  type="text"
-                  id="card"
-                  placeholder="Credit or debit card"
-                />
-              </div>
-             
-              <div className="form-group">
-                <input type="text" placeholder="Card number" />
-              </div>
-              <div className="form-group small-group">
-                <input type="text" placeholder="Expiration" />
-                <input type="text" placeholder="CVV" />
-              </div>
-              <div className="form-group">
-                <input type="text" placeholder="Morty Smith" />
-              </div>
-              <div className="form-group">
-                <input type="text" placeholder="Israel" />
-              </div>
-            </div> */}
             <div className="payment-form">
               <div className="form-group">
                 <select id="card-type" defaultValue="">
@@ -125,20 +100,17 @@ export function ConfirmReservation() {
                   <option value="Debit">Debit card</option>
                 </select>
               </div>
-
               <div className="form-group">
-                <input type="text" placeholder="Card number" />
+                <input value="5555621859874580" type="text" placeholder="Card number" />
               </div>
-
               <div className="form-group split">
-                <input type="text" placeholder="Expiration" />
-                <input type="text" placeholder="CVV" />
+                <input value= "02/28" type="text" placeholder="Expiration" />
+                <input value= "235" type="text" placeholder="CVV" />
               </div>
 
               <div className="form-group">
-                <input type="text" placeholder="ZIP code" />
+                <input value= "4532856" type="text" placeholder="ZIP code" />
               </div>
-
               <div className="form-group">
                 <select id="country" defaultValue="">
                   <option value="" disabled>Country/region</option>
