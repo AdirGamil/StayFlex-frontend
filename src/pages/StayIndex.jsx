@@ -20,23 +20,23 @@ export function StayIndex() {
     loadStays(filterBy)
   }, [filterBy])
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollPosition = window.scrollY
-      if (scrollPosition > 100) {
-        // Adjust this value as needed
-        setShowMiniFilter(true)
-      } else {
-        setShowMiniFilter(false)
-      }
-    }
+  // useEffect(() => {
+  //   const handleScroll = () => {
+  //     const scrollPosition = window.scrollY
+  //     if (scrollPosition > 100) {
+  //       // Adjust this value as needed
+  //       setShowMiniFilter(true)
+  //     } else {
+  //       setShowMiniFilter(false)
+  //     }
+  //   }
 
-    window.addEventListener('scroll', handleScroll)
+  //   window.addEventListener('scroll', handleScroll)
 
-    return () => {
-      window.removeEventListener('scroll', handleScroll)
-    }
-  }, [])
+  //   return () => {
+  //     window.removeEventListener('scroll', handleScroll)
+  //   }
+  // }, [])
 
   // function onLabelClick(label) {
   //   setFilterBy({ ...filterBy, label })

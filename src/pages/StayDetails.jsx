@@ -36,6 +36,10 @@ const carbonMonoxideAlarm =
   'https://res.cloudinary.com/dyhmjlymk/image/upload/v1721723578/svg_xml_base64_PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiIgYXJpYS1oaWRkZW49InRydWUiIHJvbGU9InByZXNlbnRhdGlvbiIgZm9jdXNhYmxlPSJmYWxzZSIgc3R5bGU9ImRpc3BsYXk6IGJsb2NrOyBoZWlnaHQ_7_isgcfs.svg'
 const extraPillowsAndBlankets =
   'https://res.cloudinary.com/dyhmjlymk/image/upload/v1721725228/svg_xml_base64_PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiIgYXJpYS1oaWRkZW49InRydWUiIHJvbGU9InByZXNlbnRhdGlvbiIgZm9jdXNhYmxlPSJmYWxzZSIgc3R5bGU9ImRpc3BsYXk6IGJsb2NrOyBoZWlnaHQ_8_lsbqpc.svg'
+const TV =
+ 'https://res.cloudinary.com/doahdwb2g/image/upload/v1721908788/svg_xml_base64_PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiIgYXJpYS1oaWRkZW49InRydWUiIHJvbGU9InByZXNlbnRhdGlvbiIgZm9jdXNhYmxlPSJmYWxzZSIgc3R5bGU9ImRpc3BsYXk6IGJsb2NrOyBoZWlnaHQ6IDI0_g0kyfy.svg'
+const GardenView = 
+'https://res.cloudinary.com/doahdwb2g/image/upload/v1721908837/svg_xml_base64_PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiIgYXJpYS1oaWRkZW49InRydWUiIHJvbGU9InByZXNlbnRhdGlvbiIgZm9jdXNhYmxlPSJmYWxzZSIgc3R5bGU9ImRpc3BsYXk6IGJsb2NrOyBoZWlnaHQ6_1_kdwdla.svg'
 
 export function StayDetails() {
   const { stayId } = useParams()
@@ -49,6 +53,8 @@ export function StayDetails() {
     'Ev charger': evCharger,
     'Carbon monoxide alarm': carbonMonoxideAlarm,
     'Extra pillows and blankets': extraPillowsAndBlankets,
+    'TV' :TV,
+    'Garden view': GardenView,
   }
 
   useEffect(() => {
@@ -152,9 +158,45 @@ export function StayDetails() {
 
         <StayReservation stay={stay} />
       </section>
+      <section className="header-reviews">
+        <div className="header">★ 5.0 . 6 reviews
+        </div>
+        <div className="reviews-container">
+
+          {stay.reviews.map((review, index) => (
+            <article className="review" key={index}>
+              <div className="user">
+                <img src={review.by.imgUrl} alt="User Avatar" />
+                <div className="user-details-txt">
+                  <h3>{review.by.fullname}</h3>
+                  <p>{review.by._id}</p>
+                </div>
+              </div>
+              <div className="review-txt-date">
+                <div className="review-rating">
+                  <p>★★★★★<span></span></p>
+                  <h6>.</h6>
+                  <h4>July 2024 . <span> Stayed a few nights</span></h4>
+                </div>
+                <div className="review-content">
+                  <p>{review.txt}</p>
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+      <section>
+        <div className="map-container">
+          <article>
+            <h1> Where you'll be</h1>
+            <div className="map"> map here </div>
+            <div className="city-info">city info here</div>
+          </article>
+        </div>
+      </section>
     </section>
   )
 }
-
 
 

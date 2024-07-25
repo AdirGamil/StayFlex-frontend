@@ -1,8 +1,6 @@
 import { useLocation, useNavigate } from 'react-router-dom'
 import { orderService } from '../services/order/order.service.local.js'
 import { formatDateRange, pluralize } from '../services/util.service.js'
-
-
 const starIcon =
   'https://res.cloudinary.com/dhweqnxgd/image/upload/v1721294785/star_us9ozb.png'
 
@@ -36,7 +34,7 @@ export function ConfirmReservation() {
     }
   }
 
-  if (!orderDetails) return <div>No reservation details found.</div>
+  if (!orderDetails) return <div>Loading reservation details...</div>
 
   const formattedDateRange = formatDateRange(
     orderDetails.startDate,
@@ -47,7 +45,7 @@ export function ConfirmReservation() {
     <main className="main-reservation">
       <section className="reservation-section">
         <header className="title-reservation">
-          <h1>Request to book</h1>
+          <h1>Confirm and pay</h1>
         </header>
 
         <article className="info-reservation">
@@ -58,50 +56,95 @@ export function ConfirmReservation() {
           </div>
           <div className="guests-reservation">
             <h4>Guests</h4>
-            <p>{orderDetails.totalPrice} guest</p>
+            <p>
+              {orderDetails.guests.adults + orderDetails.guests.children} guests
+              {orderDetails.guests.infants > 0 &&
+                `, ${orderDetails.guests.infants} infant${orderDetails.guests.infants > 1 ? 's' : ''
+                }`}
+              {orderDetails.guests.pets > 0 &&
+                `, ${orderDetails.guests.pets} pet${orderDetails.guests.pets > 1 ? 's' : ''
+                }`}
+            </p>
           </div>
-
           <div className="pay-reservation">
-            <h2>Pay with</h2>
-            <div className="pay-imgs">
-              <img
-                src="//a0.muscache.com/airbnb/static/packages/assets/frontend/legacy-shared/svgs/payments/logo_visa.0adea522bb26bd90821a8fade4911913.svg"
-                alt="Visa Card"
-                aria-hidden="true"
-              />
-              <img
-                src="//a0.muscache.com/airbnb/static/packages/assets/frontend/legacy-shared/svgs/payments/logo_amex.84088b520ca1b3384cb71398095627da.svg"
-                alt="American Express Card"
-                aria-hidden="true"
-              />
-              <img
-                src="//a0.muscache.com/airbnb/static/packages/assets/frontend/legacy-shared/svgs/payments/logo_mastercard.f18379cf1f27d22abd9e9cf44085d149.svg"
-                alt="Mastercard"
-                aria-hidden="true"
-              />
-              <img
-                src="//a0.muscache.com/airbnb/static/packages/assets/frontend/legacy-shared/svgs/payments/logo_googlepay.3f786bc031b59575d24f504dfb859da0.svg"
-                alt="Google Pay"
-                aria-hidden="true"
-              />
+            <div className="pay-with">
+              <h2>Pay with</h2>
+              <div className="pay-imgs">
+                <img
+                  src="//a0.muscache.com/airbnb/static/packages/assets/frontend/legacy-shared/svgs/payments/logo_visa.0adea522bb26bd90821a8fade4911913.svg"
+                  alt="Visa Card"
+                  aria-hidden="true"
+                />
+                <img
+                  src="//a0.muscache.com/airbnb/static/packages/assets/frontend/legacy-shared/svgs/payments/logo_amex.84088b520ca1b3384cb71398095627da.svg"
+                  alt="American Express Card"
+                  aria-hidden="true"
+                />
+                <img
+                  src="//a0.muscache.com/airbnb/static/packages/assets/frontend/legacy-shared/svgs/payments/logo_mastercard.f18379cf1f27d22abd9e9cf44085d149.svg"
+                  alt="Mastercard"
+                  aria-hidden="true"
+                />
+                <img
+                  src="//a0.muscache.com/airbnb/static/packages/assets/frontend/legacy-shared/svgs/payments/logo_googlepay.3f786bc031b59575d24f504dfb859da0.svg"
+                  alt="Google Pay"
+                  aria-hidden="true"
+                />
+              </div>
             </div>
-            <div className="payment-form">
+            {/* <div className="payment-form">
               <div className="form-group">
                 <label htmlFor="card">Credit or debit card</label>
-                <input type="text" id="card" placeholder="Credit or debit card" />
+                
+                <input
+                  type="text"
+                  id="card"
+                  placeholder="Credit or debit card"
+                />
               </div>
+             
               <div className="form-group">
-                <input type="text" placeholder="5977 8856 5733 4825" />
+                <input type="text" placeholder="Card number" />
               </div>
               <div className="form-group small-group">
-                <input type="text" placeholder="11/26" />
-                <input type="text" placeholder="244" />
+                <input type="text" placeholder="Expiration" />
+                <input type="text" placeholder="CVV" />
               </div>
               <div className="form-group">
                 <input type="text" placeholder="Morty Smith" />
               </div>
               <div className="form-group">
                 <input type="text" placeholder="Israel" />
+              </div>
+            </div> */}
+            <div className="payment-form">
+              <div className="form-group">
+                <select id="card-type" defaultValue="">
+                  <option value="" disabled> Credit or debit card</option>
+                  <option value="Credit">Credit card</option>
+                  <option value="Debit">Debit card</option>
+                </select>
+              </div>
+
+              <div className="form-group">
+                <input type="text" placeholder="Card number" />
+              </div>
+
+              <div className="form-group split">
+                <input type="text" placeholder="Expiration" />
+                <input type="text" placeholder="CVV" />
+              </div>
+
+              <div className="form-group">
+                <input type="text" placeholder="ZIP code" />
+              </div>
+
+              <div className="form-group">
+                <select id="country" defaultValue="">
+                  <option value="" disabled>Country/region</option>
+                  <option value="israel">Israel</option>
+                  {/* Add more country options as needed */}
+                </select>
               </div>
             </div>
           </div>
@@ -116,8 +159,8 @@ export function ConfirmReservation() {
           <div className="groud-rules-reservation">
             <h2>Ground rules</h2>
             <p>
-              We ask every guest to remember a few simple things about what makes
-              a great guest.
+              We ask every guest to remember a few simple things about what
+              makes a great guest.
             </p>
             <ul className="rules">
               <li>Follow the house rules</li>
@@ -130,10 +173,10 @@ export function ConfirmReservation() {
               By selecting the button below, I agree to the{' '}
               <span>Host's House Rules</span>,{' '}
               <span>Ground rules for guests</span>,{' '}
-              <span>Airbnb's Rebooking and Refund Policy</span>, and that Airbnb
-              can <span>charge my payment method</span> if I’m responsible for
-              damage. I agree to pay the total amount shown if the Host accepts my
-              booking request.
+              <span>StayFlex's Rebooking and Refund Policy</span>, and that
+              StayFlex can <span>charge my payment method</span> if I’m
+              responsible for damage. I agree to pay the total amount shown if
+              the Host accepts my booking request.
             </p>
           </div>
 
@@ -145,24 +188,60 @@ export function ConfirmReservation() {
 
       <div className="payment-modal">
         <div className="stay-details">
-          <img src={orderDetails.stay.imgUrls[0]} alt="img of stay" />
+          <img
+            className="stay-image"
+            src={orderDetails.stay.imgUrls[0]}
+            alt="img of stay"
+          />
 
           <div className="text-details">
-            <h4>{orderDetails.stay.name}</h4>
-            <p>{orderDetails.stay.type}</p>
+            <h4 className="stay-name">{orderDetails.stay.name}</h4>
+            <p className="stay-type">{orderDetails.stay.type}</p>
             <p className="rating">
+              <img className="star-icon" src={starIcon} alt="star icon" />
               {orderDetails.averageRating}
             </p>
           </div>
-
         </div>
         <div className="price-details">
           <h2>Price details</h2>
-          <div className="per-night"></div>
-          <div className="taxes"></div>
-          <div className="total"></div>
+          {orderDetails && orderDetails.stay && (
+            <div className="price-item">
+              <span className="calc-span">
+                $
+                {orderDetails.stay.price
+                  ? orderDetails.stay.price.toLocaleString()
+                  : '0'}{' '}
+                x {orderDetails.numberOfNights || 0} nights
+              </span>
+              <span>
+                $
+                {orderDetails.stay.price && orderDetails.numberOfNights
+                  ? (
+                    orderDetails.stay.price * orderDetails.numberOfNights
+                  ).toFixed(2)
+                  : '0'}
+              </span>
+            </div>
+          )}
+          {orderDetails && orderDetails.taxes !== undefined && (
+            <div className="price-item">
+              <span className="taxes-span">Taxes</span>
+              <span>${orderDetails?.taxes?.toFixed(2) || '0.00'}</span>
+            </div>
+          )}
+          {orderDetails && orderDetails.totalPrice !== undefined && (
+            <div className="price-total">
+              <span>Total</span>
+              <span>
+                $
+                {typeof orderDetails.totalPrice === 'number'
+                  ? orderDetails.totalPrice.toFixed(2)
+                  : '0.00'}
+              </span>
+            </div>
+          )}
         </div>
-
       </div>
     </main>
   )

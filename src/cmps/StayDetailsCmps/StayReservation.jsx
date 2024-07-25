@@ -242,7 +242,7 @@ export function StayReservation({ stay }) {
     setGuests(newGuests)
   }
 
-    function calculateNumberOfNights() {
+  function calculateNumberOfNights() {
     if (!startDate || !endDate) return 0
     const timeDiff = endDate.getTime() - startDate.getTime()
     return Math.ceil(timeDiff / (1000 * 3600 * 24))
@@ -270,11 +270,14 @@ export function StayReservation({ stay }) {
         fullname: 'Guest User'
       },
       totalPrice,
+      taxes,
       startDate: startDate.toISOString().split('T')[0],
       endDate: endDate.toISOString().split('T')[0],
       guests: {
         adults: guests.adults,
-        kids: guests.children,
+        children: guests.children,
+        infants: guests.infants,
+        pets: guests.pets
       },
       stay: {
         _id: stay._id,
@@ -283,11 +286,11 @@ export function StayReservation({ stay }) {
         imgUrls: stay.imgUrls,
         loc: stay.loc
       },
+      numberOfNights,
       msgs: [],
       status: 'pending',
       averageRating,
       reviewCount,
-      numberOfNights,
       pricePerNight: stay.price
     }
 
@@ -372,9 +375,14 @@ export function StayReservation({ stay }) {
 
       <div className="price-details">
         <div className="price-item">
-          <span className="calc-span">${stay.price.toLocaleString()} x {numberOfNights} nights</span>
-          <span>${(stay.price * numberOfNights).toLocaleString()}</span>
+          <span className="calc-span">
+            ${Number(stay.price).toFixed(2)} x {numberOfNights} nights
+          </span>
+          <span>
+            ${(stay.price * numberOfNights).toFixed(2)}
+          </span>
         </div>
+
         <div className="price-item">
           <span className="taxes-span">Taxes</span>
           <span>${taxes.toFixed(2)}</span>

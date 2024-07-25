@@ -34,7 +34,7 @@
         display: block;
         font-weight: bold;
         font-size: rem(12px);
-        color: #717171;
+        color: $clr4;
       }
 
       .react-datepicker-wrapper {
@@ -51,12 +51,17 @@
       }
     }
 
-    .check-in .react-datepicker-wrapper .react-datepicker__input-container input {
+    .check-in
+      .react-datepicker-wrapper
+      .react-datepicker__input-container
+      input {
       border-right: rem(1px) solid #ccc;
       border-radius: rem(15px) 0 0;
     }
-    .check-out .react-datepicker-wrapper .react-datepicker__input-container input {
-      
+    .check-out
+      .react-datepicker-wrapper
+      .react-datepicker__input-container
+      input {
       border-radius: rem(15px);
     }
   }
@@ -106,7 +111,7 @@
         display: block;
       }
 
-      >div {
+      > div {
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -128,7 +133,7 @@
 
           span {
             font-size: rem(14px);
-            color: #717171;
+            color: $clr4;
           }
         }
 
@@ -198,12 +203,11 @@
     text-align: center;
     // margin-top: rem(10px);
     font-size: rem(14px);
-    color: #717171;
+    color: $clr4;
   }
 }
 
 .price-details {
-
   .calc-span,
   .taxes-span {
     text-decoration: underline;
@@ -229,7 +233,7 @@
   z-index: 1;
   position: sticky;
   top: 6.25rem;
-  margin-block-end: 5rem;
+  margin-block-end: rem(16px);
   max-width: 23.25rem;
   padding: rem(24px);
   border: 1px solid #dddddc;
@@ -250,10 +254,12 @@
     border: none;
     height: 3rem;
     width: 100%;
-    background: radial-gradient(103.95% 1413.54% at -3.95% 100%,
-        #d33753 0%,
-        #d13660 52.83%,
-        #c72d65 100%);
+    background: radial-gradient(
+      103.95% 1413.54% at -3.95% 100%,
+      #d33753 0%,
+      #d13660 52.83%,
+      #c72d65 100%
+    );
     border-radius: 8px;
     line-height: 19px;
     margin-block-start: 1rem;
