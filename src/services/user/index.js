@@ -8,7 +8,7 @@ function getEmptyUser() {
     username: '',
     password: '',
     fullname: '',
-    isSeller: false,
+    isAdmin: false,
   }
 }
 
