@@ -166,7 +166,8 @@ export function StayDetails() {
               <div className="review-txt-date">
                 <div className="review-rating">
                   <p>★★★★★<span></span></p>
-                  <h4>24.07.2024</h4>
+                  <h6>.</h6>
+                  <h4>July 2024 . <span> Stayed a few nights</span></h4>
                 </div>
                 <div className="review-content">
                   <p>{review.txt}</p>

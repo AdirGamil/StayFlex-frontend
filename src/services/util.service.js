@@ -243,12 +243,12 @@ export function calculateAverageRating(reviews) {
 
 export function generateRandomReviews(numReviews) {
   const reviewTexts = [
-    'Very helpful hosts. Cooked traditional...',
-    'Amazing stay! Highly recommend.',
+    'Staying at this house was a dream! The host was super accommodating, the location was perfect, and the view from the balcony was breathtaking. Would love to come back again!',
+    'Angel was warm and welcoming and has a beautiful apartment. Id recommend his place to anyone visiting downtown Montreal!',
     'It was a pleasant experience.',
-    'Could be better, but overall not bad.',
+    'Had a fantastic stay here. The house was clean, cozy, and had all the amenities we needed. The host was friendly and gave us great local tips. Highly recommend!',
     'I did not enjoy my stay here.',
-    'The host was very helpful and friendly.',
+    'This house exceeded our expectations! The decor was stylish, the beds were comfortable, and the kitchen was well-equipped. Perfect for a family vacation. We had an amazing time!',
     'The place was clean and well-maintained.',
   ]
 
