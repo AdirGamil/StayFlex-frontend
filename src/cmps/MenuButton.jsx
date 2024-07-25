@@ -51,8 +51,8 @@ const MenuButton = () => {
       </button>
       {isOpen && (
         <div className="dropdown-menu">
-          <a href="#">Sign up</a>
-          <a href="#">Log in</a>
+          <a href="/signup">Sign up</a>
+          <a href="/login">Log in</a>
           <a href="#">Gift cards</a>
           <a href="/orders">Orders</a>
           <a href="/addstay">StayFlex your home</a>

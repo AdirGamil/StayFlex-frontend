@@ -18,6 +18,8 @@ import { AppFooter } from './cmps/AppFooter.jsx'
 import { AddStay } from './cmps/AddStay.jsx'
 import { StayOrders } from './pages/StayOrders.jsx'
 import { StayTrips } from './pages/StayTrips.jsx'
+import { Login } from './pages/Login.jsx'
+import { Signup } from './pages/Signup.jsx'
 import { MiniFilter } from './cmps/MiniFilter.jsx'
 
 function HeaderWrapper() {
@@ -45,6 +47,8 @@ export function RootCmp() {
               <Route path="/orders" element={<StayOrders />} />
               <Route path="/trips" element={<StayTrips />} />
               <Route path="user/:id" element={<UserDetails />} />
+              <Route path="login" element={<Login />} />
+              <Route path="signup" element={<Signup />} />
             </Routes>
           </main>
           <AppFooter />
