@@ -10,6 +10,7 @@ import {
   coordinates,
   amenities,
   labels,
+  imgUrls,
 } from '../services/data.service.js'
 import {
   Checkbox,
@@ -25,6 +26,16 @@ import {
   getRandomHostImg,
   getRandomMaleName,
   makeId,
+  getRandomElement,
+  getRandomIntInclusive,
+  makeLorem,
+  generateRandomReviews,
+  calculateAverageRating,
+  getRandomImgUrls,
+  getRandomLabels,
+  getRandomLocation,
+  getRandomKilometersAway,
+  getDateRange,
 } from '../services/util.service.js'
 
 export function AddStay() {
@@ -80,21 +91,22 @@ export function AddStay() {
 
   async function onAddStay(event) {
     event.preventDefault()
+
+    const reviews = generateRandomReviews(5)
+    const averageRating = calculateAverageRating(reviews)
+
     const stay = {
       name,
       type,
+      imgUrls: getRandomImgUrls(),
       price: +price,
+      summary: makeLorem(50),
       capacity: +capacity,
-      beds: +beds,
       bedrooms: +bedrooms,
       baths: +baths,
+      beds: +beds,
       amenities: selectedAmenities,
       labels: selectedLabels,
-      host: {
-        _id: makeId(),
-        fullname: getRandomMaleName(),
-        imgUrl: getRandomHostImg(),
-      },
       loc: {
         country,
         city,
@@ -102,6 +114,17 @@ export function AddStay() {
         lat: +lat,
         lng: +lng,
       },
+      reviews,
+      kilometersAway: getRandomKilometersAway(),
+      dateRange: getDateRange(),
+      likedByUsers: ['mini-user'],
+      owner: userService.getLoggedinUser(),
+      host: {
+        _id: makeId(),
+        fullname: getRandomMaleName(),
+        imgUrl: getRandomHostImg(),
+      },
+      averageRating,
     }
 
     try {
