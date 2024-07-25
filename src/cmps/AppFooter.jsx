@@ -31,7 +31,7 @@ export function AppFooter() {
           <h2>Hosting</h2>
           <ul>
             <li>
-              <a href="#">Airbnb your home</a>
+              <a href="#">StayFlex your home</a>
             </li>
             <li>
               <a href="#">AirCover for Hosts</a>
@@ -46,7 +46,7 @@ export function AppFooter() {
               <a href="#">Hosting responsibly</a>
             </li>
             <li>
-              <a href="#">Airbnb-friendly apartments</a>
+              <a href="#">StayFlex-friendly apartments</a>
             </li>
             <li>
               <a href="#">Join a free Hosting class</a>
@@ -54,7 +54,7 @@ export function AppFooter() {
           </ul>
         </div>
         <div>
-          <h2>Airbnb</h2>
+          <h2>StayFlex</h2>
           <ul>
             <li>
               <a href="#">Newsroom</a>
@@ -72,7 +72,7 @@ export function AppFooter() {
               <a href="#">Gift cards</a>
             </li>
             <li>
-              <a href="#">Airbnb.org emergency stays</a>
+              <a href="#">StayFlex.org emergency stays</a>
             </li>
           </ul>
         </div>

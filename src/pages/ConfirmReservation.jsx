@@ -2,7 +2,6 @@ import { useLocation, useNavigate } from 'react-router-dom'
 import { orderService } from '../services/order/order.service.local.js'
 import { formatDateRange, pluralize } from '../services/util.service.js'
 
-
 const starIcon =
   'https://res.cloudinary.com/dhweqnxgd/image/upload/v1721294785/star_us9ozb.png'
 
@@ -60,8 +59,14 @@ export function ConfirmReservation() {
             <h4>Guests</h4>
             <p>
               {orderDetails.guests.adults + orderDetails.guests.children} guests
-              {orderDetails.guests.infants > 0 && `, ${orderDetails.guests.infants} infant${orderDetails.guests.infants > 1 ? 's' : ''}`}
-              {orderDetails.guests.pets > 0 && `, ${orderDetails.guests.pets} pet${orderDetails.guests.pets > 1 ? 's' : ''}`}
+              {orderDetails.guests.infants > 0 &&
+                `, ${orderDetails.guests.infants} infant${
+                  orderDetails.guests.infants > 1 ? 's' : ''
+                }`}
+              {orderDetails.guests.pets > 0 &&
+                `, ${orderDetails.guests.pets} pet${
+                  orderDetails.guests.pets > 1 ? 's' : ''
+                }`}
             </p>
           </div>
           <div className="pay-reservation">
@@ -91,7 +96,11 @@ export function ConfirmReservation() {
             <div className="payment-form">
               <div className="form-group">
                 <label htmlFor="card">Credit or debit card</label>
-                <input type="text" id="card" placeholder="Credit or debit card" />
+                <input
+                  type="text"
+                  id="card"
+                  placeholder="Credit or debit card"
+                />
               </div>
               <div className="form-group">
                 <input type="text" placeholder="5977 8856 5733 4825" />
@@ -119,8 +128,8 @@ export function ConfirmReservation() {
           <div className="groud-rules-reservation">
             <h2>Ground rules</h2>
             <p>
-              We ask every guest to remember a few simple things about what makes
-              a great guest.
+              We ask every guest to remember a few simple things about what
+              makes a great guest.
             </p>
             <ul className="rules">
               <li>Follow the house rules</li>
@@ -133,10 +142,10 @@ export function ConfirmReservation() {
               By selecting the button below, I agree to the{' '}
               <span>Host's House Rules</span>,{' '}
               <span>Ground rules for guests</span>,{' '}
-              <span>Airbnb's Rebooking and Refund Policy</span>, and that Airbnb
-              can <span>charge my payment method</span> if I’m responsible for
-              damage. I agree to pay the total amount shown if the Host accepts my
-              booking request.
+              <span>StayFlex's Rebooking and Refund Policy</span>, and that
+              StayFlex can <span>charge my payment method</span> if I’m
+              responsible for damage. I agree to pay the total amount shown if
+              the Host accepts my booking request.
             </p>
           </div>
 
@@ -148,16 +157,17 @@ export function ConfirmReservation() {
 
       <div className="payment-modal">
         <div className="stay-details">
-          <img className="stay-image" src={orderDetails.stay.imgUrls[0]} alt="img of stay" />
+          <img
+            className="stay-image"
+            src={orderDetails.stay.imgUrls[0]}
+            alt="img of stay"
+          />
 
           <div className="text-details">
             <h4 className="stay-name">{orderDetails.stay.name}</h4>
             <p className="stay-type">{orderDetails.stay.type}</p>
             <p className="rating">
-              <img className="star-icon"
-                src={starIcon}
-                alt="star icon"
-              />
+              <img className="star-icon" src={starIcon} alt="star icon" />
               {orderDetails.averageRating}
             </p>
           </div>
@@ -167,11 +177,18 @@ export function ConfirmReservation() {
           {orderDetails && orderDetails.stay && (
             <div className="price-item">
               <span className="calc-span">
-                ${orderDetails.stay.price ? orderDetails.stay.price.toLocaleString(): '0'} x {orderDetails.numberOfNights || 0} nights
+                $
+                {orderDetails.stay.price
+                  ? orderDetails.stay.price.toLocaleString()
+                  : '0'}{' '}
+                x {orderDetails.numberOfNights || 0} nights
               </span>
               <span>
-                ${orderDetails.stay.price && orderDetails.numberOfNights
-                  ? (orderDetails.stay.price * orderDetails.numberOfNights).toFixed(2) 
+                $
+                {orderDetails.stay.price && orderDetails.numberOfNights
+                  ? (
+                      orderDetails.stay.price * orderDetails.numberOfNights
+                    ).toFixed(2)
                   : '0'}
               </span>
             </div>
@@ -185,11 +202,15 @@ export function ConfirmReservation() {
           {orderDetails && orderDetails.totalPrice !== undefined && (
             <div className="price-total">
               <span>Total</span>
-              <span>${typeof orderDetails.totalPrice === 'number' ? orderDetails.totalPrice.toFixed(2) : '0.00'}</span>
+              <span>
+                $
+                {typeof orderDetails.totalPrice === 'number'
+                  ? orderDetails.totalPrice.toFixed(2)
+                  : '0.00'}
+              </span>
             </div>
           )}
         </div>
-
       </div>
     </main>
   )
