@@ -117,7 +117,7 @@ export function AddStay() {
   return (
     <section className="main-add-modal">
       <div className="add-modal">
-        <h1>Airbnb your home!</h1>
+        <h1>StayFlex your home!</h1>
         <form onSubmit={onAddStay}>
           <TextField
             label="Name"

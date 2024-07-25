@@ -177,6 +177,15 @@ export function StayDetails() {
           ))}
         </div>
       </section>
+      <section>
+        <div className="map-container">
+          <article>
+            <h1> Where you'll be</h1>
+            <div className="map"> map here </div>
+            <div className="city-info">city info here</div>
+          </article>
+        </div>
+      </section>
     </section>
   )
 }

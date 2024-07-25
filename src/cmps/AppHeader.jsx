@@ -91,7 +91,7 @@ export function AppHeader({ isScrolled }) {
         )}
         <div className="user-actions">
           <NavLink to="/addstay" className="add-stay">
-            Airbnb your home
+            StayFlex your home
           </NavLink>
           <MenuButton />
         </div>

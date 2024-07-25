@@ -231,8 +231,7 @@
           margin: 0;
         }
 
-        h4 span {
-          // opacity: 0.6;
+        h4 span{
           color: $clr7;
           font-weight: 100;
         }
@@ -245,5 +244,15 @@
         }
       }
     }
+  }
+}
+
+.map-container{
+
+  border-block-start: rem(0.667px) solid $clr6 ;
+
+  h1{
+    font-size: rem(22px);
+    font-weight: 200;
   }
 }
