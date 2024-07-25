@@ -9,6 +9,10 @@
     align-items: center;
     gap: 2rem;
 
+    .links-header, .mini-filter-container {
+      justify-self: center;
+    }
+
     .logo {
       display: flex;
       align-items: center;
@@ -62,6 +66,14 @@
       align-items: center;
       gap: rem(8px);
 
+      
+      
+      .sticky-header-wrapper.scrolled {
+        .app-header {
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+      }
+      
       .add-stay {
         color: $clr3; // שחור כהה
         font-size: rem(14px);
@@ -156,3 +168,22 @@
     }
   }
 }
+
+.sticky-header-wrapper.scrolled .app-header .links-header {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.stay-filter-container {
+  display:block;
+  transition: opacity 0.3s ease, visibility 0.3s ease, display 0s linear 0.3s;
+
+  &.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    display: none;
+  }
+}
+
