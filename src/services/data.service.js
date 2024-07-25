@@ -152,7 +152,7 @@ export const coordinates = {
   Boston: { lat: 42.3601, lng: -71.0589 },
   Houston: { lat: 29.7604, lng: -95.3698 },
   // Brazil
-  'Rio de Janeiro': { lat: -22.9068, lng: -43.1729 },
+  Rio: { lat: -22.9068, lng: -43.1729 },
   'Sao Paulo': { lat: -23.5505, lng: -46.6333 },
   Brasilia: { lat: -15.7942, lng: -47.8822 },
   Salvador: { lat: -12.9714, lng: -38.5014 },
@@ -253,7 +253,7 @@ export const cities = {
     'San Francisco',
     'Miami',
     'Las Vegas',
-    'WDC',
+    'Washington D.C.',
     'Boston',
     'Houston',
   ],
