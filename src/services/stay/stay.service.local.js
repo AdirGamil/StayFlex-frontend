@@ -9,7 +9,7 @@ import {
 
 const STORAGE_KEY = 'stayDB'
 var gStays
-_createStays(5)
+_createStays(50)
 
 export const stayService = {
   query,
