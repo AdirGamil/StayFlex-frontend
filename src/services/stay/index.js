@@ -10,6 +10,9 @@ import {
   getRandomIntInclusive,
   getRandomElement,
   getRandomLocation,
+  calculateAverageRating,
+  getRandomMaleName,
+  getRandomHostImg,
 } from '../util.service'
 import {
   names,
@@ -24,10 +27,11 @@ import { stayService as local } from './stay.service.local'
 import { stayService as remote } from './stay.service.remote'
 
 function getEmptyStay({ price = getRandomIntInclusive(20, 300) } = {}) {
-  const name = getRandomElement(names)
-  const type = getRandomElement(types)
-  const loc = getRandomLocation()
-  const reviews = generateRandomReviews(5)
+  const name = getRandomElement(names);
+  const type = getRandomElement(types);
+  const loc = getRandomLocation();
+  const reviews = generateRandomReviews(5);
+  const averageRating = calculateAverageRating(reviews);
 
   return {
     name,
@@ -36,6 +40,8 @@ function getEmptyStay({ price = getRandomIntInclusive(20, 300) } = {}) {
     price,
     summary: 'Fantastic duplex apartment...',
     capacity: Math.floor(Math.random() * 10) + 1,
+    bedrooms: Math.floor(Math.random() * 6) + 1,
+    baths: Math.floor(Math.random() * 6) + 1,
     beds: Math.floor(Math.random() * 6) + 1,
     amenities: [
       'TV',
@@ -44,6 +50,12 @@ function getEmptyStay({ price = getRandomIntInclusive(20, 300) } = {}) {
       'Smoking allowed',
       'Pets allowed',
       'Cooking basics',
+      'Hair dryer',
+      'Ev charger',
+      'Dryer',
+      'Wineglasses',
+      'Carbon monoxide alarm',
+      'Extra pillows and blankets',
     ],
     labels: getRandomLabels(labels),
     loc,
@@ -51,12 +63,19 @@ function getEmptyStay({ price = getRandomIntInclusive(20, 300) } = {}) {
     kilometersAway: getRandomKilometersAway(),
     dateRange: getDateRange(),
     likedByUsers: ['mini-user'],
-    owner: {
+    owner: userService.getLoggedinUser() || {
       _id: makeId(),
       fullname: 'Default Owner',
     },
-  }
+    host: {
+      _id: makeId(),
+      fullname: getRandomMaleName(),
+      imgUrl: getRandomHostImg(),
+    },
+    averageRating,
+  };
 }
+
 
 function getDefaultFilter() {
   return {

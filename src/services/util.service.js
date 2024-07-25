@@ -199,9 +199,9 @@ export function getRandomLabels(labels) {
   return shuffled.slice(0, numLabels)
 }
 
-export function getRandomImgUrls(imgUrls) {
-  const shuffled = imgUrls.sort(() => 0.5 - Math.random())
-  return shuffled.slice(0, 5)
+export function getRandomImgUrls() {
+  const shuffled = [...imgUrls].sort(() => 0.5 - Math.random());
+  return shuffled.slice(0, 5);
 }
 
 export function getRandomKilometersAway() {
