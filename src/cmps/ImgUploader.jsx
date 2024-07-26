@@ -30,8 +30,16 @@ export function ImgUploader({ onUploaded = null }) {
           style={{ maxWidth: '200px', float: 'right' }}
         />
       )}
-      <label htmlFor="imgUpload">{getUploadLabel()}</label>
-      <input type="file" onChange={uploadImg} accept="img/*" id="imgUpload" />
+      <label className="upload-label" htmlFor="imgUpload">
+        {getUploadLabel()}
+      </label>
+      <input
+        className="upload-input"
+        type="file"
+        onChange={uploadImg}
+        accept="img/*"
+        id="imgUpload"
+      />
     </div>
   )
 }

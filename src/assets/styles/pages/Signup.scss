@@ -43,9 +43,11 @@
       background-color: #fff;
     }
   
-    .signup-btn {
-      width: 100%;
-      margin-top: rem(40px);
+    .signup-btn, .upload-btn{
+        text-align: center;
+        margin: auto;
+      width: 60%;
+      margin-top: rem(20px);
       padding: rem(14px);
       background-color: $clr1;
       color: white;
@@ -58,11 +60,25 @@
   
       &:hover {
         background-color: $clr11;
-      }
     }
+}
 
-    .upload-preview{
+.upload-preview{
+    .upload-label{
     }
+    
+    .upload-input{
+        display: none;
+        
+    }
+}
+
+.upload-flex {
+    display: flex;
+    flex-direction: row;
+    place-content: center;
+    gap: rem(10px);
+}
     
   }
   

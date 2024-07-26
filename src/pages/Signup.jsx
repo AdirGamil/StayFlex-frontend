@@ -6,7 +6,7 @@ import { signup } from '../store/actions/user.actions'
 import { ImgUploader } from '../cmps/ImgUploader'
 import { userService } from '../services/user'
 import { Button } from '@mui/material'
-import CloudUploadIcon from '@mui/icons-material/CloudUpload';
+import CloudUploadIcon from '@mui/icons-material/CloudUpload'
 
 export function Signup() {
   const [credentials, setCredentials] = useState(userService.getEmptyUser())
@@ -68,18 +68,16 @@ export function Signup() {
         onChange={handleChange}
         required
       />
-      {/* <ImgUploader onUploaded={onUploaded} /> */}
 
-      <Button
-  component="label"
-  role={undefined}
-  variant="contained"
-  tabIndex={-1}
-  startIcon={<CloudUploadIcon />}
->
-  <ImgUploader onUploaded={onUploaded} />
-</Button>
-      <button className='signup-btn'>SignUp</button>
+      <label className="upload-btn">
+        <div className="upload-flex">
+
+        <CloudUploadIcon />
+        <ImgUploader onUploaded={onUploaded} />
+        </div>
+      </label>
+
+      <button className="signup-btn">SignUp</button>
     </form>
   )
 }
