@@ -25,7 +25,7 @@
       font-size: rem(16px);
   
       &:focus {
-        border-color: #e61e4d;
+        border-color: $clr11;
         outline: none;
       }
     }
@@ -56,7 +56,7 @@
       transition: background-color 0.3s ease;
   
       &:hover {
-        background-color: #e61e4d;
+        background-color: $clr11;
       }
     }
   }
