@@ -1,3 +1,36 @@
-.trip-img {
-  max-width: 400px;
+.stay-trip-container {
+  // background-color: aqua;
+  display: grid;
+  gap: rem(20px);
+  padding-inline: rem(40px);
+  border-block-start: rem(0.667px) solid $clr6;
+
+
+  .stay-trip {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    // gap: rem(20px);
+
+    &:last-of-type {
+      margin-bottom: rem(24px);
+    }
+
+    .trip-img {
+      max-width: 400px;
+
+
+    }
+
+  }
+
+  .trip-not {
+    border-block-start: rem(0.667px) solid $clr6;
+    padding: rem(24px) 0;
+
+    span {
+      font-weight: 600;
+      text-decoration: underline;
+    }
+  }
+
 }
