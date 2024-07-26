@@ -1,126 +1,405 @@
+// .stay-labels {
+//   position: relative;
+//   width: 100%;
+//   border-top: 1px solid $clr6;
 
-.stay-labels {
+//   .filters-container {
+//     display: flex;
+//     align-items: center;
+//     overflow-x: auto;
+//     white-space: nowrap;
+//     padding: rem(10px) rem(40px);
+//     gap: rem(24px);
+//     scrollbar-width: none;
+//     -ms-overflow-style: none;
+
+//     &::-webkit-scrollbar {
+//       display: none;
+//     }
+
+//     .label-item {
+//       display: flex;
+//       flex-direction: column;
+//       align-items: center;
+//       cursor: pointer;
+//       min-width: rem(48px);
+//       max-width: 80px;
+//       padding: rem(5px);
+//       position: relative;
+
+//       img {
+//         width: rem(24px);
+//         height: rem(24px);
+//         margin-bottom: rem(8px);
+//         transition: opacity 0.3s ease;
+//       }
+
+//       span {
+//         font-size: rem(12px);
+//         color: $clr7;
+//         transition: color 0.3s ease, font-weight 0.3s ease;
+//       }
+
+//       .selected-indicator {
+//         position: absolute;
+//         bottom: 0;
+//         left: 0;
+//         width: 100%;
+//         height: rem(2px);
+//         background-color: black;
+//         transform: scaleX(0);
+//         transition: transform 0.3s ease;
+//         display: none;
+//       }
+
+//       &.selected {
+//         img {
+//           opacity: 1;
+//         }
+
+//         span {
+//           color: black;
+//         }
+
+//         .selected-indicator {
+//           transform: scaleX(1);
+//           display: block;
+//         }
+//       }
+//     }
+
+//     .dir {
+//       display: flex;
+//       align-items: center;
+//       justify-content: center;
+//       border-radius: 50%;
+//       background-color: $clr5;
+//       width: rem(32px);
+//       height: rem(32px);
+//       border: none;
+//       overflow: visible;
+//       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.18);
+//       cursor: pointer;
+//       transition: box-shadow 0.2s ease, transform 0.1s ease;
+
+//       &:active {
+//         transform: scale(0.96);
+//       }
+
+//       svg {
+//         width: rem(12px);
+//         height: rem(12px);
+//         fill: $clr3;
+//       }
+//     }
+//   }
+
+//   .filter-button {
+//     padding: rem(8px) rem(16px) rem(8px) rem(20px);
+//     margin-right: rem(40px);
+//     height: rem(50px);
+//     border: 1px solid #dddddd;
+//     border-radius: rem(12px);
+//     background: white;
+//     display: flex;
+//     align-items: center;
+//     cursor: pointer;
+
+//     svg {
+//       display: block;
+//       fill: none;
+//       height: rem(16px);
+//       width: rem(16px);
+//       stroke: currentcolor;
+//       stroke-width: 3;
+//       overflow: visible;
+//     }
+
+//     span {
+//       margin-left: rem(8px);
+//     }
+
+//     &:hover {
+//       border-color: $clr3;
+//     }
+//   }
+// }
+
+// .label-item {
+//   max-width: 48px; /* Adjust as needed */
+//   text-align: center;
+// }
+
+// .label-image {
+//   max-width: 100%;
+//   height: auto;
+// }
+///////////////////////////////////////////////////////////////
+// .stay-labels-wrapper {
+//   display: flex;
+//   align-items: center;
+//   max-width: rem(1200px);
+//   /* Adjust this to your desired width */
+//   // margin: 0 auto;
+//   position: relative;
+//   // padding: 20px 0;
+// }
+
+// .stay-labels-container {
+//   display: flex;
+//   justify-content: center;
+//   gap: rem(10px);
+
+//   padding-top: rem(10px);
+//   padding-bottom: rem(10px);
+
+//   overflow-x: hidden;
+//   scroll-behavior: smooth;
+//   -ms-overflow-style: none;
+//   scrollbar-width: none;
+//   // background: green;
+// }
+
+// .stay-labels-container::-webkit-scrollbar {
+//   display: none;
+// }
+
+// .label-item {
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   margin-right: 24px;
+//   cursor: pointer;
+//   min-width: auto;
+// }
+
+// .label-image {
+//   width: 24px;
+//   height: 24px;
+//   margin-bottom: 4px;
+// }
+
+// .label-item span {
+//   font-size: 12px;
+//   color: #717171;
+//   white-space: nowrap;
+// }
+
+// .label-item.selected span {
+//   color: #222222;
+//   font-weight: 600;
+// }
+
+// .label-item.selected::after {
+//   content: '';
+//   position: absolute;
+//   bottom: -8px;
+//   // left: 0;
+//   // right: 0;
+//   height: 2px;
+//   background-color: #222222;
+// }
+
+// .scroll-button {
+//   position: absolute;
+//   top: 50%;
+//   transform: translateY(-50%);
+//   background: white;
+//   border: 1px solid #ddd;
+//   border-radius: 50%;
+//   width: 32px;
+//   height: 32px;
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   cursor: pointer;
+//   z-index: 2;
+// }
+
+// .scroll-button.left {
+//   left: -16px;
+// }
+
+// .scroll-button.right {
+//   right: -16px;
+// }
+
+// .filter-button {
+//   padding: rem(8px) rem(16px) rem(8px) rem(20px);
+//   margin-right: rem(40px);
+//   height: rem(50px);
+//   border: 1px solid #dddddd;
+//   border-radius: rem(12px);
+//   background: white;
+//   display: flex;
+//   align-items: center;
+//   cursor: pointer;
+
+//   svg {
+//     display: block;
+//     fill: none;
+//     height: rem(16px);
+//     width: rem(16px);
+//     // stroke: currentcolor;
+//     stroke-width: 3;
+//     overflow: visible;
+//   }
+
+//   span {
+//     margin-left: rem(8px);
+//   }
+
+//   &:hover {
+//     border-color: $clr3;
+//   }
+// }
+
+.stay-labels-wrapper {
+  display: flex;
+  align-items: center;
+  max-width: 1200px;
+  /* Adjust to match your layout */
+  margin: 0 rem(50px);
   position: relative;
-  width: 100%;
-  border-top: 1px solid $clr6;
+  padding: 20px 0;
+}
 
-  .filters-container {
-    display: flex;
-    align-items: center;
-    overflow-x: auto;
-    white-space: nowrap;
-    padding: rem(10px) rem(40px);
-    gap: rem(24px);
-    scrollbar-width: none;
-    -ms-overflow-style: none;
+.stay-labels-container {
+  display: flex;
+  overflow-x: auto;
+  flex-grow: 1;
+  scroll-behavior: smooth;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  padding-left: 0;
+  /* Align first item with the edge */
+}
 
-    &::-webkit-scrollbar {
-      display: none;
-    }
+.stay-labels-container::-webkit-scrollbar {
+  display: none;
+}
 
-    .label-item {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      cursor: pointer;
-      min-width: rem(48px);
-      padding: rem(5px);
-      position: relative;
+.label-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 24px;
+  cursor: pointer;
+  min-width: auto;
+  margin-inline: rem(18px);
+}
 
-      img {
-        width: rem(24px);
-        height: rem(24px);
-        margin-bottom: rem(8px);
-        transition: opacity 0.3s ease;
-      }
+.label-item:first-child {
+  margin-left: 0;
+  /* Ensure the first item is flush with the left edge */
+}
 
-      span {
-        font-size: rem(12px);
-        color: $clr7;
-        transition: color 0.3s ease, font-weight 0.3s ease;
-      }
+.label-image {
+  width: 24px;
+  height: 24px;
+  margin-bottom: 4px;
+}
 
-      .selected-indicator {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        height: rem(2px);
-        background-color: black;
-        transform: scaleX(0);
-        transition: transform 0.3s ease;
-        display: none;
-      }
+.label-item span {
+  font-size: 12px;
+  color: #717171;
+  white-space: nowrap;
+}
 
-      &.selected {
-        img {
-          opacity: 1;
-        }
+.label-item.selected span {
+  color: #222222;
+  font-weight: 600;
+}
 
-        span {
-          color: black;
-        }
+.label-item.selected::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: #222222;
+}
 
-        .selected-indicator {
-          transform: scaleX(1);
-          display: block;
-        }
-      }
-    }
+.scroll-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 2;
+}
 
-    .dir {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 50%;
-      background-color: $clr5;
-      width: rem(32px);
-      height: rem(32px);
-      border: none;
-      overflow: visible;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.18);
-      cursor: pointer;
-      transition: box-shadow 0.2s ease, transform 0.1s ease;
+.scroll-button.left {
+  left: -16px;
+}
 
-      &:active {
-        transform: scale(0.96);
-      }
+.scroll-button.right {
+  right: -16px;
+}
 
-      svg {
-        width: rem(12px);
-        height: rem(12px);
-        fill: $clr3;
-      }
-    }
+// .filter-button {
+//   position: absolute;
+//   right: -100px; /* Adjust based on your layout */
+//   top: 50%;
+//   transform: translateY(-50%);
+//   border: 1px solid #ddd;
+//   border-radius: 12px;
+//   padding: 7px 16px;
+//   background-color: white;
+//   cursor: pointer;
+//   display: flex;
+//   align-items: center;
+//   z-index: 2;
+// }
+
+// .filter-button svg {
+//   margin-right: 8px;
+// }
+
+// .filter-button span {
+//   font-size: 12px;
+//   font-weight: 600;
+// }
+
+.filter-button {
+  // padding: rem(8px) rem(16px) rem(8px) rem(20px);
+  
+  // border: 1px solid #dddddd;
+  // border-radius: rem(12px);
+  // background: white;
+  // display: flex;
+  // align-items: center;
+  // cursor: pointer;
+
+  svg {
+    display: block;
+    fill: none;
+    height: rem(16px);
+    width: rem(16px);
+    // stroke: currentcolor;
+    stroke-width: 3;
+    overflow: visible;
   }
 
-  .filter-button {
-    padding: rem(8px) rem(16px) rem(8px) rem(20px);
-    margin-right: rem(40px);
-    height: rem(50px);
-    border: 1px solid #dddddd;
-    border-radius: rem(12px);
-    background: white;
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-
-    svg {
-      display: block;
-      fill: none;
-      height: rem(16px);
-      width: rem(16px);
-      stroke: currentcolor;
-      stroke-width: 3;
-      overflow: visible;
-    }
-
-    span {
-      margin-left: rem(8px);
-    }
-
-    &:hover {
-      border-color: $clr3;
-    }
+  span {
+    margin-left: rem(8px);
   }
+
+  &:hover {
+    border-color: $clr3;
+  }
+}
+
+.main-labels-container {
+  position: relative;
+  display: flex;
+  align-items: center;
 }
