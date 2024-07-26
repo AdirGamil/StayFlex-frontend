@@ -197,12 +197,14 @@ export function AddStay() {
                 know the location and how many guests can stay.
               </span>
             </section>
+            <div className="stage-video">
             <video
               ref={videoRef}
               src="https://res.cloudinary.com/db7t5amdv/video/upload/v1713520620/BuildHouseVidIntro_tbrwcf.mp4"
               autoPlay
               muted
-            ></video>
+              ></video>
+              </div>
           </section>
         )
       case 2:
@@ -460,7 +462,6 @@ export function AddStay() {
   return (
     <section className="main-add-modal">
       <div className="add-modal">
-        <h1>StayFlex your home!</h1>
         <form onSubmit={onAddStay}>
           <LinearProgress
             variant="determinate"
