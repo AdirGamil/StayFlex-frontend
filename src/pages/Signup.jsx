@@ -5,6 +5,8 @@ import { signup } from '../store/actions/user.actions'
 
 import { ImgUploader } from '../cmps/ImgUploader'
 import { userService } from '../services/user'
+import { Button } from '@mui/material'
+import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 
 export function Signup() {
   const [credentials, setCredentials] = useState(userService.getEmptyUser())
@@ -38,8 +40,10 @@ export function Signup() {
 
   return (
     <form className="signup-form" onSubmit={onSignup}>
+      <h1 className="signup-title">SignUp to StayFlex !</h1>
       <input
         type="text"
+        className="input text-input"
         name="fullname"
         value={credentials.fullname}
         placeholder="Fullname"
@@ -48,6 +52,7 @@ export function Signup() {
       />
       <input
         type="text"
+        className="input text-input"
         name="username"
         value={credentials.username}
         placeholder="Username"
@@ -56,14 +61,25 @@ export function Signup() {
       />
       <input
         type="password"
+        className="input password-input"
         name="password"
         value={credentials.password}
         placeholder="Password"
         onChange={handleChange}
         required
       />
-      <ImgUploader onUploaded={onUploaded} />
-      <button>Signup</button>
+      {/* <ImgUploader onUploaded={onUploaded} /> */}
+
+      <Button
+  component="label"
+  role={undefined}
+  variant="contained"
+  tabIndex={-1}
+  startIcon={<CloudUploadIcon />}
+>
+  <ImgUploader onUploaded={onUploaded} />
+</Button>
+      <button className='signup-btn'>SignUp</button>
     </form>
   )
 }
