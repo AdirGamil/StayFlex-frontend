@@ -25,7 +25,7 @@
       font-size: rem(16px);
   
       &:focus {
-        border-color: #e61e4d;
+        border-color: $clr11;
         outline: none;
       }
     }
@@ -46,7 +46,7 @@
     .login-btn {
       width: 100%;
       padding: rem(14px);
-      background-color: #ff385c;
+      background-color: $clr1;
       color: white;
       border: none;
       border-radius: rem(8px);
@@ -56,7 +56,7 @@
       transition: background-color 0.3s ease;
   
       &:hover {
-        background-color: #e61e4d;
+        background-color: $clr11;
       }
     }
   }
