@@ -1,6 +1,6 @@
 
 import { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, useSearchParams } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { loadStay } from '../store/actions/stay.actions'
 import { Map } from '../cmps/StayDetailsCmps/Map'
@@ -19,6 +19,7 @@ export function StayDetails() {
   const { stayId } = useParams()
   const stay = useSelector((storeState) => storeState.stayModule.stay)
   const [showScrollHeader, setShowScrollHeader] = useState(false)
+  const [searchParams] = useSearchParams()
   const filterBy = useSelector((storeState) => storeState.stayModule.filterBy)
   const guestCount = JSON.parse(searchParams.get('guests') || '{}') // Added
 
