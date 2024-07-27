@@ -331,7 +331,6 @@ export function StayReservation({ stay }) {
             />
           </div>
         </div>
-
         <div className="guests-selector">
           <button className="guests-button" onClick={toggleGuestsDropdown}>
             <span>
@@ -385,11 +384,11 @@ export function StayReservation({ stay }) {
 
         <div className="price-item">
           <span className="taxes-span">Taxes</span>
-          <span>${taxes.toFixed(2)}</span>
+          <span>${taxes.toFixed(2).toLocaleString()}</span>
         </div>
         <div className="price-total">
           <span>Total</span>
-          <span>${totalPrice.toFixed(2)}</span>
+          <span>${totalPrice.toFixed(2).toLocaleString()}</span>
         </div>
       </div>
     </div>

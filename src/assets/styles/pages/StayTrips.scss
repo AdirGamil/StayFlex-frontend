@@ -1,14 +1,19 @@
 .stay-trip-container {
   // background-color: aqua;
   display: grid;
-  gap: rem(20px);
+  gap: rem(40px);
   padding-inline: rem(40px);
   border-block-start: rem(0.667px) solid $clr6;
+  max-width: rem(1200px);
 
+  h1{
+    margin-bottom: 0;
+  }
 
   .stay-trip {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    max-width: rem(700px);
     // gap: rem(20px);
 
     &:last-of-type {
@@ -16,7 +21,7 @@
     }
 
     .trip-img {
-      max-width: 400px;
+      max-width: 300px;
 
 
     }

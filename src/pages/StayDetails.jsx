@@ -1,65 +1,24 @@
+
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { useSelector } from 'react-redux'
-// import { ScrollNav } from '../cmps/ScrollNav'
 import { loadStay } from '../store/actions/stay.actions'
 import { Map } from '../cmps/StayDetailsCmps/Map'
 
 import { StayGallery } from '../cmps/StayDetailsCmps/StayGallery'
 import { StayReservation } from '../cmps/StayDetailsCmps/StayReservation'
-import { ScrollHeader} from '../cmps/StayDetailsCmps/ScrollHeader'
+import { ScrollHeader } from '../cmps/StayDetailsCmps/ScrollHeader'
 import {
   pluralize,
   calculateAverageRating,
   getRandomIntInclusive,
+  amenityIcons
 } from '../services/util.service'
-
-const starIcon =
-  'https://res.cloudinary.com/dhweqnxgd/image/upload/v1721294785/star_us9ozb.png'
-const heartIcon =
-  'https://res.cloudinary.com/dyhmjlymk/image/upload/v1721471955/svg_xml_base64_PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiIgYXJpYS1oaWRkZW49InRydWUiIHJvbGU9InByZXNlbnRhdGlvbiIgZm9jdXNhYmxlPSJmYWxzZSIgc3R5bGU9ImRpc3BsYXk6IGJsb2NrOyBmaWxsOiBub25_rtstwz.svg'
-const shareIcon =
-  'https://res.cloudinary.com/dyhmjlymk/image/upload/v1721471943/svg_xml_base64_PHN2ZyB2aWV3Qm94PSIwIDAgMzIgMzIiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgYXJpYS1oaWRkZW49InRydWUiIHJvbGU9InByZXNlbnRhdGlvbiIgZm9jdXNhYmxlPSJmYWxzZSIgc3R5bGU9ImRpc3BsYXk6IGJsb2NrOyBmaWxsOiBub25_lbzdem.svg'
-
-const hairDryer =
-  'https://res.cloudinary.com/dyhmjlymk/image/upload/v1721722141/svg_xml_base64_PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiIgYXJpYS1oaWRkZW49InRydWUiIHJvbGU9InByZXNlbnRhdGlvbiIgZm9jdXNhYmxlPSJmYWxzZSIgc3R5bGU9ImRpc3BsYXk6IGJsb2NrOyBoZWlnaHQ_1_gbrmgx.svg'
-const wifi =
-  'https://res.cloudinary.com/dyhmjlymk/image/upload/v1721722908/svg_xml_base64_PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiIgYXJpYS1oaWRkZW49InRydWUiIHJvbGU9InByZXNlbnRhdGlvbiIgZm9jdXNhYmxlPSJmYWxzZSIgc3R5bGU9ImRpc3BsYXk6IGJsb2NrOyBoZWlnaHQ_2_ttkoym.svg'
-const dryer =
-  'https://res.cloudinary.com/dyhmjlymk/image/upload/v1721723058/svg_xml_base64_PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiIgYXJpYS1oaWRkZW49InRydWUiIHJvbGU9InByZXNlbnRhdGlvbiIgZm9jdXNhYmxlPSJmYWxzZSIgc3R5bGU9ImRpc3BsYXk6IGJsb2NrOyBoZWlnaHQ_3_ragj7v.svg'
-const wineGlasses =
-  'https://res.cloudinary.com/dyhmjlymk/image/upload/v1721723188/svg_xml_base64_PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiIgYXJpYS1oaWRkZW49InRydWUiIHJvbGU9InByZXNlbnRhdGlvbiIgZm9jdXNhYmxlPSJmYWxzZSIgc3R5bGU9ImRpc3BsYXk6IGJsb2NrOyBoZWlnaHQ_4_kygktq.svg'
-const cookingBasics =
-  'https://res.cloudinary.com/dyhmjlymk/image/upload/v1721723388/svg_xml_base64_PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiIgYXJpYS1oaWRkZW49InRydWUiIHJvbGU9InByZXNlbnRhdGlvbiIgZm9jdXNhYmxlPSJmYWxzZSIgc3R5bGU9ImRpc3BsYXk6IGJsb2NrOyBoZWlnaHQ_5_v24dsh.svg'
-const evCharger =
-  'https://res.cloudinary.com/dyhmjlymk/image/upload/v1721723478/svg_xml_base64_PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiIgYXJpYS1oaWRkZW49InRydWUiIHJvbGU9InByZXNlbnRhdGlvbiIgZm9jdXNhYmxlPSJmYWxzZSIgc3R5bGU9ImRpc3BsYXk6IGJsb2NrOyBoZWlnaHQ_6_svffx5.svg'
-const carbonMonoxideAlarm =
-  'https://res.cloudinary.com/dyhmjlymk/image/upload/v1721723578/svg_xml_base64_PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiIgYXJpYS1oaWRkZW49InRydWUiIHJvbGU9InByZXNlbnRhdGlvbiIgZm9jdXNhYmxlPSJmYWxzZSIgc3R5bGU9ImRpc3BsYXk6IGJsb2NrOyBoZWlnaHQ_7_isgcfs.svg'
-const extraPillowsAndBlankets =
-  'https://res.cloudinary.com/dyhmjlymk/image/upload/v1721725228/svg_xml_base64_PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiIgYXJpYS1oaWRkZW49InRydWUiIHJvbGU9InByZXNlbnRhdGlvbiIgZm9jdXNhYmxlPSJmYWxzZSIgc3R5bGU9ImRpc3BsYXk6IGJsb2NrOyBoZWlnaHQ_8_lsbqpc.svg'
-const TV =
-  'https://res.cloudinary.com/doahdwb2g/image/upload/v1721908788/svg_xml_base64_PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiIgYXJpYS1oaWRkZW49InRydWUiIHJvbGU9InByZXNlbnRhdGlvbiIgZm9jdXNhYmxlPSJmYWxzZSIgc3R5bGU9ImRpc3BsYXk6IGJsb2NrOyBoZWlnaHQ6IDI0_g0kyfy.svg'
-const GardenView =
-  'https://res.cloudinary.com/doahdwb2g/image/upload/v1721908837/svg_xml_base64_PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiIgYXJpYS1oaWRkZW49InRydWUiIHJvbGU9InByZXNlbnRhdGlvbiIgZm9jdXNhYmxlPSJmYWxzZSIgc3R5bGU9ImRpc3BsYXk6IGJsb2NrOyBoZWlnaHQ6_1_kdwdla.svg'
 
 export function StayDetails() {
   const { stayId } = useParams()
   const stay = useSelector((storeState) => storeState.stayModule.stay)
-  const amenityIcons = {
-    'Hair dryer': hairDryer,
-    Wifi: wifi,
-    Dryer: dryer,
-    Wineglasses: wineGlasses,
-    'Cooking basics': cookingBasics,
-    'Ev charger': evCharger,
-    'Carbon monoxide alarm': carbonMonoxideAlarm,
-    'Extra pillows and blankets': extraPillowsAndBlankets,
-    'TV': TV,
-    'Garden view': GardenView,
-  }
-  const [showScrollHeader, setShowScrollHeader] = useState(false);
-
-
+  const [showScrollHeader, setShowScrollHeader] = useState(false)
 
   useEffect(() => {
     loadStay(stayId)
@@ -67,16 +26,16 @@ export function StayDetails() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const photoSection = document.querySelector('.stay-gallery');
+      const photoSection = document.querySelector('.stay-gallery')
       if (photoSection) {
-        const photoSectionBottom = photoSection.getBoundingClientRect().bottom;
-        setShowScrollHeader(photoSectionBottom <= 0);
+        const photoSectionBottom = photoSection.getBoundingClientRect().bottom
+        setShowScrollHeader(photoSectionBottom <= 0)
       }
-    };
+    }
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   if (!stay) return <div>Loading...</div>
 
@@ -86,31 +45,33 @@ export function StayDetails() {
 
   return (
     <section className="stay-details main-layout">
-      {showScrollHeader && <ScrollHeader />}
+      {showScrollHeader && <ScrollHeader
+        price={stay.price}
+        rating={averageRating}
+        reviewCount={stay.reviews.length}
+      />}
       <header className="stay-header">
         <h1 className="stay-title">{stay.name}</h1>
         <div className="share-save">
           <button className="share-btn">
-            <img src={shareIcon} alt="share-icon" />
+            <img src={amenityIcons.share} alt="share-icon" />
             Share
           </button>
           <button className="save-btn">
-            <img src={heartIcon} alt="heart-icon" />
+            <img src={amenityIcons.heart} alt="heart-icon" />
             Save
           </button>
         </div>
       </header>
 
-      <div  id ="photos" className="active stay-gallery">
+      <div id="photos" className="active stay-gallery">
         <StayGallery imgUrls={stay.imgUrls} />
       </div>
 
       <section className="stay-info-container">
         <div className="stay-info">
           <div className="stay-summary">
-            <h2>
-              {stay.type} in {stay.loc.city}, {stay.loc.country}
-            </h2>
+            <h2>{stay.type} in {stay.loc.city}, {stay.loc.country}</h2>
             <p className="stay-details-list">
               {pluralize(stay.capacity, 'guest')} ·{' '}
               {pluralize(stay.bedrooms, 'bedroom')} ·{' '}
@@ -118,7 +79,7 @@ export function StayDetails() {
             </p>
             <div className="rating-reviews">
               <span className="star-icon">
-                <img src={starIcon} alt="" />
+                <img src={amenityIcons.star} alt="Star icon" />
               </span>
               <span className="rating">{averageRating}</span>
               {reviewCount > 0 && (
@@ -134,17 +95,12 @@ export function StayDetails() {
 
           <div className="stay-host-details">
             <div className="host">
-              {stay.host &&
-                typeof stay.host === 'object' &&
-                stay.host.imgUrl && (
-                  <img src={stay.host.imgUrl} alt="" className="host-img" />
-                )}
+              {stay.host && typeof stay.host === 'object' && stay.host.imgUrl && (
+                <img src={stay.host.imgUrl} alt="Host" className="host-img" />
+              )}
               <div className="host-info">
                 <div>
-                  Hosted by{' '}
-                  {typeof stay.host === 'object'
-                    ? stay.host.fullname
-                    : stay.host}
+                  Hosted by {typeof stay.host === 'object' ? stay.host.fullname : stay.host}
                 </div>
                 <div className="host-duration">
                   {getRandomIntInclusive(2, 6)} years hosting
@@ -157,10 +113,8 @@ export function StayDetails() {
             <p>{stay.summary}</p>
           </div>
 
-          {/* <div className="stam-div">TEST DIV FOR SCROLLING</div> */}
-          <div  id="amenities" className="stay-amenities">
+          <div id="amenities" className="stay-amenities">
             <h2>What this place offers</h2>
-
             <ul className="amenities-list">
               {stay.amenities.map((amenity, index) => (
                 <li key={index}>
@@ -177,10 +131,8 @@ export function StayDetails() {
         <StayReservation stay={stay} />
       </section>
       <section id="reviews" className="header-reviews">
-        <div className="header">★ 5.0 · 6 reviews
-        </div>
+        <div className="header">★ {averageRating}· 6 reviews</div>
         <div className="reviews-container">
-
           {stay.reviews.map((review, index) => (
             <article className="review" key={index}>
               <div className="user">
@@ -204,19 +156,21 @@ export function StayDetails() {
           ))}
         </div>
       </section>
-      <section  id="location">
+      <section id="location">
         <div className="map-container">
           <article>
-            <h1> Where you'll be</h1>
+            <h1>Where you'll be</h1>
             <div className="map">
               <Map stay={stay} />
             </div>
-            <div className="city-info">city info here</div>
+            {/* <div className="city-info">city info here</div> */}
           </article>
         </div>
       </section>
     </section>
   )
 }
+
+
 
 
