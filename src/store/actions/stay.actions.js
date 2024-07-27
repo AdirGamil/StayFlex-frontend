@@ -103,6 +103,10 @@ function getCmdAddStayMsg(msg) {
     }
 }
 
+export function setFilterBy(filterBy) {
+    return { type: 'SET_FILTER_BY', filterBy }; // Added
+  }
+
 // unitTestActions()
 async function unitTestActions() {
     await loadStays()

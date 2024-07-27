@@ -59,7 +59,8 @@ export function StayDetails() {
   }
   const [showScrollHeader, setShowScrollHeader] = useState(false);
 
-
+  const filterBy = useSelector((storeState) => storeState.stayModule.filterBy)
+  const guestCount = JSON.parse(searchParams.get('guests') || '{}'); // Added
 
   useEffect(() => {
     loadStay(stayId)
@@ -174,7 +175,7 @@ export function StayDetails() {
           </div>
         </div>
 
-        <StayReservation stay={stay} />
+        <StayReservation stay={stay}  guestCount={guestCount}/>
       </section>
       <section id="reviews" className="header-reviews">
         <div className="header">★ 5.0 · 6 reviews

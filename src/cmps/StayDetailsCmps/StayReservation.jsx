@@ -208,7 +208,7 @@ import "react-datepicker/dist/react-datepicker.css"
 import { useNavigate } from 'react-router-dom'
 import { getRandomDateWithinRange, makeId } from '../../services/util.service'
 
-export function StayReservation({ stay }) {
+export function StayReservation({ stay, guestCount }) {
   const navigate = useNavigate()
 
   const initialStartDate = getRandomDateWithinRange(new Date(), new Date(Date.now() + 30 * 24 * 60 * 60 * 1000))
