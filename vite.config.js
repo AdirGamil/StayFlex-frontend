@@ -7,5 +7,7 @@ export default defineConfig({
 	build: {
 		outDir: '../StayFlex-backend/public',
 		emptyOutDir: true,
+		// sourcemap: true, // Enable source maps for debugging
 	},
 })
+
