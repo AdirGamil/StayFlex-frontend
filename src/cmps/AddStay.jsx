@@ -198,13 +198,13 @@ export function AddStay() {
               </span>
             </section>
             <div className="stage-video">
-            <video
-              ref={videoRef}
-              src="https://res.cloudinary.com/db7t5amdv/video/upload/v1713520620/BuildHouseVidIntro_tbrwcf.mp4"
-              autoPlay
-              muted
+              <video
+                ref={videoRef}
+                src="https://res.cloudinary.com/db7t5amdv/video/upload/v1713520620/BuildHouseVidIntro_tbrwcf.mp4"
+                autoPlay
+                muted
               ></video>
-              </div>
+            </div>
           </section>
         )
       case 2:
@@ -266,6 +266,7 @@ export function AddStay() {
               onChange={(e) => setAddress(e.target.value)}
               fullWidth
               margin="normal"
+              required
             />
             <TextField
               label="Latitude"
@@ -304,6 +305,7 @@ export function AddStay() {
                 onChange={(e) => setCapacity(e.target.value)}
                 fullWidth
                 margin="normal"
+                required
               />
               <TextField
                 label="Bedrooms"
@@ -312,6 +314,7 @@ export function AddStay() {
                 onChange={(e) => setBedrooms(e.target.value)}
                 fullWidth
                 margin="normal"
+                required
               />
               <TextField
                 label="Beds"
@@ -320,6 +323,7 @@ export function AddStay() {
                 onChange={(e) => setBeds(e.target.value)}
                 fullWidth
                 margin="normal"
+                required
               />
               <TextField
                 label="Bathrooms"
@@ -328,6 +332,7 @@ export function AddStay() {
                 onChange={(e) => setBaths(e.target.value)}
                 fullWidth
                 margin="normal"
+                required
               />
             </div>
           </section>
@@ -369,6 +374,7 @@ export function AddStay() {
                   value={selectedAmenities}
                   onChange={handleAmenityChange}
                   renderValue={(selected) => selected.join(', ')}
+                  required
                 >
                   {amenities.map((amenity, index) => (
                     <MenuItem key={`${index}-${amenity}`} value={amenity}>
@@ -400,6 +406,7 @@ export function AddStay() {
                 onChange={(e) => setName(e.target.value)}
                 fullWidth
                 margin="normal"
+                required
               />
               <span className="counter">{name.length}/32</span>
             </section>
@@ -421,6 +428,7 @@ export function AddStay() {
                 margin="normal"
                 multiline
                 rows={4}
+                required
               />
               <span className="counter">{summary.length}/500</span>
             </section>
@@ -445,12 +453,14 @@ export function AddStay() {
               muted
             ></video>
             <TextField
-              label="Price"
+              label="Price $"
+              placeholder="$"
               type="number"
               value={price}
               onChange={(e) => setPrice(e.target.value)}
               fullWidth
               margin="normal"
+              required
             />
           </section>
         )
