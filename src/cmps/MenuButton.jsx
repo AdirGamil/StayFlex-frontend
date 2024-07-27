@@ -1,7 +1,14 @@
 import React, { useState, useRef, useEffect } from 'react'
+import { useSelector } from 'react-redux'
+import { Link, useNavigate } from 'react-router-dom'
+import { logout } from '../store/actions/user.actions'
+import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
+
 const MenuButton = () => {
   const [isOpen, setIsOpen] = useState(false)
   const dropdownRef = useRef(null)
+  const user = useSelector(storeState => storeState.userModule.user)
+  const navigate = useNavigate()
 
   const toggleDropdown = () => setIsOpen(!isOpen)
 
@@ -15,6 +22,17 @@ const MenuButton = () => {
     document.addEventListener('mousedown', handleClickOutside)
     return () => document.removeEventListener('mousedown', handleClickOutside)
   }, [])
+
+
+  async function onLogout() {
+		try {
+			await logout()
+			navigate('/')
+			showSuccessMsg(`Bye now`)
+		} catch (err) {
+			showErrorMsg('Cannot logout')
+		}
+	}
 
   return (
     <div className="menu-button-container" ref={dropdownRef}>
@@ -37,28 +55,61 @@ const MenuButton = () => {
         </svg>
         <div className="divider"></div>
         <div className="profile-icon-wrapper">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 32 32"
-            aria-hidden="true"
-            role="presentation"
-            focusable="false"
-            className="profile-icon"
-          >
-            <path d="m16 .7c-8.437 0-15.3 6.863-15.3 15.3s6.863 15.3 15.3 15.3 15.3-6.863 15.3-15.3-6.863-15.3-15.3-15.3zm0 28c-4.021 0-7.605-1.884-9.933-4.81a12.425 12.425 0 0 1 6.451-4.4 6.507 6.507 0 0 1 -3.018-5.49c0-3.584 2.916-6.5 6.5-6.5s6.5 2.916 6.5 6.5a6.513 6.513 0 0 1 -3.019 5.491 12.42 12.42 0 0 1 6.452 4.4c-2.328 2.925-5.912 4.809-9.933 4.809z"></path>
-          </svg>
-        </div>
+  {user ? (
+    <Link to={`user/${user._id}`}>
+      {user.imgUrl ? <img src={user.imgUrl} alt="user profile" /> : (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 32 32"
+          aria-hidden="true"
+          role="presentation"
+          focusable="false"
+          className="profile-icon"
+        >
+          <path d="m16 .7c-8.437 0-15.3 6.863-15.3 15.3s6.863 15.3 15.3 15.3 15.3-6.863 15.3-15.3-6.863-15.3-15.3-15.3zm0 28c-4.021 0-7.605-1.884-9.933-4.81a12.425 12.425 0 0 1 6.451-4.4 6.507 6.507 0 0 1 -3.018-5.49c0-3.584 2.916-6.5 6.5-6.5s6.5 2.916 6.5 6.5a6.513 6.513 0 0 1 -3.019 5.491 12.42 12.42 0 0 1 6.452 4.4c-2.328 2.925-5.912 4.809-9.933 4.809z"></path>
+        </svg>
+      )}
+    </Link>
+  ) : (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 32 32"
+      aria-hidden="true"
+      role="presentation"
+      focusable="false"
+      className="profile-icon"
+    >
+      <path d="m16 .7c-8.437 0-15.3 6.863-15.3 15.3s6.863 15.3 15.3 15.3 15.3-6.863 15.3-15.3-6.863-15.3-15.3-15.3zm0 28c-4.021 0-7.605-1.884-9.933-4.81a12.425 12.425 0 0 1 6.451-4.4 6.507 6.507 0 0 1 -3.018-5.49c0-3.584 2.916-6.5 6.5-6.5s6.5 2.916 6.5 6.5a6.513 6.513 0 0 1 -3.019 5.491 12.42 12.42 0 0 1 6.452 4.4c-2.328 2.925-5.912 4.809-9.933 4.809z"></path>
+    </svg>
+  )}
+</div>
+
       </button>
       {isOpen && (
         <div className="dropdown-menu">
-          <a href="/signup">Sign up</a>
-          <a href="/login">Log in</a>
-          <a href="#">Gift cards</a>
-          <a href="/orders">Orders</a>
-          <a href="/addstay">StayFlex your home</a>
-          <a href="/trips">Trips</a>
-          <a href="#">Help Center</a>
-        </div>
+  {user ? (
+    <>
+    <h3>Hello, {user.fullname}</h3>
+      <a href="/orders">Orders</a>
+      <a href="/trips">Trips</a>
+      <a href="/addstay">StayFlex your home</a>
+      <a href="#">Gift cards</a>
+      <a href="#">Help Center</a>
+      <a href="#" onClick={onLogout}>Logout</a>
+    </>
+  ) : (
+    <>
+      <a href="/signup">Sign up</a>
+      <a href="/login">Log in</a>
+      {/* <a href="/trips">Trips</a>
+      <a href="/orders">Orders</a> */}
+      <a href="/addstay">StayFlex your home</a>
+      <a href="#">Gift cards</a>
+      <a href="#">Help Center</a>
+    </>
+  )}
+</div>
+
       )}
     </div>
   )

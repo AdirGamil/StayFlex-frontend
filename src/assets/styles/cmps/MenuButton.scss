@@ -70,5 +70,29 @@
         background-color: #f7f7f7;
       }
     }
+
+    h3 {
+      text-align: center;
+    }
   }
+
+  .user-info {
+    display: flex;
+    align-items: center;
+    margin-inline-start: auto;
+
+    color: $clr1;
+
+
+    img {
+        width: 32px;
+        aspect-ratio: 1;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+    
+    .btn-link {
+        color: $clr2;
+    }
+}
 }
