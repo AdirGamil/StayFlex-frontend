@@ -9,6 +9,8 @@ import {
   lastNames,
 } from './data.service'
 
+import {userService} from './user'
+
 export function makeId(length = 6) {
   var txt = ''
   var possible =
