@@ -1,5 +1,5 @@
 import { useLocation, useNavigate } from 'react-router-dom'
-import { orderService } from '../services/order/order.service.local.js'
+import { orderService } from '../services/order'
 import { formatDateRange, pluralize } from '../services/util.service.js'
 const starIcon =
   'https://res.cloudinary.com/dhweqnxgd/image/upload/v1721294785/star_us9ozb.png'
@@ -25,10 +25,9 @@ export function ConfirmReservation() {
         alert('This stay is already reserved for the selected dates.')
         return
       }
-
       await orderService.save(orderDetails)
       alert('Reservation placed successfully!')
-      navigate('/') // Navigate to another page after reservation
+      navigate('/')
     } catch (err) {
       console.error('Error placing reservation:', err)
     }

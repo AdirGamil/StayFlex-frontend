@@ -31,6 +31,7 @@ async function remove(orderId) {
 }
 
 async function save(order) {
+  console.log('hello local');
   var savedOrder
   if (order._id) {
     const existingOrder = await storageService

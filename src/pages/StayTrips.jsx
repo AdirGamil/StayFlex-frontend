@@ -20,6 +20,7 @@ export function StayTrips() {
       <h1>Trips</h1>
       {orders.map((order) => (
         <article key={order._id} className="stay-trip">
+          {console.log(order)}
           <img src={order.stay.imgUrls[0]} alt="" className="trip-img" />
           <div>
             <div className="trip-city">{order.stay.loc.city}</div>

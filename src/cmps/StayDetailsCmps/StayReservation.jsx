@@ -259,7 +259,7 @@ export function StayReservation({ stay }) {
 
   function handleReserve() {
     const orderDetails = {
-      _id: makeId(),
+      // _id: makeId(),
       hostId: {
         _id: stay.host._id,
         fullname: stay.host.fullname,
