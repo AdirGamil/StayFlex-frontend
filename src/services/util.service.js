@@ -9,6 +9,8 @@ import {
   lastNames,
 } from './data.service'
 
+import {userService} from './user'
+
 export function makeId(length = 6) {
   var txt = ''
   var possible =
@@ -37,9 +39,54 @@ export function getRandomMaleName() {
   return `${firstName} ${lastName}`
 }
 
+// export function createStayObject(stay) {
+//   const reviews = stay.reviews || generateRandomReviews(6)
+//   const averageRating = calculateAverageRating(reviews)
+
+//   return {
+//     _id: makeId(),
+//     name: stay.name || getRandomElement(names),
+//     type: stay.type || getRandomElement(types),
+//     imgUrls: stay.imgUrls || getRandomImgUrls(imgUrls),
+//     price: stay.price || getRandomIntInclusive(150, 1350),
+//     summary: stay.summary || makeLorem(50),
+//     capacity: stay.capacity || getRandomIntInclusive(1, 6),
+//     bedrooms: stay.bedrooms || getRandomIntInclusive(1, 6),
+//     baths: stay.baths || getRandomIntInclusive(1, 6),
+//     beds: stay.beds || getRandomIntInclusive(1, 6),
+//     amenities: stay.amenities || [
+//       'Wifi',
+//       'Cooking basics',
+//       'Hair dryer',
+//       'Ev charger',
+//       'Dryer',
+//       'Wineglasses',
+//       'Carbon monoxide alarm',
+//       'Extra pillows and blankets',
+//       'TV',
+//       'Garden view'
+//     ],
+//     labels: stay.labels || getRandomLabels(labels),
+//     loc: stay.loc || getRandomLocation(),
+//     reviews: reviews,
+//     kilometersAway: stay.kilometersAway || getRandomKilometersAway(),
+//     dateRange: stay.dateRange || getDateRange(),
+//     likedByUsers: stay.likedByUsers || ['mini-user'],
+//     owner: userService.getLoggedinUser(),
+//     host: stay.host || {
+//       _id: makeId(),
+//       fullname: getRandomMaleName(),
+//       imgUrl: getRandomHostImg(),
+//     },
+//     averageRating: averageRating,
+//   }
+// }
+
 export function createStayObject(stay) {
-  const reviews = stay.reviews || generateRandomReviews(6)
-  const averageRating = calculateAverageRating(reviews)
+  const reviews = stay.reviews || generateRandomReviews(6);
+  const averageRating = calculateAverageRating(reviews);
+
+  const location = stay.loc || getRandomLocation();
 
   return {
     _id: makeId(),
@@ -65,7 +112,7 @@ export function createStayObject(stay) {
       'Garden view'
     ],
     labels: stay.labels || getRandomLabels(labels),
-    loc: stay.loc || getRandomLocation(),
+    loc: location,
     reviews: reviews,
     kilometersAway: stay.kilometersAway || getRandomKilometersAway(),
     dateRange: stay.dateRange || getDateRange(),
@@ -79,6 +126,7 @@ export function createStayObject(stay) {
     averageRating: averageRating,
   }
 }
+
 
 export function getRandomAddress() {
   const streetNames = [
@@ -436,23 +484,28 @@ export const regions = [
   {
     name: "I'm flexible",
     map: 'https://res.cloudinary.com/doahdwb2g/image/upload/v1721464561/f9ec8a23-ed44-420b-83e5-10ff1f071a13_cecbse.jpg',
+    isContinent: false,
   },
-  { name: 'Europe', map: 'https://via.placeholder.com/100x100?text=Europe' },
+  { name: 'Europe', map: 'https://via.placeholder.com/100x100?text=Europe', isContinent: true },
   {
     name: 'Italy',
     map: 'https://res.cloudinary.com/doahdwb2g/image/upload/v1721464643/ea5598d7-2b07-4ed7-84da-d1eabd9f2714_sxwylp.webp',
+    isContinent: false,
   },
   {
     name: 'United States',
     map: 'https://res.cloudinary.com/doahdwb2g/image/upload/v1721464653/4e762891-75a3-4fe1-b73a-cd7e673ba915_h8770b.webp',
+    isContinent: false,
   },
   {
     name: 'Greece',
     map: 'https://res.cloudinary.com/doahdwb2g/image/upload/v1721464646/09be1400-6a42-4a4f-90f6-897e50110031_o1bcd5.webp',
+    isContinent: false,
   },
   {
     name: 'South America',
     map: 'https://res.cloudinary.com/doahdwb2g/image/upload/v1721464650/06a30699-aead-492e-ad08-33ec0b383399_gqqwty.webp',
+    isContinent: true,
   },
 ]
 

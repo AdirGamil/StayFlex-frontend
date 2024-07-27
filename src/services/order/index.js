@@ -1,6 +1,6 @@
 const { DEV, VITE_LOCAL } = import.meta.env
 
-import { makeId } from '../util.service'
+import { makeId } from '../util.service' // ייבוא לא נחוץ
 import { orderService as local } from './order.service.local'
 import { orderService as remote } from './order.service.remote.js'
 
@@ -12,7 +12,6 @@ function getEmptyOrder({
   endDate = '',
 } = {}) {
   return {
-    _id: makeId(),
     hostId: stay.host._id,
     guest,
     totalPrice,
@@ -26,6 +25,8 @@ function getEmptyOrder({
       _id: stay._id,
       name: stay.name,
       price: stay.price,
+      imgUrls: [],
+      loc: {}
     },
     msgs: [],
     status: 'Pending',

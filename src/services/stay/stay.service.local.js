@@ -19,55 +19,110 @@ export const stayService = {
 }
 window.cs = stayService
 
-async function query(
-  filterBy = {
-    txt: '',
-    label: '',
-    startDate: '',
-    endDate: '',
-    minPrice: 10,
-    maxPrice: 570,
-  }
-) {
-  var stays = await storageService.query(STORAGE_KEY)
-  const { txt, label, startDate, endDate } = filterBy
+// async function query(
+//   filterBy = {
+//     txt: '',
+//     label: '',
+//     startDate: '',
+//     endDate: '',
+//     minPrice: 10,
+//     maxPrice: 570,
+//   }
+// ) {
+//   var stays = await storageService.query(STORAGE_KEY)
+//   const { txt, label, startDate, endDate } = filterBy
+
+//   if (txt) {
+//     const regex = new RegExp(txt, 'i')
+//     stays = stays.filter(
+//       (stay) => regex.test(stay.loc.city) || regex.test(stay.loc.country)
+//     )
+//   }
+
+//   if (label) {
+//     stays = stays.filter((stay) => stay.labels.includes(label))
+//   }
+
+//   if (startDate && endDate) {
+//     const filterStartDate = new Date(startDate)
+//     const filterEndDate = new Date(endDate)
+
+//     stays = stays.filter((stay) => {
+//       const [startStr, endStr] = stay.dateRange.split(' - ')
+//       const stayStartDate = new Date(`${startStr} ${new Date().getFullYear()}`)
+//       const stayEndDate = new Date(`${endStr} ${new Date().getFullYear()}`)
+
+//       return (
+//         (stayStartDate >= filterStartDate && stayStartDate <= filterEndDate) ||
+//         (stayEndDate >= filterStartDate && stayEndDate <= filterEndDate) ||
+//         (stayStartDate <= filterStartDate && stayEndDate >= filterEndDate)
+//       )
+//     })
+
+//     if (minPrice !== undefined && maxPrice !== undefined) {
+//       stays = stays.filter(
+//         (stay) => stay.price >= minPrice && stay.price <= maxPrice
+//       )
+//     }
+//   }
+
+//   return stays
+// }
+
+async function query(filterBy = getDefaultFilter()) {
+  var stays = await storageService.query(STORAGE_KEY);
+  const { txt, label, startDate, endDate, minPrice, maxPrice, guests = {}, continent, country } = filterBy;
 
   if (txt) {
-    const regex = new RegExp(txt, 'i')
+    const regex = new RegExp(txt, 'i');
     stays = stays.filter(
-      (stay) => regex.test(stay.loc.city) || regex.test(stay.loc.country)
-    )
+      (stay) => regex.test(stay.loc.city) || regex.test(stay.loc.country) || regex.test(stay.loc.continent)
+    );
   }
 
   if (label) {
-    stays = stays.filter((stay) => stay.labels.includes(label))
+    stays = stays.filter((stay) => stay.labels.includes(label));
+  }
+
+  if (continent) {
+    stays = stays.filter((stay) => stay.loc.continent === continent);
+  }
+
+  if (country) {
+    stays = stays.filter((stay) => stay.loc.country === country);
   }
 
   if (startDate && endDate) {
-    const filterStartDate = new Date(startDate)
-    const filterEndDate = new Date(endDate)
+    const filterStartDate = new Date(startDate);
+    const filterEndDate = new Date(endDate);
 
     stays = stays.filter((stay) => {
-      const [startStr, endStr] = stay.dateRange.split(' - ')
-      const stayStartDate = new Date(`${startStr} ${new Date().getFullYear()}`)
-      const stayEndDate = new Date(`${endStr} ${new Date().getFullYear()}`)
+      const [startStr, endStr] = stay.dateRange.split(' - ');
+      const stayStartDate = new Date(`${startStr} ${new Date().getFullYear()}`);
+      const stayEndDate = new Date(`${endStr} ${new Date().getFullYear()}`);
 
       return (
         (stayStartDate >= filterStartDate && stayStartDate <= filterEndDate) ||
         (stayEndDate >= filterStartDate && stayEndDate <= filterEndDate) ||
         (stayStartDate <= filterStartDate && stayEndDate >= filterEndDate)
-      )
-    })
-
-    if (minPrice !== undefined && maxPrice !== undefined) {
-      stays = stays.filter(
-        (stay) => stay.price >= minPrice && stay.price <= maxPrice
-      )
-    }
+      );
+    });
   }
 
-  return stays
+  if (minPrice !== undefined && maxPrice !== undefined) {
+    stays = stays.filter(
+      (stay) => stay.price >= minPrice && stay.price <= maxPrice
+    );
+  }
+
+  // Ensure guests filter is applied correctly
+  const { adults = 0, children = 0 } = guests;
+  stays = stays.filter((stay) => stay.capacity >= (adults + children));
+
+  return stays;
 }
+
+
 
 function getById(stayId) {
   return storageService.get(STORAGE_KEY, stayId)

@@ -3,6 +3,7 @@
   padding-inline: rem(40px);
   padding-top: rem(20px);
 
+
   .nav-container {
     display: grid;
     grid-template-columns: auto 1fr auto;
@@ -152,7 +153,7 @@
         .menu-button {
           border-radius: rem(21px);
           padding: 5px 12px;
-          gap: rem(12px);
+          // gap: rem(12px);
 
           .menu-icon {
             width: rem(16px);
@@ -185,5 +186,6 @@
     display: none;
     margin: -55px;
   }
+
 }
 
