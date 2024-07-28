@@ -4,7 +4,7 @@
   top: 0;
   left: 0;
   right: 0;
-  background-color: #fff;
+  background-color: $clr5;
   border-bottom:rem(0.667px) solid $clr6 ;
   z-index: 100;
   transition: all 0.3s ease;
@@ -34,12 +34,12 @@
 
       a {
         text-decoration: none;
-        color: #222;
+        color: $clr3;
         font-weight: 600;
         font-size: rem(14px);
 
         &:hover {
-          color: #000;
+          color: black;
         }
       }
     }

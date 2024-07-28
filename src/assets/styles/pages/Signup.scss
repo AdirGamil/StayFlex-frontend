@@ -4,9 +4,9 @@
     width: 40%;
     margin: rem(50px) auto;
     padding: rem(20px);
-    border: rem(1px) solid #ccc;
+    border: rem(1px) solid $clr12;
     border-radius: rem(5px);
-    background-color: #f9f9f9;
+    background-color: $clr9;
   
     .signup-title {
       text-align: center;
@@ -20,7 +20,7 @@
     .input {
       margin-bottom: rem(15px);
       padding: rem(10px);
-      border: rem(1px) solid #ccc;
+      border: rem(1px) solid $clr12;
       border-radius: rem(3px);
       font-size: rem(16px);
   
@@ -31,16 +31,16 @@
     }
   
     .select-input {
-      background-color: #fff;
+      background-color: $clr5;
       cursor: pointer;
     }
   
     .text-input {
-      background-color: #fff;
+      background-color: $clr5;
     }
   
     .password-input {
-      background-color: #fff;
+      background-color: $clr5;
     }
   
     .signup-btn, .upload-btn{
@@ -50,7 +50,7 @@
       margin-top: rem(20px);
       padding: rem(14px);
       background-color: $clr1;
-      color: white;
+      color: $clr5;
       border: none;
       border-radius: rem(8px);
       font-size: rem(16px);

@@ -92,7 +92,7 @@
         .form-group select {
           width: 100%;
           padding: 10px;
-          border: 1px solid #ccc;
+          border: 1px solid $clr12;
           border-radius: 4px;
           font-size: 16px;
         }
@@ -193,7 +193,7 @@
     width: 100%;
     padding: rem(14px);
     background-color: $clr1;
-    color: white;
+    color: $clr5;
     border: none;
     border-radius: rem(8px);
     font-size: rem(16px);
@@ -212,13 +212,13 @@
   flex-direction: column;
 
   position: sticky;
-  color: #222;
+  color: $clr3;
   top: 6.25rem;
   margin-block-end: 5rem;
   max-width: 29.10375rem;
-  background-color: #fff;
+  background-color: $clr5;
   padding: 24px;
-  border: 1px solid #DDDDDC;
+  border: 1px solid $clr6;
   border-radius: 12px;
   height: min-content;
 

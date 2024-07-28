@@ -179,7 +179,7 @@
           label {
             font-size: rem(16px);
             font-weight: 600;
-            color: #333;
+            color: $clr3;
             margin-bottom: rem(4px);
             display: block;
           }
@@ -201,7 +201,7 @@
             border: 1px solid $clr10;
             background: none;
             font-size: rem(16px);
-            color: #333;
+            color: $clr3;
             cursor: pointer;
             display: flex;
             align-items: center;
@@ -209,7 +209,7 @@
             transition: border-color 0.2s ease, color 0.2s ease;
 
             &:hover:not(:disabled) {
-              border-color: #333;
+              border-color: $clr3;
             }
 
             &:disabled {
@@ -221,7 +221,7 @@
           span {
             margin: 0 rem(16px);
             font-size: rem(16px);
-            color: #333;
+            color: $clr3;
             min-width: rem(20px);
             text-align: center;
           }
@@ -233,7 +233,7 @@
   .reserve-btn {
     width: 100%;
     padding: rem(14px);
-    color: white;
+    color: $clr5;
     border: none;
     border-radius: rem(8px);
     font-size: rem(16px);
@@ -281,7 +281,7 @@
   .price-total {
     font-weight: bold;
     font-size: rem(18px);
-    border-top: 1px solid #e0e0e0;
+    border-top: 1px solid $clr10;
     padding-top: rem(24px);
   }
 }

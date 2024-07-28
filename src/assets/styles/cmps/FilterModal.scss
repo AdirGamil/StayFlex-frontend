@@ -51,7 +51,7 @@
 
 .price-slider {
   height: rem(2px);
-  background: #ddd;
+  background: $clr6;
   margin-bottom: 24px;
 }
 
@@ -59,7 +59,7 @@
   width: rem(24px);
   height: rem(24px);
   border-radius: 50%;
-  background-color: white;
+  background-color: $clr5;
   border: 2px solid $clr3;
   cursor: grab;
   top: -11px;
@@ -88,7 +88,7 @@
     input {
       width: 100%;
       padding: 8px;
-      border: 1px solid #ddd;
+      border: 1px solid $clr6;
       border-radius: 8px;
       font-size: rem(14px);
     }
@@ -99,7 +99,7 @@
   margin-top: 24px;
   padding: 12px 24px;
   background-color: $clr3;
-  color: white;
+  color: $clr5;
   border: none;
   border-radius: 8px;
   cursor: pointer;

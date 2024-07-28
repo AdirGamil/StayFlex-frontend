@@ -42,7 +42,7 @@
 
       .stay-details-list {
         font-size: rem(16px);
-        color: #3b3b3b;
+        color: $clr3;
         margin-bottom: rem(16px);
       }
 
@@ -98,8 +98,8 @@
 
 .stay-host-details {
   padding: rem(24px) 0;
-  border-top: 1px solid #dddddd;
-  border-bottom: 1px solid #dddddd;
+  border-top: 1px solid $clr6;
+  border-bottom: 1px solid $clr6;
 
   .host {
     display: flex;
@@ -137,7 +137,7 @@
 
 .stay-amenities {
   padding: rem(24px) 0;
-  border-top: 1px solid #dddddd;
+  border-top: 1px solid $clr6;
 }
 
 .amenities-list {
@@ -216,8 +216,6 @@
       }
 
       .review-txt-date {
-        // display: flex;
-        // flex-direction: column;
         gap: rem(8px);
 
         h3 {
