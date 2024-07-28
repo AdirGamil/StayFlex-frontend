@@ -143,7 +143,7 @@ export function StayDetails() {
         </div>
       </section>
       <section id="reviews" className="header-reviews">
-        <div className="header">★ {averageRating}· 6 reviews</div>
+        <div className="header">★ {averageRating} · 6 reviews</div>
         <div className="reviews-container">
           {stay.reviews.map((review, index) => (
             <article className="review" key={index}>
