@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
 import { addStay } from '../store/actions/stay.actions'
+import { userService } from '../services/user'
 import { useNavigate } from 'react-router'
 import {
   types,
@@ -108,6 +109,8 @@ export function AddStay() {
     const reviews = generateRandomReviews(5)
     const averageRating = calculateAverageRating(reviews)
 
+    const loggedinUser = userService.getLoggedinUser()
+
     const stay = {
       name,
       type,
@@ -131,11 +134,15 @@ export function AddStay() {
       kilometersAway: getRandomKilometersAway(),
       dateRange: getDateRange(),
       likedByUsers: ['mini-user'],
-      owner: userService.getLoggedinUser(),
-      host: {
+      owner: loggedinUser || {
         _id: makeId(),
         fullname: getRandomMaleName(),
         imgUrl: getRandomHostImg(),
+      },
+      host: {
+        _id: loggedinUser?._id || makeId(),
+        fullname: loggedinUser?.fullname || getRandomMaleName(),
+        imgUrl: loggedinUser?.imgUrl || getRandomHostImg(),
       },
       averageRating,
     }
