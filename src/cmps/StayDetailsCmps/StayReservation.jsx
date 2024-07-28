@@ -306,6 +306,7 @@ export function StayReservation({ stay, guestCount }) {
       <div className="reservation-selectors">
         <div className="date-picker-container">
           <div className="check-in">
+            <label>CHECK-IN</label>
             <DatePicker
               selected={startDate}
               onChange={handleStartDateChange}
@@ -318,6 +319,7 @@ export function StayReservation({ stay, guestCount }) {
             />
           </div>
           <div className="check-out">
+            <label>CHECKOUT</label>
             <DatePicker
               selected={endDate}
               onChange={handleEndDateChange}
@@ -333,11 +335,14 @@ export function StayReservation({ stay, guestCount }) {
         </div>
         <div className="guests-selector">
           <button className="guests-button" onClick={toggleGuestsDropdown}>
-            <span>
-              {guests.adults + guests.children} guests
-              {guests.infants > 0 && `, ${guests.infants} infant${guests.infants > 1 ? 's' : ''}`}
-              {guests.pets > 0 && `, ${guests.pets} pet${guests.pets > 1 ? 's' : ''}`}
-            </span>
+            <div className="guests-content">
+              <label>GUESTS</label>
+              <span>
+                {guests.adults + guests.children} guests
+                {guests.infants > 0 && `, ${guests.infants} infant${guests.infants > 1 ? 's' : ''}`}
+                {guests.pets > 0 && `, ${guests.pets} pet${guests.pets > 1 ? 's' : ''}`}
+              </span>
+            </div>
           </button>
           <div className={`guests-dropdown ${isGuestsDropdownOpen ? 'active' : ''}`}>
             {[

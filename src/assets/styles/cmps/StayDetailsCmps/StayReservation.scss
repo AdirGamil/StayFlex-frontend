@@ -1,40 +1,68 @@
 .reservation {
   position: relative;
+  display: block;
+  z-index: 1;
+  position: sticky;
+  top: 6.25rem;
+  margin-block-end: rem(16px);
+  padding: rem(24px);
+  border: 1px solid #dddddc;
+  border-radius: rem(12px);
+  box-shadow: #0000001f 0 6px 16px;
+  // max-height: 510px;
+  padding-top: rem(12px);
+
+  .reservation-price {
+    display: flex;
+    align-items: center;
+    font-size: larger;
+
+    h3 {
+      margin-top: rem(12px);
+      font-weight: 600;
+    }
+
+    span {
+      margin-bottom: rem(8px);
+      font-size: rem(16px);
+    }
+
+  }
 
   .reservation-selectors {
     display: flex;
     flex-direction: column;
     border: 1px solid #ccc;
-    border-radius: 8px;
-    // overflow: hidden;
+    border-radius: rem(8px);
 
-    .reservation-price {
-      display: flex;
-      align-items: baseline;
-      margin-bottom: rem(20px);
-
-      span {
-        font-size: rem(16px);
-      }
-    }
   }
 
   .date-picker-container {
     display: flex;
     justify-content: space-between;
 
+    .check-in {
+      // background-color: #c72d65;
+      border-right: rem(1px) solid #ccc;
+
+    }
+
     .check-in,
     .check-out {
       input {
-        height: rem(56px);
+        // height: rem(56px);
         cursor: pointer;
       }
+
+
 
       label {
         display: block;
         font-weight: bold;
-        font-size: rem(12px);
-        color: $clr4;
+        padding-left: rem(8px);
+        padding-top: rem(10px);
+        font-size: rem(10px);
+        color: $clr3;
       }
 
       .react-datepicker-wrapper {
@@ -43,26 +71,13 @@
         .react-datepicker__input-container {
           input {
             width: 100%;
-            padding: rem(8px);
+            padding-left: rem(8px);
+            padding-bottom: rem(8px);
             border: none;
             font-size: rem(14px);
           }
         }
       }
-    }
-
-    .check-in
-      .react-datepicker-wrapper
-      .react-datepicker__input-container
-      input {
-      border-right: rem(1px) solid #ccc;
-      border-radius: rem(15px) 0 0;
-    }
-    .check-out
-      .react-datepicker-wrapper
-      .react-datepicker__input-container
-      input {
-      border-radius: rem(15px);
     }
   }
 
@@ -95,6 +110,22 @@
       }
     }
 
+    .guests-content {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+
+      label {
+        font-size: 12px;
+        font-weight: 600;
+        // letter-spacing: 0.00001rem;
+      }
+
+      span {
+        font-size: 14px;
+      }
+    }
+
     .guests-dropdown {
       position: absolute;
       top: calc(100% + rem(12px));
@@ -111,7 +142,7 @@
         display: block;
       }
 
-      > div {
+      >div {
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -185,7 +216,6 @@
   .reserve-btn {
     width: 100%;
     padding: rem(14px);
-    background-color: $clr1;
     color: white;
     border: none;
     border-radius: rem(8px);
@@ -193,6 +223,16 @@
     font-weight: bold;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    font: inherit;
+    height: 3rem;
+    background: radial-gradient(103.95% 1413.54% at -3.95% 100%,
+        #d33753 0%,
+        #d13660 52.83%,
+        #c72d65 100%);
+    line-height: 19px;
+    margin-block-start: 1rem;
+    margin-block-end: 0.5rem;
+    cursor: pointer;
 
     &:hover {
       background-color: $clr11;
@@ -201,13 +241,14 @@
 
   .charged-p {
     text-align: center;
-    // margin-top: rem(10px);
     font-size: rem(14px);
     color: $clr4;
+
   }
 }
 
 .price-details {
+
   .calc-span,
   .taxes-span {
     text-decoration: underline;
@@ -225,50 +266,5 @@
     font-size: rem(18px);
     border-top: 1px solid #e0e0e0;
     padding-top: rem(24px);
-  }
-}
-
-.reservation {
-  display: block;
-  z-index: 1;
-  position: sticky;
-  top: 6.25rem;
-  margin-block-end: rem(16px);
-  max-width: 23.25rem;
-  padding: rem(24px);
-  border: 1px solid #dddddc;
-  border-radius: 12px;
-  box-shadow: #0000001f 0 6px 16px;
-  max-height: 510px;
-  padding-top: 12px;
-
-  .reservation-price {
-    display: flex;
-    align-items: center;
-    font-size: larger;
-  }
-
-  .reserve-btn {
-    font: inherit;
-    color: #fff;
-    border: none;
-    height: 3rem;
-    width: 100%;
-    background: radial-gradient(
-      103.95% 1413.54% at -3.95% 100%,
-      #d33753 0%,
-      #d13660 52.83%,
-      #c72d65 100%
-    );
-    border-radius: 8px;
-    line-height: 19px;
-    margin-block-start: 1rem;
-    margin-block-end: 0.5rem;
-    cursor: pointer;
-  }
-
-  .charged-p {
-    text-align: center;
-    font-size: 0.875rem;
   }
 }
