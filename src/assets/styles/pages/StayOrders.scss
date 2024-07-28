@@ -1,9 +1,11 @@
 .stay-orders-container {
   padding: rem(20px);
+  display: flex;
+
 
   h1 {
-    font-size: rem(32px); // 2rem (16px * 2)
-    color: $clr3; // שחור כהה
+    font-size: rem(32px);
+    color: $clr3;
     margin-bottom: rem(20px);
   }
 
@@ -13,28 +15,59 @@
     border-collapse: collapse;
     margin-top: rem(20px);
 
+    tbody {
+      img {
+        max-width: rem(40px);
+        border-radius: rem(50px);
+      }
+
+      tr {
+        &:nth-child(even) {
+          background-color: #f2f2f2;
+        }
+
+        &:nth-child(odd) {
+          background-color: $clr5;
+        }
+
+        &:first-child td {
+          border-top: 1px solid $clr6;
+        }
+
+        td:first-child {
+          border-left: 1px solid $clr6;
+        }
+
+        td:last-child {
+          border-right: 1px solid $clr6;
+        }
+      }
+    }
+
     th,
     td {
-      border: rem(1px) solid $clr6; // אפור בהיר
       padding: rem(10px);
       text-align: center;
+      border-bottom: 1px solid $clr6;
+      // background-color: $clr5;
     }
 
     th {
-      background-color: $clr4; // אפור כהה
-      color: $clr5; // לבן
+      color: $clr3;
+      border-bottom: 2px solid $clr6;
     }
 
-    td {
-      background-color: $clr5; // לבן
+    .status-approved {
+      color: $clr8;
     }
 
-    tbody {
-      tr {
-        &:nth-child(even) {
-          background-color: $clr6; // אפור בהיר
-        }
-      }
+    .status-pending {
+      color: orange;
+
+    }
+
+    .status-declined {
+      color: $clr11;
     }
 
     .btn {
@@ -43,15 +76,16 @@
       border-radius: rem(5px);
       background-color: transparent;
       cursor: pointer;
+      transition: opacity 0.3s ease;
 
       &-accept {
-        border: rem(1px) solid $clr8; // ירוק
+        border: rem(1px) solid $clr8;
         color: $clr8;
       }
 
       &-reject {
-        border: rem(1px) solid $clr1; // אדום
-        color: $clr1;
+        border: rem(1px) solid $clr11;
+        color: $clr11;
       }
 
       &:hover {
