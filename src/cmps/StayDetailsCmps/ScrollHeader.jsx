@@ -78,10 +78,15 @@ export function ScrollHeader({ price, rating, reviewCount }) {
 
   useEffect(() => {
     const handleScroll = () => {
-      const mainReservationElement = document.querySelector('.stay-reservation');
-      if (mainReservationElement) {
-        const rect = mainReservationElement.getBoundingClientRect();
-        setShowHeaderInfo(rect.bottom <= 0);
+      const reserveButton = document.querySelector('.stay-reservation .reserve-btn');
+      if (reserveButton) {
+        const rect = reserveButton.getBoundingClientRect();
+        const shouldShow = rect.top < 0;
+        console.log('Reserve button top:', rect.top);
+        console.log('Should show header info:', shouldShow);
+        setShowHeaderInfo(shouldShow);
+      } else {
+        console.log('Reserve button not found');
       }
     };
 
