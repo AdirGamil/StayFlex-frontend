@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from 'react'
 import { useParams, useSearchParams } from 'react-router-dom'
 import { useSelector } from 'react-redux'
@@ -12,7 +11,7 @@ import {
   pluralize,
   calculateAverageRating,
   getRandomIntInclusive,
-  amenityIcons
+  amenityIcons,
 } from '../services/util.service'
 
 export function StayDetails() {
@@ -48,11 +47,13 @@ export function StayDetails() {
 
   return (
     <section className="stay-details main-layout">
-      {showScrollHeader && <ScrollHeader
-        price={stay.price}
-        rating={averageRating}
-        reviewCount={stay.reviews.length}
-      />}
+      {showScrollHeader && (
+        <ScrollHeader
+          price={stay.price}
+          rating={averageRating}
+          reviewCount={stay.reviews.length}
+        />
+      )}
       <header className="stay-header">
         <h1 className="stay-title">{stay.name}</h1>
         <div className="share-save">
@@ -74,7 +75,9 @@ export function StayDetails() {
       <section className="stay-info-container">
         <div className="stay-info">
           <div className="stay-summary">
-            <h2>{stay.type} in {stay.loc.city}, {stay.loc.country}</h2>
+            <h2>
+              {stay.type} in {stay.loc.city}, {stay.loc.country}
+            </h2>
             <p className="stay-details-list">
               {pluralize(stay.capacity, 'guest')} ·{' '}
               {pluralize(stay.bedrooms, 'bedroom')} ·{' '}
@@ -98,12 +101,17 @@ export function StayDetails() {
 
           <div className="stay-host-details">
             <div className="host">
-              {stay.host && typeof stay.host === 'object' && stay.host.imgUrl && (
-                <img src={stay.host.imgUrl} alt="Host" className="host-img" />
-              )}
+              {stay.host &&
+                typeof stay.host === 'object' &&
+                stay.host.imgUrl && (
+                  <img src={stay.host.imgUrl} alt="Host" className="host-img" />
+                )}
               <div className="host-info">
                 <div>
-                  Hosted by {typeof stay.host === 'object' ? stay.host.fullname : stay.host}
+                  Hosted by{' '}
+                  {typeof stay.host === 'object'
+                    ? stay.host.fullname
+                    : stay.host}
                 </div>
                 <div className="host-duration">
                   {getRandomIntInclusive(2, 6)} years hosting
@@ -131,7 +139,7 @@ export function StayDetails() {
           </div>
         </div>
 
-        <StayReservation stay={stay}  guestCount={guestCount}/>
+        <StayReservation stay={stay} guestCount={guestCount} />
       </section>
       <section id="reviews" className="header-reviews">
         <div className="header">★ {averageRating}· 6 reviews</div>
@@ -147,9 +155,13 @@ export function StayDetails() {
               </div>
               <div className="review-txt-date">
                 <div className="review-rating">
-                  <p>★★★★★<span></span></p>
+                  <p>
+                    ★★★★★<span></span>
+                  </p>
                   <h6>·</h6>
-                  <h4>July 2024 <span> Stayed a few nights</span></h4>
+                  <h4>
+                    July 2024 <span> Stayed a few nights</span>
+                  </h4>
                 </div>
                 <div className="review-content">
                   <p>{review.txt}</p>
@@ -166,14 +178,12 @@ export function StayDetails() {
             <div className="map">
               <Map stay={stay} />
             </div>
-            {/* <div className="city-info">city info here</div> */}
+            <div className="city-info">
+              {stay.loc.country} · {stay.loc.city} · {stay.loc.address}
+            </div>
           </article>
         </div>
       </section>
     </section>
   )
 }
-
-
-
-
