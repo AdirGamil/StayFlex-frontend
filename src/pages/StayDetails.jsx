@@ -138,8 +138,9 @@ export function StayDetails() {
             </ul>
           </div>
         </div>
-
-        <StayReservation stay={stay} guestCount={guestCount} />
+        <div className="stay-reservation">
+          <StayReservation stay={stay} guestCount={guestCount} />
+        </div>
       </section>
       <section id="reviews" className="header-reviews">
         <div className="header">★ {averageRating}· 6 reviews</div>
