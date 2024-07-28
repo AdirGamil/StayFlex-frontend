@@ -1,7 +1,7 @@
 footer {
   background-color: $clr9;
   // padding: rem(40px);
-  padding: 10px 40px;
+  padding: rem(10px) rem(40px);
   color: $clr4;
 
   .footer-content {
@@ -52,7 +52,6 @@ footer {
 
     p {
       font-size: rem(14px);
-      margin-bottom: rem(1px);
 
       a {
         text-decoration: none;
