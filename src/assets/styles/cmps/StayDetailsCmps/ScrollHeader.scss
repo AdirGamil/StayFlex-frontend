@@ -142,7 +142,7 @@
     display: grid;
     grid-template-columns: 2fr 3fr;
     align-items: center;
-    opacity: 0;
+    // opacity: 0;
     transform: translateY(-20px);
     transition: opacity 0.3s ease, transform 0.3s ease;
 
@@ -199,7 +199,7 @@
   }
 }
 
-.show-info .scroll-header-info {
-  opacity: 1;
-  transform: translateY(0);
-}
+// .show-info .scroll-header-info {
+//   opacity: 1;
+//   transform: translateY(0);
+// }
