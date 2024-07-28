@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
 import { addStay } from '../store/actions/stay.actions'
+import { userService } from '../services/user'
 import { useNavigate } from 'react-router'
 import {
   types,
@@ -108,6 +109,8 @@ export function AddStay() {
     const reviews = generateRandomReviews(5)
     const averageRating = calculateAverageRating(reviews)
 
+    const loggedinUser = userService.getLoggedinUser()
+
     const stay = {
       name,
       type,
@@ -131,11 +134,15 @@ export function AddStay() {
       kilometersAway: getRandomKilometersAway(),
       dateRange: getDateRange(),
       likedByUsers: ['mini-user'],
-      owner: userService.getLoggedinUser(),
-      host: {
+      owner: loggedinUser || {
         _id: makeId(),
         fullname: getRandomMaleName(),
         imgUrl: getRandomHostImg(),
+      },
+      host: {
+        _id: loggedinUser?._id || makeId(),
+        fullname: loggedinUser?.fullname || getRandomMaleName(),
+        imgUrl: loggedinUser?.imgUrl || getRandomHostImg(),
       },
       averageRating,
     }
@@ -215,7 +222,7 @@ export function AddStay() {
                 Which of these best describes your place?
               </span>
             </section>
-            <FormControl fullWidth margin="normal">
+            <FormControl className="custom-select" fullWidth margin="normal">
               <InputLabel>Type</InputLabel>
               <Select value={type} onChange={(e) => setType(e.target.value)}>
                 {types.map((type) => (
@@ -237,7 +244,7 @@ export function AddStay() {
                 reservation.
               </span>
             </section>
-            <FormControl fullWidth margin="normal">
+            <FormControl className="custom-select" fullWidth margin="normal">
               <InputLabel>Country</InputLabel>
               <Select
                 value={country}
@@ -250,7 +257,7 @@ export function AddStay() {
                 ))}
               </Select>
             </FormControl>
-            <FormControl fullWidth margin="normal">
+            <FormControl className="custom-select" fullWidth margin="normal">
               <InputLabel>City</InputLabel>
               <Select value={city} onChange={(e) => setCity(e.target.value)}>
                 {cities[country]?.map((city) => (
@@ -261,6 +268,7 @@ export function AddStay() {
               </Select>
             </FormControl>
             <TextField
+              className="custom-select"
               label="Address"
               value={address}
               onChange={(e) => setAddress(e.target.value)}
@@ -269,6 +277,7 @@ export function AddStay() {
               required
             />
             <TextField
+              className="custom-select"
               label="Latitude"
               type="number"
               value={lat}
@@ -278,6 +287,7 @@ export function AddStay() {
               InputProps={{ readOnly: true }}
             />
             <TextField
+              className="custom-select"
               label="Longitude"
               type="number"
               value={lng}
@@ -299,6 +309,7 @@ export function AddStay() {
             </section>
             <div>
               <TextField
+                className="custom-select"
                 label="Guests"
                 type="number"
                 value={capacity}
@@ -308,6 +319,7 @@ export function AddStay() {
                 required
               />
               <TextField
+                className="custom-select"
                 label="Bedrooms"
                 type="number"
                 value={bedrooms}
@@ -317,6 +329,7 @@ export function AddStay() {
                 required
               />
               <TextField
+                className="custom-select"
                 label="Beds"
                 type="number"
                 value={beds}
@@ -326,6 +339,7 @@ export function AddStay() {
                 required
               />
               <TextField
+                className="custom-select"
                 label="Bathrooms"
                 type="number"
                 value={baths}
@@ -367,7 +381,7 @@ export function AddStay() {
               <span className="description">
                 You can add more amenities after you publish your listing.
               </span>
-              <FormControl fullWidth margin="normal">
+              <FormControl className="custom-select" fullWidth margin="normal">
                 <InputLabel>Amenities</InputLabel>
                 <Select
                   multiple
@@ -401,6 +415,7 @@ export function AddStay() {
                 it later
               </span>
               <TextField
+                className="custom-select"
                 label="Title"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
@@ -421,6 +436,7 @@ export function AddStay() {
                 Share what makes your place special.
               </span>
               <TextField
+                className="custom-select"
                 label="Description"
                 value={summary}
                 onChange={(e) => setSummary(e.target.value)}
@@ -453,6 +469,7 @@ export function AddStay() {
               muted
             ></video>
             <TextField
+              className="custom-select"
               label="Price $"
               placeholder="$"
               type="number"
@@ -476,6 +493,12 @@ export function AddStay() {
           <LinearProgress
             variant="determinate"
             value={(currentStep / totalSteps) * 100}
+            sx={{
+              backgroundColor: 'lightgray',
+              '& .MuiLinearProgress-bar': {
+                backgroundColor: '#ff385c',
+              },
+            }}
           />
           {renderStepContent(currentStep)}
           <section className="progress-footer">
