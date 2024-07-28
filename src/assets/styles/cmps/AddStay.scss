@@ -5,6 +5,22 @@
   padding: 24px;
   overflow: hidden;
 
+  .custom-select {
+    .MuiOutlinedInput-root {
+      &.Mui-focused .MuiOutlinedInput-notchedOutline {
+        border-color: gray;
+      }
+    }
+    .MuiInputLabel-root {
+      &.Mui-focused {
+        color: gray;
+      }
+    }
+    .MuiSvgIcon-root {
+      color: gray;
+    }
+  }
+
   .add-modal {
     display: grid;
     grid-template-columns: 1fr;
@@ -26,7 +42,9 @@
         text-align: center;
       }
 
-      .step, .question, .description {
+      .step,
+      .question,
+      .description {
         margin-bottom: 15px;
       }
 
@@ -53,10 +71,9 @@
       object-fit: cover;
       opacity: 0;
       animation: fadeIn 0.5s ease forwards;
-      justify-self: center; 
-      align-self: center; 
+      justify-self: center;
+      align-self: center;
     }
-
   }
 
   .progress-footer {
@@ -112,12 +129,20 @@
     }
   }
 
-  .stage-1, .stage-2, .stage-3, .stage-4, .stage-5, .stage-6, .stage-7, .stage-8, .stage-9 {
+  .stage-1,
+  .stage-2,
+  .stage-3,
+  .stage-4,
+  .stage-5,
+  .stage-6,
+  .stage-7,
+  .stage-8,
+  .stage-9 {
     display: grid;
     animation: smoothTransition 0.5s ease;
 
     .stage-video {
-     grid-column: 2;
+      grid-column: 2;
       video {
         width: 100%;
         height: auto;
