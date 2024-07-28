@@ -41,7 +41,6 @@ import React, { useEffect, useState } from 'react'
 import { orderService } from '../services/order'
 import { NavLink } from 'react-router-dom'
 
-
 export function StayTrips() {
   const [orders, setOrders] = useState([])
 
@@ -74,8 +73,8 @@ export function StayTrips() {
         <article key={order._id} className="stay-trip">
           {console.log(order)}
           <img src={order.stay.imgUrls[0]} alt="" className="trip-img" />
-          <div>
-            <div className="trip-city">{order.stay.loc.city}</div>
+          <div className="trip-info">
+            <div className="trip-city bold">{order.stay.loc.city}</div>
             <div className="trip-title">Hosted by {order.hostId.fullname}</div>
             <div className="trip-date">
               {formatDateRange(order.startDate, order.endDate)}
@@ -84,7 +83,9 @@ export function StayTrips() {
           </div>
         </article>
       ))}
-      <div className="trip-not"> Cant find your reservation here? <span> Lets find one </span>
+      <div className="trip-not">
+        {' '}
+        Cant find your reservation here? <span> Lets find one </span>
       </div>
     </section>
   )

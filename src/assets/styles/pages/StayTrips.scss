@@ -11,20 +11,22 @@
   }
 
   .stay-trip {
-    display: grid;
-    grid-template-columns: 2fr 3fr;
-    max-width: rem(400px);
-    gap: rem(10px);
-    font-size: rem(14px);
+    display: flex;
+    gap: rem(20px);
+
+    .trip-info{
+      align-content: center;
+      color: $clr7;
+    }
 
     &:last-of-type {
       margin-bottom: rem(24px);
     }
 
     .trip-img {
-      width: rem(150px);
-      height: rem(125px);
-      border-radius: rem(12px);
+      max-width: 240px;
+      border-radius: 10px;
+
     }
 
     .trip-city {
