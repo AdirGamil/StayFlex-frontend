@@ -1,3 +1,5 @@
+// order.service.remote.js
+
 import { httpService } from '../http.service'
 
 export const orderService = {
@@ -10,30 +12,59 @@ export const orderService = {
 }
 
 async function query(filterBy = {}) {
-  return httpService.get('order', filterBy)
+  try {
+    return await httpService.get('order', filterBy)
+  } catch (err) {
+    console.error('Error querying orders:', err.response ? err.response.data : err)
+    throw err
+  }
 }
 
-function getById(orderId) {
-  return httpService.get(`order/${orderId}`)
+async function getById(orderId) {
+  try {
+    return await httpService.get(`order/${orderId}`)
+  } catch (err) {
+    console.error(`Error getting order by ID ${orderId}:`, err.response ? err.response.data : err)
+    throw err
+  }
 }
 
 async function remove(orderId) {
-  return httpService.delete(`order/${orderId}`)
+  try {
+    return await httpService.delete(`order/${orderId}`)
+  } catch (err) {
+    console.error(`Error removing order ${orderId}:`, err.response ? err.response.data : err)
+    throw err
+  }
 }
 
 async function save(order) {
   let savedOrder
+  console.log('Saving order:', order)
+
   if (order._id) {
-    savedOrder = await httpService.put(`order/${order._id}`, order)
+    try {
+      savedOrder = await httpService.put(`order/${order._id}`, order)
+      console.log('Order updated successfully:', savedOrder)
+    } catch (err) {
+      console.error('Error updating order:', err.response ? err.response.data : err)
+      throw err
+    }
   } else {
     const loggedinUser = userService.getLoggedinUser()
     order.guest = {
-      _id: loggedinUser?._id || 'guest1', // משתמש המחובר או משתמש אורח
-      fullname: loggedinUser?.fullname || 'Guest User', // שם משתמש המחובר או שם משתמש אורח
+      _id: loggedinUser?._id || 'guest1', // logged-in user or guest user
+      fullname: loggedinUser?.fullname || 'Guest User', // logged-in user name or guest user name
     }
     order.status = 'Pending'
     order.msgs = []
-    savedOrder = await httpService.post('order', order)
+    try {
+      savedOrder = await httpService.post('order', order)
+      console.log('Order created successfully:', savedOrder)
+    } catch (err) {
+      console.error('Error creating order:', err.response ? err.response.data : err)
+      throw err
+    }
   }
   return savedOrder
 }
@@ -43,9 +74,19 @@ async function addOrderMsg(orderId, txt) {
     by: { _id: 'guest1', fullname: 'Guest User' }, // Placeholder guest info
     txt,
   }
-  return await httpService.post(`order/${orderId}/msg`, msg)
+  try {
+    return await httpService.post(`order/${orderId}/msg`, msg)
+  } catch (err) {
+    console.error(`Error adding message to order ${orderId}:`, err.response ? err.response.data : err)
+    throw err
+  }
 }
 
 async function removeOrderMsg(orderId, msgId) {
-  return await httpService.delete(`order/${orderId}/msg/${msgId}`)
+  try {
+    return await httpService.delete(`order/${orderId}/msg/${msgId}`)
+  } catch (err) {
+    console.error(`Error removing message ${msgId} from order ${orderId}:`, err.response ? err.response.data : err)
+    throw err
+  }
 }
