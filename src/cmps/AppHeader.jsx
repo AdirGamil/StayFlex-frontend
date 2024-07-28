@@ -75,7 +75,7 @@ export function AppHeader({ isScrolled }) {
           <img className="app-logo" src={logo} alt="logo" />
           <h1>StayFlex</h1>
         </NavLink>
-        {!isScrolled ? (
+        {/* {!isScrolled ? (
           <div className="links-header">
             <NavLink to="/" className={'stay-header'}>
               Stays
@@ -87,6 +87,20 @@ export function AppHeader({ isScrolled }) {
         ) : (
           <div className="mini-filter-container">
             <MiniFilter />
+          </div>
+        )} */}
+         {isStayDetailsRoute || isScrolled ? (
+          <div className="mini-filter-container">
+            <MiniFilter />
+          </div>
+        ) : (
+          <div className="links-header">
+            <NavLink to="/" className={'stay-header'}>
+              Stays
+            </NavLink>
+            <NavLink to="/" className={'exp-header'}>
+              Experiences
+            </NavLink>
           </div>
         )}
         <div className="user-actions">

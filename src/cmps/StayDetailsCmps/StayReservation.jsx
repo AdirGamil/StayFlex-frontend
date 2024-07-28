@@ -316,6 +316,8 @@ export function StayReservation({ stay, guestCount }) {
               monthsShown={2}
               dateFormat="dd/MM/yyyy"
               placeholderText="CHECK-IN"
+              onFocus={(e) => e.target.parentNode.parentNode.classList.add('focused')}
+              onBlur={(e) => e.target.parentNode.parentNode.classList.remove('focused')}
             />
           </div>
           <div className="check-out">
@@ -330,6 +332,8 @@ export function StayReservation({ stay, guestCount }) {
               monthsShown={2}
               dateFormat="dd/MM/yyyy"
               placeholderText="CHECKOUT"
+              onFocus={(e) => e.target.parentNode.parentNode.classList.add('focused')}
+              onBlur={(e) => e.target.parentNode.parentNode.classList.remove('focused')}
             />
           </div>
         </div>

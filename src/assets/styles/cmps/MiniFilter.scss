@@ -9,6 +9,8 @@
   padding: 0 8px;
   height: 48px;
   width: rem(360px);
+  margin: auto; // This will help center it horizontally if needed
+  max-height: 100%; 
 
   .search-option {
     background: none;
