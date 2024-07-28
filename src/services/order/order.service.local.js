@@ -31,7 +31,6 @@ async function remove(orderId) {
 }
 
 async function save(order) {
-  console.log('hello local');
   var savedOrder
   if (order._id) {
     const existingOrder = await storageService
@@ -45,9 +44,10 @@ async function save(order) {
     }
   } else {
     order._id = makeId()
+    const loggedinUser = userService.getLoggedinUser()
     order.guest = {
-      _id: 'guest1', // Placeholder guest ID
-      fullname: 'Guest User', // Placeholder guest name
+      _id: loggedinUser?._id || 'guest1',
+      fullname: loggedinUser?.fullname || 'Guest User',
     }
     order.status = 'Pending'
     order.msgs = []

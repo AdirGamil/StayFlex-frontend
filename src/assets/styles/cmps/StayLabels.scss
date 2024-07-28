@@ -137,6 +137,11 @@
   width: 24px;
   height: 24px;
   margin-bottom: 4px;
+  opacity: 0.7;
+}
+
+.label-item.selected .label-image {
+  opacity: 1;  
 }
 
 .label-item span {
