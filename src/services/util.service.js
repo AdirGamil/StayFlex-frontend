@@ -8,6 +8,7 @@ import {
   maleFirstNames,
   lastNames,
   coordinates,
+  amenities,
 } from './data.service'
 
 import { userService } from './user'
@@ -22,6 +23,11 @@ export function makeId(length = 6) {
   }
 
   return txt
+}
+
+function getRandomAmenities(min = 4) {
+  const shuffled = amenities.sort(() => 0.5 - Math.random());
+  return shuffled.slice(0, getRandomIntInclusive(min, amenities.length));
 }
 
 export function getRandomElement(arr) {
@@ -57,18 +63,40 @@ export function createStayObject(stay) {
     bedrooms: stay.bedrooms || getRandomIntInclusive(1, 6),
     baths: stay.baths || getRandomIntInclusive(1, 6),
     beds: stay.beds || getRandomIntInclusive(1, 6),
-    amenities: stay.amenities || [
-      'Wifi',
-      'Cooking basics',
-      'Hair dryer',
-      'Ev charger',
-      'Dryer',
-      'Wineglasses',
-      'Carbon monoxide alarm',
-      'Extra pillows and blankets',
-      'TV',
-      'Garden view',
-    ],
+    amenities: stay.amenities || getRandomAmenities(4),
+    labels: stay.labels || getRandomLabels(labels),
+    loc: location,
+    reviews: reviews,
+    kilometersAway: stay.kilometersAway || getRandomKilometersAway(),
+    dateRange: stay.dateRange || getDateRange(),
+    likedByUsers: stay.likedByUsers || ['mini-user'],
+    owner: userService.getLoggedinUser(),
+    host: stay.host || {
+      _id: makeId(),
+      fullname: getRandomMaleName(),
+      imgUrl: getRandomHostImg(),
+    },
+    averageRating: averageRating,
+  }
+}
+
+export function createStayRemote(stay) {
+  const reviews = stay.reviews || generateRandomReviews(6)
+  const averageRating = calculateAverageRating(reviews)
+
+  const location = stay.loc || getRandomLocation()
+
+  return {
+    name: stay.name || getRandomElement(names),
+    type: stay.type || getRandomElement(types),
+    imgUrls: stay.imgUrls || getRandomImgUrls(imgUrls),
+    price: stay.price || getRandomIntInclusive(150, 1350),
+    summary: stay.summary || makeLorem(50),
+    capacity: stay.capacity || getRandomIntInclusive(1, 6),
+    bedrooms: stay.bedrooms || getRandomIntInclusive(1, 6),
+    baths: stay.baths || getRandomIntInclusive(1, 6),
+    beds: stay.beds || getRandomIntInclusive(1, 6),
+    amenities: stay.amenities || getRandomAmenities(4),
     labels: stay.labels || getRandomLabels(labels),
     loc: location,
     reviews: reviews,
