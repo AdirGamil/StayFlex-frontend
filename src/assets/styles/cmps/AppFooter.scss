@@ -1,13 +1,13 @@
 footer {
   background-color: $clr9;
-  padding: rem(40px);
+  // padding: rem(40px);
+  padding: 10px 40px;
   color: $clr4;
 
   .footer-content {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    margin-bottom: rem(40px);
 
     div {
       flex: 1;
