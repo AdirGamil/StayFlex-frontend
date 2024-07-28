@@ -1,23 +1,45 @@
-import 'slick-carousel/slick/slick.css'
-import 'slick-carousel/slick/slick-theme.css'
-import Slider from 'react-slick'
-import HeartWishlistSvg from '../assets/img/HeartWishlistSvg'
-import { useState } from 'react'
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+import Slider from 'react-slick';
+import HeartWishlistSvg from '../assets/img/HeartWishlistSvg';
+import { useState } from 'react';
 
-const starIcon =
-  'https://res.cloudinary.com/dhweqnxgd/image/upload/v1721294785/star_us9ozb.png'
+const starIcon = 'https://res.cloudinary.com/dhweqnxgd/image/upload/v1721294785/star_us9ozb.png';
 
-const wishListIcon = ''
+const ArrowButton = ({ direction, onClick, currentSlide }) => {
+  const arrow = direction === 'left' ? '❮' : '❯'; // Arrow symbols
+  const isHidden = direction === 'left' && currentSlide === 0; // Hide left arrow on the first slide
+  return (
+    !isHidden && (
+      <button
+        className={`scroll-button ${direction}`}
+        onClick={onClick}
+        style={{
+          position: 'absolute',
+          top: '50%',
+          transform: 'translateY(-50%)',
+          [direction]: '10px',
+          border: 'none',
+          zIndex: 1,
+          cursor: 'pointer'
+        }}
+      >
+        {arrow}
+      </button>
+    )
+  );
+};
+
 
 export function StayPreview({ stay }) {
-  const [isHovered, setIsHovered] = useState(false)
+  const [isHovered, setIsHovered] = useState(false);
 
   function handleMouseEnter() {
-    setIsHovered(true)
+    setIsHovered(true);
   }
 
   function handleMouseLeave() {
-    setIsHovered(false)
+    setIsHovered(false);
   }
 
   const settings = {
@@ -29,7 +51,9 @@ export function StayPreview({ stay }) {
     slidesToScroll: 1,
     initialSlide: 0,
     arrows: isHovered,
-  }
+    prevArrow: <ArrowButton direction="left" />,
+    nextArrow: <ArrowButton direction="right" />,
+  };
 
   return (
     <article
@@ -74,6 +98,5 @@ export function StayPreview({ stay }) {
         </li>
       </ul>
     </article>
-  )
+  );
 }
-
