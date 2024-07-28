@@ -33,9 +33,9 @@ export function AppHeader({ isScrolled }) {
             <NavLink to="/" className={'stay-header'}>
               Stays
             </NavLink>
-            <NavLink to="/" className={'exp-header'}>
+            {/* <NavLink to="/" className={'exp-header'}>
               Experiences
-            </NavLink>
+            </NavLink> */}
           </div>
         )}
         <div className="user-actions">
