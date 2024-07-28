@@ -1,5 +1,3 @@
-// order.service.remote.js
-
 import { httpService } from '../http.service'
 
 export const orderService = {
@@ -40,8 +38,6 @@ async function remove(orderId) {
 
 async function save(order) {
   let savedOrder
-  console.log('Saving order:', order)
-
   if (order._id) {
     try {
       savedOrder = await httpService.put(`order/${order._id}`, order)
