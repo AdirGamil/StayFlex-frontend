@@ -22,12 +22,12 @@ export function ConfirmReservation() {
       )
 
       if (isConflict) {
-        alert('This stay is already reserved for the selected dates.')
+      
         return
       }
       await orderService.save(orderDetails)
-      alert('Reservation placed successfully!')
-      navigate('/')
+      
+      navigate('/trips')
     } catch (err) {
       console.error('Error placing reservation:', err)
     }
