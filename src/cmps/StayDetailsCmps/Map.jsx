@@ -4,7 +4,7 @@ import GoogleMapReact from 'google-map-react'
 function Marker() {
   return (
     <div className="branch-img">
-      <h1>📍</h1>
+      <h1>🚩</h1>
     </div>
   )
 }
