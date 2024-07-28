@@ -2,8 +2,8 @@
   padding: rem(20px);
 
   h1 {
-    font-size: rem(32px); // 2rem (16px * 2)
-    color: $clr3; // שחור כהה
+    font-size: rem(32px);
+    color: $clr1; // שחור כהה
     margin-bottom: rem(20px);
   }
 
@@ -21,20 +21,12 @@
     }
 
     th {
-      background-color: $clr4; // אפור כהה
+      background-color: $clr11; // אפור כהה
       color: $clr5; // לבן
     }
 
     td {
       background-color: $clr5; // לבן
-    }
-
-    tbody {
-      tr {
-        &:nth-child(even) {
-          background-color: $clr6; // אפור בהיר
-        }
-      }
     }
 
     .btn {
