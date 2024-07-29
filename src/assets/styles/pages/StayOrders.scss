@@ -49,15 +49,15 @@
 
       td {
         &.status-approved {
-          color: $clr8; 
-                }
+          color: $clr8;
+        }
 
         &.status-pending {
           color: orange;
         }
 
         &.status-declined {
-          color: $clr11; 
+          color: $clr11;
         }
       }
     }

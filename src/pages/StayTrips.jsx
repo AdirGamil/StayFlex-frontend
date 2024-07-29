@@ -74,7 +74,7 @@ export function StayTrips() {
           {console.log(order)}
           <img src={order.stay.imgUrls[0]} alt="" className="trip-img" />
           <div className="trip-info">
-            <div className="trip-city bold">{order.stay.loc.city}</div>
+            <div className="trip-city">{order.stay.loc.city}</div>
             <div className="trip-title">Hosted by {order.hostId.fullname}</div>
             <div className="trip-date">
               {formatDateRange(order.startDate, order.endDate)}
