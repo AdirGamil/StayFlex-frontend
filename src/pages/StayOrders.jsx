@@ -38,39 +38,31 @@ export function StayOrders() {
     const orders = await orderService.query()
     setOrders(orders)
     fetchGuestDetails(orders)
-    const orders = await orderService.query()
-    setOrders(orders)
-    fetchGuestDetails(orders)
+   
   }
 
   async function fetchGuestDetails(orders) {
-    const details = {}
     const details = {}
     for (let order of orders) {
       if (!details[order.guest._id]) {
         const user = await userService.getById(order.guest._id)
         details[order.guest._id] = user
-        const user = await userService.getById(order.guest._id)
-        details[order.guest._id] = user
+      
       }
     }
-    setGuestDetails(details)
     setGuestDetails(details)
   }
 
   async function handleStatusChange(orderId, status) {
     const updatedOrder = await orderService.getById(orderId)
-    const updatedOrder = await orderService.getById(orderId)
     if (updatedOrder) {
       updatedOrder.status = status
       await orderService.save(updatedOrder)
-      updatedOrder.status = status
-      await orderService.save(updatedOrder)
+   
       setOrders((prevOrders) =>
         prevOrders.map((order) =>
           order._id === orderId ? { ...order, status } : order
         )
-      )
       )
     }
   }
@@ -80,7 +72,6 @@ export function StayOrders() {
       month: 'short',
       day: 'numeric',
       year: 'numeric',
-    })
     })
   }
 
@@ -148,6 +139,5 @@ export function StayOrders() {
         </tbody>
       </table>
     </div>
-  )
   )
 }
