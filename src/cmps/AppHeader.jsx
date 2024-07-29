@@ -15,11 +15,11 @@ export function AppHeader({ isScrolled }) {
 
   return (
     <header
-      className= {`app-header padding${
+      className= {`app-header ${
         isStayDetailsRoute ? 'stay-details-header' : ''
       } ${isScrolled ? 'scrolled' : ''}`}
     >
-      <nav className="nav-container">
+      <nav className="nav-container padding">
         <NavLink to="/" className="logo">
           <img className="app-logo" src={logo} alt="logo" />
           <h1>StayFlex</h1>

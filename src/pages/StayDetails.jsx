@@ -54,7 +54,7 @@ export function StayDetails() {
           reviewCount={stay.reviews.length}
         />
       )}
-      <header className="stay-header">
+      <header className="stay-header main-layout">
         <h1 className="stay-title">{stay.name}</h1>
         <div className="share-save">
           <button className="share-btn">

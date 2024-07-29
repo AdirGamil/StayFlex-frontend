@@ -479,7 +479,7 @@ export const regions = [
   },
   {
     name: 'Europe',
-    map: 'https://via.placeholder.com/100x100?text=Europe',
+    map: 'https://res.cloudinary.com/doahdwb2g/image/upload/v1722264608/7b5cf816-6c16-49f8-99e5-cbc4adfd97e2_csadpd.webp',
     isContinent: true,
   },
   {
