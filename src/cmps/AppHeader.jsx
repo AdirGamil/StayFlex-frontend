@@ -15,7 +15,7 @@ export function AppHeader({ isScrolled }) {
 
   return (
     <header
-      className={`app-header ${
+      className= {`app-header padding${
         isStayDetailsRoute ? 'stay-details-header' : ''
       } ${isScrolled ? 'scrolled' : ''}`}
     >

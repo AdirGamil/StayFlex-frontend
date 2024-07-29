@@ -1,11 +1,13 @@
 .app-header {
   background-color: $clr5;
-
+  
   .nav-container {
     display: grid;
     grid-template-columns: auto 1fr auto;
     align-items: center;
     gap: 2rem;
+    height: rem(80px);
+    // padding-top: rem(20px);
 
     .links-header, .mini-filter-container {
       justify-self: center;
@@ -174,6 +176,7 @@
 .stay-filter-container {
   transition: opacity 0.8s ease, visibility 0.8s ease, display 0s linear 0.8s;
   border-bottom: 1px solid $clr6;
+  height: rem(90px);
 
   &.hidden {
     opacity: 0;

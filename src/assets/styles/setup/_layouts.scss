@@ -11,12 +11,14 @@ body {
         display: grid;
         place-items: center;
         min-height: 100vh;
-      }
-      
-      .main-layout {
+}
+
+.main-layout {
         display: grid;
-        margin: 0; /* Remove margin to center layout correctly */
-        max-width: 1120px; /* Use px or another unit instead of rem for max-width */
-        width: 100%; /* Ensure it uses full width up to max-width */
-      }
-      
+        margin: 0;
+        /* Remove margin to center layout correctly */
+        max-width: 1120px;
+        /* Use px or another unit instead of rem for max-width */
+        width: 100%;
+        /* Ensure it uses full width up to max-width */
+}

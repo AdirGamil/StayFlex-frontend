@@ -16,5 +16,5 @@ export function MiniFilter(){
             </svg>
           </button>
         </div>
-      );
+      )
 }
