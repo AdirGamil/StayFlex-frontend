@@ -97,7 +97,7 @@ export function StayOrders() {
   useEffect(() => {
     loadOrders();
   }, []);
-  
+
   async function loadOrders() {
     const orders = await orderService.query();
     setOrders(orders);
@@ -130,7 +130,7 @@ export function StayOrders() {
 
   function formatDate(date) {
     return new Date(date).toLocaleDateString('en-US', {
-      month: 'long',
+      month: 'short',
       day: 'numeric',
       year: 'numeric',
     });
@@ -154,29 +154,28 @@ export function StayOrders() {
           {orders.map((order) => (
             <tr key={order._id}>
               <td className={`status-${order.status.toLowerCase()}`}>{order.status}</td>
-              <img 
-                  src={guestDetails[order.guest._id]?.imgUrl || 'https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png'} 
-                  alt={guestDetails[order.guest._id]?.fullname || 'Guest'} 
-                  className="guest-image"
-                />              <td>{formatDate(order.startDate)}</td>
+              <img
+                src={guestDetails[order.guest._id]?.imgUrl || 'https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png'}
+                alt={guestDetails[order.guest._id]?.fullname || 'Guest'}
+                className="guest-image"
+              />
+              <td>{formatDate(order.startDate)}</td>
               <td>{formatDate(order.endDate)}</td>
-              <td>${order.totalPrice}</td>
+              <td>${order.totalPrice.toFixed(2)}</td>
               <td>
                 <button
                   onClick={() => handleStatusChange(order._id, 'Approved')}
                   disabled={order.status === 'Approved' || order.status === 'Declined'}
-                  className={`btn btn-accept ${
-                    order.status === 'Approved' || order.status === 'Declined' ? 'btn-disabled' : ''
-                  }`}
+                  className={`btn btn-accept ${order.status === 'Approved' || order.status === 'Declined' ? 'btn-disabled' : ''
+                    }`}
                 >
                   Accept
                 </button>
                 <button
                   onClick={() => handleStatusChange(order._id, 'Declined')}
                   disabled={order.status === 'Declined' || order.status === 'Approved'}
-                  className={`btn btn-reject ${
-                    order.status === 'Declined' || order.status === 'Approved' ? 'btn-disabled' : ''
-                  }`}
+                  className={`btn btn-reject ${order.status === 'Declined' || order.status === 'Approved' ? 'btn-disabled' : ''
+                    }`}
                 >
                   Reject
                 </button>
