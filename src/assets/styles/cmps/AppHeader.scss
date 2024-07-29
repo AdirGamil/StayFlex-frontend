@@ -1,5 +1,8 @@
 .app-header {
   background-color: $clr5;
+  margin-top: rem(10px);
+  border-block-end: rem(0.667px) solid $clr6 ;
+
   
   .nav-container {
     display: grid;
@@ -7,7 +10,6 @@
     align-items: center;
     gap: 2rem;
     height: rem(80px);
-    // padding-top: rem(20px);
 
     .links-header, .mini-filter-container {
       justify-self: center;

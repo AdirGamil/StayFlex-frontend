@@ -20,7 +20,7 @@ export function StayDetails() {
   const [showScrollHeader, setShowScrollHeader] = useState(false)
   const [searchParams] = useSearchParams()
   const filterBy = useSelector((storeState) => storeState.stayModule.filterBy)
-  const guestCount = JSON.parse(searchParams.get('guests') || '{}') // Added
+  const guestCount = JSON.parse(searchParams.get('guests') || '{}')
 
   useEffect(() => {
     loadStay(stayId)

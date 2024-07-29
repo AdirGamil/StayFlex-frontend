@@ -49,9 +49,9 @@ export function StayOrders() {
   }
 
   return (
-    <div className="stay-orders-container">
+    <div className="stay-orders-container padding">
       <h1>Orders</h1>
-      <table className="stay-orders-table">
+      <table className="stay-orders-table padding">
         <thead>
           <tr>
             <th>Status</th>

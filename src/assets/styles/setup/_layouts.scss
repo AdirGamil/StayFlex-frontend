@@ -1,10 +1,3 @@
-// .main-layout {
-//         display: grid;
-//         // gap: rem(24px);
-//         margin: 0 200px;
-//         // align-items: center;
-//         max-width: rem(1120px);
-// }
 
 body {
         margin: 0;
@@ -16,9 +9,6 @@ body {
 .main-layout {
         display: grid;
         margin: 0;
-        /* Remove margin to center layout correctly */
         max-width: 1120px;
-        /* Use px or another unit instead of rem for max-width */
         width: 100%;
-        /* Ensure it uses full width up to max-width */
 }
