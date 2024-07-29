@@ -1,8 +1,5 @@
 .app-header {
   background-color: $clr5;
-  margin-top: rem(10px);
-  border-block-end: rem(0.667px) solid $clr6 ;
-
   
   .nav-container {
     display: grid;
@@ -177,7 +174,7 @@
 
 .stay-filter-container {
   transition: opacity 0.8s ease, visibility 0.8s ease, display 0s linear 0.8s;
-  border-bottom: 1px solid $clr6;
+  // border-bottom: 1px solid $clr6;
   height: rem(90px);
 
   &.hidden {

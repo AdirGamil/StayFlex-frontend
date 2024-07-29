@@ -201,7 +201,7 @@
 // }
 
 import { useState, useEffect } from 'react'
-import { useSearchParams } from 'react-router-dom' // Added
+import { useSearchParams } from 'react-router-dom'
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
 import { regions } from '../services/util.service'
@@ -218,7 +218,7 @@ export function StayFilter({ filterBy, setFilterBy, onSearch }) {
   })
   const [isGuestsDropdownOpen, setIsGuestsDropdownOpen] = useState(false)
   const [isRegionDropdownOpen, setIsRegionDropdownOpen] = useState(false)
-  const [searchParams, setSearchParams] = useSearchParams() // Added
+  const [searchParams, setSearchParams] = useSearchParams()
 
   useEffect(() => {
     setFilterToEdit({ ...filterBy, startDate, endDate, guests })
@@ -229,7 +229,7 @@ export function StayFilter({ filterBy, setFilterBy, onSearch }) {
     for (const key in filterToEdit) {
       if (filterToEdit[key]) {
         if (key === 'guests') {
-          params[key] = JSON.stringify(filterToEdit[key]) // Convert guests to JSON string
+          params[key] = JSON.stringify(filterToEdit[key]) 
         } else {
           params[key] = filterToEdit[key]
         }
@@ -408,3 +408,6 @@ export function StayFilter({ filterBy, setFilterBy, onSearch }) {
     </section>
   )
 }
+
+
+

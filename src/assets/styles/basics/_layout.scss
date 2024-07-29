@@ -8,5 +8,7 @@
   grid-template-rows: auto auto 1fr auto;
   transition: grid-template-rows 0.7s ease;
 
-  // max-width: rem(1500px);
+  main{
+    width: 100vw;
+  }
 }
