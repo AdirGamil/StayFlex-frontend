@@ -1,11 +1,11 @@
 .stay-orders-container {
-  padding: rem(20px);
+  margin: rem(40px) 0;
   display: flex;
 
 
   h1 {
     font-size: rem(32px);
-    color: $clr1; // שחור כהה
+    color: $clr3;
     margin-bottom: rem(20px);
   }
 
@@ -17,7 +17,7 @@
 
     tbody {
       img {
-        max-width: rem(40px);
+        max-width: rem(55px);
         border-radius: rem(50px);
       }
 
@@ -34,12 +34,30 @@
           border-top: 1px solid $clr6;
         }
 
+        &:last-child td {
+          border-bottom: 1px solid $clr6;
+        }
+
         td:first-child {
           border-left: 1px solid $clr6;
         }
 
         td:last-child {
           border-right: 1px solid $clr6;
+        }
+      }
+
+      td {
+        &.status-approved {
+          color: $clr8;
+        }
+
+        &.status-pending {
+          color: orange;
+        }
+
+        &.status-declined {
+          color: $clr11;
         }
       }
     }
@@ -51,12 +69,7 @@
     }
 
     th {
-      background-color: $clr11; // אפור כהה
-      color: $clr5; // לבן
-    }
-
-    td {
-      background-color: $clr5; // לבן
+      color: $clr4;
     }
 
     .btn {

@@ -1,14 +1,12 @@
 .app-header {
-  background-color: $clr5; // לבן
-  padding-inline: rem(40px);
-  padding-top: rem(20px);
-
-
+  background-color: $clr5;
+  
   .nav-container {
     display: grid;
     grid-template-columns: auto 1fr auto;
     align-items: center;
     gap: 2rem;
+    height: rem(80px);
 
     .links-header, .mini-filter-container {
       justify-self: center;
@@ -25,7 +23,7 @@
 
       h1 {
         font-size: 1.5rem;
-        color: $clr1; // אדום
+        color: $clr1; 
         margin: 0;
       }
     }
@@ -42,7 +40,7 @@
         text-decoration: none;
 
         &.stay-header {
-          color: $clr3; // שחור כהה
+          color: $clr3;
           font-weight: bold;
 
           &:hover {
@@ -51,7 +49,7 @@
         }
 
         &.exp-header {
-          color: $clr7; // שחור כהה
+          color: $clr7;
           font-size: rem(16px);
           border-radius: rem(22px);
 
@@ -76,19 +74,19 @@
       }
       
       .add-stay {
-        color: $clr3; // שחור כהה
+        color: $clr3; 
         font-size: rem(14px);
         font-weight: 600;
         padding: rem(12px);
         border-radius: 22px;
 
         &:hover {
-          background-color: $clr6; // אפור בהיר
+          background-color: $clr6; 
         }
       }
 
       .menu-button {
-        border: 1px solid $clr6; // אפור בהיר
+        border: 1px solid $clr6; 
         border-radius: rem(21px);
         padding: 5px 5px 5px 12px;
         display: flex;
@@ -102,7 +100,7 @@
         .user-icon {
           width: rem(30px);
           height: rem(30px);
-          background-color: $clr4; // אפור כהה
+          background-color: $clr4; 
           border-radius: 50%;
         }
       }
@@ -110,8 +108,7 @@
   }
 
   &.stay-details-header {
-    border-bottom: 1px solid $clr6; // אפור בהיר
-    padding: 0 200px;
+    border-bottom: 1px solid $clr6; 
     height: 80px;
 
     .nav-container {
@@ -121,19 +118,19 @@
       height: 100%;
 
       .links-header {
-        background-color: $clr5; // לבן
-        border: 1px solid $clr6; // אפור בהיר
+        background-color: $clr5; 
+        border: 1px solid $clr6; 
         border-radius: 40px;
         padding: 8px 16px;
         box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08),
           0 4px 12px rgba(0, 0, 0, 0.05);
 
         a {
-          color: $clr3; // שחור כהה
+          color: $clr3; 
           font-size: rem(14px);
           font-weight: 600;
           padding: 0 16px;
-          border-right: 1px solid $clr6; // אפור בהיר
+          border-right: 1px solid $clr6; 
 
           &:last-child {
             border-right: none;
@@ -153,7 +150,6 @@
         .menu-button {
           border-radius: rem(21px);
           padding: 5px 12px;
-          // gap: rem(12px);
 
           .menu-icon {
             width: rem(16px);
@@ -178,7 +174,8 @@
 
 .stay-filter-container {
   transition: opacity 0.8s ease, visibility 0.8s ease, display 0s linear 0.8s;
-  border-bottom: 1px solid $clr6;
+  // border-bottom: 1px solid $clr6;
+  height: rem(90px);
 
   &.hidden {
     opacity: 0;

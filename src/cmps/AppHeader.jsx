@@ -66,11 +66,11 @@ export function AppHeader({ isScrolled }) {
 
   return (
     <header
-      className={`app-header ${
+      className= {`app-header ${
         isStayDetailsRoute ? 'stay-details-header' : ''
       } ${isScrolled ? 'scrolled' : ''}`}
     >
-      <nav className="nav-container">
+      <nav className="nav-container padding">
         <NavLink to="/" className="logo">
           <img className="app-logo" src={logo} alt="logo" />
           <h1>StayFlex</h1>
@@ -84,9 +84,6 @@ export function AppHeader({ isScrolled }) {
             <NavLink to="/" className={'stay-header'}>
               Stays
             </NavLink>
-            {/* <NavLink to="/" className={'exp-header'}>
-              Experiences
-            </NavLink> */}
           </div>
         )}
         <div className="user-actions">

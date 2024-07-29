@@ -38,22 +38,32 @@ export function StayOrders() {
     const orders = await orderService.query()
     setOrders(orders)
     fetchGuestDetails(orders)
+    const orders = await orderService.query()
+    setOrders(orders)
+    fetchGuestDetails(orders)
   }
 
   async function fetchGuestDetails(orders) {
+    const details = {}
     const details = {}
     for (let order of orders) {
       if (!details[order.guest._id]) {
         const user = await userService.getById(order.guest._id)
         details[order.guest._id] = user
+        const user = await userService.getById(order.guest._id)
+        details[order.guest._id] = user
       }
     }
+    setGuestDetails(details)
     setGuestDetails(details)
   }
 
   async function handleStatusChange(orderId, status) {
     const updatedOrder = await orderService.getById(orderId)
+    const updatedOrder = await orderService.getById(orderId)
     if (updatedOrder) {
+      updatedOrder.status = status
+      await orderService.save(updatedOrder)
       updatedOrder.status = status
       await orderService.save(updatedOrder)
       setOrders((prevOrders) =>
@@ -61,21 +71,23 @@ export function StayOrders() {
           order._id === orderId ? { ...order, status } : order
         )
       )
+      )
     }
   }
 
   function formatDate(date) {
     return new Date(date).toLocaleDateString('en-US', {
-      month: 'long',
+      month: 'short',
       day: 'numeric',
       year: 'numeric',
+    })
     })
   }
 
   return (
-    <div className="stay-orders-container">
+    <div className="stay-orders-container padding">
       <h1>Orders</h1>
-      <table className="stay-orders-table">
+      <table className="stay-orders-table padding">
         <thead>
           <tr>
             <th>Status</th>
@@ -102,7 +114,7 @@ export function StayOrders() {
               />{' '}
               <td>{formatDate(order.startDate)}</td>
               <td>{formatDate(order.endDate)}</td>
-              <td>${order.totalPrice}</td>
+              <td>${order.totalPrice.toFixed(2)}</td>
               <td>
                 <button
                   onClick={() => handleStatusChange(order._id, 'Approved')}
@@ -136,5 +148,6 @@ export function StayOrders() {
         </tbody>
       </table>
     </div>
+  )
   )
 }

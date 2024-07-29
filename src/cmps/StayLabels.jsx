@@ -140,7 +140,7 @@ export function StayLabels({ onLabelClick }) {
 
   return (
     <>
-      <div className="main-labels-container">
+      <div className="main-labels-container padding">
         <div className="stay-labels-wrapper">
           {showLeftButton && (
             <button className="scroll-button left" onClick={() => scroll('left')}>&#10094;</button>

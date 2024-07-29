@@ -67,14 +67,14 @@ export function StayTrips() {
     return `${monthName} ${startDay}-${endDay}, ${year}`
   }
   return (
-    <section className="stay-trip-container">
+    <section className="stay-trip-container padding">
       <h1>Trips</h1>
       {orders.map((order) => (
         <article key={order._id} className="stay-trip">
           {console.log(order)}
           <img src={order.stay.imgUrls[0]} alt="" className="trip-img" />
           <div className="trip-info">
-            <div className="trip-city bold">{order.stay.loc.city}</div>
+            <div className="trip-city">{order.stay.loc.city}</div>
             <div className="trip-title">Hosted by {order.hostId.fullname}</div>
             <div className="trip-date">
               {formatDateRange(order.startDate, order.endDate)}

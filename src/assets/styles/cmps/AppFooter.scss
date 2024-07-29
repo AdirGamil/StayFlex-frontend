@@ -1,8 +1,8 @@
 footer {
   background-color: $clr9;
-  // padding: rem(40px);
-  padding: rem(10px) rem(40px);
   color: $clr4;
+  border-block-start: rem(0.667px) solid $clr6 ;
+
 
   .footer-content {
     display: flex;
