@@ -19,11 +19,14 @@ export function UserMsg() {
         clearTimeout(timeoutIdRef.current)
         timeoutIdRef.current = null
       }
-      timeoutIdRef.current = setTimeout(closeMsg, 12000000)
+      timeoutIdRef.current = setTimeout(closeMsg, 6000)
     })
 
     socketService.on(SOCKET_EVENT_ORDER_ADDED, (order) => {
-      showSuccessMsg(`New Order: ${order._id}`)
+      console.log('order:', order)
+      showSuccessMsg(
+        `You got a new order from: ${order.guest.fullname}, for your property ${order.stay.name}`
+      )
     })
 
     return () => {
