@@ -1,4 +1,5 @@
 import { storageService } from '../async-storage.service.js'
+import { userService } from '../user'
 import { makeId } from '../util.service.js'
 
 const STORAGE_KEY = 'orderDB'

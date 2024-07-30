@@ -25,6 +25,7 @@ import {
 
 import { stayService as local } from './stay.service.local'
 import { stayService as remote } from './stay.service.remote'
+import { userService } from '../user'
 
 function getEmptyStay({ price = getRandomIntInclusive(20, 300) } = {}) {
   const name = getRandomElement(names);
