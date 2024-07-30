@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { orderService } from '../services/order'
-import { userService } from '../services/user/user.service.local' // Add this import
+import { userService } from '../services/user' // Add this import
 import {
   SOCKET_EVENT_ORDER_ADDED,
   SOCKET_EVENT_ORDER_UPDATED,
