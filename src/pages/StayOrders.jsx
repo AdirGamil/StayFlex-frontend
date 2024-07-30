@@ -1,69 +1,72 @@
-import React, { useEffect, useState } from 'react'
-import { orderService } from '../services/order'
-import { userService } from '../services/user'
+import React, { useEffect, useState } from 'react';
+import { orderService } from '../services/order';
+import { userService } from '../services/user';
 import {
   SOCKET_EVENT_ORDER_ADDED,
   SOCKET_EVENT_ORDER_UPDATED,
   socketService,
-} from '../services/socket.service'
-import { useDispatch } from 'react-redux'
-import { getActionAddOrder, getActionUpdateOrder } from '../store/actions/order.actions'
+} from '../services/socket.service';
+import { useDispatch, useSelector } from 'react-redux';
+import { loadOrders, getActionAddOrder, getActionUpdateOrder } from '../store/actions/order.actions';
 
 export function StayOrders() {
-  const [orders, setOrders] = useState([])
-  const [guestDetails, setGuestDetails] = useState({}) // Add this state
-  const dispatch = useDispatch()
+  const [guestDetails, setGuestDetails] = useState({});
+  const dispatch = useDispatch();
+  const orders = useSelector((state) => state.orderModule.orders);
 
   useEffect(() => {
-    loadOrders()
+    loadOrdersData();
 
-    
     socketService.on(SOCKET_EVENT_ORDER_ADDED, (order) => {
-      console.log('GOT from socket', order)
-      dispatch(getActionAddOrder(order))
-    })
+      console.log('GOT from socket', order);
+      dispatch(getActionAddOrder(order));
+    });
 
-    // socketService.on(SOCKET_EVENT_ORDER_UPDATED, orderId => {
-    // 	console.log('GOT from socket', orderId)
-    // 	dispatch(getActionUpdateOrder(orderId))
-    // })
+    socketService.on(SOCKET_EVENT_ORDER_UPDATED, (order) => {
+      console.log('GOT from socket', order);
+      dispatch(getActionUpdateOrder(order));
+    });
 
     return () => {
-      socketService.off(SOCKET_EVENT_ORDER_ADDED)
-      // socketService.off(SOCKET_EVENT_ORDER_UPDATED)
-    }
-  }, [])
+      socketService.off(SOCKET_EVENT_ORDER_ADDED);
+      socketService.off(SOCKET_EVENT_ORDER_UPDATED);
+    };
+  }, [dispatch]);
 
-  async function loadOrders() {
-    const orders = await orderService.query()
-    setOrders(orders)
-    fetchGuestDetails(orders)
-   
+  useEffect(() => {
+    fetchGuestDetails(orders);
+  }, [orders]);
+
+  async function loadOrdersData() {
+    try {
+      const orders = await orderService.query();
+      dispatch({ type: 'SET_ORDERS', orders });
+    } catch (err) {
+      console.log(err);
+    }
   }
 
   async function fetchGuestDetails(orders) {
-    const details = {}
+    const details = {};
     for (let order of orders) {
       if (!details[order.guest._id]) {
-        const user = await userService.getById(order.guest._id)
-        details[order.guest._id] = user
-      
+        const user = await userService.getById(order.guest._id);
+        details[order.guest._id] = user;
       }
     }
-    setGuestDetails(details)
+    setGuestDetails(details);
   }
 
   async function handleStatusChange(orderId, status) {
-    const updatedOrder = await orderService.getById(orderId)
-    if (updatedOrder) {
-      updatedOrder.status = status
-      await orderService.save(updatedOrder)
-   
-      setOrders((prevOrders) =>
-        prevOrders.map((order) =>
-          order._id === orderId ? { ...order, status } : order
-        )
-      )
+    try {
+      const updatedOrder = await orderService.getById(orderId);
+      if (updatedOrder) {
+        updatedOrder.status = status;
+        await orderService.save(updatedOrder);
+        dispatch(getActionUpdateOrder(updatedOrder));
+      }
+    } catch (err) {
+      console.log(err);
     }
   }
 
@@ -72,7 +75,7 @@ export function StayOrders() {
       month: 'short',
       day: 'numeric',
       year: 'numeric',
-    })
+    });
   }
 
   return (
@@ -95,14 +98,17 @@ export function StayOrders() {
               <td className={`status-${order.status.toLowerCase()}`}>
                 {order.status}
               </td>
-              <img
-                src={
-                  guestDetails[order.guest._id]?.imgUrl ||
-                  'https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png'
-                }
-                alt={guestDetails[order.guest._id]?.fullname || 'Guest'}
-                className="guest-image"
-              />{' '}
+              <td>
+                <img
+                  src={
+                    guestDetails[order.guest._id]?.imgUrl ||
+                    'https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png'
+                  }
+                  alt={guestDetails[order.guest._id]?.fullname || 'Guest'}
+                  className="guest-image"
+                />
+                {guestDetails[order.guest._id]?.fullname || 'Guest'}
+              </td>
               <td>{formatDate(order.startDate)}</td>
               <td>{formatDate(order.endDate)}</td>
               <td>${order.totalPrice.toFixed(2)}</td>
@@ -139,5 +145,5 @@ export function StayOrders() {
         </tbody>
       </table>
     </div>
-  )
+  );
 }
