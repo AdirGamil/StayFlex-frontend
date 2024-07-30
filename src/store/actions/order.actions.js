@@ -52,6 +52,10 @@ export function getActionAddOrder(order) {
     return { type: ADD_ORDER, order }
 }
 
-export function getActionUpdateOrder(orderId) {
-	return { type: UPDATE_ORDER, orderId }
+export function getActionUpdateOrder(order) {
+  if (!order || !order._id) {
+    console.error('Order missing _id', order);
+    return { type: UPDATE_ORDER, order: null };
+  }
+  return { type: UPDATE_ORDER, order };
 }

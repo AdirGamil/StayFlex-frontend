@@ -1,72 +1,80 @@
-import React, { useEffect, useState } from 'react';
-import { orderService } from '../services/order';
-import { userService } from '../services/user';
+import React, { useEffect, useState } from 'react'
+import { orderService } from '../services/order'
+import { userService } from '../services/user'
 import {
   SOCKET_EVENT_ORDER_ADDED,
   SOCKET_EVENT_ORDER_UPDATED,
   socketService,
-} from '../services/socket.service';
-import { useDispatch, useSelector } from 'react-redux';
-import { loadOrders, getActionAddOrder, getActionUpdateOrder } from '../store/actions/order.actions';
+} from '../services/socket.service'
+import { useDispatch, useSelector } from 'react-redux'
+import {
+  loadOrders,
+  getActionAddOrder,
+  getActionUpdateOrder,
+} from '../store/actions/order.actions'
 
 export function StayOrders() {
-  const [guestDetails, setGuestDetails] = useState({});
-  const dispatch = useDispatch();
-  const orders = useSelector((state) => state.orderModule.orders);
+  const [guestDetails, setGuestDetails] = useState({})
+  const dispatch = useDispatch()
+  const orders = useSelector((state) => state.orderModule.orders)
 
   useEffect(() => {
-    loadOrdersData();
+    loadOrdersData()
 
     socketService.on(SOCKET_EVENT_ORDER_ADDED, (order) => {
-      console.log('GOT from socket', order);
-      dispatch(getActionAddOrder(order));
-    });
+      console.log('GOT from socket', order)
+      dispatch(getActionAddOrder(order))
+    })
 
     socketService.on(SOCKET_EVENT_ORDER_UPDATED, (order) => {
-      console.log('GOT from socket', order);
-      dispatch(getActionUpdateOrder(order));
-    });
+      console.log('GOT from socket', order)
+      dispatch(getActionUpdateOrder(order))
+    })
 
     return () => {
-      socketService.off(SOCKET_EVENT_ORDER_ADDED);
-      socketService.off(SOCKET_EVENT_ORDER_UPDATED);
-    };
-  }, [dispatch]);
+      socketService.off(SOCKET_EVENT_ORDER_ADDED)
+      socketService.off(SOCKET_EVENT_ORDER_UPDATED)
+    }
+  }, [dispatch])
 
   useEffect(() => {
-    fetchGuestDetails(orders);
-  }, [orders]);
+    fetchGuestDetails(orders)
+  }, [orders])
 
   async function loadOrdersData() {
     try {
-      const orders = await orderService.query();
-      dispatch({ type: 'SET_ORDERS', orders });
+      const orders = await orderService.query()
+      dispatch({ type: 'SET_ORDERS', orders })
     } catch (err) {
-      console.log(err);
+      console.log(err)
     }
   }
 
   async function fetchGuestDetails(orders) {
-    const details = {};
+    const details = {}
     for (let order of orders) {
       if (!details[order.guest._id]) {
-        const user = await userService.getById(order.guest._id);
-        details[order.guest._id] = user;
+        const user = await userService.getById(order.guest._id)
+        details[order.guest._id] = user
       }
     }
-    setGuestDetails(details);
+    setGuestDetails(details)
   }
 
   async function handleStatusChange(orderId, status) {
     try {
-      const updatedOrder = await orderService.getById(orderId);
+      const updatedOrder = await orderService.getById(orderId)
       if (updatedOrder) {
-        updatedOrder.status = status;
-        await orderService.save(updatedOrder);
-        dispatch(getActionUpdateOrder(updatedOrder));
+        updatedOrder.status = status
+        const savedOrder = await orderService.save(updatedOrder)
+        if (savedOrder && savedOrder._id) {
+          dispatch(getActionUpdateOrder(savedOrder))
+        } else {
+          console.error('Failed to update order: missing _id')
+        }
       }
     } catch (err) {
-      console.log(err);
+      console.log(err)
     }
   }
 
@@ -75,7 +83,7 @@ export function StayOrders() {
       month: 'short',
       day: 'numeric',
       year: 'numeric',
-    });
+    })
   }
 
   return (
@@ -145,5 +153,5 @@ export function StayOrders() {
         </tbody>
       </table>
     </div>
-  );
+  )
 }
