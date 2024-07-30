@@ -22,11 +22,9 @@ export function ConfirmReservation() {
       )
 
       if (isConflict) {
-      
         return
       }
       await orderService.save(orderDetails)
-      
       navigate('/trips')
     } catch (err) {
       console.error('Error placing reservation:', err)
@@ -35,9 +33,15 @@ export function ConfirmReservation() {
 
   if (!orderDetails) return <div>Loading reservation details...</div>
 
+  // Adjust dates by adding 1 day
+  const adjustedStartDate = new Date(orderDetails.startDate)
+  adjustedStartDate.setDate(adjustedStartDate.getDate() + 1)
+  const adjustedEndDate = new Date(orderDetails.endDate)
+  adjustedEndDate.setDate(adjustedEndDate.getDate() + 1)
+
   const formattedDateRange = formatDateRange(
-    orderDetails.startDate,
-    orderDetails.endDate
+    adjustedStartDate.toISOString().split('T')[0],
+    adjustedEndDate.toISOString().split('T')[0]
   )
 
   return (
@@ -103,12 +107,12 @@ export function ConfirmReservation() {
                 <input value="5555621859874580" type="text" placeholder="Card number" />
               </div>
               <div className="form-group split">
-                <input value= "02/28" type="text" placeholder="Expiration" />
-                <input value= "235" type="text" placeholder="CVV" />
+                <input value="02/28" type="text" placeholder="Expiration" />
+                <input value="235" type="text" placeholder="CVV" />
               </div>
 
               <div className="form-group">
-                <input value= "4532856" type="text" placeholder="ZIP code" />
+                <input value="4532856" type="text" placeholder="ZIP code" />
               </div>
               <div className="form-group">
                 <select id="country" defaultValue="">

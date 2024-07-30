@@ -206,35 +206,44 @@ import {
 } from '../services/util.service'
 
 export function StayDetails() {
-  const { stayId } = useParams()
-  const stay = useSelector((storeState) => storeState.stayModule.stay)
-  const [showScrollHeader, setShowScrollHeader] = useState(false)
-  const [searchParams] = useSearchParams()
-  const filterBy = useSelector((storeState) => storeState.stayModule.filterBy)
-  const guestCount = JSON.parse(searchParams.get('guests') || '{}')
+  const { stayId } = useParams();
+  const stay = useSelector((storeState) => storeState.stayModule.stay);
+  const [showScrollHeader, setShowScrollHeader] = useState(false);
+  const [searchParams] = useSearchParams();
+  const guestCount = JSON.parse(searchParams.get('guests') || '{}');
+
+  const [initialStartDate, setInitialStartDate] = useState(null);
+  const [initialEndDate, setInitialEndDate] = useState(null);
 
   useEffect(() => {
-    loadStay(stayId)
-  }, [stayId])
+    loadStay(stayId);
+  }, [stayId]);
+
+  useEffect(() => {
+    if (stay && stay.dateRange) {
+      const [startDateStr, endDateStr] = stay.dateRange.split(' - ');
+      setInitialStartDate(new Date(startDateStr));
+      setInitialEndDate(new Date(endDateStr));
+    }
+  }, [stay]);
 
   useEffect(() => {
     const handleScroll = () => {
-      const photoSection = document.querySelector('.stay-gallery')
+      const photoSection = document.querySelector('.stay-gallery');
       if (photoSection) {
-        const photoSectionBottom = photoSection.getBoundingClientRect().bottom
-        setShowScrollHeader(photoSectionBottom <= 0)
+        const photoSectionBottom = photoSection.getBoundingClientRect().bottom;
+        setShowScrollHeader(photoSectionBottom <= 0);
       }
-    }
+    };
 
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
-  if (!stay) return <div>Loading...</div>
+  if (!stay) return <div>Loading...</div>;
 
-  const averageRating = calculateAverageRating(stay.reviews)
-
-  const reviewCount = stay.reviews ? stay.reviews.length : 0
+  const averageRating = calculateAverageRating(stay.reviews);
+  const reviewCount = stay.reviews ? stay.reviews.length : 0;
 
   return (
     <section className="stay-details main-layout">
@@ -319,7 +328,12 @@ export function StayDetails() {
           </div>
         </div>
         <div className="stay-reservation">
-          <StayReservation stay={stay} guestCount={guestCount} />
+          <StayReservation
+            stay={stay}
+            guestCount={guestCount}
+            initialStartDate={initialStartDate}
+            initialEndDate={initialEndDate}
+          />
         </div>
       </section>
       <section id="reviews" className="header-reviews">
@@ -366,5 +380,5 @@ export function StayDetails() {
         </div>
       </section>
     </section>
-  )
+  );
 }
