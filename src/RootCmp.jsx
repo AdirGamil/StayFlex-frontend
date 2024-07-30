@@ -21,6 +21,7 @@ import { StayTrips } from './pages/StayTrips.jsx'
 import { Login } from './pages/Login.jsx'
 import { Signup } from './pages/Signup.jsx'
 import { MiniFilter } from './cmps/MiniFilter.jsx'
+import { UserMsg } from './cmps/UserMsg.jsx'
 
 function HeaderWrapper() {
   const location = useLocation()
@@ -34,7 +35,7 @@ export function RootCmp() {
       <Router>
         <div className="main-container">
           <HeaderWrapper />
-          {/* <UserMsg /> */}
+          <UserMsg />
           <main>
             <Routes>
               <Route path="" element={<StayIndex />} />
