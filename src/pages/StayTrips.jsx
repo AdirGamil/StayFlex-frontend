@@ -4,6 +4,7 @@ import {
   socketService,
   SOCKET_EVENT_ORDER_UPDATED,
 } from '../services/socket.service'
+import { showSuccessMsg } from '../services/event-bus.service'
 
 export function StayTrips() {
   const [orders, setOrders] = useState([])
@@ -16,6 +17,9 @@ export function StayTrips() {
         prevOrders.map((order) =>
           order._id === updatedOrder._id ? updatedOrder : order
         )
+      )
+      showSuccessMsg(
+        `Your order has been ${updatedOrder.status.toLowerCase()}!`
       )
     })
 
