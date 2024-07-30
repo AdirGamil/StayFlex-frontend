@@ -3,7 +3,7 @@ import { useParams, useSearchParams } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { loadStay } from '../store/actions/stay.actions'
 import { Map } from '../cmps/StayDetailsCmps/Map'
-
+import { GuestFavorite } from '../cmps/StayDetailsCmps/GuestFavorie'
 import { StayGallery } from '../cmps/StayDetailsCmps/StayGallery'
 import { StayReservation } from '../cmps/StayDetailsCmps/StayReservation'
 import { ScrollHeader } from '../cmps/StayDetailsCmps/ScrollHeader'
@@ -71,7 +71,6 @@ export function StayDetails() {
       <div id="photos" className="active stay-gallery">
         <StayGallery imgUrls={stay.imgUrls} />
       </div>
-
       <section className="stay-info-container">
         <div className="stay-info">
           <div className="stay-summary">
@@ -98,8 +97,8 @@ export function StayDetails() {
               )}
             </div>
           </div>
-
           <div className="stay-host-details">
+          <GuestFavorite rating={averageRating} reviewCount={stay.reviews.length} />
             <div className="host">
               {stay.host &&
                 typeof stay.host === 'object' &&
