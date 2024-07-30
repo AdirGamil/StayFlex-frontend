@@ -1,32 +1,4 @@
-// import React from 'react';
-// // import './GuestFavorite.scss';
-
-// export function GuestFavorite ({ rating, reviewCount }){
-//   return (
-//     <div className="guest-favorite">
-//       <div className="favorite-label">
-//         <span className="label-text">Guest favorite</span>
-//         <span className="trophy">🏆</span>
-//       </div>
-//       <div className="description">
-//         One of the most loved homes on Airbnb, according to guests
-//       </div>
-//       <div className="rating-section">
-//         <div className="rating">
-//           <span className="rating-value">{rating}</span>
-//           <div className="stars">★★★★★</div>
-//         </div>
-//         <div className="reviews">
-//           <span className="review-count">{reviewCount}</span>
-//           <span className="review-text">Reviews</span>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
-
 import React from 'react';
-// import './GuestFavorite.scss';
 
 export function GuestFavorite({ rating, reviewCount }) {
     return (
