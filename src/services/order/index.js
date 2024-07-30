@@ -1,9 +1,9 @@
 const { DEV, VITE_LOCAL } = import.meta.env
 
+import { userService } from '../user'
 import { orderService as local } from './order.service.local'
 import { orderService as remote } from './order.service.remote.js'
 
-import { userService } from '../user'
 
 function getEmptyOrder({
   stay,
