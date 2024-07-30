@@ -1,7 +1,7 @@
 import { SET_ORDERS, ADD_ORDER, REMOVE_ORDER, UPDATE_ORDER } from '../reducers/order.reducer'
-import { orderService } from '../../services/order.service'
+import { orderService } from '../../services/order'
 import { store } from '../store'
-import { userService } from '../../services/user.service'
+import { userService } from '../../services/user'
 
 export async function addOrder(params, stay) {
     try {
@@ -44,4 +44,14 @@ export async function updateOrder(order) {
     } catch (err) {
         console.log(err)
     }
+}
+
+
+// Command Creators
+export function getActionAddOrder(order) {
+    return { type: ADD_ORDER, order }
+}
+
+export function getActionUpdateOrder(orderId) {
+	return { type: UPDATE_ORDER, orderId }
 }

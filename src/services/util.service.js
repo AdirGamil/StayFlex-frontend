@@ -8,6 +8,7 @@ import {
   maleFirstNames,
   lastNames,
   coordinates,
+  amenities,
 } from './data.service'
 
 import { userService } from './user'
@@ -22,6 +23,11 @@ export function makeId(length = 6) {
   }
 
   return txt
+}
+
+function getRandomAmenities(min = 4) {
+  const shuffled = amenities.sort(() => 0.5 - Math.random());
+  return shuffled.slice(0, getRandomIntInclusive(min, amenities.length));
 }
 
 export function getRandomElement(arr) {
@@ -57,18 +63,40 @@ export function createStayObject(stay) {
     bedrooms: stay.bedrooms || getRandomIntInclusive(1, 6),
     baths: stay.baths || getRandomIntInclusive(1, 6),
     beds: stay.beds || getRandomIntInclusive(1, 6),
-    amenities: stay.amenities || [
-      'Wifi',
-      'Cooking basics',
-      'Hair dryer',
-      'Ev charger',
-      'Dryer',
-      'Wineglasses',
-      'Carbon monoxide alarm',
-      'Extra pillows and blankets',
-      'TV',
-      'Garden view',
-    ],
+    amenities: stay.amenities || getRandomAmenities(4),
+    labels: stay.labels || getRandomLabels(labels),
+    loc: location,
+    reviews: reviews,
+    kilometersAway: stay.kilometersAway || getRandomKilometersAway(),
+    dateRange: stay.dateRange || getDateRange(),
+    likedByUsers: stay.likedByUsers || ['mini-user'],
+    owner: userService.getLoggedinUser(),
+    host: stay.host || {
+      _id: makeId(),
+      fullname: getRandomMaleName(),
+      imgUrl: getRandomHostImg(),
+    },
+    averageRating: averageRating,
+  }
+}
+
+export function createStayRemote(stay) {
+  const reviews = stay.reviews || generateRandomReviews(6)
+  const averageRating = calculateAverageRating(reviews)
+
+  const location = stay.loc || getRandomLocation()
+
+  return {
+    name: stay.name || getRandomElement(names),
+    type: stay.type || getRandomElement(types),
+    imgUrls: stay.imgUrls || getRandomImgUrls(imgUrls),
+    price: stay.price || getRandomIntInclusive(150, 1350),
+    summary: stay.summary || makeLorem(50),
+    capacity: stay.capacity || getRandomIntInclusive(1, 6),
+    bedrooms: stay.bedrooms || getRandomIntInclusive(1, 6),
+    baths: stay.baths || getRandomIntInclusive(1, 6),
+    beds: stay.beds || getRandomIntInclusive(1, 6),
+    amenities: stay.amenities || getRandomAmenities(4),
     labels: stay.labels || getRandomLabels(labels),
     loc: location,
     reviews: reviews,
@@ -282,9 +310,8 @@ export function generateRandomReviews(numReviews) {
       reviewTexts[Math.floor(Math.random() * reviewTexts.length)]
     const randomRate = getRandomIntInclusive(4, 5) // Generates a random rate between 1 and 5
     const randomUser = userNames[Math.floor(Math.random() * userNames.length)]
-    const randomImgUrl = `https://randomuser.me/api/portraits/med/${
-      Math.random() < 0.5 ? 'men' : 'women'
-    }/${Math.floor(Math.random() * 100)}.jpg`
+    const randomImgUrl = `https://randomuser.me/api/portraits/med/${Math.random() < 0.5 ? 'men' : 'women'
+      }/${Math.floor(Math.random() * 100)}.jpg`
 
     reviews.push({
       by: {
@@ -452,7 +479,7 @@ export const regions = [
   },
   {
     name: 'Europe',
-    map: 'https://via.placeholder.com/100x100?text=Europe',
+    map: 'https://res.cloudinary.com/doahdwb2g/image/upload/v1722264608/7b5cf816-6c16-49f8-99e5-cbc4adfd97e2_csadpd.webp',
     isContinent: true,
   },
   {
@@ -478,17 +505,17 @@ export const regions = [
 ]
 
 export const amenityIcons = {
-  Wifi: 'https://res.cloudinary.com/dyhmjlymk/image/upload/v1721722908/svg_xml_base64_PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiIgYXJpYS1oaWRkZW49InRydWUiIHJvbGU9InByZXNlbnRhdGlvbiIgZm9jdXNhYmxlPSJmYWxzZSIgc3R5bGU9ImRpc3BsYXk6IGJsb2NrOyBoZWlnaHQ_2_ttkoym.svg',
+  'Wifi': 'https://res.cloudinary.com/dyhmjlymk/image/upload/v1721722908/svg_xml_base64_PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiIgYXJpYS1oaWRkZW49InRydWUiIHJvbGU9InByZXNlbnRhdGlvbiIgZm9jdXNhYmxlPSJmYWxzZSIgc3R5bGU9ImRpc3BsYXk6IGJsb2NrOyBoZWlnaHQ_2_ttkoym.svg',
   'Hair dryer':
     'https://res.cloudinary.com/dyhmjlymk/image/upload/v1721722141/svg_xml_base64_PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiIgYXJpYS1oaWRkZW49InRydWUiIHJvbGU9InByZXNlbnRhdGlvbiIgZm9jdXNhYmxlPSJmYWxzZSIgc3R5bGU9ImRpc3BsYXk6IGJsb2NrOyBoZWlnaHQ_1_gbrmgx.svg',
-  star: 'https://res.cloudinary.com/dhweqnxgd/image/upload/v1721294785/star_us9ozb.png',
-  heart:
+  'star': 'https://res.cloudinary.com/dhweqnxgd/image/upload/v1721294785/star_us9ozb.png',
+  'heart':
     'https://res.cloudinary.com/dyhmjlymk/image/upload/v1721471955/svg_xml_base64_PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiIgYXJpYS1oaWRkZW49InRydWUiIHJvbGU9InByZXNlbnRhdGlvbiIgZm9jdXNhYmxlPSJmYWxzZSIgc3R5bGU9ImRpc3BsYXk6IGJsb2NrOyBmaWxsOiBub25_rtstwz.svg',
-  share:
+  'share':
     'https://res.cloudinary.com/dyhmjlymk/image/upload/v1721471943/svg_xml_base64_PHN2ZyB2aWV3Qm94PSIwIDAgMzIgMzIiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgYXJpYS1oaWRkZW49InRydWUiIHJvbGU9InByZXNlbnRhdGlvbiIgZm9jdXNhYmxlPSJmYWxzZSIgc3R5bGU9ImRpc3BsYXk6IGJsb2NrOyBmaWxsOiBub25_lbzdem.svg',
-  Dryer:
+  'Dryer':
     'https://res.cloudinary.com/dyhmjlymk/image/upload/v1721723058/svg_xml_base64_PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiIgYXJpYS1oaWRkZW49InRydWUiIHJvbGU9InByZXNlbnRhdGlvbiIgZm9jdXNhYmxlPSJmYWxzZSIgc3R5bGU9ImRpc3BsYXk6IGJsb2NrOyBoZWlnaHQ_3_ragj7v.svg',
-  Wineglasses:
+  'Wineglasses':
     'https://res.cloudinary.com/dyhmjlymk/image/upload/v1721723188/svg_xml_base64_PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiIgYXJpYS1oaWRkZW49InRydWUiIHJvbGU9InByZXNlbnRhdGlvbiIgZm9jdXNhYmxlPSJmYWxzZSIgc3R5bGU9ImRpc3BsYXk6IGJsb2NrOyBoZWlnaHQ_4_kygktq.svg',
   'Cooking basics':
     'https://res.cloudinary.com/dyhmjlymk/image/upload/v1721723388/svg_xml_base64_PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiIgYXJpYS1oaWRkZW49InRydWUiIHJvbGU9InByZXNlbnRhdGlvbiIgZm9jdXNhYmxlPSJmYWxzZSIgc3R5bGU9ImRpc3BsYXk6IGJsb2NrOyBoZWlnaHQ_5_v24dsh.svg',
@@ -498,18 +525,21 @@ export const amenityIcons = {
     'https://res.cloudinary.com/dyhmjlymk/image/upload/v1721723578/svg_xml_base64_PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiIgYXJpYS1oaWRkZW49InRydWUiIHJvbGU9InByZXNlbnRhdGlvbiIgZm9jdXNhYmxlPSJmYWxzZSIgc3R5bGU9ImRpc3BsYXk6IGJsb2NrOyBoZWlnaHQ_7_isgcfs.svg',
   'Extra pillows and blankets':
     'https://res.cloudinary.com/dyhmjlymk/image/upload/v1721725228/svg_xml_base64_PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiIgYXJpYS1oaWRkZW49InRydWUiIHJvbGU9InByZXNlbnRhdGlvbiIgZm9jdXNhYmxlPSJmYWxzZSIgc3R5bGU9ImRpc3BsYXk6IGJsb2NrOyBoZWlnaHQ_8_lsbqpc.svg',
-  TV: 'https://res.cloudinary.com/doahdwb2g/image/upload/v1721908788/svg_xml_base64_PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiIgYXJpYS1oaWRkZW49InRydWUiIHJvbGU9InByZXNlbnRhdGlvbiIgZm9jdXNhYmxlPSJmYWxzZSIgc3R5bGU9ImRpc3BsYXk6IGJsb2NrOyBoZWlnaHQ6IDI0_g0kyfy.svg',
+  'TV':
+    'https://res.cloudinary.com/doahdwb2g/image/upload/v1721908788/svg_xml_base64_PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiIgYXJpYS1oaWRkZW49InRydWUiIHJvbGU9InByZXNlbnRhdGlvbiIgZm9jdXNhYmxlPSJmYWxzZSIgc3R5bGU9ImRpc3BsYXk6IGJsb2NrOyBoZWlnaHQ6IDI0_g0kyfy.svg',
   'Garden view':
     'https://res.cloudinary.com/doahdwb2g/image/upload/v1721908837/svg_xml_base64_PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiIgYXJpYS1oaWRkZW49InRydWUiIHJvbGU9InByZXNlbnRhdGlvbiIgZm9jdXNhYmxlPSJmYWxzZSIgc3R5bGU9ImRpc3BsYXk6IGJsb2NrOyBoZWlnaHQ6_1_kdwdla.svg',
   'Resort access':
     'https://res.cloudinary.com/doahdwb2g/image/upload/v1722105013/svg_xml_base64_PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiIgYXJpYS1oaWRkZW49InRydWUiIHJvbGU9InByZXNlbnRhdGlvbiIgZm9jdXNhYmxlPSJmYWxzZSIgc3R5bGU9ImRpc3BsYXk6IGJsb2NrOyBoZWlnaHQ_13_c0msda.svg ',
-  Iron: 'https://res.cloudinary.com/doahdwb2g/image/upload/v1722104922/svg_xml_base64_PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiIgYXJpYS1oaWRkZW49InRydWUiIHJvbGU9InByZXNlbnRhdGlvbiIgZm9jdXNhYmxlPSJmYWxzZSIgc3R5bGU9ImRpc3BsYXk6IGJsb2NrOyBoZWlnaHQ6_6_s859kn.svg ',
+  'Iron':
+    'https://res.cloudinary.com/doahdwb2g/image/upload/v1722104922/svg_xml_base64_PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiIgYXJpYS1oaWRkZW49InRydWUiIHJvbGU9InByZXNlbnRhdGlvbiIgZm9jdXNhYmxlPSJmYWxzZSIgc3R5bGU9ImRpc3BsYXk6IGJsb2NrOyBoZWlnaHQ6_6_s859kn.svg ',
   'Shampoo ':
-    'https://res.cloudinary.com/doahdwb2g/image/upload/v1722104922/svg_xml_base64_PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiIgYXJpYS1oaWRkZW49InRydWUiIHJvbGU9InByZXNlbnRhdGlvbiIgZm9jdXNhYmxlPSJmYWxzZSIgc3R5bGU9ImRpc3BsYXk6IGJsb2NrOyBoZWlnaHQ6_7_rlc1cr.svg ',
-  Crib: 'https://res.cloudinary.com/doahdwb2g/image/upload/v1722104921/svg_xml_base64_PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiIgYXJpYS1oaWRkZW49InRydWUiIHJvbGU9InByZXNlbnRhdGlvbiIgZm9jdXNhYmxlPSJmYWxzZSIgc3R5bGU9ImRpc3BsYXk6IGJsb2NrOyBoZWlnaHQ6_8_vvlc5p.svg ',
+    'https://res.cloudinary.com/doahdwb2g/image/upload/v1722104922/svg_xml_base64_PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiIgYXJpYS1oaWRkZW49InRydWUiIHJvbGU9InByZXNlbnRhdGlvbiIgZm9jdXNhYmxlPSJmYWxzZSIgc3R5bGU9ImRpc3BsYXk6IGJsb2NrOyBoZWlnaHQ6_7_rlc1cr.svg',
+  'Crib':
+    'https://res.cloudinary.com/doahdwb2g/image/upload/v1722104921/svg_xml_base64_PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiIgYXJpYS1oaWRkZW49InRydWUiIHJvbGU9InByZXNlbnRhdGlvbiIgZm9jdXNhYmxlPSJmYWxzZSIgc3R5bGU9ImRpc3BsYXk6IGJsb2NrOyBoZWlnaHQ6_8_vvlc5p.svg ',
   'Air conditioning':
     'https://res.cloudinary.com/doahdwb2g/image/upload/v1722104921/svg_xml_base64_PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiIgYXJpYS1oaWRkZW49InRydWUiIHJvbGU9InByZXNlbnRhdGlvbiIgZm9jdXNhYmxlPSJmYWxzZSIgc3R5bGU9ImRpc3BsYXk6IGJsb2NrOyBoZWlnaHQ6_5_nflgco.svg ',
-  Heating:
+  'Heating':
     'https://res.cloudinary.com/doahdwb2g/image/upload/v1722104921/svg_xml_base64_PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiIgYXJpYS1oaWRkZW49InRydWUiIHJvbGU9InByZXNlbnRhdGlvbiIgZm9jdXNhYmxlPSJmYWxzZSIgc3R5bGU9ImRpc3BsYXk6IGJsb2NrOyBoZWlnaHQ6_9_idfq5z.svg',
   'Smoke alarm':
     'https://res.cloudinary.com/doahdwb2g/image/upload/v1722104921/svg_xml_base64_PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiIgYXJpYS1oaWRkZW49InRydWUiIHJvbGU9InByZXNlbnRhdGlvbiIgZm9jdXNhYmxlPSJmYWxzZSIgc3R5bGU9ImRpc3BsYXk6IGJsb2NrOyBoZWlnaHQ_10_uwy6cf.svg ',

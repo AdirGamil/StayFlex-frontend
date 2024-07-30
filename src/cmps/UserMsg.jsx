@@ -1,3 +1,47 @@
+import { eventBus, showSuccessMsg } from '../services/event-bus.service'
+import { useState, useEffect, useRef } from 'react'
+import {
+  socketService,
+  SOCKET_EVENT_ORDER_ADDED,
+} from '../services/socket.service'
+
 export function UserMsg() {
-  return <h1>Hello from UserMsg</h1>
+  const [msg, setMsg] = useState(null)
+  const timeoutIdRef = useRef()
+
+  useEffect(() => {
+    const handleShowMsg = (msg) => {
+      setMsg(msg)
+      if (timeoutIdRef.current) {
+        clearTimeout(timeoutIdRef.current)
+      }
+      timeoutIdRef.current = setTimeout(closeMsg, 3000)
+    }
+
+    const unsubscribe = eventBus.on('show-msg', handleShowMsg)
+
+    socketService.on(SOCKET_EVENT_ORDER_ADDED, (order) => {
+      showSuccessMsg(`New Order: ${order._id}`) // נציג את מזהה ההזמנה החדשה
+    })
+
+    return () => {
+      unsubscribe()
+      socketService.off(SOCKET_EVENT_ORDER_ADDED)
+    }
+  }, [])
+
+  function closeMsg() {
+    setMsg(null)
+  }
+
+  function msgClass() {
+    return msg ? 'visible' : ''
+  }
+
+  return (
+    <section className={`user-msg ${msg?.type} ${msgClass()}`}>
+      <button onClick={closeMsg}>x</button>
+      {msg?.txt}
+    </section>
+  )
 }

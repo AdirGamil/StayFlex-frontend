@@ -182,3 +182,5 @@ export function StayFilter({ filterBy, setFilterBy, onSearch }) {
     </section>
   );
 }
+
+
