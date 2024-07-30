@@ -13,7 +13,11 @@ $clr11: #e61e4d; // אדום בהיר
 $clr12: #ccc;
 $clr13: #484848;
 
+
 // Breakpoints
-$mobile-breakpoint: 460px;
-$narrow-breakpoint: 720px;
-$normal-breakpoint: 960px;
+
+:root {
+    --layout-padding: 20px;
+    --max-width: 2360px;
+    --padded-max-width: calc(var(--max-width) + (var(--layout-padding) * 2));
+}

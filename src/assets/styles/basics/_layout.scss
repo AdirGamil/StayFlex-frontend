@@ -1,14 +1,22 @@
 .main-container {
-  height: 100%;
-  width: 100%;
-  scroll-behavior: smooth;
-  display: grid;
-  grid-template-columns: 1fr;
+display: grid;
+grid-template-columns: 
+minmax(var(--layout-padding), 1fr) 
+minmax(auto, var(--max-width)) 
+minmax(var(--layout-padding), 1fr);
 
-  grid-template-rows: auto auto 1fr auto;
-  transition: grid-template-rows 0.7s ease;
 
-  main{
-    width: 100vw;
+>* {
+  &:not(.full) {
+    grid-column: 2;
   }
+
+  &.full {
+    grid-column: 1 / -1;
+  }
+}
+}
+
+.narrow-page {
+  --max-width: 960px;
 }
