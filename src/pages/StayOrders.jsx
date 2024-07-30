@@ -12,6 +12,7 @@ import {
   getActionAddOrder,
   getActionUpdateOrder,
 } from '../store/actions/order.actions'
+import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service'
 
 export function StayOrders() {
   const [guestDetails, setGuestDetails] = useState({})
@@ -22,12 +23,12 @@ export function StayOrders() {
     loadOrdersData()
 
     socketService.on(SOCKET_EVENT_ORDER_ADDED, (order) => {
-      console.log('GOT from socket', order)
+      console.log('added order:', order)
       dispatch(getActionAddOrder(order))
     })
 
     socketService.on(SOCKET_EVENT_ORDER_UPDATED, (order) => {
-      console.log('GOT from socket', order)
+      console.log('updated order:', order)
       dispatch(getActionUpdateOrder(order))
     })
 
@@ -69,11 +70,14 @@ export function StayOrders() {
         const savedOrder = await orderService.save(updatedOrder)
         if (savedOrder && savedOrder._id) {
           dispatch(getActionUpdateOrder(savedOrder))
+          showSuccessMsg(`Order ${status.toLowerCase()} successfully`)
+          socketService.emit(SOCKET_EVENT_ORDER_UPDATED, savedOrder)
         } else {
           console.error('Failed to update order: missing _id')
         }
       }
     } catch (err) {
+      showErrorMsg('Failed to update order')
       console.log(err)
     }
   }
