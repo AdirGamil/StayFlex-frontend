@@ -9,19 +9,19 @@ export function UserMsg() {
   const [msg, setMsg] = useState(null)
   const timeoutIdRef = useRef()
 
-  useEffect(() => {
-    const handleShowMsg = (msg) => {
-      setMsg(msg)
-      if (timeoutIdRef.current) {
-        clearTimeout(timeoutIdRef.current)
-      }
-      timeoutIdRef.current = setTimeout(closeMsg, 3000)
-    }
+	useEffect(() => {
+		const unsubscribe = eventBus.on('show-msg', msg => {
+			setMsg(msg)
+			if (timeoutIdRef.current) {
+				timeoutIdRef.current = null
+				clearTimeout(timeoutIdRef.current)
+			}
+			timeoutIdRef.current = setTimeout(closeMsg, 3000)
+		})
 
-    const unsubscribe = eventBus.on('show-msg', handleShowMsg)
 
     socketService.on(SOCKET_EVENT_ORDER_ADDED, (order) => {
-      showSuccessMsg(`New Order: ${order._id}`) // נציג את מזהה ההזמנה החדשה
+      showSuccessMsg(`New Order: ${order._id}`)
     })
 
     return () => {

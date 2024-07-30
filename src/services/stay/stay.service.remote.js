@@ -47,7 +47,7 @@ async function createDemoData(num) {
 }
 
 // הפעלה של הפונקציה ליצירת דמו דטא
-// createDemoData(140).then((stays) => {
+// createDemoData(5).then((stays) => {
 //     console.log('Demo data created:', stays);
 // }).catch((err) => {
 //     console.error('Error creating demo data:', err);
