@@ -9,6 +9,7 @@ import {
   cities,
   coordinates,
   amenities,
+  labels,
 } from '../services/data.service.js'
 import {
   Checkbox,
@@ -374,34 +375,55 @@ export function AddStay() {
       case 6:
         return (
           <section className="stage-6">
-            <section className="text">
-              <span className="question">
-                Tell guests what your place has to offer
-              </span>
-              <span className="description">
-                You can add more amenities after you publish your listing.
-              </span>
-              <FormControl className="custom-select" fullWidth margin="normal">
-                <InputLabel>Amenities</InputLabel>
-                <Select
-                  multiple
-                  value={selectedAmenities}
-                  onChange={handleAmenityChange}
-                  renderValue={(selected) => selected.join(', ')}
-                  required
-                >
-                  {amenities.map((amenity, index) => (
-                    <MenuItem key={`${index}-${amenity}`} value={amenity}>
-                      <Checkbox
-                        checked={selectedAmenities.indexOf(amenity) > -1}
-                      />
-                      <ListItemText primary={amenity} />
-                    </MenuItem>
-                  ))}
-                </Select>
-              </FormControl>
-            </section>
+          <section className="text">
+            <span className="question">
+              Tell guests what your place has to offer
+            </span>
+            <span className="description">
+              You can add more amenities after you publish your listing.
+            </span>
           </section>
+          
+          <FormControl className="custom-select" fullWidth margin="normal">
+            <InputLabel>Amenities</InputLabel>
+            <Select
+              multiple
+              value={selectedAmenities}
+              onChange={handleAmenityChange}
+              renderValue={(selected) => selected.join(', ')}
+              required
+            >
+              {amenities.map((amenity, index) => (
+                <MenuItem key={`${index}-${amenity}`} value={amenity}>
+                  <Checkbox
+                    checked={selectedAmenities.indexOf(amenity) > -1}
+                  />
+                  <ListItemText primary={amenity} />
+                </MenuItem>
+              ))}
+            </Select>
+          </FormControl>
+        
+          <FormControl className="custom-select" fullWidth margin="normal">
+            <InputLabel>Labels</InputLabel>
+            <Select
+              multiple
+              value={selectedLabels}
+              onChange={handleLabelChange}
+              renderValue={(selected) => selected.join(', ')}
+            >
+              {labels.map((label, index) => (
+                <MenuItem key={`${index}-${label}`} value={label}>
+                  <Checkbox
+                    checked={selectedLabels.indexOf(label) > -1}
+                  />
+                  <ListItemText primary={label} />
+                </MenuItem>
+              ))}
+            </Select>
+          </FormControl>
+        </section>
+        
         )
       case 7:
         return (
