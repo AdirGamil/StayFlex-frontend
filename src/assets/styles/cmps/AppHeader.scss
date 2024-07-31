@@ -3,7 +3,7 @@
   
   .nav-container {
     display: grid;
-    grid-template-columns: auto 1fr auto;
+    grid-template-columns: 1fr auto 1fr;
     align-items: center;
     gap: 2rem;
     height: rem(80px);
@@ -68,6 +68,8 @@
       
       
       .sticky-header-wrapper.scrolled {
+        
+
         .app-header {
           box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
@@ -167,9 +169,10 @@
 }
 
 .sticky-header-wrapper.scrolled .app-header .links-header {
-  opacity: 0;
-  visibility: hidden;
+  // opacity: 0;
+  // visibility: hidden;
   pointer-events: none;
+
 }
 
 .stay-filter-container {
@@ -178,11 +181,11 @@
   height: rem(90px);
 
   &.hidden {
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-    display: none;
-    margin: -55px;
+    // opacity: 0;
+    // visibility: hidden;
+    // pointer-events: none;
+    // display: none;
+    // margin: -55px;
   }
 
 }
