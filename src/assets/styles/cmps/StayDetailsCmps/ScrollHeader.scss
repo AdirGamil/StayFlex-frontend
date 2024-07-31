@@ -35,9 +35,13 @@
         color: $clr3;
         font-weight: 600;
         font-size: rem(14px);
+        height: 5rem;
+        display: flex;
+        align-items: center;
 
         &:hover {
           color: black;
+          box-shadow: 0 6px 0 #000;
         }
       }
     }

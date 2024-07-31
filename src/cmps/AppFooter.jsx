@@ -2,7 +2,7 @@ import React from 'react'
 
 export function AppFooter() {
   return (
-    <footer className="padding">
+    <footer className="padding full">
       <div className="footer-content">
         <div>
           <h2>Support</h2>
