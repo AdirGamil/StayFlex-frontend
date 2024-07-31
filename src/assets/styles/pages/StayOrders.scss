@@ -1,8 +1,117 @@
 
 .stay-orders-container {
+  margin: rem(40px) 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: rem(32px);
+
+  h1 {
+    font-size: rem(32px);
+    color: $clr3;
+    margin-bottom: rem(20px);
+  }
+
+  .stay-orders-table {
+    margin: auto;
+    width: 60%;
+    border-collapse: collapse;
+    margin-top: rem(20px);
+    margin-bottom: rem(48px);
+
+    tbody {
+      img {
+        max-width: rem(55px);
+        border-radius: rem(50px);
+      }
+
+      tr {
+        &:nth-child(even) {
+          background-color: #f2f2f2;
+        }
+
+        &:nth-child(odd) {
+          background-color: $clr5;
+        }
+
+        &:first-child td {
+          border-top: 1px solid $clr6;
+        }
+
+        &:last-child td {
+          border-bottom: 1px solid $clr6;
+        }
+
+        td:first-child {
+          border-left: 1px solid $clr6;
+        }
+
+        td:last-child {
+          border-right: 1px solid $clr6;
+        }
+      }
+
+      td {
+        &.status-approved {
+          color: $clr8;
+        }
+
+        &.status-pending {
+          color: orange;
+        }
+
+        &.status-declined {
+          color: $clr11;
+        }
+      }
+    }
+
+    th,
+    td {
+      padding: rem(10px);
+      text-align: center;
+    }
+
+    th {
+      color: $clr4;
+    }
+
+    .btn {
+      margin-right: rem(5px);
+      padding: rem(10px) rem(15px);
+      border-radius: rem(5px);
+      background-color: transparent;
+      cursor: pointer;
+      transition: opacity 0.3s ease;
+
+      &-accept {
+        border: rem(1px) solid $clr8;
+        color: $clr8;
+      }
+
+      &-reject {
+        border: rem(1px) solid $clr11;
+        color: $clr11;
+      }
+
+      &:hover {
+        opacity: 0.8;
+      }
+
+      &.btn-disabled {
+        cursor: not-allowed;
+        border: rem(1px) solid $clr4;
+        color: $clr4;
+        opacity: 0.5;
+      }
+    }
+  }
+}
+
+.stay-orders-container {
   margin: rem(20px) rem(10px);
   width: 100%;
-  max-width: 1200px; 
+  max-width: 1200px;
   margin: 0 auto;
 
   h1 {
@@ -103,10 +212,10 @@
 
       .btn {
         margin: rem(5px) 0; 
-        padding: rem(10px);
+        padding: rem(10px); 
         font-size: rem(14px);
-        display: block; 
-        text-align: center; 
+        display: block;
+        text-align: center;
       }
 
       .btn-accept {
