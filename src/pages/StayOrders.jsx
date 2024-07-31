@@ -1,3 +1,4 @@
+// StayOrders.jsx
 import React, { useEffect, useState } from 'react'
 import { orderService } from '../services/order'
 import { userService } from '../services/user'
@@ -6,39 +7,49 @@ import {
   SOCKET_EVENT_ORDER_UPDATED,
   socketService,
 } from '../services/socket.service'
-import { useDispatch } from 'react-redux'
-import { getActionAddOrder, getActionUpdateOrder } from '../store/actions/order.actions'
+import { useDispatch, useSelector } from 'react-redux'
+import {
+  loadOrders,
+  getActionAddOrder,
+  getActionUpdateOrder,
+} from '../store/actions/order.actions'
+import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service'
 
 export function StayOrders() {
-  const [orders, setOrders] = useState([])
-  const [guestDetails, setGuestDetails] = useState({}) // Add this state
+  const [guestDetails, setGuestDetails] = useState({})
   const dispatch = useDispatch()
+  const orders = useSelector((state) => state.orderModule.orders)
 
   useEffect(() => {
-    loadOrders()
+    loadOrdersData()
 
-    
     socketService.on(SOCKET_EVENT_ORDER_ADDED, (order) => {
-      console.log('GOT from socket', order)
+      console.log('added order:', order)
       dispatch(getActionAddOrder(order))
     })
 
-    // socketService.on(SOCKET_EVENT_ORDER_UPDATED, orderId => {
-    // 	console.log('GOT from socket', orderId)
-    // 	dispatch(getActionUpdateOrder(orderId))
-    // })
+    socketService.on(SOCKET_EVENT_ORDER_UPDATED, (order) => {
+      console.log('updated order:', order)
+      dispatch(getActionUpdateOrder(order))
+    })
 
     return () => {
       socketService.off(SOCKET_EVENT_ORDER_ADDED)
-      // socketService.off(SOCKET_EVENT_ORDER_UPDATED)
+      socketService.off(SOCKET_EVENT_ORDER_UPDATED)
     }
-  }, [])
+  }, [dispatch])
 
-  async function loadOrders() {
-    const orders = await orderService.query()
-    setOrders(orders)
+  useEffect(() => {
     fetchGuestDetails(orders)
-   
+  }, [orders])
+
+  async function loadOrdersData() {
+    try {
+      const orders = await orderService.query()
+      dispatch({ type: 'SET_ORDERS', orders })
+    } catch (err) {
+      console.log(err)
+    }
   }
 
   async function fetchGuestDetails(orders) {
@@ -47,23 +58,28 @@ export function StayOrders() {
       if (!details[order.guest._id]) {
         const user = await userService.getById(order.guest._id)
         details[order.guest._id] = user
-      
       }
     }
     setGuestDetails(details)
   }
 
   async function handleStatusChange(orderId, status) {
-    const updatedOrder = await orderService.getById(orderId)
-    if (updatedOrder) {
-      updatedOrder.status = status
-      await orderService.save(updatedOrder)
-   
-      setOrders((prevOrders) =>
-        prevOrders.map((order) =>
-          order._id === orderId ? { ...order, status } : order
-        )
-      )
+    try {
+      const updatedOrder = await orderService.getById(orderId)
+      if (updatedOrder) {
+        updatedOrder.status = status
+        const savedOrder = await orderService.save(updatedOrder)
+        if (savedOrder && savedOrder._id) {
+          dispatch(getActionUpdateOrder(savedOrder))
+          showSuccessMsg(`Order ${status.toLowerCase()} successfully`)
+          socketService.emit(SOCKET_EVENT_ORDER_UPDATED, savedOrder)
+        } else {
+          console.error('Failed to update order: missing _id')
+        }
+      }
+    } catch (err) {
+      showErrorMsg('Failed to update order')
+      console.log(err)
     }
   }
 
@@ -95,14 +111,17 @@ export function StayOrders() {
               <td className={`status-${order.status.toLowerCase()}`}>
                 {order.status}
               </td>
-              <img
-                src={
-                  guestDetails[order.guest._id]?.imgUrl ||
-                  'https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png'
-                }
-                alt={guestDetails[order.guest._id]?.fullname || 'Guest'}
-                className="guest-image"
-              />{' '}
+              <td>
+                <img
+                  src={
+                    guestDetails[order.guest._id]?.imgUrl ||
+                    'https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png'
+                  }
+                  alt={guestDetails[order.guest._id]?.fullname || 'Guest'}
+                  className="guest-image"
+                />
+                {guestDetails[order.guest._id]?.fullname || 'Guest'}
+              </td>
               <td>{formatDate(order.startDate)}</td>
               <td>{formatDate(order.endDate)}</td>
               <td>${order.totalPrice.toFixed(2)}</td>
