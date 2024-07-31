@@ -1,38 +1,16 @@
 
-
-// import React from 'react'
-// import { amenityIcons } from '../../services/util.service'
-
-// export function Amenities({ amenities, amenityIcons }) {
-//     return (
-//         <div id="amenities" className="stay-amenities">
-//             <h2>What this place offers</h2>
-//             <ul className="amenities-list">
-//                 {amenities.map((amenity, index) => (
-//                     <li key={index}>
-//                         {amenityIcons[amenity] && (
-//                             <img src={amenityIcons[amenity]} alt={`${amenity} icon`} />
-//                         )}
-//                         {amenity}
-//                     </li>
-//                 ))}
-//             </ul>
-//         </div>
-//     )
-// }
-
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 
 export function Amenities({ amenities, amenityIcons }) {
-    const [showAll, setShowAll] = useState(false);
+    const [showAll, setShowAll] = useState(false)
 
     const handleShowAllClick = () => {
-        setShowAll(true);
-    };
+        setShowAll(true)
+    }
 
     const handleCloseModal = () => {
-        setShowAll(false);
-    };
+        setShowAll(false)
+    }
 
     return (
         <div id="amenities" className="stay-amenities">
@@ -56,7 +34,7 @@ export function Amenities({ amenities, amenityIcons }) {
                  <div className="modal-overlay" onClick={handleCloseModal}>
                  <div className="modal-content" onClick={(e) => e.stopPropagation()}>
                      <button onClick={handleCloseModal} className="close-button">
-                         &times;
+                         &times
                      </button>
                      <h2>What this place offers</h2>
                      <ul className="amenities-list">
@@ -73,5 +51,5 @@ export function Amenities({ amenities, amenityIcons }) {
              </div>
          )}
      </div>
-    );
+    )
 }

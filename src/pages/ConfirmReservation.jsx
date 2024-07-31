@@ -1,5 +1,6 @@
 import { useLocation, useNavigate } from 'react-router-dom'
 import { orderService } from '../services/order'
+import { userService } from '../services/user'
 import { formatDateRange, pluralize } from '../services/util.service.js'
 const starIcon =
   'https://res.cloudinary.com/dhweqnxgd/image/upload/v1721294785/star_us9ozb.png'
@@ -21,9 +22,10 @@ export function ConfirmReservation() {
               new Date(order.endDate) <= new Date(orderDetails.endDate)))
       )
 
-      if (isConflict) {
-        return
-      }
+      // if (isConflict) {
+      //   return
+      // }
+
       await orderService.save(orderDetails)
       navigate('/trips')
     } catch (err) {

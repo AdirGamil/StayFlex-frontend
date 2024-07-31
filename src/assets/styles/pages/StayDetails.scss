@@ -75,6 +75,8 @@
         .reviews-link {
           color: inherit;
           text-decoration: underline;
+          // background-color: aqua;
+          cursor:context-menu;
         }
       }
     }
@@ -108,6 +110,7 @@
   .host {
     display: flex;
     align-items: center;
+    // margin: rem(32px) 0 ;
   }
 
   .host-img {
@@ -135,7 +138,7 @@
 }
 
 .stay-description {
-  margin-top: rem(24px);
+  margin: rem(32px) 0;
   line-height: 1.5;
 }
 

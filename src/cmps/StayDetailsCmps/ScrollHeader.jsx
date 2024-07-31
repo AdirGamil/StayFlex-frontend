@@ -1,84 +1,30 @@
 
-// import React, { useState, useEffect } from 'react';
-// import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 
-// export function ScrollHeader({ price, rating, reviewCount }) {
-//   const navigate = useNavigate();
-//   const [showHeaderInfo, setShowHeaderInfo] = useState(false);
-
-//   useEffect(() => {
-//     const handleScroll = () => {
-//       const reserveButton = document.querySelector('.stay-reservation .reserve-btn');
-//       if (reserveButton) {
-//         const rect = reserveButton.getBoundingClientRect();
-//         const shouldShow = rect.top < 0;
-//         console.log('Reserve button top:', rect.top);
-//         console.log('Should show header info:', shouldShow);
-//         setShowHeaderInfo(shouldShow);
-//       } else {
-//         console.log('Reserve button not found');
-//       }
-//     };
-
-//     window.addEventListener('scroll', handleScroll);
-//     return () => window.removeEventListener('scroll', handleScroll);
-//   }, []);
-
-//   const handleReserve = () => {
-//     navigate('/confirm-reservation');
-//   };
-
-//   return (
-//     <header className={`scroll-header ${showHeaderInfo ? 'show-info' : ''}`}>
-//       <nav>
-//         <ul className="nav-links">
-//           <li><a href="#photos">Photos</a></li>
-//           <li><a href="#amenities">Amenities</a></li>
-//           <li><a href="#reviews">Reviews</a></li>
-//           <li><a href="#location">Location</a></li>
-//         </ul>
-//         <div className="scroll-header-info">
-//           <div className="info">
-//             <span className="price">${price.toLocaleString()} <span className="night">night</span></span>
-//             <div className="info-rr">
-//               <span className="rating">★ {rating}</span>
-//               <span className="reviews">· {reviewCount} reviews</span>
-//             </div>
-//           </div>
-//           <button className="reserve-btn" onClick={handleReserve}>Reserve</button>
-//         </div>
-//       </nav>
-//     </header>
-//   );
-// }
-
-
-import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-
-export function ScrollHeader({ price, rating, reviewCount, stay, startDate, endDate, guests, numberOfNights, totalPrice, taxes }) {
-  const navigate = useNavigate();
-  const [showHeaderInfo, setShowHeaderInfo] = useState(false);
+export function ScrollHeader({ price, rating, reviewCount, stay, startDate, endDate, guests, numberOfNights, totalPrice, taxes, averageRating }) {
+  const navigate = useNavigate()
+  const [showHeaderInfo, setShowHeaderInfo] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
-      const reserveButton = document.querySelector('.stay-reservation .reserve-btn');
+      const reserveButton = document.querySelector('.stay-reservation .reserve-btn')
       if (reserveButton) {
-        const rect = reserveButton.getBoundingClientRect();
-        const shouldShow = rect.top < 0;
-        // console.log('Reserve button top:', rect.top);
-        // console.log('Should show header info:', shouldShow);
-        setShowHeaderInfo(shouldShow);
+        const rect = reserveButton.getBoundingClientRect()
+        const shouldShow = rect.top < 0
+        // console.log('Reserve button top:', rect.top)
+        // console.log('Should show header info:', shouldShow)
+        setShowHeaderInfo(shouldShow)
       } else {
-        // console.log('Reserve button not found');
+        // console.log('Reserve button not found')
       }
-    };
+    }
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
-  const handleReserve = () => {
+  function handleReserve(){
     const orderDetails = {
       hostId: {
         _id: stay.host._id,
@@ -93,7 +39,12 @@ export function ScrollHeader({ price, rating, reviewCount, stay, startDate, endD
       taxes,
       startDate: startDate.toISOString().split('T')[0],
       endDate: endDate.toISOString().split('T')[0],
-      guests,
+      guests: {
+        adults: guests.adults,
+        children: guests.children,
+        infants: guests.infants,
+        pets: guests.pets,
+      },
       stay: {
         _id: stay._id,
         name: stay.name,
@@ -107,10 +58,10 @@ export function ScrollHeader({ price, rating, reviewCount, stay, startDate, endD
       averageRating: rating,
       reviewCount,
       pricePerNight: stay.price
-    };
-
-    navigate('/confirm-reservation', { state: { orderDetails } });
-  };
+    }
+    console.log("Attempting to navigate with:", orderDetails);
+    navigate('/confirm-reservation', { state: { orderDetails } })
+  }
 
   return (
     <header className={`scroll-header ${showHeaderInfo ? 'show-info' : ''}`}>
@@ -133,5 +84,5 @@ export function ScrollHeader({ price, rating, reviewCount, stay, startDate, endD
         </div>
       </nav>
     </header>
-  );
+  )
 }

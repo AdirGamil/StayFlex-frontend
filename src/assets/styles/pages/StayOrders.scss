@@ -16,6 +16,9 @@
     margin-top: rem(20px);
 
     tbody {
+      border-top: 1px solid $clr6;
+      border-bottom: 1px solid $clr6;
+
       img {
         max-width: rem(55px);
         border-radius: rem(50px);
