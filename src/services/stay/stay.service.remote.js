@@ -11,6 +11,7 @@ export const stayService = {
 }
 
 async function query(filterBy = { txt: '', price: 0 }) {
+  console.log('filterBy:',filterBy);
   return httpService.get(`stay`, filterBy)
 }
 
