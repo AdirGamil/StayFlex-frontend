@@ -1,108 +1,124 @@
-.stay-orders-container {
-  margin: rem(40px) 0;
-  display: flex;
 
+.stay-orders-container {
+  margin: rem(20px) rem(10px);
+  width: 100%;
+  max-width: 1200px; 
+  margin: 0 auto;
 
   h1 {
     font-size: rem(32px);
     color: $clr3;
     margin-bottom: rem(20px);
+    text-align: center;
   }
 
   .stay-orders-table {
-    margin: auto;
-    width: 60%;
-    border-collapse: collapse;
-    margin-top: rem(20px);
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 rem(10px);
 
-    tbody {
-      border-top: 1px solid $clr6;
-      border-bottom: 1px solid $clr6;
-
-      img {
-        max-width: rem(55px);
-        border-radius: rem(50px);
-      }
-
-      tr {
-        &:nth-child(even) {
-          background-color: #f2f2f2;
-        }
-
-        &:nth-child(odd) {
-          background-color: $clr5;
-        }
-
-        &:first-child td {
-          border-top: 1px solid $clr6;
-        }
-
-        &:last-child td {
-          border-bottom: 1px solid $clr6;
-        }
-
-        td:first-child {
-          border-left: 1px solid $clr6;
-        }
-
-        td:last-child {
-          border-right: 1px solid $clr6;
-        }
-      }
-
-      td {
-        &.status-approved {
-          color: $clr8;
-        }
-
-        &.status-pending {
-          color: orange;
-        }
-
-        &.status-declined {
-          color: $clr11;
-        }
-      }
-    }
-
-    th,
-    td {
-      padding: rem(10px);
-      text-align: center;
+    th, td {
+      padding: rem(15px);
+      text-align: left;
     }
 
     th {
+      background-color: $clr5;
       color: $clr4;
+      font-weight: bold;
+    }
+
+    tbody {
+      tr {
+        background-color: #ffffff;
+        box-shadow: 0 rem(2px) rem(5px) rgba(0, 0, 0, 0.1);
+
+        &:hover {
+          background-color: $clr5;
+        }
+      }
+
+      img {
+        max-width: rem(40px);
+        border-radius: rem(20px);
+        margin-right: rem(10px);
+        vertical-align: middle;
+      }
     }
 
     .btn {
+      padding: rem(8px) rem(12px);
       margin-right: rem(5px);
-      padding: rem(10px) rem(15px);
       border-radius: rem(5px);
-      background-color: transparent;
-      cursor: pointer;
-      transition: opacity 0.3s ease;
+      font-size: rem(14px);
+    }
+  }
+}
 
-      &-accept {
+@media screen and (max-width: 768px) {
+  .stay-orders-container {
+
+    h1 {
+      font-size: rem(32px);
+      color: $clr3;
+      margin-bottom: rem(20px);
+      text-align: center;
+    }
+    .stay-orders-table {
+      margin-bottom: 0;
+      thead {
+        display: none;
+      }
+
+      tbody {
+        tr {
+          display: block;
+          margin-bottom: rem(20px);
+          border-radius: rem(8px);
+          overflow: hidden;
+          width: 340px;
+
+
+          td {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: rem(12px) rem(15px);
+            border-bottom: 1px solid $clr6;
+
+            &:before {
+              content: attr(data-label);
+              font-weight: bold;
+              text-transform: uppercase;
+              font-size: rem(12px);
+              color: $clr4;
+            }
+
+            &:last-child {
+              border-bottom: none;
+            }
+          }
+        }
+      }
+
+      .btn {
+        margin: rem(5px) 0; 
+        padding: rem(10px);
+        font-size: rem(14px);
+        display: block; 
+        text-align: center; 
+      }
+
+      .btn-accept {
         border: rem(1px) solid $clr8;
         color: $clr8;
       }
 
-      &-reject {
+      .btn-reject {
         border: rem(1px) solid $clr11;
         color: $clr11;
-      }
-
-      &:hover {
-        opacity: 0.8;
-      }
-
-      &.btn-disabled {
-        cursor: not-allowed;
-        border: rem(1px) solid $clr4;
-        color: $clr4;
-        opacity: 0.5;
       }
     }
   }
 }
+
