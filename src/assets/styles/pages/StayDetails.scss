@@ -67,9 +67,12 @@
         gap: rem(4px);
         font-weight: 600;
 
+
         .star-icon {
-          width: rem(15px);
-          height: rem(15px);
+          img {
+            width: rem(15px);
+            height: rem(15px);
+          }
         }
 
         .reviews-link {

@@ -108,8 +108,12 @@
   }
 
   &.scrolled {
-    transform: translateY(-10px); // Adjust this value as needed
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    // display: grid;
+    // grid-template-rows: auto 60px auto;
+    // transition: grid-template-rows .6s;
+    display: grid;
+    grid-template-rows: auto 0px auto;
+    transition: grid-template-rows .6s;
 
     .stay-filter-container,
     .link-header {

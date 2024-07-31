@@ -5,6 +5,7 @@
     display: grid;
     grid-template-columns: 1fr auto 1fr;
     align-items: center;
+
     gap: 2rem;
     height: rem(80px);
 
@@ -66,14 +67,6 @@
       gap: rem(8px);
 
       
-      
-      .sticky-header-wrapper.scrolled {
-        
-
-        .app-header {
-          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-      }
       
       .add-stay {
         color: $clr3; 
@@ -171,6 +164,10 @@
 .sticky-header-wrapper.scrolled .app-header .links-header {
   // opacity: 0;
   // visibility: hidden;
+
+  transform: scale(0.43, 0.7) translateY(-103px);
+  transition: transform 0.6s;
+  
   pointer-events: none;
 
 }
