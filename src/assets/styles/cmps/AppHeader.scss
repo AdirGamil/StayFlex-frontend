@@ -193,6 +193,8 @@
 
 .app-header {
   // background-color: $clr8;
+  position: relative;
+  z-index: 9999;
 
   .nav-container {
     display: grid;
