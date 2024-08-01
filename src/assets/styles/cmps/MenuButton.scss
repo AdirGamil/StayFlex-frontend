@@ -32,10 +32,19 @@
     }
 
     .profile-icon-wrapper {
-      width: rem(30px);
-      height: rem(30px);
+      
       border-radius: 50%;
       overflow: hidden;
+      object-fit: cover;
+      width: rem(30px);
+      height: rem(30px);
+      img {
+        border-radius: 50%;
+        overflow: hidden;
+        object-fit: cover;
+        width: rem(30px);
+        height: rem(30px);
+      }
     }
 
     .profile-icon {

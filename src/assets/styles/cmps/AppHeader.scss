@@ -259,6 +259,7 @@
       display: flex;
       align-items: center;
       gap: rem(8px);
+      justify-content: end;
 
       
       
@@ -379,6 +380,22 @@
   }
 
 }
+
+}
+
+@media (max-width: 600px) {
+  
+    .add-stay {
+      display: none;
+    }
+
+}
+
+@media (max-width: 600px) {
+  
+    .add-stay {
+      display: none;
+    }
 
 }
 @media screen and (max-width: 375px) {

@@ -47,7 +47,7 @@ export function getRandomMaleName() {
 }
 
 export function createStayObject(stay) {
-  const reviews = stay.reviews || generateRandomReviews(6)
+  const reviews = stay.reviews || generateRandomReviews(27)
   const averageRating = calculateAverageRating(reviews)
 
   const location = stay.loc || getRandomLocation()
@@ -81,7 +81,7 @@ export function createStayObject(stay) {
 }
 
 export function createStayRemote(stay) {
-  const reviews = stay.reviews || generateRandomReviews(6)
+  const reviews = stay.reviews || generateRandomReviews(27)
   const averageRating = calculateAverageRating(reviews)
 
   const location = stay.loc || getRandomLocation()
@@ -90,7 +90,7 @@ export function createStayRemote(stay) {
     name: stay.name || getRandomElement(names),
     type: stay.type || getRandomElement(types),
     imgUrls: stay.imgUrls || getRandomImgUrls(imgUrls),
-    price: stay.price || getRandomIntInclusive(150, 1350),
+    price: stay.price || getRandomIntInclusive(35, 280),
     summary: stay.summary || makeLorem(50),
     capacity: stay.capacity || getRandomIntInclusive(1, 6),
     bedrooms: stay.bedrooms || getRandomIntInclusive(1, 6),
@@ -285,13 +285,46 @@ export function calculateAverageRating(reviews) {
 
 export function generateRandomReviews(numReviews) {
   const reviewTexts = [
-    'Staying at this house was a dream! The host was super accommodating, the location was perfect, and the view from the balcony was breathtaking. Would love to come back again!',
-    'Angel was warm and welcoming and has a beautiful apartment. Id recommend his place to anyone visiting downtown Montreal!',
-    'It was a pleasant experience.',
-    'Had a fantastic stay here. The house was clean, cozy, and had all the amenities we needed. The host was friendly and gave us great local tips. Highly recommend!',
-    'I did not enjoy my stay here.',
-    'This house exceeded our expectations! The decor was stylish, the beds were comfortable, and the kitchen was well-equipped. Perfect for a family vacation. We had an amazing time!',
-    'The place was clean and well-maintained.',
+      'Staying at this house was a dream! The host was super accommodating, the location was perfect, and the view from the balcony was breathtaking. Would love to come back again!',
+      'Angel was warm and welcoming and has a beautiful apartment. Id recommend his place to anyone visiting downtown Montreal!',
+      'Had a fantastic stay here. The house was clean, cozy, and had all the amenities we needed. The host was friendly and gave us great local tips. Highly recommend!',
+      'This house exceeded our expectations! The decor was stylish, the beds were comfortable, and the kitchen was well-equipped. Perfect for a family vacation. We had an amazing time!',
+      'The place was clean and well-maintained.',
+      'Our stay was nothing short of perfect! The host was attentive, the location was convenient, and the house was spotless. We felt right at home!',
+      'Highly recommend this place! The host went above and beyond to make our stay enjoyable. The neighborhood was quiet and safe.',
+      'The accommodation was excellent. The house was beautifully decorated and very comfortable. The host provided everything we needed.',
+      'An outstanding experience! The host was incredibly kind, and the house was just as described. We will definitely be back.',
+      'We had a wonderful time staying here. The house was spacious, clean, and had a lovely garden. The host was very hospitable.',
+      'Fantastic location and superb hospitality. The house was equipped with all modern conveniences. We enjoyed our stay immensely.',
+      'The perfect getaway! The house was charming and cozy, with everything we needed for a relaxing vacation. The host was very welcoming.',
+      'Couldn’t have asked for a better place to stay. The host was friendly and the house was pristine. We’ll be recommending this to our friends.',
+      'The host was incredibly helpful and the house was stunning. We loved the stylish interiors and comfortable beds.',
+      'An amazing place to stay! The house was beautifully maintained and the host provided excellent recommendations for local attractions.',
+      'This place is a gem! The house was lovely and the host made sure we had everything we needed for a perfect stay.',
+      'Absolutely wonderful stay! The house was clean, the host was friendly, and the location was ideal for exploring the area.',
+      'We had an unforgettable stay here. The house was spacious, the host was gracious, and the amenities were top-notch.',
+      'A true home away from home. The host was delightful, and the house had everything we could have wanted. Highly recommend!',
+      'The best vacation rental we’ve ever stayed at. The host was attentive, the house was beautifully decorated, and the location was perfect.',
+      'Such a delightful stay! The house was spotless, the beds were comfortable, and the host was incredibly welcoming.',
+      'We thoroughly enjoyed our stay. The house was cozy, the host was kind, and the surrounding area was beautiful.',
+      'An excellent experience! The house was well-kept, the host was friendly, and the location was convenient for all our activities.',
+      'A fantastic place to stay! The house was charming, the host was wonderful, and the local area had plenty to offer.',
+      'We loved every moment of our stay. The house was pristine, the host was helpful, and the location was perfect for our needs.',
+      'A wonderful retreat. The house was lovely, the host was gracious, and we felt very much at home during our stay.',
+      'Perfect in every way! The house was clean, the host was accommodating, and the location was excellent.',
+      'Highly recommend this property. The house was stylish and comfortable, and the host made us feel very welcome.',
+      'An amazing experience from start to finish. The house was beautiful, the host was attentive, and the location was fantastic.',
+      'Couldn’t have asked for a better stay. The house was immaculate, the host was delightful, and the area was perfect for our vacation.',
+      'We had a lovely stay. The house was well-appointed, the host was friendly, and the surroundings were peaceful.',
+      'A truly exceptional stay. The house was gorgeous, the host was gracious, and we had everything we needed for a perfect vacation.',
+      'An unforgettable experience. The house was cozy, the host was accommodating, and the location was ideal.',
+      'We felt right at home. The house was beautiful, the host was welcoming, and the amenities were fantastic.',
+      'A perfect vacation spot. The house was charming, the host was wonderful, and the local area was full of great attractions.',
+      'Couldn’t recommend this place more. The house was spotless, the host was friendly, and the location was convenient.',
+      'An outstanding stay. The house was beautiful, the host was attentive, and we had a fantastic time.',
+      'A truly wonderful place to stay. The house was well-maintained, the host was friendly, and the surroundings were lovely.',
+      'We had a fantastic stay. The house was comfortable, the host was gracious, and the area was perfect for our holiday.',
+      'A perfect stay from beginning to end. The house was beautiful, the host was accommodating, and the location was ideal.',
   ]
 
   const userNames = [

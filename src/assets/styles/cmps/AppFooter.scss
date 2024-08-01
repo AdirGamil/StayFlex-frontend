@@ -80,3 +80,18 @@ footer {
     }
   }
 }
+
+
+@media (max-width: 600px) {
+  footer {
+
+    .footer-content {
+      display: none;
+    }
+
+    .footer-bottom {
+      flex-direction: column;
+
+    }
+  }
+}

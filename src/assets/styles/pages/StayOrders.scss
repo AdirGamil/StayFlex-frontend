@@ -182,6 +182,10 @@
       }
 
       tbody {
+        display: flex;
+        flex-direction: column;
+    justify-content: center;
+    align-items: center;
         tr {
           display: block;
           margin-bottom: rem(20px);
