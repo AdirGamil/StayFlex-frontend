@@ -172,9 +172,8 @@ export function StayDetails() {
                     ★★★★★<span></span>
                   </p>
                   <h6>·</h6>
-                  <h4>
-                    July 2024 <span> Stayed a few nights</span>
-                  </h4>
+                  <p>{getRandomIntInclusive(1,11)} months ago</p>
+
                 </div>
                 <div className="review-content">
                   <p>{review.txt}</p>
