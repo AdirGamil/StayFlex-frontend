@@ -47,7 +47,7 @@ async function createDemoData(num) {
   return demoStays
 }
 
-// createDemoData(6)
+// createDemoData(150)
 //   .then((stays) => {
 //     console.log('Demo data created:', stays)
 //   })

@@ -47,7 +47,7 @@ export function getRandomMaleName() {
 }
 
 export function createStayObject(stay) {
-  const reviews = stay.reviews || generateRandomReviews(6)
+  const reviews = stay.reviews || generateRandomReviews(27)
   const averageRating = calculateAverageRating(reviews)
 
   const location = stay.loc || getRandomLocation()
@@ -81,7 +81,7 @@ export function createStayObject(stay) {
 }
 
 export function createStayRemote(stay) {
-  const reviews = stay.reviews || generateRandomReviews(237)
+  const reviews = stay.reviews || generateRandomReviews(27)
   const averageRating = calculateAverageRating(reviews)
 
   const location = stay.loc || getRandomLocation()
@@ -341,7 +341,7 @@ export function generateRandomReviews(numReviews) {
   for (let i = 0; i < numReviews; i++) {
     const randomText =
       reviewTexts[Math.floor(Math.random() * reviewTexts.length)]
-    const randomRate = getRandomIntInclusive(5, 5) // Generates a random rate between 1 and 5
+    const randomRate = getRandomIntInclusive(4, 5) // Generates a random rate between 1 and 5
     const randomUser = userNames[Math.floor(Math.random() * userNames.length)]
     const randomImgUrl = `https://randomuser.me/api/portraits/med/${Math.random() < 0.5 ? 'men' : 'women'
       }/${Math.floor(Math.random() * 100)}.jpg`
