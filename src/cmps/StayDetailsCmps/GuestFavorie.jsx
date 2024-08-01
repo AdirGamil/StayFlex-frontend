@@ -16,7 +16,7 @@ export function GuestFavorite({ rating, reviewCount }) {
                     className="laurel right-laurel"
                 />
             </div>
-            <div className="description">
+            <div className="guest-description">
                 One of the most loved homes on Airbnb, according to guests
             </div>
             <div className="rating-section">
