@@ -219,6 +219,7 @@
         font-size: 1.5rem;
         color: $clr1;
         margin: 0;
+        display: none;
       }
     }
 
@@ -379,4 +380,15 @@
 
 }
 
+}
+@media screen and (max-width: 375px) {
+  .app-header {
+    .logo {
+      h1 {
+        display: block; // Show the h1
+        font-size: rem(18px); // Adjust the font size as needed
+        margin-left: rem(10px); // Add some spacing between the logo and text
+      }
+    }
+  }
 }

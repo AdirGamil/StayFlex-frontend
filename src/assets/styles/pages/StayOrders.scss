@@ -6,6 +6,7 @@
   align-items: center;
   margin-bottom: rem(32px);
 
+
   h1 {
     font-size: rem(32px);
     color: $clr3;
@@ -26,6 +27,7 @@
       }
 
       tr {
+        // font-size: rem(16px);
         &:nth-child(even) {
           background-color: #f2f2f2;
         }
