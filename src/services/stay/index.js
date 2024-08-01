@@ -31,7 +31,7 @@ function getEmptyStay({ price = getRandomIntInclusive(20, 300) } = {}) {
   const name = getRandomElement(names);
   const type = getRandomElement(types);
   const loc = getRandomLocation();
-  const reviews = generateRandomReviews(5);
+  const reviews = generateRandomReviews(97);
   const averageRating = calculateAverageRating(reviews);
 
   return {

@@ -155,7 +155,7 @@ export function StayDetails() {
         </div>
       </section>
       <section id="reviews" className="header-reviews">
-        <div className="header">★ {averageRating} · 6 reviews</div>
+        <div className="header">★ {averageRating} · 237 reviews</div>
         <div className="reviews-container">
           {stay.reviews.map((review, index) => (
             <article className="review" key={index}>
@@ -163,7 +163,7 @@ export function StayDetails() {
                 <img src={review.by.imgUrl} alt="User Avatar" />
                 <div className="user-details-txt">
                   <h3>{review.by.fullname}</h3>
-                  <p>{review.by._id}</p>
+                  <p className='review-user'>{getRandomIntInclusive(2,8)} years on Airbnb</p>
                 </div>
               </div>
               <div className="review-txt-date">

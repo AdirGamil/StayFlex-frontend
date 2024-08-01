@@ -107,7 +107,7 @@ export function AddStay() {
   async function onAddStay(event) {
     event.preventDefault()
 
-    const reviews = generateRandomReviews(5)
+    const reviews = generateRandomReviews(237)
     const averageRating = calculateAverageRating(reviews)
 
     const loggedinUser = userService.getLoggedinUser()
