@@ -19,55 +19,6 @@ export const stayService = {
 }
 window.cs = stayService
 
-// async function query(
-//   filterBy = {
-//     txt: '',
-//     label: '',
-//     startDate: '',
-//     endDate: '',
-//     minPrice: 10,
-//     maxPrice: 570,
-//   }
-// ) {
-//   var stays = await storageService.query(STORAGE_KEY)
-//   const { txt, label, startDate, endDate } = filterBy
-
-//   if (txt) {
-//     const regex = new RegExp(txt, 'i')
-//     stays = stays.filter(
-//       (stay) => regex.test(stay.loc.city) || regex.test(stay.loc.country)
-//     )
-//   }
-
-//   if (label) {
-//     stays = stays.filter((stay) => stay.labels.includes(label))
-//   }
-
-//   if (startDate && endDate) {
-//     const filterStartDate = new Date(startDate)
-//     const filterEndDate = new Date(endDate)
-
-//     stays = stays.filter((stay) => {
-//       const [startStr, endStr] = stay.dateRange.split(' - ')
-//       const stayStartDate = new Date(`${startStr} ${new Date().getFullYear()}`)
-//       const stayEndDate = new Date(`${endStr} ${new Date().getFullYear()}`)
-
-//       return (
-//         (stayStartDate >= filterStartDate && stayStartDate <= filterEndDate) ||
-//         (stayEndDate >= filterStartDate && stayEndDate <= filterEndDate) ||
-//         (stayStartDate <= filterStartDate && stayEndDate >= filterEndDate)
-//       )
-//     })
-
-//     if (minPrice !== undefined && maxPrice !== undefined) {
-//       stays = stays.filter(
-//         (stay) => stay.price >= minPrice && stay.price <= maxPrice
-//       )
-//     }
-//   }
-
-//   return stays
-// }
 
 async function query(filterBy = getDefaultFilter()) {
   var stays = await storageService.query(STORAGE_KEY);

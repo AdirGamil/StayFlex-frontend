@@ -10,7 +10,7 @@ export const stayService = {
   createDemoData,
 }
 
-async function query(filterBy = { txt: '', price: 0 }) {
+async function query(filterBy = {}) {
   console.log('filterBy:',filterBy);
   return httpService.get(`stay`, filterBy)
 }
