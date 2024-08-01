@@ -346,3 +346,40 @@
     opacity: 0;
   }
 }
+
+.date-filter {
+  position: absolute;
+  top: 120%;
+  box-shadow: 0 3px 12px 0 rgba(0, 0, 0, 0.15);
+  width: 53rem;
+  height: 31rem;
+  border-radius: 24px;
+  color: $clr3;
+  background-color: white;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+.rdrDateRangePickerWrapper {
+  & span {
+    color: $clr3;
+  }
+
+  & .rdrDefinedRangesWrapper {
+    position: absolute;
+  }
+}
+
+.rdrMonths {
+  font-size: 1.2em;
+}
+
+.rdrDays {
+  font-size: 1.2em;
+}
+
+.rdrDateRange {
+  color: rebeccapurple;
+}

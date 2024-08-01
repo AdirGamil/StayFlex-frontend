@@ -1,58 +1,90 @@
-import { useState } from 'react';
-import DatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css';
-import { regions } from '../services/util.service';
+import React, { useState } from 'react'
+import { DateRangePicker } from 'react-date-range'
+import 'react-date-range/dist/styles.css' // main css file
+import 'react-date-range/dist/theme/default.css' // theme css file
+import { regions } from '../services/util.service'
 
 export function StayFilter({ filterBy, setFilterBy, onSearch }) {
-  const [filterToEdit, setFilterToEdit] = useState(structuredClone(filterBy));
-  const [startDate, setStartDate] = useState(null);
-  const [endDate, setEndDate] = useState(null);
+  const [filterToEdit, setFilterToEdit] = useState(structuredClone(filterBy))
   const [guests, setGuests] = useState({
     adults: 0,
     children: 0,
     infants: 0,
     pets: 0,
-  });
-  const [isGuestsDropdownOpen, setIsGuestsDropdownOpen] = useState(false);
-  const [isRegionDropdownOpen, setIsRegionDropdownOpen] = useState(false);
+  })
+  const [isGuestsDropdownOpen, setIsGuestsDropdownOpen] = useState(false)
+  const [isRegionDropdownOpen, setIsRegionDropdownOpen] = useState(false)
+  const [isDateRangeVisible, setIsDateRangeVisible] = useState(false)
+  const [dateRange, setDateRange] = useState([
+    {
+      startDate: new Date(),
+      endDate: new Date(),
+      key: 'selection',
+    },
+  ])
 
   function handleChange(ev) {
-    const { name, value } = ev.target;
-    setFilterToEdit({ ...filterToEdit, [name]: value });
+    const { name, value } = ev.target
+    setFilterToEdit({ ...filterToEdit, [name]: value })
   }
 
-  function handleStartDateChange(date) {
-    setStartDate(date);
-    setFilterToEdit({ ...filterToEdit, startDate: date });
-  }
+  function handleDateSelect(ranges) {
+    const startDateTimestamp = ranges.selection.startDate.getTime()
+    const endDateTimestamp = ranges.selection.endDate.getTime()
 
-  function handleEndDateChange(date) {
-    setEndDate(date);
-    setFilterToEdit({ ...filterToEdit, endDate: date });
+    if (!filterToEdit.startDate && !filterToEdit.endDate) {
+      setFilterToEdit({ ...filterToEdit, startDate: startDateTimestamp })
+    } else if (filterToEdit.startDate && !filterToEdit.endDate) {
+      setFilterToEdit({ ...filterToEdit, endDate: endDateTimestamp })
+    } else {
+      setFilterToEdit({
+        ...filterToEdit,
+        startDate: startDateTimestamp,
+        endDate: null,
+      })
+    }
+
+    setDateRange([ranges.selection])
+    setIsDateRangeVisible(false)
   }
 
   function toggleGuestsDropdown() {
-    setIsGuestsDropdownOpen(!isGuestsDropdownOpen);
+    closeAllDropdowns()
+    setIsGuestsDropdownOpen(!isGuestsDropdownOpen)
   }
 
   function handleGuestsChange(type, value) {
-    const newGuests = { ...guests, [type]: Math.max(0, value) };
-    setGuests(newGuests);
-    setFilterToEdit({ ...filterToEdit, guests: newGuests });
+    const newGuests = { ...guests, [type]: Math.max(0, value) }
+    setGuests(newGuests)
+    setFilterToEdit({ ...filterToEdit, guests: newGuests })
   }
 
   function handleSearch() {
-    setFilterBy(filterToEdit);
-    onSearch(filterToEdit);
+    setFilterBy(filterToEdit)
+    onSearch(filterToEdit)
   }
 
   function toggleRegionDropdown() {
-    setIsRegionDropdownOpen(!isRegionDropdownOpen);
+    closeAllDropdowns()
+
+    setIsRegionDropdownOpen(!isRegionDropdownOpen)
   }
 
   function handleRegionSelect(region) {
-    setFilterToEdit({ ...filterToEdit, txt: region.name });
-    setIsRegionDropdownOpen(false);
+    setFilterToEdit({ ...filterToEdit, txt: region.name })
+    setIsRegionDropdownOpen(false)
+  }
+
+  function toggleDateRange() {
+    closeAllDropdowns()
+
+    setIsDateRangeVisible(!isDateRangeVisible)
+  }
+
+  function closeAllDropdowns() {
+    setIsGuestsDropdownOpen(false)
+    setIsRegionDropdownOpen(false)
+    setIsDateRangeVisible(false)
   }
 
   return (
@@ -87,50 +119,62 @@ export function StayFilter({ filterBy, setFilterBy, onSearch }) {
         )}
       </div>
       <div className="divider divider1"></div>
-      <div className="date-picker-container">
+
+      <div className="date-picker-container" onClick={toggleDateRange}>
         <div className="date-picker-wrapper">
           <label>Check in</label>
-          <DatePicker
-            selected={startDate}
-            onChange={handleStartDateChange}
-            selectsStart
-            startDate={startDate}
-            endDate={endDate}
-            monthsShown={2}
-            dateFormat="dd/MM/yyyy"
-            placeholderText="Add dates"
-          />
+          <span className="date-text">
+            {filterToEdit.startDate
+              ? new Date(filterToEdit.startDate).toLocaleDateString('en-GB')
+              : 'Add dates'}
+          </span>
         </div>
-      </div>
-      <div className="divider divider2"></div>
-      <div className="date-picker-container">
+        <div className="divider divider2"></div>
         <div className="date-picker-wrapper">
           <label>Check out</label>
-          <DatePicker
-            selected={endDate}
-            onChange={handleEndDateChange}
-            selectsEnd
-            startDate={startDate}
-            endDate={endDate}
-            minDate={startDate}
-            monthsShown={2}
-            dateFormat="dd/MM/yyyy"
-            placeholderText="Add dates"
-          />
+          <span className="date-text">
+            {filterToEdit.endDate
+              ? new Date(filterToEdit.endDate).toLocaleDateString('en-GB')
+              : 'Add dates'}
+          </span>
         </div>
       </div>
+
+      {isDateRangeVisible && (
+        <section className="date-filter">
+          <DateRangePicker
+            ranges={dateRange}
+            onChange={handleDateSelect}
+            months={2}
+            showSelectionPreview={false}
+            showPreview={true}
+            showMonthAndYearPickers={false}
+            showDateDisplay={false}
+            direction="horizontal"
+            staticRanges={[]}
+            inputRanges={[]}
+            enableOutsideDays={true}
+            minDate={new Date()}
+            rangeColors={['#c72d65']}
+          />
+        </section>
+      )}
+
       <div className="divider divider3"></div>
       <div className="search-container">
         <div className="guests-selector">
           <button className="guests-button" onClick={toggleGuestsDropdown}>
             <span>Who</span>
             <span>
-              {guests.adults + guests.children + guests.infants + guests.pets > 0 ? (
+              {guests.adults + guests.children + guests.infants + guests.pets >
+              0 ? (
                 <>
                   {guests.adults + guests.children}
                   {guests.adults + guests.children === 1 ? ' guest' : ' guests'}
                   {guests.infants > 0 &&
-                    `, ${guests.infants} infant${guests.infants > 1 ? 's' : ''}`}
+                    `, ${guests.infants} infant${
+                      guests.infants > 1 ? 's' : ''
+                    }`}
                   {guests.pets > 0 &&
                     `, ${guests.pets} pet${guests.pets > 1 ? 's' : ''}`}
                 </>
@@ -139,12 +183,20 @@ export function StayFilter({ filterBy, setFilterBy, onSearch }) {
               )}
             </span>
           </button>
-          <div className={`guests-dropdown ${isGuestsDropdownOpen ? 'active' : ''}`}>
+          <div
+            className={`guests-dropdown ${
+              isGuestsDropdownOpen ? 'active' : ''
+            }`}
+          >
             {[
               { type: 'adults', label: 'Adults', subLabel: 'Ages 13 or above' },
               { type: 'children', label: 'Children', subLabel: 'Ages 2-12' },
               { type: 'infants', label: 'Infants', subLabel: 'Under 2' },
-              { type: 'pets', label: 'Pets', subLabel: 'Bringing a service animal?' },
+              {
+                type: 'pets',
+                label: 'Pets',
+                subLabel: 'Bringing a service animal?',
+              },
             ].map(({ type, label, subLabel }) => (
               <div key={type}>
                 <div className="guest-type">
@@ -154,12 +206,17 @@ export function StayFilter({ filterBy, setFilterBy, onSearch }) {
                 <div className="guest-counter">
                   <button
                     onClick={() => handleGuestsChange(type, guests[type] - 1)}
-                    disabled={guests[type] === 0 || (type === 'adults' && guests[type] === 0)}
+                    disabled={
+                      guests[type] === 0 ||
+                      (type === 'adults' && guests[type] === 0)
+                    }
                   >
                     -
                   </button>
                   <span>{guests[type]}</span>
-                  <button onClick={() => handleGuestsChange(type, guests[type] + 1)}>
+                  <button
+                    onClick={() => handleGuestsChange(type, guests[type] + 1)}
+                  >
                     +
                   </button>
                 </div>
@@ -180,7 +237,5 @@ export function StayFilter({ filterBy, setFilterBy, onSearch }) {
         </button>
       </div>
     </section>
-  );
+  )
 }
-
-
