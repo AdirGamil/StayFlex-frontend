@@ -50,4 +50,5 @@ Make sure you have Node.js and npm installed on your system.
 
 ## 🎥 Demo Video
 
-[![Watch the video](https://img.youtube.com/vi/2eDddv3zaj8/maxresdefault.jpg)](https://youtu.be/2eDddv3zaj8)
+<iframe width="560" height="315" src="https://www.youtube.com/embed/2eDddv3zaj8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
