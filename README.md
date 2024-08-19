@@ -2,6 +2,11 @@
 
 StayFlex is a full-stack web application inspired by Airbnb, designed to provide users with a seamless and enhanced experience for booking accommodations. This project was developed as part of the final project for the Coding Academy Israel Full Stack Bootcamp.
 
+## 🎥 Demo
+
+![StayFlex Demo](https://res.cloudinary.com/dhweqnxgd/image/upload/v1724062951/StayFlex30secflow-ezgif.com-video-to-gif-converter_rbiecu.gif)
+
+
 ## 🌟 Features
 
 - **Responsive Design:** Fully responsive layout that adapts to various devices, ensuring a smooth user experience on mobile, tablet, and desktop.
@@ -48,7 +53,4 @@ Make sure you have Node.js and npm installed on your system.
 
 > [GitHub](https://github.com/AdirGamil)
 
-## 🎥 Demo
-
-![StayFlex Demo](https://res.cloudinary.com/dhweqnxgd/image/upload/v1724062951/StayFlex30secflow-ezgif.com-video-to-gif-converter_rbiecu.gif)
 
