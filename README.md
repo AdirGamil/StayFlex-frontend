@@ -47,3 +47,7 @@ Make sure you have Node.js and npm installed on your system.
 > [LinkedIn](https://www.linkedin.com/in/adirg/)
 
 > [GitHub](https://github.com/AdirGamil)
+
+## 🎥 Demo Video
+
+[![Watch the video](https://img.youtube.com/vi/2eDddv3zaj8/maxresdefault.jpg)](https://youtu.be/2eDddv3zaj8)
