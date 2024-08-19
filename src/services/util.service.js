@@ -610,3 +610,22 @@ export const amenityIcons = {
     'https://res.cloudinary.com/doahdwb2g/image/upload/v1722106671/svg_xml_base64_PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiIgYXJpYS1oaWRkZW49InRydWUiIHJvbGU9InByZXNlbnRhdGlvbiIgZm9jdXNhYmxlPSJmYWxzZSIgc3R5bGU9ImRpc3BsYXk6IGJsb2NrOyBoZWlnaHQ_19_wz46z1.svg',
   ' ': ' ',
 }
+
+export  const months = [
+  'January', 'February', 'March', 'April', 'May', 'June', 
+  'July', 'August', 'September', 'October', 'November', 'December'
+]
+
+export function getRandomMonth() {
+  const randomIndex = Math.floor(Math.random() * months.length)
+  return months[randomIndex]
+}
+
+export const countStay = [
+ 'Stayed one night', 'Stayed a few nights', 'Stayed over a week','Stayed about a week'
+]
+
+export function getRandomStayDescription() {
+  const randomIndex = Math.floor(Math.random() * countStay.length)
+  return countStay[randomIndex]
+}

@@ -248,6 +248,9 @@
             font-weight: 300;
             font-size: rem(14px);
           }
+          .stay-description{
+            color: $clr4;
+          }
         }
 
         .review-content {
@@ -259,6 +262,23 @@
         }
       }
     }
+  }
+
+  .show-all-reviews {
+    background-color: white;
+    border: 1px solid $clr3;
+    border-radius: rem(8px);
+    padding: rem(13px) rem(23px);
+    font-size: rem(16px);
+    font-weight: 500;
+    color: $clr3;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+    margin-bottom: rem(40px);
+  }
+  
+  .show-all-reviews:hover {
+    background-color: #f7f7f7;
   }
 }
 

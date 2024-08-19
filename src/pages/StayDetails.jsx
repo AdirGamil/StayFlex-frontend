@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from 'react'
 import { useParams, useSearchParams } from 'react-router-dom'
 import { useSelector } from 'react-redux'
@@ -12,7 +13,10 @@ import {
   pluralize,
   calculateAverageRating,
   getRandomIntInclusive,
-  amenityIcons
+  amenityIcons,
+  getRandomMonth,
+  countStay,
+  getRandomStayDescription
 } from '../services/util.service'
 
 export function StayDetails() {
@@ -21,9 +25,9 @@ export function StayDetails() {
   const [showScrollHeader, setShowScrollHeader] = useState(false)
   const [searchParams] = useSearchParams()
   const guestCount = JSON.parse(searchParams.get('guests') || '{}')
-
   const [initialStartDate, setInitialStartDate] = useState(null)
   const [initialEndDate, setInitialEndDate] = useState(null)
+  const [showAllReviews, setShowAllReviews] = useState(false)
 
   useEffect(() => {
     loadStay(stayId)
@@ -54,6 +58,10 @@ export function StayDetails() {
 
   const averageRating = calculateAverageRating(stay.reviews)
   const reviewCount = stay.reviews ? stay.reviews.length : 0
+  const reviewsToShow = showAllReviews ? stay.reviews : stay.reviews.slice(0, 6)
+  function toggleShowAllReviews() {
+    setShowAllReviews(!showAllReviews)
+  }
 
   return (
     <section className="stay-details main-layout">
@@ -155,15 +163,15 @@ export function StayDetails() {
         </div>
       </section>
       <section id="reviews" className="header-reviews">
-        <div className="header">★ {averageRating} · 237 reviews</div>
+        <div className="header">★ {averageRating} · {reviewCount} reviews</div>
         <div className="reviews-container">
-          {stay.reviews.map((review, index) => (
+          {reviewsToShow.map((review, index) => (
             <article className="review" key={index}>
               <div className="user">
                 <img src={review.by.imgUrl} alt="User Avatar" />
                 <div className="user-details-txt">
                   <h3>{review.by.fullname}</h3>
-                  <p className='review-user'>{getRandomIntInclusive(2,8)} years on Airbnb</p>
+                  <p className='review-user'>{getRandomIntInclusive(2, 8)} years on Airbnb</p>
                 </div>
               </div>
               <div className="review-txt-date">
@@ -172,8 +180,9 @@ export function StayDetails() {
                     ★★★★★<span></span>
                   </p>
                   <h6>·</h6>
-                  <p>{getRandomIntInclusive(1,11)} months ago</p>
-
+                  {/* <p>{getRandomIntInclusive(1,11)} months ago</p> */}
+                  <p>{getRandomMonth()}</p> <h6>·</h6>
+                  <p className="stay-description">{getRandomStayDescription()}</p>
                 </div>
                 <div className="review-content">
                   <p>{review.txt}</p>
@@ -182,6 +191,9 @@ export function StayDetails() {
             </article>
           ))}
         </div>
+        <button className="show-all-reviews" onClick={toggleShowAllReviews}>
+          {showAllReviews ? `Show less` : `Show all ${stay.reviews.length} reviews`}
+        </button>
       </section>
       <section id="location">
         <div className="map-container">
@@ -199,3 +211,4 @@ export function StayDetails() {
     </section>
   )
 }
+
