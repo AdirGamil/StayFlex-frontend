@@ -38,6 +38,7 @@ To get started with StayFlex, follow these steps:
 ### Prerequisites
 
 Make sure you have Node.js and npm installed on your system.
+
 StayFlex Backend [here](https://github.com/AdirGamil/StayFlex-backend).
 
 ### Installation
