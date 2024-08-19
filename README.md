@@ -48,7 +48,7 @@ Make sure you have Node.js and npm installed on your system.
 
 > [GitHub](https://github.com/AdirGamil)
 
-## 🎥 Demo Video
+## 🎥 Demo
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/2eDddv3zaj8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+![StayFlex Demo](https://res.cloudinary.com/dhweqnxgd/image/upload/v1724062951/StayFlex30secflow-ezgif.com-video-to-gif-converter_rbiecu.gif)
 
