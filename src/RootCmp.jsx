@@ -20,7 +20,6 @@ import { StayOrders } from './pages/StayOrders.jsx'
 import { StayTrips } from './pages/StayTrips.jsx'
 import { Login } from './pages/Login.jsx'
 import { Signup } from './pages/Signup.jsx'
-import { MiniFilter } from './cmps/MiniFilter.jsx'
 import { UserMsg } from './cmps/UserMsg.jsx'
 
 function HeaderWrapper() {
