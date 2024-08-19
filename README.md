@@ -49,8 +49,8 @@ Make sure you have Node.js and npm installed on your system.
 ## 📫 Contact
 
 #### Adir Gamil
+> [LinkedIn](https://www.linkedin.com/in/adirg/)
 
- <img width="24" height="24" src="https://img.icons8.com/color/48/linkedin.png" alt="LinkedIn"/> [LinkedIn](https://www.linkedin.com/in/adirg/)
- <img width="24" height="24" src="https://img.icons8.com/ios-glyphs/30/github.png" alt="GitHub"/> [GitHub](https://github.com/AdirGamil)
+> [GitHub](https://github.com/AdirGamil)
 
 
