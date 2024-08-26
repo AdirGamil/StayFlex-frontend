@@ -55,4 +55,7 @@ StayFlex Backend [here](https://github.com/AdirGamil/StayFlex-backend).
 
 > [GitHub](https://github.com/AdirGamil)
 
+#### Gal Shimer
+> [LinkedIn](https://www.linkedin.com/in/gal-shimer-70325b312/)
+> [GitHub](https://github.com/galshimer)
 
