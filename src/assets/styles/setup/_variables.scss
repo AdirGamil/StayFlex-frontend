@@ -21,3 +21,9 @@ $clr13: #484848;
     --max-width: 2360px;
     --padded-max-width: calc(var(--max-width) + (var(--layout-padding) * 2));
 }
+
+@media (max-width: 599px) {
+  :root {
+    --layout-padding: 12px;
+  }
+}

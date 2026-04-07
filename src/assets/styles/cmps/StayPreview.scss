@@ -1,6 +1,10 @@
 .stay-preview {
   font-size: rem(14px);
   position: relative;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  touch-action: manipulation;
 
   .imgs {
     width: 100%;
@@ -11,6 +15,7 @@
     aspect-ratio: 1 / 1;
     border-radius: 11.2px;
     object-fit: cover;
+    display: block;
   }
 
   .stay-preview-star-icon {
@@ -32,8 +37,10 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      gap: rem(8px);
       margin: 0;
       padding: 0;
+      min-width: 0;
     }
 
     .stay-preview-location,
@@ -45,10 +52,19 @@
       padding: 0;
     }
 
+    .stay-preview-location {
+      flex: 1;
+      min-width: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
     .stay-preview-rating {
       display: flex;
       align-items: center;
       gap: rem(5px);
+      flex-shrink: 0;
     }
 
     .stay-preview-distance,
@@ -63,6 +79,14 @@
   }
 
   .slick-slider {
+    border-radius: 11.2px;
+    overflow: hidden;
+
+    .slick-list,
+    .slick-track {
+      min-width: 0;
+    }
+
     .slick-dots {
       position: absolute;
       bottom: 15px;
@@ -107,6 +131,32 @@
       width: rem(24px);
       height: rem(24px);
       fill: $clr1;
+    }
+  }
+}
+
+@media (max-width: 599px) {
+  .stay-preview {
+    font-size: rem(13px);
+
+    .stay-preview-img,
+    .slick-slider {
+      border-radius: 8px;
+    }
+
+    .wish-list-icon {
+      top: 8px;
+      right: 8px;
+      padding: 4px;
+
+      svg {
+        width: rem(22px);
+        height: rem(22px);
+      }
+    }
+
+    .slick-slider .slick-dots {
+      bottom: 10px;
     }
   }
 }

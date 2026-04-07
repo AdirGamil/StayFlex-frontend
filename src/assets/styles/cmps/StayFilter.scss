@@ -383,3 +383,136 @@
 .rdrDateRange {
   color: rebeccapurple;
 }
+
+@media (max-width: 599px) {
+  .stay-filter {
+    flex-direction: column;
+    align-items: stretch;
+    height: auto;
+    min-height: rem(52px);
+    max-width: 100%;
+    width: 100%;
+    border-radius: rem(16px);
+    padding: rem(10px);
+    gap: rem(10px);
+    box-sizing: border-box;
+
+    > .divider.divider1,
+    > .divider.divider3 {
+      display: none;
+    }
+
+    .region-search {
+      flex-grow: 0;
+      width: 100%;
+      min-height: rem(48px);
+      border-radius: rem(12px);
+
+      input[type='text'] {
+        width: 100%;
+      }
+
+      .region-dropdown {
+        left: 0;
+        right: 0;
+        width: min(100vw - 2 * var(--layout-padding), rem(400px));
+        max-width: calc(100vw - 2 * var(--layout-padding));
+        padding: rem(20px);
+        box-sizing: border-box;
+
+        .region-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+    }
+
+    .date-picker-container {
+      max-width: 100%;
+      width: 100%;
+      justify-content: space-between;
+      border: 1px solid $clr6;
+      border-radius: rem(12px);
+      padding: rem(4px) 0;
+
+      .date-picker-wrapper {
+        flex: 1;
+        min-width: 0;
+        width: auto;
+        padding: rem(8px) rem(12px);
+
+        label,
+        .date-text {
+          font-size: rem(12px);
+        }
+      }
+
+      .divider {
+        display: block;
+        height: rem(28px);
+      }
+    }
+
+    .search-container {
+      width: 100%;
+      max-width: 100%;
+      padding: 0;
+      border: 1px solid $clr6;
+      border-radius: rem(12px);
+    }
+
+    .guests-selector {
+      flex: 1;
+      min-width: 0;
+
+      .guests-button {
+        min-width: 0;
+        width: 100%;
+        padding: rem(8px) rem(12px);
+        align-items: flex-start;
+
+        span:first-child,
+        span:last-child {
+          margin-left: 0;
+        }
+
+        span:last-child {
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          max-width: 100%;
+        }
+      }
+
+      .guests-dropdown {
+        left: 0;
+        right: 0;
+        width: auto;
+        min-width: 0;
+        max-width: calc(100vw - 2 * var(--layout-padding));
+        padding: rem(12px) rem(16px);
+      }
+    }
+
+    .search-button {
+      flex-shrink: 0;
+      width: rem(44px);
+      height: rem(44px);
+    }
+
+    .search-item {
+      width: 100%;
+    }
+  }
+
+  .date-filter {
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+    width: min(calc(100vw - 2 * var(--layout-padding)), 53rem);
+    max-width: calc(100vw - 2 * var(--layout-padding));
+    height: auto;
+    max-height: min(90vh, 31rem);
+    overflow-y: auto;
+    box-sizing: border-box;
+  }
+}

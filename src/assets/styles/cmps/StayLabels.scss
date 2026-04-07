@@ -98,9 +98,17 @@
 .stay-labels-wrapper {
   display: flex;
   align-items: center;
-  width: 85vw;
-  padding: rem(20px) rem(20px);
+  flex: 1;
+  min-width: 0;
+  width: auto;
+  max-width: 100%;
+  padding: rem(12px) rem(8px);
   position: relative;
+
+  @media (min-width: 600px) {
+    width: 85vw;
+    padding: rem(20px) rem(20px);
+  }
 }
 
 .stay-labels-container {
@@ -194,8 +202,34 @@
   position: relative;
   display: flex;
   align-items: center;
-  border-block-start: rem(0.667px) solid $clr6 ;
+  gap: rem(8px);
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  border-block-start: rem(0.667px) solid $clr6;
+}
 
+@media (max-width: 599px) {
+  .stay-labels-wrapper {
+    padding-inline: 0;
+  }
+
+  .scroll-button {
+    display: none;
+  }
+
+  .label-item {
+    margin-inline: rem(12px);
+
+    &:first-child {
+      margin-left: 0;
+    }
+  }
+
+  .label-image {
+    margin-top: rem(8px);
+  }
 }
 
 .underline {

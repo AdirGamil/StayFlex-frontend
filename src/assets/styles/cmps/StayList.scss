@@ -1,11 +1,38 @@
+.stay-list-section {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
 .stay-list {
-  width: calc(100% - #{$side-padding} * 2);
-  margin: 0.85rem 0.2rem 1rem;
+  width: 100%;
+  max-width: 100%;
+  margin: 0.85rem 0 1rem;
+  padding-inline: var(--layout-padding);
   display: grid;
   grid-template-columns: repeat(1, minmax(0, 1fr));
   grid-auto-rows: minmax(min-content, max-content);
-  gap: em(24px);
+  gap: em(20px);
   box-sizing: border-box;
+
+  @media (min-width: 600px) {
+    gap: em(24px);
+  }
+
+  li {
+    min-width: 0;
+  }
+
+  li > a {
+    display: block;
+    min-width: 0;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  @media (max-width: 599px) {
+    padding-inline: max(12px, env(safe-area-inset-left, 0px))
+      max(12px, env(safe-area-inset-right, 0px));
+    margin-top: 0.65rem;
+  }
 
   @media (min-width: 600px) {
     grid-template-columns: repeat(2, minmax(0, 1fr));

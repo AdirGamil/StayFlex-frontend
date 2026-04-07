@@ -101,6 +101,10 @@
   background-color: white;
   transition: transform 0.3s ease;
   width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  overflow-y: visible;
+  box-sizing: border-box;
 
   .stay-filter-container,
   .link-header {
@@ -144,6 +148,24 @@
 
 .mini-search-bar {
   margin-bottom: rem(12px);
+}
+
+@media (max-width: 599px) {
+  .sticky-header-wrapper {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    padding-inline: max(0px, env(safe-area-inset-left, 0px))
+      max(0px, env(safe-area-inset-right, 0px));
+    box-sizing: border-box;
+  }
+
+  .stay-filter-container {
+    margin-bottom: rem(12px);
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+  }
 }
 
 

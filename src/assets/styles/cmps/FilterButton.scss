@@ -12,13 +12,35 @@
   display: flex;
   align-items: center;
   cursor: pointer;
+  flex-shrink: 0;
 
   span {
-    margin-right:rem(8px);
+    margin-right: rem(8px);
   }
 
   svg {
     width: rem(16px);
     height: rem(16px);
+  }
+}
+
+@media (max-width: 599px) {
+  .filter-button {
+    position: relative;
+    right: auto;
+    top: auto;
+    transform: none;
+    height: rem(44px);
+    margin-left: 0;
+    padding: rem(8px) rem(12px);
+
+    span {
+      margin-right: rem(6px);
+      font-size: rem(13px);
+    }
+  }
+
+  .main-labels-container .filter-button {
+    align-self: center;
   }
 }
